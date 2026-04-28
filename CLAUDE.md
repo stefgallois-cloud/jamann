@@ -27,13 +27,14 @@ Des agents spécialisés sont dans `.claude/agents/` — chacun lit le bon conte
 | `agent-contenu` | Posts, newsletters, calendrier de contenu |
 | `agent-automatisation` | Concevoir / déboguer un scénario Make ou n8n |
 | `agent-organisation` | Planning, priorités, point d'avancement projet |
+| `agent-livrables` | Note de cadrage, cahier de recette, BPMN, docs de livraison |
 
 ## Compétences
 Les compétences réutilisables sont dans `.claude/skills/`.
 Format : `.claude/skills/nom-competence/SKILL.md`
 Elles se construisent au fil du temps quand un flux de travail revient souvent.
 
-**Compétences disponibles :** gestion-dossier-client · creation-contenu · automatisation
+**Compétences disponibles :** gestion-dossier-client · creation-contenu · automatisation · livrables
 
 **Backlog — à construire :**
 - Préparation d'offre commerciale
