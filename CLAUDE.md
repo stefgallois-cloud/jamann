@@ -19,15 +19,23 @@ Pas de serveurs MCP configurés pour l'instant.
 ## Projets actifs
 Voir `projects/` — chaque dossier contient un README avec statut et livrables.
 
+## Sous-agents
+Des agents spécialisés sont dans `.claude/agents/` — chacun lit le bon contexte et les bonnes compétences automatiquement.
+
+| Agent | Quand l'utiliser |
+|---|---|
+| `agent-contenu` | Posts, newsletters, calendrier de contenu |
+| `agent-automatisation` | Concevoir / déboguer un scénario Make ou n8n |
+| `agent-organisation` | Planning, priorités, point d'avancement projet |
+
 ## Compétences
 Les compétences réutilisables sont dans `.claude/skills/`.
 Format : `.claude/skills/nom-competence/SKILL.md`
 Elles se construisent au fil du temps quand un flux de travail revient souvent.
 
-**Backlog — compétences à construire :**
-- Création de contenu (posts réseaux sociaux, newsletters)
-- Gestion de dossier client (brief → livraison)
-- Construction de scénarios Make / n8n
+**Compétences disponibles :** gestion-dossier-client · creation-contenu · automatisation
+
+**Backlog — à construire :**
 - Préparation d'offre commerciale
 
 ## Journal de décisions
