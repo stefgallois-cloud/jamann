@@ -16,11 +16,14 @@ Produire les documents professionnels qui accompagnent chaque projet livré.
 
 ---
 
-## Templates
+## Template — Note de cadrage (format école / examen)
 
-### Note de cadrage
+> Structure validée pour usage professionnel et examen final.
+> Convention : [texte entre crochets] = à remplacer.
 
 ```
+Référence : [ex. CADRE-2026001]
+
 # Note de cadrage — [Nom du projet]
 
 **Client :** [Nom]
@@ -28,89 +31,167 @@ Produire les documents professionnels qui accompagnent chaque projet livré.
 **Date :** [JJ/MM/AAAA]
 **Version :** 1.0
 
-## Contexte et problématique
-[Situation actuelle du client, pourquoi ce projet]
+---
 
-## Objectifs
-- Objectif principal :
-- Objectifs secondaires :
+## 🏔 Contexte
 
-## Périmètre
-**Inclus :**
--
+[Présenter le client, son activité, sa situation actuelle et pourquoi ce projet émerge maintenant.
+Inclure : taille structure, secteur, enjeux de croissance ou de transformation.]
 
-**Exclus :**
--
+---
 
-## Livrables attendus
-| # | Livrable | Description | Délai |
+## 🪫 Le besoin / les enjeux
+
+[Formuler l'enjeu central en une phrase forte, puis détailler en points :]
+
+- **Enjeu 1 :** [Titre] — [Description]
+- **Enjeu 2 :** [Titre] — [Description]
+- **Enjeu 3 :** [Titre] — [Description]
+
+---
+
+## 🔍 Compréhension du besoin
+
+[Résumé de ce que le projet va concrètement construire / automatiser / livrer.]
+
+### Nombre prévisionnel d'utilisateurs
+
+- **Internes :** [nb] personnes
+- **Externes :** [nb] utilisateurs (clients, visiteurs, etc.)
+
+### Profils utilisateurs
+
+- **[Profil 1] :** [Accès et responsabilités]
+- **[Profil 2] :** [Accès et responsabilités]
+- **[Profil 3] :** [Accès et responsabilités]
+
+### Droits d'accès
+
+Convention : **L** = Lecture | **C** = Création | **M** = Modification | **S** = Suppression
+
+| Données / Actions | [Profil 1] | [Profil 2] | [Profil 3] |
 |---|---|---|---|
-| 1 | | | |
-
-## Parties prenantes
-| Rôle | Nom | Responsabilité |
-|---|---|---|
-| Client | | Validation et recette |
-| Prestataire | Stéphanie | Réalisation |
-
-## Jalons et délais
-| Jalon | Date |
-|---|---|
-| Kick-off | |
-| Livraison | |
-| Recette | |
-
-## Risques identifiés
-| Risque | Probabilité | Impact | Mitigation |
-|---|---|---|---|
+| [Exemple : Réservations] | L.C.M.S | L | L.M |
 | | | | |
 
-## Conditions de succès
--
+### Contraintes opérationnelles identifiées
+
+[Lister les contraintes techniques, délais non négociables, dépendances externes.]
+
+### Gestion des données
+
+**Données sensibles business :**
+[Données critiques pour le client : CA, planning, contacts, etc.]
+
+**Données personnelles :**
+[Données personnelles collectées et traitées : noms, emails, etc.]
 
 ---
-*Document validé par les deux parties avant démarrage.*
+
+## 🗺️ Le périmètre
+
+[Ce que cette prestation couvre précisément — être très explicite.]
+
+---
+
+## ❌ Exclusions
+
+[Ce que la prestation NE couvre PAS. Protège les deux parties.]
+
+- [Exclusion 1]
+- [Exclusion 2]
+
+---
+
+## ⚙️ Identification des fonctions principales de la solution
+
+[Lister les fonctionnalités / modules qui seront mis en œuvre :]
+
+- **[Fonction 1]** — [Description courte]
+- **[Fonction 2]** — [Description courte]
+- **[Fonction 3]** — [Description courte]
+
+---
+
+## 🧰 La stack
+
+[Expliquer les choix technologiques et pourquoi (no-code, modulaire, etc.)]
+
+Outils retenus :
+- [Outil 1] — [Rôle]
+- [Outil 2] — [Rôle]
+- [Outil 3] — [Rôle]
+
+---
+
+## ✅ Les pré-requis
+
+[Ce que le CLIENT doit fournir AVANT ou PENDANT la prestation — verrouiller ce point.]
+
+Le client devra fournir :
+
+**Comptes à créer :**
+- [ ] [Outil 1]
+- [ ] [Outil 2]
+
+**Éléments à fournir :**
+- [ ] [Élément 1]
+- [ ] [Élément 2]
+
+---
+
+## 📋 Organisation
+
+### Les parties prenantes
+
+| Rôle | Nom | Responsabilité dans le projet |
+|---|---|---|
+| Client / décideur | [Nom] | Validation, recette, accès |
+| Prestataire | Stéphanie — Clockwork Ops | Conception et réalisation |
+| [Autre] | [Nom] | [Rôle] |
+
+### Budget
+
+[Budget alloué par le client ou devis Clockwork Ops associé à cette note.]
+
+### Le planning et jalons
+
+| Jalon | Date prévisionnelle |
+|---|---|
+| Kick-off | |
+| Livraison lot 1 | |
+| Livraison lot 2 | |
+| Recette | |
+| Mise en production | |
+
+### Les instances de suivi
+
+[Modalités de communication : fréquence des points, canal (email, WhatsApp, Notion), format de reporting.]
+
+---
+
+## 🧩 Les types d'activités du projet
+
+Clockwork Ops met en œuvre les services suivants pour ce projet :
+
+- ➡️ Conception / architecture de la solution
+- ➡️ Développement et intégration
+- ➡️ Documentation technique
+- ➡️ Formation / transfert de compétences
+- ➡️ Gestion de projet
+- ➡️ [Support après livraison — si inclus]
+
+---
+
+## 📞 Le support
+
+[Définir si un support post-livraison est inclus, pour combien de temps et par quel canal.
+Exemple : support inclus 30 jours après mise en production, via WhatsApp ou email.]
 ```
 
 ---
 
-### Cahier des charges fonctionnel
-
-```
-# Cahier des charges — [Nom du projet]
-
-**Client :** [Nom]
-**Date :** [JJ/MM/AAAA]
-
-## 1. Présentation du projet
-[Contexte, objectifs, résumé]
-
-## 2. Exigences fonctionnelles
-| ID | Fonctionnalité | Description | Priorité |
-|---|---|---|---|
-| F01 | | | Haute |
-
-## 3. Exigences non fonctionnelles
-- Performance :
-- Sécurité :
-- Accessibilité :
-- Compatibilité :
-
-## 4. Architecture technique
-**Outils utilisés :**
-**Flux de données :**
-**Intégrations :**
-
-## 5. Contraintes
--
-
-## 6. Critères d'acceptation
--
-```
-
----
-
-### Cahier de recette
+## Template — Cahier de recette
 
 ```
 # Cahier de recette — [Nom du projet]
@@ -120,12 +201,11 @@ Produire les documents professionnels qui accompagnent chaque projet livré.
 **Date de recette :** [JJ/MM/AAAA]
 
 ## Périmètre des tests
-[Ce qui est testé, ce qui ne l'est pas]
+[Ce qui est testé / ce qui ne l'est pas]
 
 ## Environnement de test
 - URL / accès :
 - Données de test :
-- Outils de test :
 
 ## Cas de test
 
@@ -133,22 +213,22 @@ Produire les documents professionnels qui accompagnent chaque projet livré.
 |---|---|---|---|---|---|
 | T01 | | | | | ✅ / ❌ |
 
-## Critères d'acceptation globaux
-- [ ] Tous les cas de test critiques sont passés
+## Critères d'acceptation
+- [ ] Tous les cas critiques passés
 - [ ] Aucun bug bloquant en suspens
-- [ ] Le client a validé l'interface
+- [ ] Validé par le client
 
-## Résultat de la recette
+## Résultat
 - [ ] Accepté sans réserve
-- [ ] Accepté avec réserves (voir liste)
-- [ ] Refusé (voir motifs)
+- [ ] Accepté avec réserves
+- [ ] Refusé
 
-**Signature client :** ___________________   **Date :** ___________
+**Signature client :** ___________________ **Date :** ___________
 ```
 
 ---
 
-### Schéma BPMN / Flux de processus (format Mermaid)
+## Template — Schéma BPMN (Mermaid)
 
 ```mermaid
 flowchart TD
@@ -159,25 +239,18 @@ flowchart TD
     D --> F([Fin])
     E --> F
 ```
-*Remplacer les étapes selon le processus documenté.*
-*Ce format est rendu visuellement dans Notion, GitHub, et la plupart des outils modernes.*
 
 ---
 
-### Documentation technique — Scénario Make/n8n
+## Template — Documentation technique scénario Make/n8n
 
 ```
-# Documentation technique — [Nom du scénario]
+# Documentation — [Nom du scénario]
 
-**Outil :** Make / n8n
-**Client :** [Nom]
-**Date :** [JJ/MM/AAAA]
+**Outil :** Make / n8n | **Client :** [Nom] | **Date :** [JJ/MM/AAAA]
 
 ## Résumé
 [Ce que fait ce scénario en 1-2 phrases]
-
-## Déclencheur
-[Comment le scénario se lance : webhook, heure fixe, action manuelle…]
 
 ## Flux
 DÉCLENCHEUR → MODULE 1 → [CONDITION] → MODULE 2 → RÉSULTAT
@@ -185,71 +258,28 @@ DÉCLENCHEUR → MODULE 1 → [CONDITION] → MODULE 2 → RÉSULTAT
 ## Modules utilisés
 | # | Module | Action | Notes |
 |---|---|---|---|
-| 1 | | | |
 
-## Points d'attention
--
-
-## En cas de panne
-[Comment diagnostiquer et relancer]
+## Points d'attention / En cas de panne
 ```
 
 ---
 
-### Guide utilisateur
-
-```
-# Guide utilisateur — [Nom du livrable]
-
-**Pour :** [Nom du client / rôle]
-**Date :** [JJ/MM/AAAA]
-
-## À quoi ça sert
-[En 2 lignes, ce que fait le livrable]
-
-## Comment l'utiliser
-
-### Étape 1 — [Titre]
-[Description + capture d'écran si possible]
-
-### Étape 2 — [Titre]
-[…]
-
-## Questions fréquentes
-**Q : …**
-R : …
-
-## Contact support
-Stéphanie — Clockwork Ops
-```
-
----
-
-### Rapport de livraison
+## Template — Rapport de livraison
 
 ```
 # Rapport de livraison — [Nom du projet]
 
-**Client :** [Nom]
-**Date de livraison :** [JJ/MM/AAAA]
+**Client :** [Nom] | **Date :** [JJ/MM/AAAA]
 
 ## Ce qui est livré
-| Livrable | Statut | Lien / Accès |
+| Livrable | Statut | Accès |
 |---|---|---|
 | | ✅ Livré | |
 
-## Ce qui n'est pas inclus dans cette livraison
--
-
-## Accès et credentials
-[À compléter avec les accès remis au client]
-
+## Non inclus dans cette livraison
+## Accès et credentials remis
 ## Prochaines étapes recommandées
--
-
-## Notes
--
 
 ---
-*Livraison effectuée par Clockwork Ops — Stéphanie*
+*Livraison Clockwork Ops — Stéphanie*
 ```
