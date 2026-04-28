@@ -13,7 +13,7 @@ Référence : CADRE-2026-MANOIRE-01
 
 Le Manoïre est un restaurant d'alpage emblématique situé au Col de Jaman, à 1 500 m d'altitude au-dessus de Montreux (Vaud, Suisse). Connu pour sa cuisine de terroir local, ses plats de montagne généreux et sa grande terrasse avec vue sur les Alpes, le lieu est une institution de la région.
 
-Après une période sous un autre nom et des travaux de rénovation, le restaurant **retrouve son nom originel "Le Manoïre"** — un retour aux racines qui marque une **renaissance** avec une réouverture officielle prévue **fin juin 2026**. Dans ce contexte de renaissance, le client souhaite moderniser sa présence digitale et automatiser ses opérations internes pour être pleinement opérationnel dès l'ouverture.
+Après une période sous un autre nom, le restaurant **retrouve son nom originel "Le Manoïre"** — un retour aux racines qui marque une **renaissance**. Les travaux de rénovation débutent prochainement, pour une réouverture officielle prévue **fin juin 2026**. Dans ce contexte de renaissance, le client souhaite moderniser sa présence digitale et automatiser ses opérations internes pour être pleinement opérationnel dès l'ouverture.
 
 ---
 
