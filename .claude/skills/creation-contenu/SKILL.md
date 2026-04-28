@@ -33,7 +33,7 @@ Donne envie de travailler avec Stéphanie.
 
 | Élément | Rôle |
 |---|---|
-| Accroche (ligne 1) | Stopper le scroll — question, chiffre, affirmation forte |
+| Accroche hook (ligne 1) | Stopper le scroll — question, chiffre, affirmation forte |
 | Corps | L'info ou l'histoire — court, aéré |
 | Call to action | Ce qu'on veut que la personne fasse ensuite |
 | Hashtags | 3 à 5 max, pertinents |
