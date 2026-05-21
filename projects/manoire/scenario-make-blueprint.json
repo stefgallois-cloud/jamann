@@ -1,0 +1,159 @@
+{
+  "flow": [
+    {
+      "id": 1,
+      "module": "airtable:ActionSearchRecords",
+      "version": 3,
+      "mapper": {
+        "base": "app6TseIO7Sx4fJqv",
+        "table": "tbll7zhDjMgihWtly",
+        "fields": ["Nom du post", "Date", "Facebook", "Instagram", "Hashtags", "Visuel", "Validation", "Email envoyé"],
+        "maxRecords": 10,
+        "useColumnId": false,
+        "filterByFormula": "OR(AND({Validation}=\"Approuvé\",IS_SAME({Date},TODAY(),'day'),NOT({Email envoyé})),AND({Validation}=\"Refusé\",NOT({Email envoyé})))"
+      },
+      "parameters": {"__IMTCONN__": 6629661},
+      "metadata": {"designer": {"x": 0, "y": 0}}
+    },
+    {
+      "id": 2,
+      "module": "builtin:BasicRouter",
+      "version": 1,
+      "mapper": null,
+      "routes": [
+        {
+          "flow": [
+            {
+              "id": 3,
+              "filter": {
+                "name": "Approuvé",
+                "conditions": [[{"a": "{{1.Validation.name}}", "o": "text:equal", "b": "Approuvé"}]]
+              },
+              "module": "email:ActionSendEmail",
+              "version": 7,
+              "mapper": {
+                "to": "stef.gallois@gmail.com",
+                "cc": [],
+                "bcc": [],
+                "subject": "📅 Post du jour — Le Manoïre",
+                "contentType": "text",
+                "text": "Bonjour,\n\nVoici le post prévu pour aujourd'hui :\n\n══════════════════════\n📘 TEXTE FACEBOOK :\n\n{{1.Facebook}}\n\n{{1.Hashtags}}\n══════════════════════\n\n📸 TEXTE INSTAGRAM :\n\n{{1.Instagram}}\n\n{{1.Hashtags}}\n══════════════════════\n\n❌ Ce post ne convient pas ?\nOuvrez ce lien et changez Validation en \"Refusé\" :\nhttps://airtable.com/app6TseIO7Sx4fJqv/tbll7zhDjMgihWtly/{{1.id}}\n\nBonne publication !\n— Clockwork Ops",
+                "headers": [],
+                "priority": "normal",
+                "attachments": []
+              },
+              "parameters": {"account": 6599141, "saveAfterSent": false},
+              "metadata": {"designer": {"x": 600, "y": -250}}
+            },
+            {
+              "id": 4,
+              "module": "airtable:ActionUpdateRecords",
+              "version": 3,
+              "mapper": {
+                "id": "{{1.id}}",
+                "base": "app6TseIO7Sx4fJqv",
+                "table": "tbll7zhDjMgihWtly",
+                "record": {"fld7rGkJkRUNWFA9h": true},
+                "typecast": false,
+                "useColumnId": false
+              },
+              "parameters": {"__IMTCONN__": 6629661},
+              "metadata": {"designer": {"x": 900, "y": -250}}
+            }
+          ]
+        },
+        {
+          "flow": [
+            {
+              "id": 5,
+              "filter": {
+                "name": "Refusé",
+                "conditions": [[{"a": "{{1.Validation.name}}", "o": "text:equal", "b": "Refusé"}]]
+              },
+              "module": "http:MakeRequest",
+              "version": 4,
+              "mapper": {
+                "url": "https://api.anthropic.com/v1/messages",
+                "method": "post",
+                "headers": [
+                  {"name": "x-api-key", "value": "REMPLACE_PAR_CLE_ANTHROPIC"},
+                  {"name": "anthropic-version", "value": "2023-06-01"}
+                ],
+                "contentType": "json",
+                "inputMethod": "jsonString",
+                "jsonStringBodyContent": "{\"model\":\"claude-sonnet-4-6\",\"max_tokens\":800,\"messages\":[{\"role\":\"user\",\"content\":\"Tu es expert en communication pour Le Manoïre, restaurant d'alpage au Col de Jaman, Montreux. Un post a été refusé : {{1.`Nom du post`}}. Génère un nouveau texte Facebook naturel avec CTA vers www.lemanoire-jaman.ch, un texte Instagram adapté sans lien, et des hashtags pertinents. Réponds UNIQUEMENT en JSON valide sans markdown ni backticks, format exact : {\\\"facebook\\\":\\\"texte facebook\\\",\\\"instagram\\\":\\\"texte instagram\\\",\\\"hashtags\\\":\\\"#tag1 #tag2\\\"}\"}]}",
+                "timeout": 60,
+                "parseResponse": true,
+                "allowRedirects": true,
+                "stopOnHttpError": true,
+                "shareCookies": false,
+                "requestCompressedContent": false
+              },
+              "parameters": {"authenticationType": "noAuth"},
+              "metadata": {"designer": {"x": 600, "y": 250}}
+            },
+            {
+              "id": 6,
+              "module": "airtable:ActionUpdateRecords",
+              "version": 3,
+              "mapper": {
+                "id": "{{1.id}}",
+                "base": "app6TseIO7Sx4fJqv",
+                "table": "tbll7zhDjMgihWtly",
+                "record": {
+                  "fld7gmSXSdS64RzRR": "Approuvé",
+                  "fld7rGkJkRUNWFA9h": true,
+                  "fld8ZOxfnBdaJF9T7": "{{parseJSON(5.data.content[1].text).facebook}}",
+                  "fldy7Wcn1CmNA4JeH": "{{parseJSON(5.data.content[1].text).instagram}}",
+                  "fldxEUNEOGANV58Xx": "{{parseJSON(5.data.content[1].text).hashtags}}"
+                },
+                "typecast": false,
+                "useColumnId": false
+              },
+              "parameters": {"__IMTCONN__": 6629661},
+              "metadata": {"designer": {"x": 900, "y": 250}}
+            },
+            {
+              "id": 7,
+              "module": "email:ActionSendEmail",
+              "version": 7,
+              "mapper": {
+                "to": "stef.gallois@gmail.com",
+                "cc": [],
+                "bcc": [],
+                "subject": "✅ Nouveau post généré — Le Manoïre",
+                "contentType": "text",
+                "text": "Bonjour,\n\nLe post précédent a été refusé. Voici le nouveau post généré automatiquement :\n\n══════════════════════\n📘 TEXTE FACEBOOK :\n\n{{parseJSON(5.data.content[1].text).facebook}}\n\n{{parseJSON(5.data.content[1].text).hashtags}}\n══════════════════════\n\n📸 TEXTE INSTAGRAM :\n\n{{parseJSON(5.data.content[1].text).instagram}}\n\n{{parseJSON(5.data.content[1].text).hashtags}}\n══════════════════════\n\nLe post a été mis à jour dans Airtable avec le statut Approuvé.\nS'il ne convient pas non plus, changez son statut en \"Refusé\".\n\n— Clockwork Ops",
+                "headers": [],
+                "priority": "normal",
+                "attachments": []
+              },
+              "parameters": {"account": 6599141, "saveAfterSent": false},
+              "metadata": {"designer": {"x": 1200, "y": 250}}
+            }
+          ]
+        }
+      ],
+      "metadata": {"designer": {"x": 300, "y": 0}}
+    }
+  ],
+  "name": "Manoïre — Rappel post quotidien",
+  "metadata": {
+    "instant": false,
+    "version": 1,
+    "designer": {"orphans": []},
+    "scenario": {
+      "dlq": false,
+      "slots": null,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "roundtrips": 1,
+      "sequential": false,
+      "confidential": false,
+      "freshVariables": false,
+      "autoCommitTriggerLast": true
+    }
+  },
+  "scheduling": {"type": "indefinitely", "interval": 900},
+  "interface": {"input": [], "output": []}
+}

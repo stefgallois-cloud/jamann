@@ -66,3 +66,63 @@ Si un scénario ne fonctionne pas :
 - "Documente ce scénario : [description]"
 - "Aide-moi à déboguer : [problème]"
 - "Make ou n8n pour [cas d'usage] ?"
+
+---
+
+## Protocole obligatoire — Make via MCP
+
+**Règle absolue : ne jamais deviner. Toujours vérifier en 3 étapes.**
+
+### Étape 1 — Avant d'écrire le moindre champ de module
+
+Pour chaque module non trivial (HTTP, API custom, tout module nouveau) :
+
+```text
+mcp__claude_ai_Make__app-module_get(appName, moduleName, version)
+```
+
+→ Lire la spec exacte. Copier les noms de champs réels. Ne jamais supposer.
+
+### Étape 2 — Avant de pusher
+
+```text
+mcp__claude_ai_Make__validate_blueprint_schema(blueprint)
+```
+
+→ Si erreur → corriger. Ne jamais pusher un blueprint non validé.
+
+### Étape 3 — Après chaque push
+
+```text
+mcp__claude_ai_Make__scenarios_get(scenarioId)
+```
+
+→ Lire le blueprint stocké. Vérifier que les valeurs critiques correspondent à ce qui était voulu. Si écart → corriger immédiatement, avant de dire à Stéphanie de tester.
+
+---
+
+## Champs Make validés — http:MakeRequest v4
+
+| Intention | Champ Make | Valeur |
+|---|---|---|
+| Méthode | `method` | `"post"` (jamais `"get"` par défaut) |
+| Type de body | `contentType` | `"json"` pour JSON, `"custom"` pour raw |
+| Mode saisie body | `inputMethod` | `"jsonString"` (sous-mode de `contentType: json`) |
+| Body JSON brut | `jsonStringBodyContent` | la chaîne JSON |
+| Body raw (custom) | `rawBodyContent` | buffer — éviter, préférer json |
+| Authentification | `authenticationType` dans `parameters` | `"noAuth"` si clé dans header |
+
+**Clé x-api-key Anthropic :** passer en header `x-api-key` avec `authenticationType: "noAuth"` — plus fiable que le keychain Make.
+
+**Accès au résultat Claude dans Make :**
+- `{{5.data.content[1].text}}` → texte brut de la réponse (index 1-based en Make)
+- `{{parseJSON(5.data.content[1].text).facebook}}` → extraire un champ JSON
+
+---
+
+## Règles blueprint Make (rappel)
+
+- `filter` du routeur → sur le **premier module de chaque branche** (`flow[]`), pas sur `route`
+- Champs Airtable dans `record` → **field IDs** (`fldXXX`), jamais les noms
+- singleSelect Airtable → passer le **nom de l'option** comme string (`"Approuvé"`)
+- `{{1.Validation.name}}` pour lire un singleSelect dans un filtre
