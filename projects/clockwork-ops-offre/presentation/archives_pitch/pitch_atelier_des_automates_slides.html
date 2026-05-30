@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Pitch : L'Atelier des Automates</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/black.min.css">
+    
+    <style>
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            font-weight: 700;
+        }
+        .reveal h1 { font-size: 2.5em; color: #4CAF50; }
+        .reveal h2 { font-size: 1.8em; color: #2196F3; }
+        .reveal p, .reveal li { font-size: 0.8em; line-height: 1.4; text-align: left; }
+        .reveal .highlight { color: #FFC107; font-weight: bold; }
+        .reveal .price { color: #f44336; font-weight: bold; }
+        .reveal .success { color: #4CAF50; font-weight: bold; }
+        
+        table { width: 100%; border-collapse: collapse; margin-top: 20px !important; font-size: 0.6em !important; }
+        th { background-color: #333; color: white; padding: 10px; border: 1px solid #555; text-align: center !important;}
+        td { padding: 10px; border: 1px solid #555; text-align: center !important;}
+        .td-old { background-color: rgba(244, 67, 54, 0.1); }
+        .td-new { background-color: rgba(76, 175, 80, 0.1); }
+        .td-gain { background-color: rgba(255, 193, 7, 0.2); font-weight: bold; color: #FFC107; }
+        
+        .quote-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-left: 5px solid #2196F3;
+            border-radius: 5px;
+            font-style: italic;
+            text-align: left;
+            font-size: 0.85em;
+        }
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Titre -->
+            <section>
+                <h1>L'Atelier des Automates</h1>
+                <h3>La Révolution No-Code & Intelligence Artificielle</h3>
+                <p style="text-align: center; margin-top: 50px;">Une présentation comparative pour les indépendants</p>
+            </section>
+
+            <!-- Slide 2: L'Accroche -->
+            <section>
+                <h2>Le secret le mieux gardé de la Tech</h2>
+                <div class="quote-box">
+                    "Si vous aviez voulu créer ce système — une page internet professionnelle reliée à votre outil de réservation, doublée d’une application privée sur votre téléphone qui génère votre marketing sur-mesure — il y a 5 ans, vous auriez dû signer un chèque de 20 000 € à une agence et attendre 4 mois.<br><br>
+                    Aujourd'hui, avec <span class="highlight">L'Atelier des Automates</span>, on vous le livre en <span class="highlight">moins de 48 heures</span> pour le prix d'un <span class="highlight">simple week-end</span>."
+                </div>
+            </section>
+
+            <!-- Slide 3: L'Ancien Monde -->
+            <section>
+                <h2>L'Ancien Monde (Le Code)</h2>
+                <p>Développer une infrastructure sur-mesure de zéro.</p>
+                <div class="grid-2">
+                    <div>
+                        <h3 style="font-size: 1.2em; color: #FF5722;">L'usine à gaz technique</h3>
+                        <ul>
+                            <li><strong>Frontend :</strong> Coder l'interface de zéro.</li>
+                            <li><strong>Backend :</strong> Programmer la logique de connexion IA.</li>
+                            <li><strong>Base de Données & DevOps :</strong> Héberger sur des serveurs physiques, gérer le SSL.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 style="font-size: 1.2em; color: #FF5722;">L'Armée Digitale</h3>
+                        <ul>
+                            <li>1 UX/UI Designer (80-120€/h)</li>
+                            <li>1 Développeur Frontend (85-130€/h)</li>
+                            <li>1 Développeur Backend (90-150€/h)</li>
+                            <li>1 Chef de projet</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: La Facture de l'Ancien Monde -->
+            <section>
+                <h2>La Facture de l'Ancien Monde</h2>
+                <p>Créer un produit fonctionnel de départ (MVP) en agence classique :</p>
+                <ul>
+                    <li><span style="font-size: 1.2em;">💰 Coût d'investissement initial : <span class="price">15 000 € à 50 000 €</span></span></li>
+                    <li><span style="font-size: 1.2em;">⏳ Délai de livraison : <span class="price">2 à 4 mois</span></span> d'allers-retours et bugs.</li>
+                    <li><span style="font-size: 1.2em;">🔧 Maintenance récurrente : <span class="price">15% à 25% du coût initial par an</span></span> (soit 2 250 € à 12 500 €/an pour garder le site en ligne).</li>
+                </ul>
+            </section>
+
+            <!-- Slide 5: Le Nouveau Monde -->
+            <section>
+                <h2>Le Nouveau Monde</h2>
+                <h3 style="font-size: 1.2em; text-align: center;">L'Approche de L'Atelier des Automates</h3>
+                <p>Nous n'écrivons plus de code répétitif. Nous assemblons des technologies cloud de pointe déjà éprouvées et sécurisées.</p>
+                <ul>
+                    <li><strong>Interface Visuelle (Softr) :</strong> Hébergement natif, modification instantanée.</li>
+                    <li><strong>Base de Données (Airtable) :</strong> Puissance de stockage sans serveur à gérer.</li>
+                    <li><strong>Moteur d'IA (Claude AI via Make) :</strong> Le modèle d'écriture le plus humain du marché connecté en direct.</li>
+                </ul>
+                <p style="text-align: center; font-style: italic; margin-top: 20px;">Tous nos templates et moteurs d'écriture sont déjà créés et prêts à l'emploi.</p>
+            </section>
+
+            <!-- Slide 6: Le Coût Démocratisé -->
+            <section>
+                <h2>Le Coût Démocratisé</h2>
+                <ul>
+                    <li><span style="font-size: 1.2em;">💰 Investissement initial : <span class="success">Moins de 1 000 €</span></span> (Livraison de votre application sur-mesure)
+                        <ul><li style="color: #aaa;">Division des coûts d'accès à la technologie par 95% !</li></ul>
+                    </li>
+                    <li style="margin-top: 15px;"><span style="font-size: 1.2em;">🚀 Délai de livraison MVP : <span class="success">24 à 48 heures</span></span> (Prêt en 2h techniquement)
+                        <ul><li style="color: #aaa;">Lancement de votre activité accéléré !</li></ul>
+                    </li>
+                    <li style="margin-top: 15px;"><span style="font-size: 1.2em;">🔧 Maintenance : <span class="success">Abonnement mensuel léger</span></span>
+                        <ul><li style="color: #aaa;">Zéro frais cachés, serveurs sécurisés en continu.</li></ul>
+                    </li>
+                </ul>
+            </section>
+
+            <!-- Slide 7: Le Tableau Comparatif -->
+            <section>
+                <h2>Le Tableau Comparatif Choc</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Dimension</th>
+                            <th>Agence Web Classique (Code)</th>
+                            <th>L'Atelier des Automates (No-Code/IA)</th>
+                            <th>Votre Gain Direct</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Budget de Départ</strong></td>
+                            <td class="td-old">15 000 € à 50 000 €</td>
+                            <td class="td-new"><strong>Moins de 1 000 €</strong></td>
+                            <td class="td-gain">Investissement divisé par 30</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Délai d'Attente (MVP)</strong></td>
+                            <td class="td-old">3 à 4 mois</td>
+                            <td class="td-new"><strong>24 à 48 heures</strong></td>
+                            <td class="td-gain">Temps divisé par 60</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Intervenants</strong></td>
+                            <td class="td-old">4 à 5 spécialistes</td>
+                            <td class="td-new"><strong>1 interlocuteur dédié</strong></td>
+                            <td class="td-gain">Communication directe</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Coût d'Entretien</strong></td>
+                            <td class="td-old">150 € à 500 € / mois</td>
+                            <td class="td-new"><strong>Abonnement léger</strong></td>
+                            <td class="td-gain">Marge préservée</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Évolutivité</strong></td>
+                            <td class="td-old">Devis suppl. et 48h de code</td>
+                            <td class="td-new"><strong>Modifiable en 5 minutes</strong></td>
+                            <td class="td-gain">Flexibilité absolue</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 8: Conclusion -->
+            <section>
+                <h2>Prêt à automatiser votre succès ?</h2>
+                <p style="text-align: center; font-size: 1.2em;">Rejoignez <strong>L'Atelier des Automates</strong>.</p>
+                <div style="text-align: center; margin-top: 40px;">
+                    <p style="font-style: italic; color: #aaa;">Le temps de vos corvées marketing est terminé.<br>Concentrez-vous sur vos clients, l'IA s'occupe du reste.</p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide', // none/fade/slide/convex/concave/zoom
+            controls: true,
+            progress: true,
+            center: true,
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Atelier des Automates - Pitch Premium</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Plus+Jakarta+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        heading: ['Outfit', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#0f172a',
+                            light: '#f8fafc',
+                            accent: '#3b82f6',
+                            purple: '#8b5cf6',
+                            success: '#10b981',
+                            danger: '#ef4444'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: #0f172a;
+            color: #f8fafc;
+        }
+
+        /* Slide Container */
+        .slide-container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Individual Slides */
+        .slide {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+            pointer-events: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            box-sizing: border-box;
+            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0);
+            pointer-events: auto;
+            z-index: 10;
+        }
+
+        .slide.prev {
+            transform: translateY(-50px);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 4px solid #3b82f6;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border-radius: 1.5rem;
+        }
+
+        /* Text Gradients */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(to right, #3b82f6, #8b5cf6);
+        }
+
+        /* Avatar Grid Scrollable */
+        .avatar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        
+        /* Custom Scrollbar for Avatar Grid */
+        .avatar-grid::-webkit-scrollbar { width: 8px; }
+        .avatar-grid::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 4px; }
+        .avatar-grid::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 4px; }
+
+        .avatar-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 1rem;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+        .avatar-card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.5);
+        }
+
+        /* Navigation Controls */
+        .controls {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 100;
+            display: flex;
+            gap: 1rem;
+        }
+        .btn-nav {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: white;
+            width: 50px; height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .btn-nav:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+        .btn-nav:disabled { opacity: 0.3; cursor: not-allowed; transform: none; }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0; left: 0;
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+        
+        .stat-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="progress-bar" id="progressBar" style="width: 0%"></div>
+
+    <div class="slide-container" id="slider">
+
+        <!-- Slide 1: Hero -->
+        <div class="slide active flex-col" style="flex-direction: column;">
+            <div class="text-center max-w-3xl mx-auto glass-card p-10">
+                <div class="flex justify-center mb-4">
+                    <i class="fa-solid fa-robot text-4xl text-brand-accent drop-shadow-[0_0_15px_rgba(59,130,246,0.5)]"></i>
+                </div>
+                <div class="inline-block px-3 py-1 rounded-full bg-brand-accent/20 text-brand-accent font-semibold mb-4 tracking-wide text-xs border border-brand-accent/30">
+                    LA RÉVOLUTION NO-CODE & IA
+                </div>
+                <h1 class="font-heading text-4xl md:text-5xl font-extrabold mb-4">
+                    L'Atelier des Automates
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 font-light mb-6">
+                    Le secret le mieux gardé pour automatiser votre acquisition client et votre business.
+                </p>
+                
+                <div class="inline-block animate-pulse bg-red-500/20 border-2 border-red-500/50 rounded-xl p-3 shadow-[0_0_15px_rgba(239,68,68,0.3)]">
+                    <p class="text-lg md:text-xl text-red-400 font-bold">
+                        <i class="fa-solid fa-triangle-exclamation mr-2"></i> SPOILER ALERT :<br>
+                        <span class="text-white font-semibold">Et ce, même si vous partez de zéro.</span>
+                    </p>
+                </div>
+            </div>
+            <p class="text-xs text-gray-500 mt-12 opacity-50 absolute bottom-8">
+                Utilisez les flèches du clavier ou les boutons en bas à droite pour naviguer.
+            </p>
+        </div>
+
+        <!-- Slide 2: La Douleur (Les Chiffres) -->
+        <div class="slide">
+            <div class="max-w-6xl w-full">
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mb-12 text-center">Le Gouffre Temporel des Indépendants</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="glass-card p-8 text-center">
+                        <div class="stat-number text-red-500 mb-4">40h</div>
+                        <h3 class="text-xl font-bold mb-2">Perdues par mois</h3>
+                        <p class="text-gray-400 text-sm">Les petites entreprises passent entre 3 et 10h/semaine sur leurs réseaux sociaux. C'est l'équivalent d'un mi-temps.</p>
+                    </div>
+                    <div class="glass-card p-8 text-center">
+                        <div class="stat-number text-yellow-400 mb-4">50%</div>
+                        <h3 class="text-xl font-bold mb-2">Création de contenu</h3>
+                        <p class="text-gray-400 text-sm">La rédaction, les idées et la mise en forme (le syndrome de la page blanche) dévorent la moitié de ce temps.</p>
+                    </div>
+                    <div class="glass-card p-8 text-center">
+                        <div class="stat-number text-red-400 mb-4">1 000€</div>
+                        <h3 class="text-xl font-bold mb-2">Coût d'opportunité</h3>
+                        <p class="text-gray-400 text-sm">3h perdues à rédiger à 80€/h = 240€ perdus par semaine. Soit près de 1 000€ de consultations manquées par mois.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3: Le Problème Humain -->
+        <div class="slide">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="font-heading text-4xl font-bold mb-6 text-gradient">Le Syndrome de la Page Blanche</h2>
+                    <div class="space-y-6 text-lg text-gray-300">
+                        <p><i class="fa-solid fa-clock text-red-400 mr-3"></i> Il est 22h. Vous avez passé la journée debout à gérer vos clients.</p>
+                        <p><i class="fa-solid fa-mobile-screen text-gray-400 mr-3"></i> Vous réalisez que vous n'avez rien posté depuis une semaine. Pourtant, vous avez de magnifiques photos dans votre galerie.</p>
+                        <p><i class="fa-solid fa-brain text-purple-400 mr-3"></i> Vous bloquez devant l'écran. Pas l'énergie d'écrire. Et si une simple photo de votre travail suffisait à créer un post parfait ?</p>
+                    </div>
+                </div>
+                <div>
+                    <img src="tired_owner.png" alt="Propriétaire fatiguée" class="rounded-2xl shadow-2xl border border-white/10 w-full object-cover" style="max-height: 500px;">
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4: La Solution -->
+        <div class="slide">
+            <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="order-2 md:order-1">
+                    <img src="smartphone_magic.png" alt="Smartphone magique" class="rounded-2xl shadow-2xl border border-white/10 w-full object-cover" style="max-height: 500px;">
+                </div>
+                <div class="order-1 md:order-2">
+                    <h2 class="font-heading text-4xl font-bold mb-6 text-gradient">Et si vous cliquiez juste sur "Générer" ?</h2>
+                    <div class="space-y-6 text-lg text-gray-300">
+                        <p>Imaginez une application <strong class="text-white">sur votre téléphone</strong>, créée juste pour votre entreprise.</p>
+                        <div class="bg-white/5 p-4 rounded-lg border border-white/10 italic text-gray-400">
+                            Prenez une simple photo d'une réalisation (ou tapez une idée).
+                        </div>
+                        <p>Vous cliquez. Et bim 💥. À partir de votre photo, l'IA rédige instantanément un post parfait, avec votre ton, votre expertise, et les bons hashtags locaux.</p>
+                        <p class="font-bold text-brand-success text-xl">Temps d'écriture : de 3h par semaine à 15 secondes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5: La Puissance de la Landing Page -->
+        <div class="slide">
+            <div class="max-w-6xl w-full">
+                <h2 class="font-heading text-4xl font-bold mb-12 text-center">L'Impact d'une Landing Page Optimisée</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="glass-card p-10">
+                        <div class="text-brand-accent text-5xl mb-4"><i class="fa-solid fa-rocket"></i></div>
+                        <h3 class="text-2xl font-bold mb-4">Taux de Conversion (6.6% à 15%)</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Contrairement à un site internet classique qui perd le visiteur dans ses menus, une Landing Page (page unique) avec un appel à l'action clair (lien Planity/Calendly) a un taux de conversion médian de <strong>6,6%</strong>, pouvant dépasser les <strong>15%</strong> en local.
+                        </p>
+                    </div>
+                    <div class="glass-card p-10">
+                        <div class="text-red-400 text-5xl mb-4"><i class="fa-solid fa-bolt"></i></div>
+                        <h3 class="text-2xl font-bold mb-4">La Règle des 3 Secondes</h3>
+                        <p class="text-gray-300 leading-relaxed">
+                            Chaque seconde de chargement supplémentaire fait chuter vos conversions de <strong>7% à 10%</strong>. Les Landing Pages de L'Atelier des Automates sont ultra-légères et chargent instantanément, capturant le client au moment précis de son impulsion d'achat.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6: Ancien Monde vs Nouveau Monde -->
+        <div class="slide">
+            <div class="max-w-6xl w-full">
+                <h2 class="font-heading text-4xl font-bold mb-10 text-center">Le Choc des Modèles</h2>
+                <div class="glass-card overflow-hidden">
+                    <table class="w-full text-left">
+                        <thead>
+                            <tr class="bg-white/10">
+                                <th class="p-5 text-lg">Le Critère</th>
+                                <th class="p-5 text-lg text-red-300">L'Agence Web (Code Traditionnel)</th>
+                                <th class="p-5 text-lg text-brand-success font-bold">L'Atelier des Automates</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-white/10 text-base md:text-lg">
+                            <tr>
+                                <td class="p-5 font-semibold text-gray-300">Budget d'Investissement</td>
+                                <td class="p-5 text-red-200">15 000 € à 50 000 € (MVP)</td>
+                                <td class="p-5 text-brand-success font-bold bg-brand-success/5">Moins de 1 000 €</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-semibold text-gray-300">Délai de Livraison</td>
+                                <td class="p-5 text-red-200">2 à 4 mois de réunions</td>
+                                <td class="p-5 text-brand-success font-bold bg-brand-success/5">24 à 48 heures</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-semibold text-gray-300">L'Équipe Technique</td>
+                                <td class="p-5 text-red-200">4 profils (Devs, Designer, PM)</td>
+                                <td class="p-5 text-brand-success font-bold bg-brand-success/5">1 expert métier & IA</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-semibold text-gray-300">Frais de Maintenance</td>
+                                <td class="p-5 text-red-200">15% à 25% du prix/an (Serveurs)</td>
+                                <td class="p-5 text-brand-success font-bold bg-brand-success/5">Abonnement SaaS léger tout inclus</td>
+                            </tr>
+                            <tr>
+                                <td class="p-5 font-semibold text-gray-300">Modifications</td>
+                                <td class="p-5 text-red-200">Nécessite un devis et du code</td>
+                                <td class="p-5 text-brand-success font-bold bg-brand-success/5">Instantané (Interface No-Code)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7: Pour Qui (Les Avatars) -->
+        <div class="slide">
+            <div class="max-w-7xl w-full h-full flex flex-col pt-10">
+                <h2 class="font-heading text-4xl font-bold mb-6 text-center text-gradient shrink-0">10 Exemples. 1 Seule Solution.</h2>
+                <p class="text-center text-gray-400 mb-8 shrink-0">Pour tous les professionnels indépendants dont le temps est de l'argent.</p>
+                
+                <div class="avatar-grid flex-grow pb-20">
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">💆‍♀️</div>
+                        <h4 class="font-bold text-lg mb-1">Sophie (Esthéticienne)</h4>
+                        <p class="text-xs text-gray-400">Les clientes réservent 24h/24 sur sa page web. Elle n'a plus à interrompre un massage pour répondre au téléphone.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">💅</div>
+                        <h4 class="font-bold text-lg mb-1">Chloé (Prothésiste)</h4>
+                        <p class="text-xs text-gray-400">Elle prend une simple photo de sa dernière pose d'ongles, et l'app génère un post captivant qui booste sa visibilité.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">✂️</div>
+                        <h4 class="font-bold text-lg mb-1">Aurélie (Coiffeuse)</h4>
+                        <p class="text-xs text-gray-400">Fini les appels pendant une coupe. Sa page web gère les rdv, et l'app remplit ses créneaux vides grâce à des promos flash.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🦴</div>
+                        <h4 class="font-bold text-lg mb-1">Julie (Ostéopathe)</h4>
+                        <p class="text-xs text-gray-400">Une page optimisée SEO qui la place n°1 sur Google. Les urgences de dos trouvent son cabinet instantanément.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🧘‍♂️</div>
+                        <h4 class="font-bold text-lg mb-1">Thomas (Sophrologue)</h4>
+                        <p class="text-xs text-gray-400">Il vend de l'intangible. L'IA rédige avec une empathie parfaite pour rassurer, et sa page convertit les visiteurs indécis.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🏋️‍♂️</div>
+                        <h4 class="font-bold text-lg mb-1">Maxime (Coach)</h4>
+                        <p class="text-xs text-gray-400">Démarque son expertise sur un marché saturé. Sa Landing Page capture des prospects pendant qu'il coache à la salle.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🧘‍♀️</div>
+                        <h4 class="font-bold text-lg mb-1">Clara (Prof de Yoga)</h4>
+                        <p class="text-xs text-gray-400">Elle remplit ses retraites du week-end en un clic. Ses élèves s'inscrivent et paient directement depuis son site.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🥑</div>
+                        <h4 class="font-bold text-lg mb-1">Émilie (Naturopathe)</h4>
+                        <p class="text-xs text-gray-400">L'IA vulgarise son savoir complexe en carrousels. Sa visibilité grimpe en flèche et sa page récolte les demandes.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">💐</div>
+                        <h4 class="font-bold text-lg mb-1">Julien (Fleuriste)</h4>
+                        <p class="text-xs text-gray-400">Il prend en photo le bouquet du jour. L'app rédige la poésie, et les clients commandent via sa vitrine digitale.</p>
+                    </div>
+                    <div class="avatar-card">
+                        <div class="text-3xl mb-2">🍔</div>
+                        <h4 class="font-bold text-lg mb-1">Sarah & Nico (Food Truck)</h4>
+                        <p class="text-xs text-gray-400">Menu posté en 30 sec depuis la cuisine. La page web affiche toujours leur position GPS du jour pour ne rater aucun client.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8: Conclusion -->
+        <div class="slide">
+            <div class="text-center max-w-5xl mx-auto glass-card p-10">
+                <img src="happy_owner.png" alt="Owner heureux" class="w-24 h-24 rounded-full mx-auto mb-6 border-4 border-brand-accent shadow-[0_0_30px_rgba(59,130,246,0.5)] object-cover">
+                
+                <h2 class="font-heading text-4xl font-bold mb-4">On gagne du temps ?</h2>
+                <p class="text-xl text-gray-300 mb-8">
+                    Fini la corvée des réseaux sociaux et les <strong class="text-brand-accent">tâches chronophages</strong> (prises de rdv, messages...).<br>
+                    Votre Landing Page automatise l'acquisition. Gardez votre énergie pour <strong class="text-white">votre vrai métier</strong>.
+                </p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 text-left">
+                    <!-- Box 1 : Surprise -->
+                    <div class="bg-gradient-to-br from-brand-purple/20 to-brand-accent/10 border border-brand-purple/30 rounded-xl p-6 relative overflow-hidden group">
+                        <div class="absolute top-2 right-2 p-2 opacity-10 text-5xl group-hover:scale-110 transition-transform duration-500"><i class="fa-solid fa-sun"></i></div>
+                        <h3 class="text-lg font-bold text-white mb-2 flex items-center">
+                            <span class="animate-bounce mr-2">🌴</span> Surprise de l'été !
+                        </h3>
+                        <p class="text-sm text-gray-300 mb-3">
+                            Pour fêter la fin de la formation, j'offre <strong class="text-white">3 packs premium</strong> à 3 d'entre vous, avant le lancement public de la rentrée !
+                        </p>
+                        <p class="text-xs text-brand-accent font-semibold italic animate-pulse">
+                            Restez connectés : une boîte à idées arrive vite... 👀
+                        </p>
+                    </div>
+
+                    <!-- Box 2 : Pas encore lancé -->
+                    <div class="bg-black/20 border border-white/10 rounded-xl p-6 relative overflow-hidden hover:border-brand-accent/30 transition-colors">
+                        <h3 class="text-lg font-bold text-white mb-2 flex items-center">
+                            <i class="fa-solid fa-lightbulb text-brand-accent mr-2"></i> Pas encore lancé ?
+                        </h3>
+                        <p class="text-sm text-gray-300 mb-3">
+                            La boîte à idées est aussi pour vous ! À partir d'une simple idée, on génère une étude de marché et toutes les ressources pour vous lancer.
+                        </p>
+                        <p class="text-xs text-brand-accent font-semibold">
+                            Créez votre complément de revenus 🚀
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Controls -->
+    <div class="controls">
+        <button class="btn-nav" id="btnPrev" disabled><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="btn-nav" id="btnNext"><i class="fa-solid fa-chevron-right"></i></button>
+    </div>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const btnPrev = document.getElementById('btnPrev');
+        const btnNext = document.getElementById('btnNext');
+        const progressBar = document.getElementById('progressBar');
+        let currentSlide = 0;
+
+        function updateSlides() {
+            slides.forEach((slide, index) => {
+                slide.classList.remove('active', 'prev');
+                if (index === currentSlide) {
+                    slide.classList.add('active');
+                } else if (index < currentSlide) {
+                    slide.classList.add('prev');
+                }
+            });
+
+            // Update buttons
+            btnPrev.disabled = currentSlide === 0;
+            btnNext.disabled = currentSlide === slides.length - 1;
+
+            // Update progress bar
+            const progress = ((currentSlide + 1) / slides.length) * 100;
+            progressBar.style.width = progress + '%';
+        }
+
+        function nextSlide() {
+            if (currentSlide < slides.length - 1) {
+                currentSlide++;
+                updateSlides();
+            }
+        }
+
+        function prevSlide() {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlides();
+            }
+        }
+
+        btnNext.addEventListener('click', nextSlide);
+        btnPrev.addEventListener('click', prevSlide);
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight' || e.key === 'Space') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Initialize
+        updateSlides();
+    </script>
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>L'App Réseaux Pro · Par Clockwork Ops</title>
+  
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Header / Navigation -->
+  <header class="main-header">
+    <div class="container header-container">
+      <div class="logo">
+        <span class="logo-accent">Clockwork</span> Ops
+      </div>
+      <div class="market-toggle-container">
+        <span class="toggle-label">Marché :</span>
+        <div class="toggle-buttons">
+          <button id="btn-fr" class="toggle-btn active">🇫🇷 France</button>
+          <button id="btn-ch" class="toggle-btn">🇨🇭 Suisse</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="container hero-container">
+      <div class="badge">L'App Réseaux Pro</div>
+      <h1 class="hero-title">Gagnez <span class="gradient-text">4 heures</span> par semaine sur votre communication.</h1>
+      <p class="hero-subtitle">Votre site internet localisé et votre propre application privée pour rédiger vos publications Facebook & Instagram en 15 secondes chrono. Sans jargon technique.</p>
+      
+      <!-- Interactive Phone Mockup preview -->
+      <div class="interactive-preview-card">
+        <div class="card-header">
+          <div class="phone-bar">
+            <span class="notch"></span>
+          </div>
+          <div class="card-brand">
+            <span class="dot"></span> Mon Assistant Réseaux · Votre Institut
+          </div>
+        </div>
+        <div class="card-body">
+          <label class="input-label">Entrez votre idée de post ou votre actualité :</label>
+          <textarea class="demo-textarea" id="demo-input" placeholder="Ex: Je propose un nouveau massage aux pierres chaudes pour chasser le stress du printemps..."></textarea>
+          
+          <button class="generate-btn" id="btn-generate">
+            <span class="sparkle">✨</span> Générer mes publications
+          </button>
+          
+          <div class="demo-results" id="demo-results" style="display: none;">
+            <div class="tabs-header">
+              <button class="tab-link active" data-tab="instagram">📸 Instagram</button>
+              <button class="tab-link" data-tab="facebook">👥 Facebook</button>
+            </div>
+            
+            <div class="tab-content active" id="tab-instagram">
+              <p class="post-text" id="text-instagram">L'hiver s'éloigne et laisse place à la douceur du printemps... 🌸 C'est le moment idéal pour libérer votre corps des tensions accumulées. Découvrez notre Rituel aux Pierres Chaudes. Une parenthèse de sérénité absolue où la chaleur pénètre vos muscles en profondeur pour chasser le stress.<br><br>✨ Prenez soin de vous dès aujourd'hui.<br>👇 Réservation en lien en bio.</p>
+              <div class="post-meta">
+                <span class="meta-tag">#Evian #BienEtre #Detente</span>
+              </div>
+            </div>
+            
+            <div class="tab-content" id="tab-facebook">
+              <p class="post-text" id="text-facebook">🌸 [PRINTEMPS] Chassez les tensions accumulées cet hiver ! 🌸<br><br>Découvrez notre soin signature aux pierres chaudes, idéal pour libérer le corps et l'esprit. Notre table de massage vous attend pour un moment de relaxation intense.<br><br>📅 Réservez votre créneau directement en ligne :<br>👉 lemanoire-jaman.ch/reserver</p>
+              <div class="post-meta">
+                <span class="meta-tag">Lien inclus</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Problem / Solution Section -->
+  <section class="comparison-section">
+    <div class="container">
+      <h2 class="section-title text-center">Fini le casse-tête des réseaux sociaux</h2>
+      <p class="section-subtitle text-center">Comparez votre routine actuelle avec notre solution clé en main.</p>
+      
+      <div class="comparison-grid">
+        <!-- Avant -->
+        <div class="comp-card before-card">
+          <h3 class="comp-title">Avant</h3>
+          <ul class="comp-list">
+            <li>
+              <span class="icon-error">❌</span>
+              <strong>Syndrome de la page blanche :</strong> Des heures passées devant un écran vide après votre journée de travail.
+            </li>
+            <li>
+              <span class="icon-error">❌</span>
+              <strong>IA trop générique :</strong> ChatGPT écrit des textes froids qui sonnent faux ou robotiques.
+            </li>
+            <li>
+              <span class="icon-error">❌</span>
+              <strong>Friction technique :</strong> Devoir copier, coller, reformater et chercher des hashtags.
+            </li>
+            <li>
+              <span class="icon-error">❌</span>
+              <strong>Visibilité incomplète :</strong> Pas de vrai site internet pour capter directement les réservations.
+            </li>
+          </ul>
+        </div>
+        
+        <!-- Après -->
+        <div class="comp-card after-card">
+          <div class="card-glow"></div>
+          <h3 class="comp-title">Avec Votre App Réseaux</h3>
+          <ul class="comp-list">
+            <li>
+              <span class="icon-success">✨</span>
+              <strong>Génération en 1 clic :</strong> Une idée simple donne un post d'une qualité professionnelle.
+            </li>
+            <li>
+              <span class="icon-success">✨</span>
+              <strong>Ton sur-mesure :</strong> Notre intelligence est dressée avec votre vocabulaire et votre voix unique.
+            </li>
+            <li>
+              <span class="icon-success">✨</span>
+              <strong>Formats séparés :</strong> Texte Facebook avec lien, storytelling Instagram sans lien, hashtags locaux inclus.
+            </li>
+            <li>
+              <span class="icon-success">✨</span>
+              <strong>Site Vitrine Premium :</strong> Une page internet locale pour convertir directement vos visiteurs.
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- The Pillars Section -->
+  <section class="pillars-section">
+    <div class="container">
+      <h2 class="section-title text-center">La synergie de deux outils puissants</h2>
+      <div class="pillars-grid">
+        <!-- Site Vitrine -->
+        <div class="pillar-card">
+          <div class="pillar-icon">🌐</div>
+          <h3 class="pillar-title">Votre Landing Page "Convert"</h3>
+          <p class="pillar-text">Un site internet d'une page, ultra-rapide, moderne, pensé pour le référencement local. Vos clients cliquent et réservent directement via vos plateformes favorites (Planity, Resalib, Calendly, etc.).</p>
+        </div>
+        
+        <!-- App Privée -->
+        <div class="pillar-card">
+          <div class="pillar-icon">📱</div>
+          <h3 class="pillar-title">Votre Application Dédiée</h3>
+          <p class="pillar-text">Un portail web privé, installé sur votre smartphone comme une application normale. Aucun compte tiers complexe à gérer, aucune facture additionnelle. Juste votre outil personnel.</p>
+        </div>
+        
+        <!-- IA Claude -->
+        <div class="pillar-card">
+          <div class="pillar-icon">🧠</div>
+          <h3 class="pillar-title">Le Moteur Claude AI</h3>
+          <p class="pillar-text">La meilleure technologie d'écriture IA du marché, configurée sur-mesure pour votre spécialité par notre experte. Les posts respectent votre charte éthique et captivent vos lectrices.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section class="pricing-section">
+    <div class="container">
+      <h2 class="section-title text-center">Un tarif clair, sans engagement</h2>
+      <p class="section-subtitle text-center">Rentabilisé en seulement quelques rendez-vous par mois.</p>
+      
+      <div class="pricing-card-container">
+        <div class="pricing-card">
+          <div class="card-glow"></div>
+          <div class="pricing-header">
+            <h3 class="pricing-plan-title">L'App Réseaux Pro</h3>
+            <p class="pricing-plan-desc">Votre site internet + votre application de génération sur-mesure.</p>
+            <div class="price-value" id="price-setup">690 €</div>
+            <p class="price-sub">Setup d'installation unique</p>
+          </div>
+          
+          <div class="pricing-body">
+            <ul class="pricing-features">
+              <li>Site internet d'une page aux couleurs de votre marque</li>
+              <li>Bouton de réservation en ligne (Planity, Calendly...)</li>
+              <li>Application mobile privée de génération de posts</li>
+              <li>Prompt d'écriture Claude AI configuré sur-mesure</li>
+              <li>Séparation Facebook / Instagram en 1 clic</li>
+              <li>Hashtags locaux intégrés automatiquement</li>
+            </ul>
+            
+            <div class="pricing-recurring-block">
+              <div class="recurring-price" id="price-monthly">29 € <span class="recur-period">/ mois</span></div>
+              <p class="recurring-desc">Hébergement, IA illimitée & support réactif inclus (sans engagement)</p>
+            </div>
+            
+            <a href="#contact" class="cta-button">Demander ma démo gratuite</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Upgrades / Addons -->
+  <section class="addons-section">
+    <div class="container">
+      <h2 class="section-title text-center">Faites évoluer votre système</h2>
+      <div class="addons-grid">
+        <div class="addon-card">
+          <h4 class="addon-title">🔌 Option CONNECT</h4>
+          <p class="addon-text">Raccordez votre application à vos comptes de réseaux sociaux. Validez le post d'un clic, il est publié instantanément sans copier-coller.</p>
+        </div>
+        <div class="addon-card">
+          <h4 class="addon-title">📊 Option DATABASE</h4>
+          <p class="addon-text">Un tableau de bord étendu pour stocker des milliers d'idées, planifier votre planning d'équipe et gérer vos dossiers clients complexes.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Form -->
+  <section class="contact-section" id="contact">
+    <div class="container contact-container">
+      <h2 class="section-title text-center">Prêt à gagner 4h par semaine ?</h2>
+      <p class="section-subtitle text-center">Prenons 15 minutes pour configurer votre démo gratuite.</p>
+      
+      <form class="contact-form" onsubmit="event.preventDefault(); alert('Merci ! Stéphanie va vous recontacter très rapidement.');">
+        <div class="form-row">
+          <div class="form-group">
+            <label for="name">Votre Nom & Prénom</label>
+            <input type="text" id="name" required placeholder="Sophie L.">
+          </div>
+          <div class="form-group">
+            <label for="business">Nom de votre établissement</label>
+            <input type="text" id="business" required placeholder="L'Institut de Beauté Premium">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Votre Email</label>
+          <input type="email" id="email" required placeholder="sophie@exemple.com">
+        </div>
+        <button type="submit" class="submit-btn">Réserver mon appel diagnostic</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="container footer-container">
+      <p>&copy; 2026 Clockwork Ops · Présentation Fiche Produit · Stéphanie</p>
+      <p class="signature">Développé avec passion pour votre réussite locale 🤍</p>
+    </div>
+  </footer>
+
+  <!-- Logic scripts -->
+  <script src="app.js"></script>
+</body>
+</html>

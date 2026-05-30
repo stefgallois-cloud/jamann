@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>L'Atelier des Automates - Pitch Friendly</title>
+    
+    <!-- Reveal.js CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reset.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/theme/white.min.css">
+    
+    <style>
+        /* Custom Modern, Friendly Theme */
+        body {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+        .reveal {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #333;
+        }
+        .reveal h1, .reveal h2, .reveal h3 {
+            text-transform: none;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #2c3e50;
+        }
+        .reveal h1 { font-size: 2.8em; margin-bottom: 20px;}
+        .reveal h2 { font-size: 2em; margin-bottom: 20px;}
+        .reveal p, .reveal li { 
+            font-size: 0.9em; 
+            line-height: 1.5; 
+            color: #4a5568;
+        }
+        .highlight-blue { color: #3182ce; font-weight: bold; }
+        .highlight-green { color: #38a169; font-weight: bold; }
+        .highlight-red { color: #e53e3e; font-weight: bold; }
+        
+        .box {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            margin: 20px auto;
+        }
+        
+        .img-rounded {
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            max-height: 400px;
+            object-fit: cover;
+            margin-top: 20px;
+        }
+
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        /* Table styling */
+        table { 
+            width: 100%; 
+            border-collapse: collapse; 
+            font-size: 0.65em !important; 
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+        th { background-color: #2c3e50; color: white; padding: 15px; text-align: left !important;}
+        td { padding: 15px; border-bottom: 1px solid #edf2f7; text-align: left !important;}
+        tr:last-child td { border-bottom: none; }
+        .col-bad { color: #e53e3e; font-weight: bold; background: #fff5f5; }
+        .col-good { color: #38a169; font-weight: bold; background: #f0fff4; }
+    </style>
+</head>
+<body>
+    <div class="reveal">
+        <div class="slides">
+            
+            <!-- Slide 1: Intro -->
+            <section>
+                <div class="box">
+                    <h1>L'Atelier des Automates 🚀</h1>
+                    <p style="text-align: center; font-size: 1.2em; font-weight: bold; color: #718096;">
+                        Ton assistant marketing et tech... direct dans ta poche.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Slide 2: Le Problème (Tired Owner) -->
+            <section>
+                <h2>Le syndrome de la page blanche...</h2>
+                <div class="grid-2">
+                    <div>
+                        <p>Il est 22h. T'as passé la journée debout à gérer ton institut ou ton resto.</p>
+                        <p>Et là, tu te rends compte que <strong>tu n'as rien posté sur Insta depuis une semaine</strong>.</p>
+                        <p>Tu bloques sur l'écran. Pas d'idées. Pas l'énergie.</p>
+                    </div>
+                    <div>
+                        <img src="tired_owner.png" alt="Propriétaire fatiguée" class="img-rounded">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 3: La solution de rêve (Smartphone Magic) -->
+            <section>
+                <h2>Et si tu cliquais juste sur "Générer" ?</h2>
+                <div class="grid-2">
+                    <div>
+                        <img src="smartphone_magic.png" alt="Smartphone magique" class="img-rounded">
+                    </div>
+                    <div>
+                        <p>Imagine une application <strong>sur ton téléphone</strong>, créée juste pour toi.</p>
+                        <p>Tu tapes : <em>"Promo sur les massages demain"</em>.</p>
+                        <p>Tu cliques. Et bim 💥. Un post parfait, avec le bon ton, les bons hashtags, prêt à être copié-collé ou publié.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 4: L'Ancien Monde -->
+            <section>
+                <h2>Avant, c'était un truc de riches.</h2>
+                <div class="box" style="text-align: left;">
+                    <p>Pour avoir ce genre de système (un mini-site pro + une app IA privée), tu devais frapper à la porte d'une agence web.</p>
+                    <ul>
+                        <li><span class="highlight-red">Le prix ?</span> Entre 15 000 € et 50 000 €.</li>
+                        <li><span class="highlight-red">Le délai ?</span> 3 à 4 mois de réunions et de maux de tête.</li>
+                        <li><span class="highlight-red">L'équipe ?</span> Des codeurs, des designers, des chefs de projet... Une usine à gaz !</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Slide 5: Le Nouveau Monde (Happy Owner) -->
+            <section>
+                <h2>Aujourd'hui, c'est pour toi.</h2>
+                <div class="grid-2">
+                    <div>
+                        <p>Avec <span class="highlight-blue">L'Atelier des Automates</span>, on ne réinvente pas la roue. On assemble des outils ultra-puissants (Make, Airtable, IA Claude) qui existent déjà.</p>
+                        <ul style="margin-top:20px;">
+                            <li><span class="highlight-green">Le délai ?</span> Ton appli est prête en <strong>24 à 48 heures</strong>.</li>
+                            <li><span class="highlight-green">Le prix ?</span> <strong>Moins de 1 000 €</strong>. Le prix d'un simple week-end.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <img src="happy_owner.png" alt="Propriétaire heureux" class="img-rounded">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 6: Concrètement, pour qui ? -->
+            <section>
+                <h2>Ça marche pour qui ?</h2>
+                <div class="grid-2" style="font-size: 0.8em;">
+                    <div class="box" style="padding: 20px;">
+                        <h3 style="font-size: 1.2em;">💆‍♀️ Sophie, Esthéticienne</h3>
+                        <p>Elle économise 3h de galère par semaine pour écrire ses posts. Résultat : elle prend 3 clientes de plus (soit +240€ gagnés par semaine !).</p>
+                    </div>
+                    <div class="box" style="padding: 20px;">
+                        <h3 style="font-size: 1.2em;">🍔 Nico & Sarah, Food Truck</h3>
+                        <p>Ils génèrent le post de leur "menu du jour" depuis la cuisine en 30 secondes chrono, et attirent 50% de clients en plus le midi.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Slide 7: Le match -->
+            <section>
+                <h2>Le match en résumé 🥊</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Le critère</th>
+                            <th>L'Agence Classique (Code)</th>
+                            <th>L'Atelier des Automates</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Budget</strong></td>
+                            <td class="col-bad">15 000 € minimum</td>
+                            <td class="col-good">Moins de 1 000 €</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Temps d'attente</strong></td>
+                            <td class="col-bad">4 mois</td>
+                            <td class="col-good">24 à 48 heures</td>
+                        </tr>
+                        <tr>
+                            <td><strong>La tech</strong></td>
+                            <td class="col-bad">Du code incompréhensible</td>
+                            <td class="col-good">Des outils visuels ultra simples</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modification</strong></td>
+                            <td class="col-bad">Faut payer un devis</td>
+                            <td class="col-good">Ça se change en 5 min</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Slide 8: Conclusion -->
+            <section>
+                <div class="box">
+                    <h2>On gagne du temps ?</h2>
+                    <p style="font-size: 1.2em; text-align: center;">
+                        Fini la corvée des réseaux sociaux.<br>
+                        Garde ton énergie pour <strong>ton vrai métier</strong>.
+                    </p>
+                    <p style="text-align: center; margin-top: 20px; font-weight: bold; color: #3182ce;">
+                        Contacte-nous et lance ton app !
+                    </p>
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+    <!-- Reveal.js Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/reveal.js/4.3.1/reveal.min.js"></script>
+    <script>
+        Reveal.initialize({
+            hash: true,
+            transition: 'slide',
+            controls: true,
+            progress: true,
+            center: true,
+            backgroundTransition: 'fade'
+        });
+    </script>
+</body>
+</html>

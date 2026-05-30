@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Présentation Commerciale · L'App Réseaux Pro</title>
+  
+  <!-- Fonts Google -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-dark: #0c0a09; /* Obsidian */
+      --bg-card: #141210; /* Brun-noir sourd */
+      --primary: #c5a880; /* Or Champagne mat */
+      --primary-light: #e3d2bc; /* Or sable clair */
+      --text-white: #fafaf9;
+      --text-muted: #87817d;
+      --border: rgba(197, 168, 128, 0.15); /* Bordure champagne subtile */
+      
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Inter', sans-serif;
+      --transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background-color: var(--bg-dark);
+      color: var(--text-white);
+      font-family: var(--font-body);
+      overflow: hidden;
+    }
+
+    /* Slides Container */
+    .slides-container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    /* Single Slide */
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 4rem 6rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateX(50px);
+      transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), 
+                  visibility 0.6s;
+      z-index: 1;
+    }
+
+    .slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(0);
+      z-index: 2;
+    }
+
+    .slide.previous {
+      transform: translateX(-50px);
+    }
+
+    /* Ambient Background Glows */
+    .bg-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(197, 168, 128, 0.03) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    .glow-1 { top: -10%; left: -10%; }
+    .glow-2 { bottom: -10%; right: -10%; }
+
+    /* Slide Header */
+    .slide-header {
+      margin-bottom: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid rgba(120, 113, 108, 0.1);
+      padding-bottom: 1.5rem;
+      width: 100%;
+    }
+
+    .slide-header .brand {
+      font-family: var(--font-title);
+      font-weight: 500;
+      font-size: 1.2rem;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-header .brand span {
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .slide-header .slide-number {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    /* Slide Content & Grid Layouts */
+    .slide-body {
+      margin: auto 0;
+      width: 100%;
+      max-width: 1100px;
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .slide-title {
+      font-family: var(--font-title);
+      font-weight: 400;
+      font-size: 3.2rem;
+      line-height: 1.2;
+      letter-spacing: -0.5px;
+    }
+
+    .slide-title span {
+      color: var(--primary);
+      font-style: italic;
+    }
+
+    .slide-subtitle {
+      font-size: 1.4rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      max-width: 800px;
+      line-height: 1.5;
+    }
+
+    /* Columns Grid */
+    .slide-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .slide-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    /* Premium Cards inside slides */
+    .slide-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 10px 30px -15px rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .slide-card.highlight {
+      border-color: var(--primary);
+      background: linear-gradient(145deg, #141210, #1c1917);
+    }
+
+    .card-num {
+      font-family: var(--font-title);
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: var(--primary-light);
+      line-height: 1;
+    }
+
+    .card-title {
+      font-family: var(--font-title);
+      font-weight: 600;
+      font-size: 1.4rem;
+    }
+
+    .card-text {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Slide Footer */
+    .slide-footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(120, 113, 108, 0.1);
+      width: 100%;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+    }
+
+    /* Navigation Controls */
+    .controls {
+      position: absolute;
+      bottom: 2.5rem;
+      right: 6rem;
+      display: flex;
+      gap: 1rem;
+      z-index: 100;
+    }
+
+    .control-btn {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      color: var(--text-white);
+      font-size: 1.2rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .control-btn:hover {
+      background: var(--primary);
+      border-color: var(--primary-light);
+      transform: translateY(-2px);
+    }
+
+    /* Lists styling inside slides */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .bullet-list li {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      font-size: 1.2rem;
+      color: var(--text-white);
+    }
+
+    .bullet-list li strong {
+      color: var(--primary-light);
+    }
+
+    .bullet-list li span {
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    /* Interactive Toggle inside slides */
+    .currency-switch {
+      display: inline-flex;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 0.3rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .switch-btn {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-weight: 600;
+      padding: 0.5rem 1.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .switch-btn.active {
+      background: var(--primary);
+      color: var(--text-white);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .slide { padding: 2rem; }
+      .slide-title { font-size: 2.2rem; }
+      .slide-grid, .slide-grid-3 { grid-template-columns: 1fr; }
+      .controls { right: 2rem; bottom: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="slides-container">
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <!-- Slide 1: Cover Page -->
+    <section class="slide active" id="slide-1">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">01 / 09</div>
+      </div>
+      <div class="slide-body">
+        <div style="display: flex; flex-direction: column; gap: 1rem;">
+          <h1 class="slide-title" style="font-size: 4.5rem; font-weight: 800; letter-spacing: -2px;">
+            L'App <br><span>Réseaux Pro</span>
+          </h1>
+          <p class="slide-subtitle" style="font-size: 1.8rem; margin-top: 1rem;">
+            Votre site internet vitrine et votre application privée de génération de posts sur-mesure.
+          </p>
+          <p style="color: var(--primary-light); font-weight: 600; font-size: 1.2rem; margin-top: 2rem; letter-spacing: 2px; text-transform: uppercase;">
+            Présentation Commerciale · Par Stéphanie
+          </p>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Utilisez les flèches du clavier ou les boutons pour naviguer</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 2: The Pain Points -->
+    <section class="slide" id="slide-2">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">02 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">Le Défi des <span>Réseaux Sociaux</span></h2>
+        <div class="slide-grid">
+          <div>
+            <p class="slide-subtitle" style="margin-bottom: 2rem;">
+              Pour un professionnel indépendant, communiquer est devenu indispensable pour remplir son agenda... mais c'est un second métier épuisant.
+            </p>
+            <ul class="bullet-list">
+              <li>
+                <span>⏳</span>
+                <div><strong>Manque de Temps :</strong> 3 à 5 heures par semaine passées sur Canva et les réseaux.</div>
+              </li>
+              <li>
+                <span>✍️</span>
+                <div><strong>Manque d'Inspiration :</strong> Le syndrome de la page blanche face à l'écran vide.</div>
+              </li>
+              <li>
+                <span>🤖</span>
+                <div><strong>L'IA Générique décevante :</strong> ChatGPT écrit des textes robotiques et clichés.</div>
+              </li>
+            </ul>
+          </div>
+          <div class="slide-card highlight">
+            <h3 class="card-title" style="color: var(--primary-light); font-size: 1.8rem;">Le coût invisible</h3>
+            <p class="slide-subtitle" style="font-size: 1.2rem; color: var(--text-white);">
+              Chaque heure passée à rédiger est une heure de soin ou de consultation en moins.
+            </p>
+            <p style="color: var(--text-muted); font-size: 1rem; line-height: 1.6;">
+              Pour un indépendant facturant 80€ de l'heure, le temps perdu sur les réseaux représente une perte de plus de 900€ de chiffre d'affaires potentiel chaque mois.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Le problème des indépendants de quartier</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 3: NEW - Dimanches après-midi & Avatars -->
+    <section class="slide" id="slide-3">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">03 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">On ne vend pas du code... On vend des <span>dimanches après-midi</span></h2>
+        <div class="slide-grid">
+          <div>
+            <p class="slide-subtitle" style="margin-bottom: 1.5rem;">
+              Notre but n'est pas de vous vendre de la technique compliquée, mais de <strong>supprimer votre plus grande source d'anxiété hebdomadaire</strong>.
+            </p>
+            <p style="color: var(--text-muted); line-height: 1.7; margin-bottom: 1.5rem;">
+              Au lieu de passer votre dimanche soir fatigué à essayer de formater un post Instagram ou de chercher des hashtags, vous générez vos publications du mois en 10 minutes directement depuis votre cabine, entre deux clients.
+            </p>
+            <p style="color: var(--primary-light); font-weight: 500;">
+              L'outil s'adapte à votre voix unique, que vous soyez :
+            </p>
+          </div>
+          <div class="slide-card highlight">
+            <ul class="bullet-list" style="gap: 0.8rem;">
+              <li>💆‍♀️ <strong>Esthéticiennes & Salons</strong> · Storytelling et valorisation des soins complexes.</li>
+              <li>🩺 <strong>Ostéopathes & Thérapeutes</strong> · Conseils de prévention et empathie rassurante.</li>
+              <li>✂️ <strong>Salons de Coiffure</strong> · Remplissage des créneaux calmes et photos valorisées.</li>
+              <li>🥗 <strong>Naturopathes & Nutrition</strong> · Simplification du savoir en carrousels digestes.</li>
+              <li>🍔 <strong>Boutiques & Restos locaux</strong> · Annonces salivantes et infos pratiques flash.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Remplacez la contrainte par la sérénité et le repos</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 4: The Solution -->
+    <section class="slide" id="slide-4">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">04 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">La Solution : <span>Deux Outils en Un</span></h2>
+        <p class="slide-subtitle" style="max-width: 900px; margin-bottom: 1rem;">
+          Une infrastructure de visibilité complète et sur-mesure, conçue uniquement pour votre établissement.
+        </p>
+        <div class="slide-grid-3">
+          <div class="slide-card">
+            <div class="card-num">01</div>
+            <h3 class="card-title">Votre Landing Page</h3>
+            <p class="card-text">Un site internet d'une page épuré, moderne et ultra-rapide. Il présente vos prestations et intègre directement vos outils de réservation (Planity, Calendly, Resalib).</p>
+          </div>
+          <div class="slide-card highlight">
+            <div class="card-num" style="color: #ff4b4b;">02</div>
+            <h3 class="card-title">Votre App Dédiée</h3>
+            <p class="card-text">Une application web privée installée sur votre smartphone. Vous y tapez votre idée simple en cabine et obtenez votre post finalisé en 15 secondes chrono.</p>
+          </div>
+          <div class="slide-card">
+            <div class="card-num">03</div>
+            <h3 class="card-title">Le Moteur Claude AI</h3>
+            <p class="card-text">L'IA d'écriture la plus performante, pré-configurée avec votre ton unique, votre charte éditoriale et le vocabulaire de votre spécialité.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Une architecture simple et puissante</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 5: How it works -->
+    <section class="slide" id="slide-5">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">05 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">Comment ça marche <span>au quotidien</span> ?</h2>
+        <p class="slide-subtitle" style="margin-bottom: 2rem;">
+          Trois étapes simples et instantanées, réalisables entre deux clients ou sur votre temps de pause.
+        </p>
+        <div class="slide-grid-3">
+          <div class="slide-card">
+            <div class="card-num">01</div>
+            <h3 class="card-title">Saisissez l'idée</h3>
+            <p class="card-text">Écrivez une phrase simple sur votre smartphone, par exemple : <em>"Je présente le nouveau soin hydratant du mois"</em> ou importez un visuel.</p>
+          </div>
+          <div class="slide-card highlight">
+            <div class="card-num">02</div>
+            <h3 class="card-title">Cliquez sur Générer</h3>
+            <p class="card-text">L'application s'exécute instantanément en séparant le format Facebook (avec émojis et lien court de réservation) et le format Instagram (storytelling & hashtags locaux).</p>
+          </div>
+          <div class="slide-card">
+            <div class="card-num">03</div>
+            <h3 class="card-title">Copiez-collez !</h3>
+            <p class="card-text">Les posts sont parfaits et prêts à être publiés. Vous gardez 100% du contrôle éditorial sans y consacrer vos soirées de repos.</p>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Un gain de temps de plus de 4 heures par semaine</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 6: The Content Difference -->
+    <section class="slide" id="slide-6">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">06 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">Pourquoi notre IA est <span>Différente</span> ?</h2>
+        <div class="slide-grid">
+          <div class="slide-card highlight">
+            <h3 class="card-title" style="color: var(--primary-light); font-size: 1.8rem;">La calibration sur-mesure</h3>
+            <p class="card-text" style="font-size: 1.1rem; color: var(--text-white); margin-bottom: 1rem;">
+              Contrairement à un ChatGPT générique, notre moteur Claude AI est programmé pour votre cabinet ou salon.
+            </p>
+            <p class="card-text">
+              Nous injectons vos expressions favorites, vos thématiques de soins clés, vos consignes déontologiques, et les hashtags géolocalisés de votre ville pour maximiser l'algorithme local.
+            </p>
+          </div>
+          <ul class="bullet-list">
+            <li>
+              <span>🎯</span>
+              <div><strong>Format Instagram :</strong> Storytelling soigné, pas de liens cliquables dans le texte (inutiles), renvoi direct au lien en bio.</div>
+            </li>
+            <li>
+              <span>🔗</span>
+              <div><strong>Format Facebook :</strong> Plus direct, avec émojis dosés et inclusion automatique du lien court vers votre outil de réservation.</div>
+            </li>
+            <li>
+              <span>🧼</span>
+              <div><strong>Anti-clichés :</strong> Pas d'émojis à outrance ou de formules théâtrales typiques des robots d'écriture grand public.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Une qualité d'écriture digne d'une agence de presse</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 7: NEW - Le Calcul Économique -->
+    <section class="slide" id="slide-7">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">07 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">Le Calcul Économique : <span>La Réalité du Marché</span></h2>
+        <div class="slide-grid">
+          <div class="slide-card">
+            <h3 class="card-title" style="opacity: 0.6;">Les alternatives du marché</h3>
+            <ul class="bullet-list" style="gap: 1rem; font-size: 0.95rem;">
+              <li>
+                <span>💻</span>
+                <div><strong>Agence Web classique (Site vitrine) :</strong> <br>Compter entre <strong>1 500 € et 3 000 €</strong> pour une page unique sans aucun outil de posts.</div>
+              </li>
+              <li>
+                <span>✍️</span>
+                <div><strong>Community Manager freelance :</strong> <br>Facture entre <strong>300 € et 600 € / mois</strong> pour publier (soit 3 600 € à 7 200 € par an).</div>
+              </li>
+              <li>
+                <span>🧠</span>
+                <div><strong>IA en "Do-it-Yourself" :</strong> <br>Nécessite d'apprendre le prompt engineering, de payer son abonnement (20$/mois) et de gérer le copier-coller fastidieux.</div>
+              </li>
+            </ul>
+          </div>
+          <div class="slide-card highlight">
+            <h3 class="card-title" style="color: var(--primary-light);">Notre offre intégrée</h3>
+            <ul class="bullet-list" style="gap: 1rem; font-size: 0.95rem;">
+              <li>
+                <span>✓</span>
+                <div><strong>Zéro charge mentale :</strong> Tout est configuré et livré prêt-à-l'emploi.</div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div><strong>Tarif transparent :</strong> Un forfait d'installation unique et un abonnement mensuel minime.</div>
+              </li>
+              <li>
+                <span>✓</span>
+                <div><strong>Rentabilité garantie :</strong> Le système s'amortit de lui-même dès que le site et vos posts plus fréquents vous apportent <strong>un seul nouveau client permanent</strong>.</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Une valeur supérieure à une fraction du coût d'une agence</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 8: Pricing and Projections -->
+    <section class="slide" id="slide-8">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">08 / 09</div>
+      </div>
+      <div class="slide-body">
+        <h2 class="slide-title">Un Budget <span>Clair & Adapté</span></h2>
+        
+        <div class="currency-switch">
+          <button id="slide-btn-fr" class="switch-btn active">🇫🇷 France</button>
+          <button id="slide-btn-ch" class="switch-btn">🇨🇭 Suisse</button>
+        </div>
+        
+        <div class="slide-grid">
+          <div class="slide-card highlight" style="text-align: center;">
+            <p style="text-transform: uppercase; font-size: 0.85rem; letter-spacing: 1px; color: var(--text-muted);">Offre de base tout-inclus</p>
+            <h3 class="card-title" style="font-size: 2.2rem; color: var(--primary-light); margin-top: 0.5rem;">L'App Réseaux Pro</h3>
+            <div id="slide-price-setup" style="font-family: var(--font-title); font-size: 4rem; font-weight: 800; margin: 1rem 0;">690 €</div>
+            <p style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Setup d'installation unique</p>
+            
+            <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 1px solid var(--border);">
+              <div id="slide-price-monthly" style="font-size: 1.8rem; font-weight: 700; color: var(--primary-light);">29 € <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-muted);">/ mois</span></div>
+              <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.4rem;">Hébergement, IA Claude illimitée & support WhatsApp inclus</p>
+            </div>
+          </div>
+          
+          <ul class="bullet-list">
+            <li>
+              <span>💸</span>
+              <div><strong>Rentabilisation Immédiate :</strong> Amorti dès le premier nouveau client gagné grâce à votre visibilité.</div>
+            </li>
+            <li>
+              <span>🛡️</span>
+              <div><strong>Sans Engagement :</strong> L'abonnement de maintenance mensuel est résiliable à tout moment, en un clic.</div>
+            </li>
+            <li>
+              <span>⚙️</span>
+              <div><strong>Suppléments disponibles :</strong> Connexion de publication automatique ou base de données Airtable additionnelle.</div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Une tarification pensée pour les petites structures</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Slide 9: Next Steps -->
+    <section class="slide" id="slide-9">
+      <div class="slide-header">
+        <div class="brand">Clockwork <span>Ops</span></div>
+        <div class="slide-number">09 / 09</div>
+      </div>
+      <div class="slide-body" style="text-align: center; gap: 3rem;">
+        <div>
+          <h2 class="slide-title" style="font-size: 4rem; line-height: 1.2; margin-bottom: 1.5rem;">Prêt à donner un coup de boost à votre <span>Visibilité locale</span> ?</h2>
+          <p class="slide-subtitle" style="margin: 0 auto; max-width: 800px;">
+            Je vous crée une démo gratuite et personnalisée de votre propre application en 24h. Sans aucun engagement de votre part.
+          </p>
+        </div>
+        
+        <div style="display: flex; justify-content: center; gap: 2rem; align-items: center; margin-top: 1rem;">
+          <div class="slide-card" style="padding: 1.5rem 3rem; border-color: var(--primary); text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">Prenons 15 minutes</p>
+            <h3 class="card-title" style="font-size: 1.8rem; color: var(--primary-light); margin-top: 0.3rem;">Réserver un appel</h3>
+          </div>
+          <div class="slide-card" style="padding: 1.5rem 3rem; text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase;">Contact Direct</p>
+            <h3 class="card-title" style="font-size: 1.8rem; margin-top: 0.3rem;">Stéphanie · Clockwork Ops</h3>
+          </div>
+        </div>
+      </div>
+      <div class="slide-footer">
+        <span>Prêt à passer à l'action ?</span>
+        <span>Clockwork Ops © 2026</span>
+      </div>
+    </section>
+
+    <!-- Navigation Controls -->
+    <div class="controls">
+      <button class="control-btn" id="prev-btn">←</button>
+      <button class="control-btn" id="next-btn">→</button>
+    </div>
+  </div>
+
+  <script>
+    // Slides Navigation Logic
+    const slides = document.querySelectorAll('.slide');
+    const prevBtn = document.getElementById('prev-btn');
+    const nextBtn = document.getElementById('next-btn');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.remove('active', 'previous');
+        if (i === index) {
+          slide.classList.add('active');
+        } else if (i < index) {
+          slide.classList.add('previous');
+        }
+      });
+      currentSlide = index;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      if (currentSlide > 0) {
+        showSlide(currentSlide - 1);
+      }
+    });
+
+    nextBtn.addEventListener('click', () => {
+      if (currentSlide < slides.length - 1) {
+        showSlide(currentSlide + 1);
+      }
+    });
+
+    // Keyboard support
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight' || e.key === 'Space') {
+        if (currentSlide < slides.length - 1) showSlide(currentSlide + 1);
+      } else if (e.key === 'ArrowLeft') {
+        if (currentSlide > 0) showSlide(currentSlide - 1);
+      }
+    });
+
+    // Pricing switch inside slides
+    const slideBtnFr = document.getElementById('slide-btn-fr');
+    const slideBtnCh = document.getElementById('slide-btn-ch');
+    const slidePriceSetup = document.getElementById('slide-price-setup');
+    const slidePriceMonthly = document.getElementById('slide-price-monthly');
+
+    slideBtnFr.addEventListener('click', () => {
+      slideBtnFr.classList.add('active');
+      slideBtnCh.classList.remove('active');
+      slidePriceSetup.textContent = '690 €';
+      slidePriceMonthly.innerHTML = '29 € <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-muted);">/ mois</span>';
+    });
+
+    slideBtnCh.addEventListener('click', () => {
+      slideBtnCh.classList.add('active');
+      slideBtnFr.classList.remove('active');
+      slidePriceSetup.textContent = '1 190 CHF';
+      slidePriceMonthly.innerHTML = '59 CHF <span style="font-size: 0.95rem; font-weight: 400; color: var(--text-muted);">/ mois</span>';
+    });
+  </script>
+</body>
+</html>
