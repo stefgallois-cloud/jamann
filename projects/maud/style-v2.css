@@ -1,0 +1,772 @@
+/* style-v2.css - Botanical & Vintage Vibe with Dynamic Animations */
+
+:root {
+  /* Botanical / Vintage Colors */
+  --color-primary: #5A7055; /* Medium organic green (for buttons/accents) */
+  --color-primary-hover: #485c44; 
+  --color-secondary: #2C3D28; /* Very dark forest green (for text/headings) */
+  --color-text: #4A4E48; /* Soft dark grey/green for readable text */
+  --color-bg: #F4F1EA; /* Soft beige / vintage paper */
+  --color-bg-light: #E9E4D5; /* Slightly darker beige for alternate sections */
+  --color-accent: #D4A373; /* Warm terracotta/sand accent for special elements */
+  
+  /* Fonts */
+  --font-heading: 'Red Hat Display', sans-serif;
+  --font-body: 'Roboto', sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  color: var(--color-text);
+  line-height: 1.6;
+  font-size: 16px;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.container {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.text-center { text-align: center; }
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+p {
+  margin-bottom: 15px;
+}
+
+/* --- Buttons --- */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: #fff;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(90, 112, 85, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-secondary);
+  color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(44, 61, 40, 0.4);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-secondary);
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.3s ease;
+  border: 2px solid var(--color-secondary);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-secondary);
+  color: #fff;
+}
+
+.btn-large {
+  padding: 16px 36px;
+  font-size: 18px;
+}
+
+/* --- Navigation --- */
+.navbar-v2 {
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  padding: 15px 0;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-v2 {
+  font-family: var(--font-heading);
+  font-size: 28px;
+  font-weight: 900;
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-links-v2 {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+}
+
+.nav-links-v2 a {
+  text-decoration: none;
+  color: var(--color-secondary);
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.nav-links-v2 a:hover {
+  color: var(--color-primary);
+}
+
+/* --- Hero Section --- */
+.hero-v2 {
+  padding: 60px 0 80px;
+  background-color: var(--color-bg-light);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  overflow: hidden;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
+.hero-text {
+  flex: 1;
+}
+
+.badge-v2 {
+  display: inline-block;
+  background: rgba(90, 112, 85, 0.15);
+  color: var(--color-primary);
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.hero-text h1 {
+  font-size: 54px;
+  margin-bottom: 24px;
+  color: var(--color-secondary);
+  line-height: 1.1;
+}
+
+.hero-text p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: var(--color-text);
+  max-width: 95%;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.hero-image-wrapper {
+  flex: 1;
+  position: relative;
+  overflow: hidden; /* Required for the zoom animation to not overflow */
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(44, 61, 40, 0.15);
+  height: 550px;
+}
+
+/* Dynamic Animation for the Hero Image */
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%; 
+  animation: kenBurns 20s infinite alternate ease-in-out;
+}
+
+@keyframes kenBurns {
+  0% { transform: scale(1) translate(0, 0); }
+  100% { transform: scale(1.15) translate(-3%, -3%); }
+}
+
+/* --- Engagements (Icon Grid) --- */
+.engagements-section {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.engagements-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  text-align: center;
+}
+
+.engagement-card {
+  padding: 20px;
+}
+
+.icon-circle {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-bg-light);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  margin: 0 auto 20px;
+  color: var(--color-primary);
+  transition: transform 0.3s ease;
+}
+
+.engagement-card:hover .icon-circle {
+  transform: scale(1.1);
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.engagement-card h3 {
+  font-size: 22px;
+  margin-bottom: 12px;
+}
+
+/* --- About Section --- */
+.about-section {
+  padding: 80px 0;
+  background-color: var(--color-bg-light);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.about-container {
+  display: flex;
+  align-items: center;
+  gap: 60px;
+}
+
+.about-image {
+  flex: 1;
+}
+
+.about-image img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: -15px 15px 0px var(--color-primary);
+}
+
+.about-content {
+  flex: 1;
+}
+
+.about-content h2 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+.about-content .signature {
+  font-family: 'Playfair Display', serif; /* A touch of elegance */
+  font-size: 24px;
+  font-style: italic;
+  color: var(--color-primary);
+  margin-top: 20px;
+}
+
+/* --- Visual Banner --- */
+.visual-break {
+  padding: 0 5%;
+  margin: 40px 0 80px;
+}
+
+.image-banner {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.image-banner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 30%;
+  animation: slowPan 30s infinite alternate linear;
+}
+
+@keyframes slowPan {
+  0% { object-position: center 20%; transform: scale(1.05); }
+  100% { object-position: center 80%; transform: scale(1.05); }
+}
+
+.image-banner::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to right, rgba(44,61,40,0.8), rgba(44,61,40,0.2));
+}
+
+.banner-content {
+  position: absolute;
+  top: 50%;
+  left: 50px;
+  transform: translateY(-50%);
+  z-index: 2;
+  max-width: 500px;
+}
+
+.banner-content h2 {
+  color: #fff;
+  font-size: 36px;
+}
+
+/* --- Pricing Section --- */
+.pricing-v2 {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.section-title {
+  margin-bottom: 50px;
+}
+
+.section-title h2 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.section-title p {
+  font-size: 18px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.pricing-card {
+  background: var(--color-bg-light);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  text-align: center;
+  position: relative;
+  transition: transform 0.3s;
+}
+
+.pricing-card:hover {
+  transform: translateY(-10px);
+}
+
+.pricing-card.featured {
+  background: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  border: 3px solid var(--color-primary);
+  transform: scale(1.05);
+  box-shadow: 0 15px 40px rgba(90, 112, 85, 0.15);
+}
+
+.pricing-card.featured:hover {
+  transform: scale(1.05) translateY(-10px);
+}
+
+.featured-badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--color-primary);
+  color: #fff;
+  padding: 6px 16px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.p-header h3 {
+  font-size: 24px;
+  color: var(--color-secondary);
+  margin-bottom: 5px;
+}
+
+.p-time {
+  color: var(--color-text);
+  font-weight: 500;
+  margin-bottom: 20px;
+}
+
+.p-price {
+  font-size: 54px;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  color: var(--color-secondary);
+  margin-bottom: 20px;
+}
+
+.packages-box {
+  background: var(--color-secondary);
+  color: #fff;
+  padding: 40px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 50px;
+  box-shadow: 0 15px 30px rgba(44, 61, 40, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.packages-box::before {
+  content: '🏷️';
+  position: absolute;
+  top: -20px;
+  right: -20px;
+  font-size: 100px;
+  opacity: 0.1;
+  transform: rotate(15deg);
+}
+
+.packages-box h3 {
+  color: #fff;
+  font-size: 28px;
+  margin-bottom: 15px;
+}
+
+.packages-box p {
+  font-size: 18px;
+  margin-bottom: 25px;
+}
+
+.options-box {
+  background: var(--color-bg-light);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.options-box h4 {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* --- Reviews Section --- */
+.reviews-section {
+  padding: 80px 0;
+  background-color: var(--color-bg-light);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.review-card {
+  background: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+  padding: 40px 30px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+  text-align: center;
+}
+
+.stars {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.review-text {
+  font-size: 16px;
+  font-style: italic;
+  color: var(--color-text);
+  margin-bottom: 20px;
+  line-height: 1.8;
+}
+
+.review-author {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  color: var(--color-secondary);
+}
+
+/* --- Calendar / Booking Section --- */
+.calendar-section {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.visual-calendar {
+  display: flex;
+  gap: 10px;
+  margin: 30px 0 20px;
+}
+
+.cal-day {
+  flex: 1;
+  background: rgba(255,255,255,0.1);
+  padding: 15px 0;
+  border-radius: 8px;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  border: 2px solid transparent;
+}
+
+.cal-day.available {
+  border-color: #25D366;
+  background: rgba(37, 211, 102, 0.1);
+}
+
+.cal-day.full {
+  border-color: #FF5A5F;
+  background: rgba(255, 90, 95, 0.1);
+  opacity: 0.6;
+}
+
+.cal-legend {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8) !important;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dot {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.dot.green { background-color: #25D366; }
+.dot.red { background-color: #FF5A5F; }
+
+.mt-4 { margin-top: 30px; }
+
+/* --- Contact Section --- */
+.contact-v2 {
+  padding: 80px 0;
+  background-color: var(--color-bg);
+  background-image: url("https://www.transparenttextures.com/patterns/textured-paper.png");
+}
+
+.contact-box {
+  background-color: var(--color-secondary);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 20px 40px rgba(44, 61, 40, 0.2);
+}
+
+.contact-text {
+  flex: 1;
+  padding: 60px;
+  color: #fff;
+}
+
+.contact-text h2 {
+  color: #fff;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.contact-text p {
+  font-size: 18px;
+  margin-bottom: 30px;
+  color: rgba(255,255,255,0.8);
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: #25D366; 
+  color: #fff;
+  padding: 16px 36px;
+  border-radius: 50px;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.btn-whatsapp:hover {
+  background-color: #20BA56;
+  transform: translateY(-2px);
+}
+
+.contact-image {
+  flex: 1;
+  height: 100%;
+  min-height: 400px;
+}
+
+.contact-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* --- Footer --- */
+.footer-v2 {
+  background-color: var(--color-secondary);
+  color: #fff;
+  padding: 60px 0 40px;
+  text-align: center;
+}
+
+.social-links {
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.social-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  border-radius: 50%;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.social-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+}
+
+.social-btn.facebook {
+  color: #1877F2;
+}
+
+.social-btn.instagram {
+  /* Creating the Instagram gradient on the icon */
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+  color: #fff;
+}
+
+.social-btn i {
+  font-size: 20px;
+}
+
+.social-btn.facebook i { color: #1877F2; }
+.social-btn.instagram i { color: #fff; }
+
+/* --- Animations --- */
+.fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in-scroll {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 992px) {
+  .hero-container { flex-direction: column; text-align: center; gap: 30px; }
+  .hero-buttons { justify-content: center; }
+  .hero-img { height: 400px; }
+  .engagements-grid { grid-template-columns: 1fr; gap: 20px; }
+  .about-container { flex-direction: column; text-align: center; }
+  .about-image img { box-shadow: 0px 15px 0px var(--color-primary); }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .pricing-card.featured { transform: scale(1); }
+  .pricing-card.featured:hover { transform: translateY(-5px); }
+  .reviews-grid { grid-template-columns: 1fr; gap: 20px; }
+  .contact-box { flex-direction: column; }
+  .contact-image { width: 100%; height: 300px; }
+}
+
+@media (max-width: 768px) {
+  .nav-links-v2 { display: none; }
+  .hero-v2 { padding: 20px 0 40px; }
+  .hero-text h1 { font-size: 34px; }
+  .hero-img { height: 300px; }
+  .engagements-section, .about-section, .pricing-v2, .reviews-section, .calendar-section, .contact-v2 { padding: 50px 0; }
+  .banner-content { left: 20px; right: 20px; text-align: center; }
+  .banner-content h2 { font-size: 24px; }
+  .contact-text { padding: 30px 20px; text-align: center; }
+  .packages-box { padding: 25px 20px; }
+  .hero-buttons { flex-direction: column; width: 100%; align-items: center; gap: 15px; }
+  .hero-buttons a { width: 100%; max-width: 300px; text-align: center; padding: 14px 20px; font-size: 16px; }
+  .visual-calendar { flex-wrap: wrap; justify-content: center; gap: 8px; }
+  .cal-day { padding: 10px 15px; font-size: 14px; min-width: 60px; }
+  
+  /* Fix navbar button on mobile */
+  .navbar-v2 .btn-primary {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-text h1 { font-size: 30px; }
+  .navbar-v2 .logo-v2 { font-size: 18px; }
+}

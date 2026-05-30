@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Astrologie &amp; Tarologie — L'Harmonie</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <nav id="nav" class="solid">
+    <a href="../index.html" class="nav-logo">
+      <img src="../images/logo-francoise.png" alt=""
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'" />
+      <span style="display:none">L'Harmonie</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">Votre thérapeute</a></li>
+      <li><a href="../index.html#services">Soins</a></li>
+      <li><a href="../index.html#stages">Stages</a></li>
+      <li><a href="../index.html#partenaires">Partenaires</a></li>
+      <li><a href="../index.html#contact" class="nav-rdv">Prendre RDV</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?w=1600&auto=format&fit=crop&q=85')"></div>
+    <div class="page-hero-ov"></div>
+    <div class="page-hero-ct">
+      <a href="../index.html#services" class="page-back">← Retour aux soins</a>
+      <h1>Astrologie &amp; Tarologie</h1>
+      <p class="pq">« Il n'y a personne qui soit né sous une mauvaise étoile, il n'y a que des gens qui ne savent pas lire le ciel » — Dalaï-Lama</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <p>L'astrologie est un outil très ancien, qui considère l'influence des planètes sur le comportement humain, basé sur le calcul de la trajectoire de celles-ci. L'astrologie permet d'aller vers une meilleure connaissance de soi.</p>
+
+    <p>L'étude d'un thème de naissance permet de mettre en évidence, entre autres, le potentiel de naissance, les traumatismes éventuels, les blocages ou facilités. Dans le cadre d'une recherche de développement personnel et/ou de spiritualité, l'interprétation d'un thème est un support de qualité qui ouvre « le champ des possibles ».</p>
+
+    <p>Suivant la demande du consultant, l'interprétation du thème peut être envisagée à des niveaux différents (exotérique, ésotérique, karmique, etc.).</p>
+
+    <p>En prenant conscience de qui « Je Suis », ma représentation au monde change et une nouvelle dynamique se met alors en place.</p>
+
+    <p>En plus des informations révélées par le thème de naissance, l'analyse de la révolution solaire ou thème anniversaire (étude des transits planétaires de date anniversaire à date anniversaire) va faire ressortir les évènements prévisibles, positifs et négatifs. Cette approche dévoile ce qui peut possiblement arriver, tout en gardant à l'esprit que rien n'est immuable car « l'énergie précède la matière et pas le contraire ».</p>
+
+    <p>Pour les consultants qui le souhaitent, la démarche astrologique peut se coupler avec la tarologie, offrant ainsi un éclairage complémentaire sur les dynamiques en jeu.</p>
+
+    <div class="indic">
+      <h4>Ce que la consultation peut apporter</h4>
+      <p>Connaissance de soi approfondie · Compréhension du potentiel de naissance · Identification des blocages et des ressources · Orientation dans les choix de vie · Éclairage sur une période particulière · Développement personnel et spirituel</p>
+    </div>
+
+    <div class="cta-foot">
+      <p>Prête à lire votre ciel et à découvrir votre potentiel ?</p>
+      <a href="../index.html#contact" class="btn">Prendre rendez-vous</a>
+      &nbsp;
+      <a href="tel:0619208256" class="btn btn-ghost">06 19 20 82 56</a>
+    </div>
+  </div>
+
+  <footer>
+    <img class="ft-orchid" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=500&auto=format&q=60" alt="" aria-hidden="true" />
+    <div class="ft-inner">
+      <div class="ft-logo">L'Harmonie</div>
+      <p class="ft-sub">Françoise Davenas — Thérapeute spécialiste du mieux-être</p>
+      <ul class="ft-nav">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="constellations.html">Constellations familiales</a></li>
+        <li><a href="soins-energetiques.html">Soins énergétiques</a></li>
+        <li><a href="hypnose.html">Hypnose</a></li>
+        <li><a href="tcc.html">TCC &amp; Schémathérapie</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <div class="ft-bottom">
+        <span><a href="tel:0619208256">06 19 20 82 56</a> · <a href="mailto:f.davenas@gmail.com">f.davenas@gmail.com</a></span>
+        <span>© 2025 L'Harmonie · Tous droits réservés</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const links = document.getElementById('nav-links');
+    burger.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
+</html>

@@ -1,0 +1,983 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+/* ── Charte Graphique Officielle de Françoise (Thème Lumineux & Glossy Premium) ── */
+:root {
+  --cream-bg:      #FDFAF6; 
+  --cream-alt:     #F5EEE8; 
+  --rose-petant:   #E91E63; /* Un vrai rose très pétant */
+  --rose-pale:     #FDECF1; 
+  --rose-deep:     #B01046; 
+  --dark-grey:     #333333; /* Un vrai gris foncé, pas marron */
+  --text-dark:     #222222; 
+  --text-muted:    #555555; 
+  --line-rose:     rgba(233, 30, 99, 0.2);
+  --blur-nav:      rgba(253, 250, 246, 0.9);
+}
+
+/* ── Reset & Base ── */
+*, *::before, *::after { 
+  box-sizing: border-box; 
+  margin: 0; 
+  padding: 0; 
+}
+html { 
+  scroll-behavior: smooth; 
+}
+body { 
+  font-family: 'Outfit', sans-serif; 
+  font-weight: 300; 
+  color: var(--text-dark); 
+  background: var(--cream-bg); 
+  line-height: 1.8; 
+  overflow-x: hidden;
+}
+img { 
+  display: block; 
+  max-width: 100%; 
+}
+a { 
+  text-decoration: none; 
+  color: inherit; 
+}
+
+/* ── Barre de Navigation en Verre Dépoli Lumineux ── */
+nav {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  z-index: 100;
+  height: 80px; 
+  padding: 0 4rem;
+  display: flex; 
+  align-items: center; 
+  justify-content: space-between;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  border-bottom: 1px solid transparent;
+}
+nav.solid { 
+  background: var(--blur-nav); 
+  backdrop-filter: blur(25px); 
+  -webkit-backdrop-filter: blur(25px);
+  height: 72px;
+  box-shadow: 0 10px 30px rgba(196, 120, 138, 0.06); 
+  border-bottom: 1px solid var(--line-rose); 
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+.nav-logo:hover { 
+  transform: scale(1.02); 
+}
+.nav-logo img { 
+  height: 48px; 
+  width: auto; 
+  display: block; 
+}
+nav.solid .nav-logo img {
+  height: 42px;
+}
+.nav-links { 
+  list-style: none; 
+  display: flex; 
+  gap: 2.5rem; 
+  align-items: center; 
+}
+.nav-links a {
+  font-size: .8rem; 
+  font-weight: 400;
+  letter-spacing: .12em; 
+  text-transform: uppercase;
+  color: var(--text-muted); 
+  position: relative;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 1.5px;
+  background: var(--rose-petant);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateX(-50%);
+}
+.nav-links a:hover { 
+  color: var(--rose-petant); 
+}
+.nav-links a:hover::after {
+  width: 80%;
+}
+.nav-rdv {
+  padding: .6rem 1.6rem !important; 
+  border: 1px solid var(--rose-petant); 
+  border-radius: 3rem;
+  color: var(--rose-petant) !important; 
+  font-weight: 500 !important;
+  font-size: .75rem !important; 
+  letter-spacing: .12em;
+  background: transparent;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+.nav-rdv::after {
+  display: none !important;
+}
+.nav-rdv:hover { 
+  background: var(--rose-petant) !important; 
+  color: var(--cream-bg) !important; 
+  border-color: var(--rose-petant) !important;
+  box-shadow: 0 8px 20px rgba(196, 120, 138, 0.2);
+  transform: translateY(-2px);
+}
+.burger { 
+  display: none; 
+  flex-direction: column; 
+  gap: 6px; 
+  background: none; 
+  border: none; 
+  cursor: pointer; 
+  padding: 4px; 
+}
+.burger span { 
+  display: block; 
+  width: 24px; 
+  height: 1.5px; 
+  background: var(--rose-petant); 
+  transition: all 0.3s ease; 
+}
+
+/* ── HERO D'ORIGINE MAIS HAUT DE GAMME ── */
+.hero {
+  height: 100vh; 
+  min-height: 650px;
+  display: grid; 
+  grid-template-columns: 46fr 54fr;
+  background: linear-gradient(135deg, var(--cream-bg) 70%, var(--rose-pale) 100%);
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center;
+  padding: 8rem 5rem 5rem;
+  position: relative;
+  background: var(--rose-pale); /* Utilisation du rose de la charte en fond hero */
+}
+.hero-left::after {
+  content: ''; 
+  position: absolute; 
+  right: 0; 
+  top: 15%; 
+  bottom: 15%;
+  width: 1px; 
+  background: var(--line-rose);
+}
+.hero-eyebrow {
+  font-size: .75rem; 
+  font-weight: 500;
+  letter-spacing: .25em; 
+  text-transform: uppercase;
+  color: var(--rose-petant); 
+  margin-bottom: 2rem;
+}
+.hero-left h1 {
+  font-family: 'Playfair Display', serif; 
+  font-weight: 400;
+  font-size: clamp(3.5rem, 6.5vw, 6.5rem); 
+  line-height: 1.05;
+  color: var(--dark-grey); 
+  margin-bottom: 0.8rem;
+}
+.hero-name {
+  font-size: 1rem; 
+  font-weight: 400;
+  letter-spacing: .15em; 
+  text-transform: uppercase;
+  color: var(--rose-deep); 
+  margin-bottom: 3rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+}
+.hero-name::after {
+  content: '';
+  width: 40px;
+  height: 1px;
+  background: var(--rose-petant);
+}
+.hero-quote {
+  font-family: 'Playfair Display', serif; 
+  font-style: italic;
+  font-size: 1.15rem; 
+  color: var(--text-muted); 
+  line-height: 1.7;
+  border-left: 2px solid var(--rose-petant); 
+  padding-left: 1.5rem;
+  margin-bottom: 3.5rem; 
+  max-width: 420px;
+}
+.hero-quote cite { 
+  display: block; 
+  font-size: .8rem; 
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  margin-top: .6rem; 
+  letter-spacing: .1em; 
+  text-transform: uppercase;
+  color: var(--rose-petant); 
+}
+.hero-right { 
+  position: relative; 
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-right img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: cover; 
+  display: block; 
+  animation: breathe 12s ease-in-out infinite alternate;
+}
+
+@keyframes breathe {
+  0% { transform: scale(1.0); }
+  100% { transform: scale(1.05); }
+}
+
+/* ── Boutons Roses Elégants & Glossy ── */
+.btn {
+  display: inline-block; 
+  padding: 1.1rem 2.8rem; 
+  border-radius: 4rem;
+  font-size: .8rem; 
+  font-weight: 500;
+  letter-spacing: .15em; 
+  text-transform: uppercase;
+  background: linear-gradient(135deg, var(--rose-petant) 0%, var(--rose-deep) 100%); 
+  color: var(--cream-bg);
+  border: 1px solid var(--rose-petant);
+  box-shadow: 0 10px 25px rgba(196, 120, 138, 0.2);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: 'Outfit', sans-serif;
+  cursor: pointer;
+  align-self: flex-start;
+  position: relative;
+  overflow: hidden;
+}
+.btn::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%; width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  transition: all 0.5s ease;
+}
+.btn:hover::before {
+  left: 100%;
+}
+.btn:hover { 
+  transform: translateY(-3px); 
+  box-shadow: 0 15px 30px rgba(196, 120, 138, 0.35); 
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--rose-petant);
+  border: 1px solid var(--rose-petant);
+  box-shadow: none;
+}
+.btn-ghost:hover {
+  background: var(--rose-pale);
+  color: var(--rose-deep);
+  border-color: var(--rose-deep);
+  transform: translateY(-2px);
+}
+
+/* ── Sections ── */
+section { 
+  padding: 140px 4rem; 
+}
+.inner { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+.eyebrow { 
+  font-size: .75rem; 
+  font-weight: 500;
+  letter-spacing: .25em; 
+  text-transform: uppercase; 
+  color: var(--rose-petant); 
+  margin-bottom: 1rem; 
+}
+.section-h { 
+  font-family: 'Playfair Display', serif; 
+  font-weight: 400; 
+  font-size: clamp(2.4rem, 4vw, 3.6rem); 
+  line-height: 1.2; 
+  margin-bottom: 1.5rem; 
+  color: var(--dark-grey);
+}
+.section-h em { 
+  font-style: italic; 
+  color: var(--rose-petant); 
+  font-weight: 400;
+}
+
+/* ── Grille de Soins Aérée (2 Colonnes) ── */
+#services { 
+  background: var(--cream-alt); 
+}
+.services-top { 
+  display: grid; 
+  grid-template-columns: 4.5fr 5.5fr; 
+  gap: 6rem; 
+  align-items: center; 
+  margin-bottom: 5rem; 
+}
+.services-top .lead { 
+  font-size: 1.05rem; 
+  color: var(--text-muted); 
+  line-height: 1.8;
+}
+.svc-list { 
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+  gap: 1.5rem;
+}
+.svc {
+  display: grid; 
+  grid-template-columns: 60px 1fr 30px;
+  gap: 1.2rem; 
+  padding: 2.2rem 1.8rem; 
+  border: 1px solid var(--line-rose);
+  background: var(--cream-bg);
+  border-radius: 12px;
+  align-items: center; 
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+  cursor: pointer;
+}
+.svc:hover { 
+  padding-left: 2.2rem; 
+  padding-right: 2.2rem; 
+  background: rgba(253, 250, 246, 0.95); 
+  box-shadow: 0 15px 35px rgba(196, 120, 138, 0.08);
+  border-color: var(--rose-petant);
+  transform: translateY(-3px);
+}
+.svc-n { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2rem; 
+  color: var(--rose-petant); 
+  font-weight: 500;
+  line-height: 1; 
+}
+.svc-info h3 { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 1.5rem; 
+  font-weight: 500; 
+  color: var(--dark-grey);
+  margin-bottom: .2rem; 
+}
+.svc-info p { 
+  font-size: .9rem; 
+  color: var(--text-muted); 
+}
+.svc-arrow { 
+  color: var(--rose-petant); 
+  font-size: 1.3rem; 
+  justify-self: end; 
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.svc:hover .svc-arrow { 
+  transform: translateX(6px); 
+}
+
+/* ── À Propos (Mandala de Géométrie Sacrée Doré & Rose) ── */
+#about { 
+  background: var(--cream-bg); 
+  padding: 80px 4rem;
+}
+.about-grid { 
+  display: grid; 
+  grid-template-columns: 1.15fr 0.85fr; 
+  gap: 6rem; 
+  align-items: center;
+}
+.about-img-container { 
+  position: relative; 
+  min-height: 520px; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 16px;
+  background: var(--cream-alt);
+  border: 1px solid var(--line-rose);
+  overflow: hidden;
+  box-shadow: inset 0 0 40px rgba(196, 120, 138, 0.03);
+}
+.about-img-container .glow-sphere {
+  position: absolute;
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(196, 120, 138, 0.18) 0%, rgba(0,0,0,0) 75%);
+  filter: blur(30px);
+  animation: pulseSphere 6s ease-in-out infinite alternate;
+}
+@keyframes pulseSphere {
+  0% { transform: scale(0.9); opacity: 0.7; }
+  100% { transform: scale(1.15); opacity: 1; }
+}
+.mandala-wrap {
+  position: relative;
+  width: 70%;
+  height: 70%;
+  z-index: 2;
+}
+.sacred-mandala {
+  width: 100%;
+  height: 100%;
+  animation: rotateMandala 40s linear infinite;
+  filter: drop-shadow(0 0 20px rgba(196, 120, 138, 0.2));
+}
+@keyframes rotateMandala {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.about-text { 
+  padding: 2rem 0; 
+  display: flex; 
+  flex-direction: column; 
+  justify-content: center; 
+}
+.about-text p { 
+  font-size: 1.05rem; 
+  color: var(--text-muted); 
+  margin-bottom: 1.6rem; 
+}
+.about-text .btn { 
+  margin-top: 1.5rem; 
+}
+
+/* ── Citation Break Impactante Rose Pétant & Gris Foncé ── */
+.quote-break {
+  position: relative; 
+  padding: 160px 4rem;
+  background: var(--rose-petant); /* Remplacé le marron par le rose pétant */
+  overflow: hidden;
+  border-top: 1px solid var(--line-rose);
+  border-bottom: 1px solid var(--line-rose);
+}
+.quote-break .bg-img {
+  position: absolute; 
+  inset: 0; 
+  object-fit: cover;
+  width: 100%; 
+  height: 100%; 
+  opacity: .12;
+  mix-blend-mode: overlay;
+  filter: grayscale(1);
+}
+.quote-break blockquote {
+  position: relative; 
+  z-index: 1; 
+  max-width: 900px; 
+  margin: 0 auto; 
+  text-align: center;
+}
+.quote-break blockquote p {
+  font-family: 'Playfair Display', serif; 
+  font-style: italic; 
+  font-weight: 400;
+  font-size: clamp(2rem, 3.8vw, 3.2rem); 
+  color: var(--cream-bg); 
+  line-height: 1.4;
+  margin-bottom: 2rem;
+}
+.quote-break blockquote cite { 
+  font-size: .85rem; 
+  font-family: 'Outfit', sans-serif;
+  font-weight: 500;
+  letter-spacing: .25em; 
+  text-transform: uppercase; 
+  color: var(--rose-petant); 
+  font-style: normal; 
+}
+
+/* ── Stages (Boîtes Blanches Volantes) ── */
+#stages { 
+  background: var(--cream-alt); 
+}
+.stages-wrap { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 6rem; 
+  align-items: center; 
+}
+.stages-box {
+  border: 1px solid var(--line-rose); 
+  border-radius: 16px; 
+  padding: 4.5rem;
+  background: var(--cream-bg);
+  box-shadow: 0 30px 60px rgba(196, 120, 138, 0.04);
+}
+.stages-box h3 { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.2rem; 
+  font-weight: 500; 
+  color: var(--dark-grey);
+  margin-bottom: .5rem; 
+}
+.stages-box .lieu { 
+  font-size: .9rem; 
+  font-weight: 400;
+  color: var(--rose-petant); 
+  margin-bottom: 3rem; 
+}
+.price-row { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+  padding: 1.5rem 0; 
+  border-bottom: 1px solid var(--line-rose); 
+}
+.price-row:last-of-type { 
+  border-bottom: none; 
+  margin-bottom: 2rem; 
+}
+.price-row span:first-child { 
+  font-size: 1rem; 
+  color: var(--text-muted); 
+}
+.price-row .p { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.4rem; 
+  color: var(--rose-petant); 
+  font-weight: 500;
+}
+.stages-note { 
+  font-size: .85rem; 
+  color: var(--text-muted); 
+  font-style: italic; 
+  margin-bottom: 2.5rem; 
+}
+.stages-text p { 
+  font-size: 1.05rem; 
+  color: var(--text-muted); 
+  margin-bottom: 1.5rem; 
+}
+
+/* ── Formulaire Modernisé ── */
+#contact { 
+  background: var(--cream-bg); 
+}
+.contact-grid { 
+  display: grid; 
+  grid-template-columns: 1fr 1.2fr; 
+  gap: 7rem; 
+  align-items: flex-start; 
+}
+.contact-items { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2.5rem; 
+}
+.ci h4 { 
+  font-size: .75rem; 
+  font-weight: 500;
+  letter-spacing: .15em; 
+  text-transform: uppercase; 
+  color: var(--rose-petant); 
+  margin-bottom: .6rem; 
+}
+.ci p, .ci a { 
+  font-size: 1.1rem; 
+  color: var(--text-muted); 
+  transition: color 0.3s ease;
+}
+.ci a:hover { 
+  color: var(--rose-petant); 
+}
+.ci .note { 
+  font-size: .88rem; 
+  color: var(--rose-deep); 
+  margin-top: .4rem; 
+  font-weight: 400;
+}
+.form { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 1.5rem; 
+}
+.form label { 
+  display: block; 
+  font-size: .75rem; 
+  font-weight: 500;
+  letter-spacing: .1em; 
+  text-transform: uppercase; 
+  color: var(--text-muted); 
+  margin-bottom: .4rem; 
+}
+.form input, .form textarea, .form select {
+  width: 100%; 
+  padding: 1.2rem 1.4rem; 
+  border: 1px solid var(--line-rose);
+  border-radius: 8px; 
+  background: var(--cream-alt); 
+  font-family: 'Outfit', sans-serif;
+  font-size: .95rem; 
+  font-weight: 300; 
+  color: var(--text-dark); 
+  outline: none;
+  transition: all 0.4s ease; 
+  -webkit-appearance: none;
+}
+.form input:focus, .form textarea:focus, .form select:focus { 
+  border-color: var(--rose-petant); 
+  background: var(--cream-bg); 
+  box-shadow: 0 5px 15px rgba(196, 120, 138, 0.06);
+}
+.form textarea { 
+  resize: vertical; 
+  min-height: 140px; 
+}
+.form-ok { 
+  display: none; 
+  text-align: center; 
+  padding: 1.2rem; 
+  background: var(--cream-alt); 
+  border-radius: 4px; 
+  color: var(--rose-petant); 
+  font-weight: 500;
+  font-size: .95rem; 
+}
+
+/* ── Partenaires ── */
+#partenaires { 
+  background: var(--cream-alt); 
+}
+.partner { 
+  display: grid; 
+  grid-template-columns: 80px 1fr; 
+  gap: 2.5rem; 
+  max-width: 800px; 
+  background: var(--cream-bg);
+  padding: 3rem;
+  border-radius: 16px;
+  border: 1px solid var(--line-rose);
+}
+.partner-av { 
+  width: 80px; 
+  height: 80px; 
+  border-radius: 50%; 
+  background: var(--rose-pale); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.2rem; 
+  color: var(--rose-petant); 
+  flex-shrink: 0; 
+  border: 1px solid var(--line-rose);
+}
+.partner h3 { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 1.7rem; 
+  color: var(--dark-grey);
+  margin-bottom: .3rem; 
+}
+.partner .dom { 
+  font-size: .82rem; 
+  font-weight: 500;
+  letter-spacing: .05em; 
+  color: var(--rose-petant); 
+  margin-bottom: 1rem; 
+}
+.partner p { 
+  font-size: 1rem; 
+  color: var(--text-muted); 
+  margin-bottom: 1rem; 
+}
+.partner .adr { 
+  font-size: .88rem; 
+  color: var(--text-muted); 
+}
+.partner .adr a { 
+  color: var(--rose-petant); 
+  font-weight: 400;
+}
+
+/* ── Footer Sombre & Chic en Gris Foncé Prune d'Origine ── */
+footer { 
+  background: var(--rose-petant); /* Remplacé le marron par le rose pétant */
+  color: rgba(255, 255, 255, 0.9); 
+  padding: 7rem 4rem 3rem; 
+  position: relative; 
+  overflow: hidden; 
+  border-top: 1px solid var(--line-rose);
+}
+.ft-orchid { 
+  position: absolute; 
+  right: -50px; 
+  bottom: -40px; 
+  width: 400px; 
+  opacity: .05; 
+  pointer-events: none; 
+  object-fit: cover; 
+}
+.ft-inner { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+.ft-logo { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2.8rem; 
+  color: rgba(252, 250, 247, 0.9); 
+  margin-bottom: .4rem; 
+}
+.ft-sub { 
+  font-size: .95rem; 
+  margin-bottom: 3.5rem; 
+}
+.ft-nav { 
+  list-style: none; 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: .8rem 2.5rem; 
+  margin-bottom: 4.5rem; 
+}
+.ft-nav a { 
+  font-size: .85rem; 
+  font-weight: 400;
+  letter-spacing: .08em; 
+  color: rgba(255, 255, 255, 0.9); 
+  transition: color 0.3s ease; 
+}
+.ft-nav a:hover { 
+  color: var(--dark-grey); 
+}
+.ft-bottom { 
+  border-top: 1px solid rgba(255, 255, 255, 0.2); 
+  padding-top: 2rem; 
+  font-size: .8rem; 
+  display: flex; 
+  justify-content: space-between; 
+  flex-wrap: wrap; 
+  gap: 1rem; 
+}
+.ft-bottom a { 
+  color: rgba(255, 255, 255, 0.9); 
+}
+.ft-bottom a:hover { 
+  color: var(--dark-grey); 
+}
+
+/* ── STYLE LUMINEUX ET PROPRE POUR LES SOINS (SOUS-PAGES) ── */
+.page-hero {
+  height: 60vh; 
+  min-height: 450px; 
+  position: relative; 
+  display: flex; 
+  align-items: flex-end; 
+  overflow: hidden; 
+  background: var(--rose-pale); /* Utilisation du rose pâle en fond hero */
+  border-bottom: 1px solid var(--line-rose);
+}
+.page-hero-bg { 
+  position: absolute; 
+  inset: 0; 
+  background-size: cover; 
+  background-position: center; 
+  opacity: 0.95; /* Restauration de l'opacité complète de l'image ! */
+  transition: transform 12s ease;
+}
+.page-hero:hover .page-hero-bg {
+  transform: scale(1.06);
+}
+.page-hero-ov { 
+  position: absolute; 
+  inset: 0; 
+  background: linear-gradient(to top, rgba(253, 250, 246, 1) 0%, rgba(253, 250, 246, 0.3) 60%, rgba(253, 250, 246, 0) 100%); 
+}
+.page-hero-ct { 
+  position: relative; 
+  z-index: 2; 
+  padding: 0 4rem 4.5rem; 
+  max-width: 1200px; 
+  width: 100%; 
+  margin: 0 auto; 
+}
+.page-back { 
+  font-size: .78rem; 
+  font-weight: 500;
+  letter-spacing: .12em; 
+  text-transform: uppercase; 
+  color: var(--rose-deep); 
+  display: inline-flex; 
+  align-items: center; 
+  gap: .6rem; 
+  margin-bottom: 1.5rem; 
+  transition: all 0.3s ease; 
+}
+.page-back:hover { 
+  color: var(--rose-petant); 
+  transform: translateX(-4px);
+}
+.page-hero-ct h1 { 
+  font-family: 'Playfair Display', serif; 
+  font-weight: 400; 
+  font-size: clamp(2.5rem, 5vw, 4.2rem); 
+  color: var(--dark-grey); 
+  line-height: 1.1; 
+}
+.page-hero-ct .pq { 
+  font-family: 'Playfair Display', serif; 
+  font-style: italic; 
+  color: var(--text-muted); 
+  font-size: 1.15rem; 
+  margin-top: 1rem; 
+  max-width: 700px; 
+  line-height: 1.6;
+}
+
+.page-body { 
+  max-width: 850px; 
+  margin: 0 auto; 
+  padding: 100px 4rem; 
+}
+.page-body p { 
+  font-size: 1.05rem; 
+  color: var(--text-muted); 
+  margin-bottom: 1.8rem; 
+  line-height: 1.85;
+}
+.page-body ul { 
+  list-style: none; 
+  padding: 0; 
+  margin: 2rem 0; 
+}
+.page-body ul li { 
+  color: var(--text-dark); 
+  font-size: 1.02rem; 
+  font-weight: 400;
+  padding: .8rem 0 .8rem 2rem; 
+  border-bottom: 1px solid var(--line-rose); 
+  position: relative; 
+  transition: padding-left 0.3s ease;
+}
+.page-body ul li:hover {
+  padding-left: 2.5rem;
+  color: var(--rose-deep);
+}
+.page-body ul li::before { 
+  content: '—'; 
+  position: absolute; 
+  left: 0; 
+  color: var(--rose-petant); 
+  font-weight: 600;
+}
+.indic { 
+  background: var(--rose-pale); 
+  border-left: 4px solid var(--rose-petant); 
+  border-radius: 0 12px 12px 0; 
+  padding: 2.2rem 2.5rem; 
+  margin: 3.5rem 0; 
+  box-shadow: 0 10px 30px rgba(196,120,138,0.03);
+}
+.indic h4 { 
+  font-size: .75rem; 
+  font-weight: 600;
+  letter-spacing: .15em; 
+  text-transform: uppercase; 
+  color: var(--rose-deep); 
+  margin-bottom: .8rem; 
+  font-family: 'Outfit', sans-serif; 
+}
+.indic p { 
+  font-size: .95rem; 
+  margin-bottom: 0; 
+  color: var(--text-muted); 
+  line-height: 1.7;
+}
+.cta-foot { 
+  text-align: center; 
+  padding: 5rem 0 2rem; 
+  border-top: 1px solid var(--line-rose); 
+  margin-top: 4rem; 
+}
+.cta-foot p { 
+  font-family: 'Playfair Display', serif; 
+  font-style: italic; 
+  font-size: 1.35rem; 
+  color: var(--text-dark); 
+  margin-bottom: 2.2rem; 
+}
+
+/* ── Révélations ── */
+.reveal { 
+  opacity: 0; 
+  transform: translateY(30px); 
+  transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1); 
+}
+.reveal.in { 
+  opacity: 1; 
+  transform: none; 
+}
+
+/* ── Responsive Adaptatif ── */
+@media (max-width: 1024px) {
+  .hero { grid-template-columns: 1fr; height: auto; }
+  .hero-left { padding: 9rem 3rem 4rem; }
+  .hero-right { height: 60vw; max-height: 450px; }
+  .services-top { grid-template-columns: 1fr; gap: 2.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .about-img-container { min-height: 450px; }
+  .about-text { padding: 2rem 0; }
+  .stages-wrap { grid-template-columns: 1fr; gap: 4rem; }
+  .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+  section { padding: 100px 3rem; }
+  nav { padding: 0 2rem; }
+  footer { padding: 6rem 3rem 3rem; }
+  .page-hero-ct { padding: 0 3rem 3rem; }
+  .page-body { padding: 60px 3rem; }
+}
+@media (max-width: 640px) {
+  .nav-links { 
+    display: none; 
+    flex-direction: column; 
+    position: absolute; 
+    top: 80px; 
+    left: 0; 
+    right: 0; 
+    background: var(--cream-bg); 
+    padding: 2rem; 
+    gap: 1.5rem; 
+    box-shadow: 0 15px 35px rgba(196, 120, 138, 0.08); 
+    border-bottom: 1px solid var(--line-rose);
+  }
+  .nav-links.open { 
+    display: flex; 
+  }
+  .burger { 
+    display: flex; 
+  }
+  .hero-left h1 { 
+    font-size: clamp(3rem, 12vw, 4.5rem); 
+  }
+  .svc { 
+    grid-template-columns: 50px 1fr 20px; 
+  }
+  .partner { 
+    grid-template-columns: 1fr; 
+  }
+  .ft-bottom { 
+    flex-direction: column; 
+  }
+  .svc-list {
+    grid-template-columns: 1fr;
+  }
+}

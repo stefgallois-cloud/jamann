@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Constellations familiales — L'Harmonie</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+
+  <nav id="nav" class="solid">
+    <a href="../index.html" class="nav-logo">
+      <img src="../images/logo-francoise.png" alt=""
+           onerror="this.style.display='none'; this.nextElementSibling.style.display='inline'" />
+      <span style="display:none">L'Harmonie</span>
+    </a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="../index.html#about">Votre thérapeute</a></li>
+      <li><a href="../index.html#services">Soins</a></li>
+      <li><a href="../index.html#stages">Stages</a></li>
+      <li><a href="../index.html#partenaires">Partenaires</a></li>
+      <li><a href="../index.html#contact" class="nav-rdv">Prendre RDV</a></li>
+    </ul>
+  </nav>
+
+  <div class="page-hero">
+    <div class="page-hero-bg" style="background-image: url('https://images.unsplash.com/photo-1458560871784-56d23406c091?w=1600&auto=format&fit=crop&q=85')"></div>
+    <div class="page-hero-ov"></div>
+    <div class="page-hero-ct">
+      <a href="../index.html#services" class="page-back">← Retour aux soins</a>
+      <h1>Constellations familiales</h1>
+      <p class="pq">« Tout ce qui ne remonte pas en conscience revient sous forme de destin » — Karl Gustav Jung</p>
+    </div>
+  </div>
+
+  <div class="page-body">
+    <p>Les constellations familiales sont une méthode de thérapie transgénérationnelle basée sur la mise à jour de l'inconscient familial. Avec les constellations familiales, il est possible d'appréhender l'inconscient collectif d'une famille et d'identifier les traumatismes, émotions négatives, troubles psychologiques liés à cette famille, afin de s'en libérer, et de pacifier les relations.</p>
+
+    <p>L'objectif des constellations familiales étant de permettre à l'individu de vivre son propre « scénario de vie » sans reproduire celui de sa famille.</p>
+
+    <p>Consteller, c'est-à-dire « poser sa famille dans l'espace », permet :</p>
+    <ul>
+      <li>De rétablir l'ordre dans le système familial</li>
+      <li>À chaque membre d'assumer ses responsabilités</li>
+      <li>Aux exclus de reprendre leur place</li>
+      <li>De considérer ses ancêtres</li>
+    </ul>
+
+    <p>Les constellations familiales peuvent se faire en groupe lors d'ateliers organisés (voir la section Stages et journées spéciales), mais aussi en individuel dans le cadre d'une consultation privée en cabinet.</p>
+
+    <div class="indic">
+      <h4>Indications principales</h4>
+      <p>Répétitions de schémas familiaux · Difficultés relationnelles · Transmission transgénérationnelle · Traumatismes non résolus · Loyautés invisibles · Sentiment d'être bloqué dans sa vie</p>
+    </div>
+
+    <div class="cta-foot">
+      <p>Prête à explorer votre héritage familial et à vous en libérer ?</p>
+      <a href="../index.html#contact" class="btn">Prendre rendez-vous</a>
+      &nbsp;
+      <a href="tel:0619208256" class="btn btn-ghost">06 19 20 82 56</a>
+    </div>
+  </div>
+
+  <footer>
+    <img class="ft-orchid" src="https://images.unsplash.com/photo-1508193638397-1c4234db14d8?w=500&auto=format&q=60" alt="" aria-hidden="true" />
+    <div class="ft-inner">
+      <div class="ft-logo">L'Harmonie</div>
+      <p class="ft-sub">Françoise Davenas — Thérapeute spécialiste du mieux-être</p>
+      <ul class="ft-nav">
+        <li><a href="../index.html">Accueil</a></li>
+        <li><a href="soins-energetiques.html">Soins énergétiques</a></li>
+        <li><a href="hypnose.html">Hypnose</a></li>
+        <li><a href="tcc.html">TCC &amp; Schémathérapie</a></li>
+        <li><a href="astrologie.html">Astrologie &amp; Tarologie</a></li>
+        <li><a href="../index.html#contact">Contact</a></li>
+      </ul>
+      <div class="ft-bottom">
+        <span><a href="tel:0619208256">06 19 20 82 56</a> · <a href="mailto:f.davenas@gmail.com">f.davenas@gmail.com</a></span>
+        <span>© 2025 L'Harmonie · Tous droits réservés</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const burger = document.getElementById('burger');
+    const links = document.getElementById('nav-links');
+    burger.addEventListener('click', () => links.classList.toggle('open'));
+    links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+  </script>
+</body>
+</html>
