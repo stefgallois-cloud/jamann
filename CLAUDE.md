@@ -71,6 +71,7 @@ Elles se construisent au fil du temps quand un flux de travail revient souvent.
 | `skill-creator` | Création dynamique de nouvelles compétences |
 | `webapp-testing` | Tests automatiques de sites et d'applications web |
 | `idees-ia-educatif` | Banque d'idées IA pour tous — traitement brain dump, YouTube, articles → slides, posts, carrousels pédagogiques |
+| `copywriting-personnel` | Storytelling perso FB/IG — textes chauds et naturels pour parler à ses amis (pas corporate) |
 
 **Backlog — à construire :**
 
