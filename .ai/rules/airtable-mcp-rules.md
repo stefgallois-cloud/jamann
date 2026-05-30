@@ -19,21 +19,25 @@ These rules apply whenever you interact with Airtable bases via the MCP tools.
 ## Mandatory Workflows
 
 ### Before Creating a Formula Field
+
 1. Call `list_fields` to verify all referenced field names exist and check their types
 2. Call `validate_formula` to check syntax and result type
 3. Only then call `create_formula_field` or `create_field`
 
 ### Before Updating a Formula Field
+
 1. Call `list_fields` to get the `fieldId`
 2. Call `validate_formula` with the new formula text
 3. Only then call `update_formula_field`
 
 ### Before Deleting a Field
+
 1. Call `list_fields` to confirm the field exists and get its exact name
 2. Call `delete_field` with both `fieldId` and `expectedName`
 3. If dependencies are returned, show them to the user and ask before using `force: true`
 
 ### Before Installing an Extension
+
 1. `create_extension` to get blockId
 2. `create_extension_dashboard` to get pageId
 3. `install_extension` with both IDs

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="description" content="DrawVid – Apprenez à dessiner grâce à des tutoriels vidéo avec canvas intégré et suivi de progression." />
+  <meta name="theme-color" content="#0a0618" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>DrawVid – Apprenez à Dessiner</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<!-- ═══ SPLASH ═══════════════════════════════════════════════════ -->
+<div id="splash-screen">
+  <div class="splash-content">
+    <div class="splash-orb"></div>
+    <div class="splash-logo-wrap">
+      <div class="splash-icon bounce-in">
+        <svg width="52" height="52" viewBox="0 0 24 24" fill="none">
+          <defs><linearGradient id="splG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs>
+          <polygon points="6 3 20 12 6 21" fill="url(#splG)"/>
+          <path d="M3 19Q10 10 18 6" stroke="url(#splG)" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
+      <h1 class="splash-title">DrawVid</h1>
+      <p class="splash-sub">Dessinez. Progressez. Créez.</p>
+    </div>
+    <div class="splash-bar-wrap">
+      <div class="splash-bar"><div class="splash-bar-fill" id="splash-fill"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ ONBOARDING ═══════════════════════════════════════════════ -->
+<div id="onboarding" class="onboarding" style="display:none">
+  <!-- Slides -->
+  <div class="ob-slides" id="ob-slides">
+    <!-- Slide 1: Bienvenue -->
+    <div class="ob-slide active" data-slide="0">
+      <div class="ob-illustration">
+        <div class="ob-anim-circle"></div>
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none"><defs><linearGradient id="obG" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#a855f7"/><stop offset="100%" stop-color="#f97316"/></linearGradient></defs><polygon points="6 3 20 12 6 21" fill="url(#obG)"/><path d="M3 19Q10 10 18 6" stroke="url(#obG)" stroke-width="2.5" stroke-linecap="round" fill="none"/></svg>
+      </div>
+      <h2>Bienvenue sur DrawVid !</h2>
+      <p>Apprenez à dessiner en regardant des vidéos tutoriels<br/>tout en pratiquant directement sur votre canvas.</p>
+    </div>
+    <!-- Slide 2: Comment ça marche -->
+    <div class="ob-slide" data-slide="1">
+      <div class="ob-illustration">
+        <div class="ob-anim-circle ob-anim-blue"></div>
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none" stroke="url(#obG)" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10l3 3 5-5" stroke="#22c55e" stroke-width="2.5"/></svg>
+      </div>
+      <h2>Regardez & Dessinez</h2>
+      <p>Choisissez un tutoriel, regardez la vidéo, et<br/>dessinez en même temps sur le canvas intégré.</p>
+    </div>
+    <!-- Slide 3: XP & Récompenses -->
+    <div class="ob-slide" data-slide="2">
+      <div class="ob-illustration">
+        <div class="ob-anim-circle ob-anim-gold"></div>
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26" fill="#fbbf24"/></svg>
+      </div>
+      <h2>Gagnez de l'XP ⭐</h2>
+      <p>Complétez des tutoriels pour gagner des points d'expérience.<br/>Montez de niveau : de <strong>Débutant 🌱</strong> à <strong>Légende 🌟</strong>.</p>
+      <div class="ob-levels-preview">
+        <span class="ob-lv">🌱</span><span class="ob-lv">✏️</span><span class="ob-lv">🔥</span><span class="ob-lv">⚡</span><span class="ob-lv">💎</span><span class="ob-lv">👑</span><span class="ob-lv">🌟</span>
+      </div>
+    </div>
+    <!-- Slide 4: Badges -->
+    <div class="ob-slide" data-slide="3">
+      <div class="ob-illustration">
+        <div class="ob-anim-circle ob-anim-purple"></div>
+        <svg width="80" height="80" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="9" r="6" fill="#a855f7" opacity="0.3"/><circle cx="12" cy="9" r="4" fill="#a855f7"/><path d="M8 14l-2 8 6-3 6 3-2-8" fill="#c084fc"/></svg>
+      </div>
+      <h2>Débloquez des Badges 🏅</h2>
+      <p>12 badges à collectionner :<br/>premier tutoriel, série de jours, 500 XP, et plus !</p>
+    </div>
+    <!-- Slide 5: Choisissez vos sujets -->
+    <div class="ob-slide" data-slide="4">
+      <div class="ob-illustration ob-small-illust">
+        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="#a855f7" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-5" stroke="#22c55e" stroke-width="2.5"/></svg>
+      </div>
+      <h2>Qu'aimeriez-vous dessiner ?</h2>
+      <p>Choisissez vos centres d'intérêt pour des recommandations personnalisées.</p>
+      <div class="ob-subjects" id="ob-subjects"></div>
+    </div>
+  </div>
+  <!-- Dots & Buttons -->
+  <div class="ob-footer">
+    <div class="ob-dots" id="ob-dots"></div>
+    <div class="ob-btns">
+      <button class="ob-skip" id="ob-skip" onclick="skipOnboarding()">Passer</button>
+      <button class="ob-next" id="ob-next" onclick="nextSlide()">Suivant</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ BOTTOM NAV ═══════════════════════════════════════════════ -->
+<nav class="bottom-nav" id="bottom-nav" style="display:none">
+  <button class="nav-btn active" id="nav-home" onclick="showPage('home')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Accueil</span>
+  </button>
+  <button class="nav-btn" id="nav-explore" onclick="showPage('explore')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Explorer</span>
+  </button>
+  <button class="nav-btn nav-draw-btn" id="nav-draw" onclick="showPage('draw')">
+    <div class="draw-fab">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    </div>
+    <span>Dessiner</span>
+  </button>
+  <button class="nav-btn" id="nav-progress" onclick="showPage('progress')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+    <span>Progrès</span>
+  </button>
+  <button class="nav-btn" id="nav-profile" onclick="showPage('profile')">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+    <span>Profil</span>
+  </button>
+</nav>
+
+<!-- ═══ APP ═══════════════════════════════════════════════════════ -->
+<main id="app" style="display:none">
+
+  <!-- ─── HOME ─── -->
+  <section class="page active" id="page-home">
+    <div class="page-scroll" id="home-scroll">
+
+      <!-- Hero -->
+      <div class="home-hero">
+        <div class="hero-bg-orb"></div>
+        <div class="hero-top">
+          <div>
+            <p class="hero-greeting" id="hero-greeting">Bonjour 👋</p>
+            <h1 class="hero-title">Prêt à dessiner ?</h1>
+          </div>
+          <button class="xp-pill" onclick="showPage('progress')">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="#fbbf24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            <span id="hero-xp">0 XP</span>
+          </button>
+        </div>
+        <!-- Level mini-card -->
+        <div class="hero-level" onclick="showPage('progress')">
+          <div class="hero-lv-badge" id="hero-lv-badge">1</div>
+          <div class="hero-lv-info">
+            <span class="hero-lv-name" id="hero-lv-name">🌱 Débutant</span>
+            <div class="hero-lv-bar"><div class="hero-lv-fill" id="hero-lv-fill"></div></div>
+          </div>
+          <svg class="hero-lv-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        </div>
+      </div>
+
+      <!-- Interests quick filter -->
+      <div class="interests-bar" id="interests-bar"></div>
+
+      <!-- Featured -->
+      <div class="sec-head"><h2>✨ Pour vous</h2></div>
+      <div class="featured-carousel" id="featured-carousel"></div>
+
+      <!-- Continue / Suggested -->
+      <div class="sec-head"><h2>📚 Tutoriels</h2><button class="see-all" onclick="showPage('explore')">Voir tout →</button></div>
+      <div class="tut-list" id="home-tut-list"></div>
+    </div>
+  </section>
+
+  <!-- ─── EXPLORE ─── -->
+  <section class="page" id="page-explore">
+    <div class="page-scroll">
+      <div class="page-top">
+        <h1>Explorer</h1>
+        <p class="page-sub">Trouvez votre prochaine leçon</p>
+      </div>
+      <!-- Search -->
+      <div class="search-bar" id="search-bar">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="search-input" placeholder="Rechercher..." oninput="onSearch(this.value)"/>
+      </div>
+      <!-- Subject chips -->
+      <div class="chip-row" id="explore-subjects"></div>
+      <!-- Level filter -->
+      <div class="chip-row" id="explore-levels">
+        <button class="chip active" data-lv="all" onclick="setLevelFilter('all',this)">Tous</button>
+        <button class="chip" data-lv="debutant" onclick="setLevelFilter('debutant',this)">🌱 Débutant</button>
+        <button class="chip" data-lv="intermediaire" onclick="setLevelFilter('intermediaire',this)">🔥 Intermédiaire</button>
+        <button class="chip" data-lv="expert" onclick="setLevelFilter('expert',this)">⚡ Expert</button>
+      </div>
+      <!-- Grid -->
+      <div class="explore-grid" id="explore-grid"></div>
+    </div>
+  </section>
+
+  <!-- ─── DRAW ─── -->
+  <section class="page" id="page-draw">
+    <div class="draw-layout">
+      <!-- Video -->
+      <div class="vid-panel" id="vid-panel">
+        <div class="vid-head">
+          <button class="ico-btn" onclick="toggleVid()" title="Réduire/Agrandir">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline id="vid-toggle-icon" points="18 15 12 9 6 15"/></svg>
+          </button>
+          <span class="vid-title" id="vid-title">Choisissez un tutoriel</span>
+          <button class="ico-btn" onclick="showPage('explore')" title="Changer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </button>
+        </div>
+        <div class="vid-embed" id="vid-embed">
+          <div class="vid-placeholder" id="vid-placeholder">
+            <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+            <p>Allez dans <strong>Explorer</strong> pour choisir un tutoriel</p>
+          </div>
+          <iframe id="yt-frame" style="display:none" width="100%" height="100%" frameborder="0" allow="accelerometer;autoplay;clipboard-write;encrypted-media;gyroscope;picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <div class="speed-bar" id="speed-bar">
+          <span class="speed-label">Vitesse</span>
+          <button class="spd" onclick="setSpd(0.25)">0.25×</button>
+          <button class="spd" onclick="setSpd(0.5)">0.5×</button>
+          <button class="spd active" onclick="setSpd(1)">1×</button>
+          <button class="spd" onclick="setSpd(1.5)">1.5×</button>
+          <button class="spd" onclick="setSpd(2)">2×</button>
+        </div>
+      </div>
+      <!-- Canvas -->
+      <div class="canvas-area" id="canvas-area">
+        <div class="cv-toolbar">
+          <div class="cv-tools">
+            <button class="cv-btn active" id="tool-pencil" onclick="pickTool('pencil')" title="Crayon (P)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 013 3L7 19l-4 1 1-4z"/></svg>
+            </button>
+            <button class="cv-btn" id="tool-brush" onclick="pickTool('brush')" title="Pinceau (B)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 3a3 3 0 010 6c-2.58 0-6 2.5-9 6 0 0 0-2 2-4-1 0-2 0-4 2 1-6 8-10 11-10z"/></svg>
+            </button>
+            <button class="cv-btn" id="tool-eraser" onclick="pickTool('eraser')" title="Gomme (E)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 20H7L3 16l10-10 7 7-1 1"/></svg>
+            </button>
+          </div>
+          <div class="cv-tools">
+            <input type="color" id="cv-color" class="cv-color" value="#a855f7" oninput="pickColor(this.value)"/>
+            <input type="range" id="cv-size" class="cv-range" min="1" max="40" value="4" oninput="pickSize(this.value)"/>
+          </div>
+          <div class="cv-tools">
+            <button class="cv-btn" onclick="undo()" title="Annuler (Ctrl+Z)">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 14 4 9 9 4"/><path d="M20 20v-7a4 4 0 00-4-4H4"/></svg>
+            </button>
+            <button class="cv-btn" onclick="clearCv()" title="Effacer">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a1 1 0 011-1h4a1 1 0 011 1v2"/></svg>
+            </button>
+            <button class="cv-btn" onclick="saveCv()" title="Sauvegarder">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            </button>
+          </div>
+        </div>
+        <div class="cv-palette" id="cv-palette"></div>
+        <div class="cv-canvas-wrap" id="cv-canvas-wrap">
+          <canvas id="cv"></canvas>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ─── PROGRESS ─── -->
+  <section class="page" id="page-progress">
+    <div class="page-scroll">
+      <div class="page-top">
+        <h1>Ma Progression</h1>
+        <p class="page-sub">Votre parcours artistique</p>
+      </div>
+
+      <!-- Stats -->
+      <div class="stats-row">
+        <div class="stat gold"><div class="stat-val" id="s-xp">0</div><div class="stat-lbl">XP</div></div>
+        <div class="stat purple"><div class="stat-val" id="s-tuts">0</div><div class="stat-lbl">Tutos</div></div>
+        <div class="stat orange"><div class="stat-val" id="s-draws">0</div><div class="stat-lbl">Dessins</div></div>
+        <div class="stat blue"><div class="stat-val" id="s-streak">0</div><div class="stat-lbl">Série</div></div>
+      </div>
+
+      <!-- Big level card -->
+      <div class="prog-card">
+        <div class="prog-top">
+          <div class="prog-badge" id="prog-badge">1</div>
+          <div class="prog-info">
+            <h3 id="prog-name">🌱 Débutant</h3>
+            <p id="prog-sub">Continuez !</p>
+          </div>
+        </div>
+        <div class="prog-bar"><div class="prog-fill" id="prog-fill"></div></div>
+        <div class="prog-labels"><span id="prog-cur">0 XP</span><span id="prog-next">100 XP</span></div>
+      </div>
+
+      <!-- Rewards Explainer -->
+      <div class="rewards-explainer" id="rewards-explainer">
+        <h3>🎯 Comment ça marche ?</h3>
+        <div class="re-item"><span class="re-icon">📹</span><div><strong>Complétez un tutoriel</strong><br/>Regardez et marquez-le comme terminé</div></div>
+        <div class="re-item"><span class="re-icon">⭐</span><div><strong>Gagnez des XP</strong><br/>Chaque tutoriel rapporte 20 à 220 XP</div></div>
+        <div class="re-item"><span class="re-icon">📈</span><div><strong>Montez de niveau</strong><br/>7 niveaux de Débutant à Légende</div></div>
+        <div class="re-item"><span class="re-icon">🏅</span><div><strong>Débloquez des badges</strong><br/>12 badges à collectionner</div></div>
+      </div>
+
+      <!-- Levels roadmap -->
+      <div class="sec-head"><h2>🗺️ Niveaux</h2></div>
+      <div class="levels-road" id="levels-road"></div>
+
+      <!-- Badges -->
+      <div class="sec-head"><h2>🏅 Badges</h2></div>
+      <div class="badges-grid" id="badges-grid"></div>
+
+      <!-- Completed -->
+      <div class="sec-head"><h2>✅ Complétés</h2></div>
+      <div id="completed-list" class="completed-list"></div>
+    </div>
+  </section>
+
+  <!-- ─── PROFILE ─── -->
+  <section class="page" id="page-profile">
+    <div class="page-scroll">
+      <div class="profile-hero">
+        <div class="prof-avatar">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          <div class="prof-lv" id="prof-lv">1</div>
+        </div>
+        <h2 id="prof-name">Artiste</h2>
+        <p class="prof-title" id="prof-title">🌱 Débutant</p>
+      </div>
+      <div class="settings">
+        <div class="set-card">
+          <h3>Mon Profil</h3>
+          <label>Pseudo</label>
+          <input type="text" id="inp-name" placeholder="Votre nom" value="Artiste" oninput="setUsername(this.value)"/>
+        </div>
+        <div class="set-card">
+          <h3>Centres d'intérêt</h3>
+          <p class="set-hint">Sélectionnez ce que vous voulez apprendre à dessiner :</p>
+          <div class="set-subjects" id="set-subjects"></div>
+        </div>
+        <div class="set-card">
+          <h3>Préférences</h3>
+          <label>Fond du canvas</label>
+          <select id="sel-bg" onchange="setCvBg(this.value)">
+            <option value="#1a1a2e">Sombre</option>
+            <option value="#ffffff">Blanc</option>
+            <option value="#f5f0e8">Papier</option>
+            <option value="#0a0a0a">Noir pur</option>
+          </select>
+        </div>
+        <div class="set-card">
+          <h3>Données</h3>
+          <button class="danger-btn" onclick="resetAll()">🗑️ Réinitialiser tout</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══ TUTORIAL MODAL ═══════════════════════════════════════════ -->
+<div class="modal-bg" id="modal-bg" onclick="closeModal()">
+  <div class="modal" onclick="event.stopPropagation()">
+    <button class="modal-x" onclick="closeModal()">✕</button>
+    <div class="modal-thumb" id="modal-thumb-wrap">
+      <div class="modal-thumb-img" id="modal-thumb-img"></div>
+      <div class="modal-lv" id="modal-lv"></div>
+    </div>
+    <div class="modal-body">
+      <h3 id="modal-title"></h3>
+      <p class="modal-desc" id="modal-desc"></p>
+      <div class="modal-chips">
+        <span class="mchip" id="modal-dur"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> <span id="modal-dur-t"></span></span>
+        <span class="mchip gold" id="modal-xp-chip">⭐ <span id="modal-xp-t"></span></span>
+        <span class="mchip green" id="modal-done-chip" style="display:none">✓ Complété</span>
+      </div>
+      <div class="modal-btns">
+        <button class="btn-gradient" id="modal-watch" onclick="watchTut()">▶ Regarder & Dessiner</button>
+        <button class="btn-outline" id="modal-complete" onclick="completeTut()">✓ Marquer complété</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═════════════════════════════════════════════════════ -->
+<div class="toast" id="toast"></div>
+
+<!-- ═══ XP POPUP ═════════════════════════════════════════════════ -->
+<div class="xp-pop" id="xp-pop"></div>
+
+<!-- ═══ CONFETTI CANVAS ══════════════════════════════════════════ -->
+<canvas id="confetti-cv"></canvas>
+
+<script src="app.js"></script>
+</body>
+</html>

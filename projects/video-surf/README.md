@@ -17,5 +17,10 @@ La vidéo corrigée est sauvegardée dans le même dossier avec le suffixe `_sta
 
 ## Paramètres clés
 - `shakiness=10` — sensibilité max pour détecter les tremblements
+- `accuracy=15` — précision d'analyse maximale
 - `smoothing=30` — lissage fort, adapté au zoom longue distance
 - `unsharp` — amélioration de la netteté après stabilisation
+
+## Note
+Stabilisation en 2 passes via `vidstab` (plus efficace que `deshake`).
+Le script se place automatiquement dans le bon dossier pour éviter les problèmes de chemin.

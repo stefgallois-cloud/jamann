@@ -34,10 +34,28 @@ Les compétences réutilisables sont dans `.claude/skills/`.
 Format : `.claude/skills/nom-competence/SKILL.md`
 Elles se construisent au fil du temps quand un flux de travail revient souvent.
 
-**Compétences disponibles :** gestion-dossier-client · creation-contenu · automatisation · livrables
+**Compétences disponibles :**
+
+| Skill | Domaine |
+|---|---|
+| `gestion-dossier-client` | Suivi client, dossiers |
+| `creation-contenu` | Rédaction, idéation |
+| `automatisation` | Make / n8n — debug et conception |
+| `automatisation-builder` | Concevoir et vendre des automatisations |
+| `livrables` | Notes de cadrage, cahiers de recette, BPMN (contient `notion-expert` pour l'agent livrables) |
+| `airtable-expert` | Bases, formules, relations, interfaces |
+| `notion-expert` | Workspace, formules, automatisations (version générale) |
+| `softr-expert` | Apps web no-code connectées à Airtable |
+| `make-bundles` | Configurer les modules Make étape par étape |
+| `make-airtable-router` | Routeur Make + champs singleSelect Airtable |
+| `contenu-marketing` | Posts LinkedIn, emails de vente, pages de vente |
+| `reseaux-sociaux-vente` | Instagram, Facebook, TikTok — convertir et vendre |
+| `produit-numerique` | Créer et vendre guides PDF, apps, programmes |
+| `calendrier-reseaux-sociaux` | Calendrier éditorial automatisé |
 
 **Backlog — à construire :**
-- Préparation d'offre commerciale
+
+- Préparation d'offre commerciale (proposition commerciale formelle)
 
 ## Journal de décisions
 Voir `decisions/log.md` — ajout uniquement.

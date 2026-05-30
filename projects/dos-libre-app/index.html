@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="Dos Libre 60j — Programme de rééducation du dos en 3 phases par Les Vertébrées">
+  <meta name="theme-color" content="#152d1e">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Dos Libre 60j · Les Vertébrées</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    /* Fallback offline (polices système) */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+    }
+    /* Safe area pour iPhone avec notch/Dynamic Island */
+    .bottom-nav { padding-bottom: env(safe-area-inset-bottom); height: calc(68px + env(safe-area-inset-bottom)); }
+    :root { --nav-height: calc(68px + env(safe-area-inset-bottom)); }
+  </style>
+</head>
+<body>
+  <div id="root">
+    <!-- L'application est injectée ici par app.js -->
+    <div style="min-height:100dvh;display:flex;align-items:center;justify-content:center;background:#152d1e;color:#a8c5a0;font-family:'Playfair Display',serif;font-size:18px;font-style:italic">
+      Chargement…
+    </div>
+  </div>
+
+  <!-- Données programme -->
+  <script src="js/data.js"></script>
+  <!-- Application -->
+  <script src="js/app.js"></script>
+</body>
+</html>
