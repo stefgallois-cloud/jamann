@@ -51,6 +51,9 @@ projects/manoire/charte_graphique/
 !projects/printify-100k/landing-page/assets/*.jpeg
 !projects/printify-100k/landing-page/assets/*.webp
 
+# Brouillons temporaires (jamais dans l'historique)
+scratch/
+
 # Skills d'IA génériques ou tiers (installés automatiquement dans .claude/)
 .claude/skills/algorithmic-art/
 .claude/skills/brand-guidelines/
