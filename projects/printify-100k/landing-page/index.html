@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bonjour Beasts — Dog apparel & art that actually gets your dog's personality. T-shirts, sweatshirts & mugs for Golden Retriever moms, Frenchie obsessives, and memorial pet tributes. Shop on Etsy.">
+  <title>Bonjour Beasts — Dog Art & Apparel with Personality</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,700;0,9..144,900;1,9..144,400;1,9..144,700&family=Nunito:wght@400;500;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════════
+       HEADER / NAV
+  ════════════════════════════════════════════════════ -->
+  <header class="site-header">
+    <nav class="container nav-inner">
+
+      <a href="#" class="logo" aria-label="Bonjour Beasts — Home">
+        Bonjour <span>Beasts</span>
+      </a>
+
+      <ul class="nav-links" role="list">
+        <li><a href="#story">Our Story</a></li>
+        <li><a href="#collections">Collections</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#why-us">Why Us</a></li>
+      </ul>
+
+      <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+      <a href="#" class="btn btn-primary nav-cta" aria-label="Shop on Etsy">
+        Shop on Etsy
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <button class="hamburger" aria-label="Toggle navigation" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </header>
+
+  <!-- Mobile nav -->
+  <nav class="mobile-nav" aria-label="Mobile navigation">
+    <a href="#story" class="mobile-nav-link">Our Story</a>
+    <a href="#collections" class="mobile-nav-link">Collections</a>
+    <a href="#products" class="mobile-nav-link">Products</a>
+    <a href="#why-us" class="mobile-nav-link">Why Us</a>
+    <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+    <a href="#" class="btn btn-primary" style="align-self: flex-start; margin-top: 1rem;">Shop on Etsy</a>
+  </nav>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════ -->
+  <section class="hero" aria-label="Hero">
+
+    <!-- Ambient blobs -->
+    <div class="hero-blob hero-blob-1" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-2" aria-hidden="true"></div>
+    <div class="hero-blob hero-blob-3" aria-hidden="true"></div>
+
+    <div class="container hero-content">
+
+      <div class="launch-badge" role="note">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+          <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.5"/>
+          <path d="M6 3.5v3l1.5 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+        </svg>
+        Launching July 2026 — Mark Your Calendar
+      </div>
+
+      <h1 class="reveal">
+        Designs that actually<br>get your <em>dog</em>.
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-1">
+        Apparel & art for people who are fully, unashamedly obsessed with their dog.
+        T-shirts, sweatshirts, mugs — each one made for a specific breed and a specific personality.
+        Because "dog mom" is way too generic for what you have.
+      </p>
+
+      <div class="hero-ctas reveal reveal-delay-2">
+        <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+        <a href="#" class="btn btn-primary">
+          Explore the Shop
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+            <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <a href="#collections" class="btn btn-outline">See Collections</a>
+      </div>
+
+    </div>
+
+    <!-- Scrolling strip -->
+    <div class="hero-strip" aria-hidden="true">
+      <div class="hero-strip-inner">
+        <span>Golden Retriever Mom</span><span class="dot">·</span>
+        <span>Chaotic Frenchie Dad</span><span class="dot">·</span>
+        <span>Anxious Golden Dad</span><span class="dot">·</span>
+        <span>In Memory of the Best Boy</span><span class="dot">·</span>
+        <span>2 Goldens 0 Personal Space</span><span class="dot">·</span>
+        <span>Coquette Frenchie Mom</span><span class="dot">·</span>
+        <span>Golden Retriever Mom</span><span class="dot">·</span>
+        <span>Chaotic Frenchie Dad</span><span class="dot">·</span>
+        <span>Anxious Golden Dad</span><span class="dot">·</span>
+        <span>In Memory of the Best Boy</span><span class="dot">·</span>
+        <span>2 Goldens 0 Personal Space</span><span class="dot">·</span>
+        <span>Coquette Frenchie Mom</span><span class="dot">·</span>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       BRAND STORY
+  ════════════════════════════════════════════════════ -->
+  <section class="brand-story section" id="story" aria-label="Our story">
+    <div class="container">
+      <div class="brand-story-inner">
+
+        <div class="story-visual reveal" data-photo="story" data-alt="A dog relaxing in warm natural light">
+          <div class="story-visual-inner">
+            <div class="story-visual-paw" role="img" aria-label="Dog paw">🐾</div>
+            <p class="story-visual-note">Dépose <strong>assets/story.jpg</strong><br>Photo lifestyle · ratio 4:3 (≈800×600)</p>
+          </div>
+        </div>
+
+        <div class="story-text reveal reveal-delay-1">
+          <p class="eyebrow">Why Bonjour Beasts?</p>
+          <h2>Every dog has a personality.<br>Your wardrobe should too.</h2>
+          <p>
+            There's a difference between owning a golden retriever and being an <em>Anxious Golden Mom</em>
+            who sends her dog a photo from the grocery store "so he doesn't worry."
+            We know which one you are.
+          </p>
+          <p>
+            Bonjour Beasts was built for people who don't just love their dogs —
+            they relate to them, anthropomorphize them, and honestly prefer their company.
+            Every design celebrates that specific, wonderful, slightly unhinged bond.
+          </p>
+          <p>
+            Powered by AI design tools, printed on demand, shipped with care.
+            Personalization available (we'll add your dog's name — or number of dogs).
+          </p>
+          <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+          <a href="#" class="btn btn-outline mt-sm">
+            See all designs
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       COLLECTIONS — 3 NICHES
+  ════════════════════════════════════════════════════ -->
+  <section class="niches section" id="collections" aria-label="Our collections">
+    <div class="container">
+
+      <div class="niches-header reveal">
+        <p class="eyebrow">Three Worlds, One Brand</p>
+        <h2>Find your people.<br>And your dog's aesthetic.</h2>
+      </div>
+
+      <div class="niches-grid">
+
+        <!-- Golden Retriever -->
+        <article class="niche-card niche-golden reveal reveal-delay-1">
+          <div class="niche-card-visual" data-photo="golden" data-alt="A happy golden retriever">
+            <div class="niche-card-emoji" role="img" aria-label="Golden retriever">🐕</div>
+            <span class="niche-img-note">assets/golden.jpg</span>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-tag niche-accent">Golden × Personality</span>
+            <h3>Golden Chaos<br>& Tender Hearts</h3>
+            <p>
+              For the Anxious Golden Moms, the Chaotic Golden Dads, and the households where the golden
+              is genuinely running the show. Warm, funny, a little unhinged — just like you.
+            </p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy (filtre Golden) -->
+            <a href="#" class="btn btn-primary">
+              Shop Golden Designs
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- French Bulldog -->
+        <article class="niche-card niche-frenchie reveal reveal-delay-2">
+          <div class="niche-card-visual" data-photo="frenchie" data-alt="A French bulldog with a soft coquette vibe">
+            <div class="niche-card-emoji" role="img" aria-label="French bulldog">🐾</div>
+            <span class="niche-img-note">assets/frenchie.jpg</span>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-tag niche-accent">Frenchie × Coquette</span>
+            <h3>Soft, Chic &<br>Utterly Obsessed</h3>
+            <p>
+              Bows, blush tones, and a Frenchie who knows she's the main character.
+              The coquette aesthetic meets unconditional dog love.
+            </p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy (filtre Frenchie) -->
+            <a href="#" class="btn btn-primary" style="background: var(--rose-dk);">
+              Shop Frenchie Designs
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+        <!-- Memorial -->
+        <article class="niche-card niche-memorial reveal reveal-delay-3">
+          <div class="niche-card-visual" data-photo="memorial" data-alt="A dog portrait in soft, gentle light">
+            <div class="niche-card-emoji" role="img" aria-label="Heart">🤍</div>
+            <span class="niche-img-note">assets/memorial.jpg</span>
+          </div>
+          <div class="niche-card-body">
+            <span class="niche-tag niche-accent">Memorial · All Breeds</span>
+            <h3>In Memory of the<br>Best Dog Ever</h3>
+            <p>
+              A premium line of embroidered sweatshirts and art prints to honor pets who are
+              gone but never forgotten. Quiet. Elegant. Nothing generic.
+            </p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy (filtre Memorial) -->
+            <a href="#" class="btn btn-primary" style="background: var(--charcoal-lt);">
+              Explore Memorial Line
+              <svg width="12" height="12" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       PRODUCTS
+  ════════════════════════════════════════════════════ -->
+  <section class="products section" id="products" aria-label="Our products">
+    <div class="container">
+
+      <div class="products-header reveal">
+        <p class="eyebrow">What We Make</p>
+        <h2>From everyday tees to embroidered keepsakes.</h2>
+        <p>Every product printed fresh to order. No excess, no waste.</p>
+      </div>
+
+      <div class="products-grid">
+
+        <!-- T-shirt -->
+        <article class="product-card product-tee reveal reveal-delay-1">
+          <div class="product-visual">
+            <div class="product-icon" role="img" aria-label="T-shirt">👕</div>
+            <span class="product-badge">Best Seller</span>
+            <span class="product-img-note">Mockup: Bella+Canvas tee</span>
+          </div>
+          <div class="product-info">
+            <h4>Graphic Tees</h4>
+            <p>Soft, comfy, and dangerously relatable. Available in unisex cuts.</p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+            <a href="#" class="btn btn-ghost">Shop Tees</a>
+          </div>
+        </article>
+
+        <!-- Sweatshirt -->
+        <article class="product-card product-sweat reveal reveal-delay-2">
+          <div class="product-visual">
+            <div class="product-icon" role="img" aria-label="Sweatshirt">🧥</div>
+            <span class="product-badge">Fan Favourite</span>
+            <span class="product-img-note">Mockup: Classic crewneck</span>
+          </div>
+          <div class="product-info">
+            <h4>Sweatshirts</h4>
+            <p>The kind you wear on dog walks, vet trips, and zoom calls with the camera off.</p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+            <a href="#" class="btn btn-ghost">Shop Sweatshirts</a>
+          </div>
+        </article>
+
+        <!-- Mug -->
+        <article class="product-card product-mug reveal reveal-delay-3">
+          <div class="product-visual">
+            <div class="product-icon" role="img" aria-label="Mug">☕</div>
+            <span class="product-badge">Gift Ready</span>
+            <span class="product-img-note">Mockup: 11oz ceramic mug</span>
+          </div>
+          <div class="product-info">
+            <h4>Mugs</h4>
+            <p>Start every morning with a reminder of your top priority (it's the dog).</p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+            <a href="#" class="btn btn-ghost">Shop Mugs</a>
+          </div>
+        </article>
+
+        <!-- Memorial premium -->
+        <article class="product-card product-memorial reveal reveal-delay-4">
+          <div class="product-visual">
+            <div class="product-icon" role="img" aria-label="Star">✦</div>
+            <span class="product-badge">Premium</span>
+            <span class="product-img-note">Mockup: embroidered sweat</span>
+          </div>
+          <div class="product-info">
+            <h4>Memorial Embroidered</h4>
+            <p>A keepsake for the ones who left paw prints on everything. Embroidered, heirloom quality.</p>
+            <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+            <a href="#" class="btn btn-ghost">View Memorial Line</a>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       WHY US
+  ════════════════════════════════════════════════════ -->
+  <section class="why-us section" id="why-us" aria-label="Why Bonjour Beasts">
+    <div class="container">
+      <div class="why-us-inner">
+
+        <div class="why-text">
+          <p class="eyebrow reveal">Why Bonjour Beasts?</p>
+          <h2 class="reveal reveal-delay-1">Not your average<br>pet merch shop.</h2>
+          <p class="reveal reveal-delay-2">
+            We obsess over the details so the final product feels like it was made for your dog
+            specifically — not just "dogs" as a category.
+          </p>
+
+          <div class="values-list">
+
+            <div class="value-item reveal reveal-delay-1">
+              <span class="value-icon" role="img" aria-label="Paintbrush">🎨</span>
+              <div class="value-text">
+                <strong>Personality-first design</strong>
+                <span>Each design targets a mood, a stereotype, a feeling — not just a breed. If it doesn't make you laugh or tear up a little, we start over.</span>
+              </div>
+            </div>
+
+            <div class="value-item reveal reveal-delay-2">
+              <span class="value-icon" role="img" aria-label="Pencil">✏️</span>
+              <div class="value-text">
+                <strong>Personalization available</strong>
+                <span>Add your dog's name or your exact number of dogs. "Mom of 3 Goldens" hits differently than "Golden Mom."</span>
+              </div>
+            </div>
+
+            <div class="value-item reveal reveal-delay-3">
+              <span class="value-icon" role="img" aria-label="Package">📦</span>
+              <div class="value-text">
+                <strong>Printed on demand</strong>
+                <span>No giant warehouses, no overstock. Every piece is printed fresh when you order it — better for the planet, better quality for you.</span>
+              </div>
+            </div>
+
+            <div class="value-item reveal reveal-delay-4">
+              <span class="value-icon" role="img" aria-label="Star">⭐</span>
+              <div class="value-text">
+                <strong>Etsy-backed quality guarantee</strong>
+                <span>Purchased through Etsy's trusted platform. Buyer protection, real reviews, and a human on the other end if anything goes wrong.</span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="why-visual reveal reveal-delay-2">
+          <div class="why-visual-card">
+            <span class="wvc-num">100%</span>
+            <span class="wvc-label">Design-to-breed<br>matching</span>
+          </div>
+          <div class="why-visual-card">
+            <span class="wvc-num">3</span>
+            <span class="wvc-label">Collections<br>at launch</span>
+          </div>
+          <div class="why-visual-card">
+            <span class="wvc-num">🐾</span>
+            <span class="wvc-label">Personalization<br>on request</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       CTA FINAL
+  ════════════════════════════════════════════════════ -->
+  <section class="cta-final" aria-label="Call to action">
+    <div class="cta-final-inner container">
+
+      <p class="eyebrow reveal">July 2026 Launch</p>
+      <h2 class="reveal reveal-delay-1">
+        Join the pack.<br>Your dog deserves<br>better merch.
+      </h2>
+      <p class="reveal reveal-delay-2">
+        Bonjour Beasts opens on Etsy in July 2026. Bookmark the shop,
+        tell your fellow dog obsessives, and check back soon.
+      </p>
+
+      <!-- TODO: remplacer # par l'URL de la boutique Etsy -->
+      <a href="#" class="btn btn-ghost reveal reveal-delay-3" style="font-size: 1rem; padding: 1rem 2rem;">
+        Visit the Etsy Shop
+        <svg width="16" height="16" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+          <path d="M2.5 7h9M7.5 3l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </a>
+
+      <div class="cta-final-badges reveal reveal-delay-4">
+        <span class="cta-badge">🐕 Golden Retriever Collection</span>
+        <span class="cta-badge">🐾 French Bulldog Coquette</span>
+        <span class="cta-badge">🤍 Memorial Premium Line</span>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- ═══════════════════════════════════════════════════
+       FOOTER
+  ════════════════════════════════════════════════════ -->
+  <footer class="site-footer" aria-label="Site footer">
+    <div class="container">
+      <div class="footer-inner">
+
+        <div class="footer-brand">
+          <a href="#" class="logo" aria-label="Bonjour Beasts">
+            Bonjour <span>Beasts</span>
+          </a>
+          <p>
+            Dog apparel & art for people who are genuinely, deeply obsessed with their dogs.
+            Opening on Etsy, July 2026.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Collections</h5>
+          <ul class="footer-links" role="list">
+            <!-- TODO: remplacer # par les URLs Etsy filtrées par collection -->
+            <li><a href="#">Golden × Personality</a></li>
+            <li><a href="#">Frenchie Coquette</a></li>
+            <li><a href="#">Memorial Line</a></li>
+            <li><a href="#">All Products</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Follow the Pack</h5>
+          <div class="social-links">
+            <!-- TODO: remplacer # par les URLs réseaux sociaux réels -->
+            <a href="#" class="social-link" aria-label="Instagram">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <rect x="2" y="2" width="20" height="20" rx="5" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="12" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+              </svg>
+              Instagram
+            </a>
+            <a href="#" class="social-link" aria-label="TikTok">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+              TikTok
+            </a>
+            <a href="#" class="social-link" aria-label="Pinterest">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M12 2C6.48 2 2 6.48 2 12c0 4.24 2.65 7.87 6.39 9.29-.09-.78-.17-1.98.03-2.83l1.22-5.17s-.31-.62-.31-1.54c0-1.45.84-2.53 1.88-2.53.89 0 1.32.67 1.32 1.47 0 .9-.57 2.24-.87 3.49-.25 1.04.52 1.89 1.54 1.89 1.85 0 3.1-2.37 3.1-5.17 0-2.14-1.44-3.64-3.5-3.64-2.38 0-3.78 1.79-3.78 3.64 0 .72.28 1.49.62 1.91a.25.25 0 0 1 .06.24l-.23.95c-.04.15-.13.18-.3.11-1.1-.51-1.79-2.13-1.79-3.43 0-2.78 2.02-5.33 5.82-5.33 3.06 0 5.43 2.17 5.43 5.08 0 3.03-1.91 5.46-4.55 5.46-.89 0-1.72-.46-2.01-1l-.55 2.04c-.2.76-.73 1.71-1.09 2.28.82.25 1.69.39 2.59.39 5.52 0 10-4.48 10-10S17.52 2 12 2z" stroke="currentColor" stroke-width="0.5" fill="currentColor"/>
+              </svg>
+              Pinterest
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; 2026 Bonjour Beasts. All rights reserved. Designs powered by AI, printed with care.</p>
+        <p>
+          Shop on <a href="#" aria-label="Bonjour Beasts Etsy shop">Etsy <!-- TODO: ajouter URL --></a>
+          · Made with love for dogs everywhere
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
