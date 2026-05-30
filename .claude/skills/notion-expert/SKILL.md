@@ -210,6 +210,68 @@ Action : Modifier "Statut" → "En retard"
 
 ---
 
+## Création de pages riches
+
+### Règles visuelles de base
+- **Icône emoji** : toujours en mettre une — c'est la première chose qu'on voit
+- **Couverture** : obligatoire sur les pages importantes ou partagées avec un client
+- **Table of contents** : à placer en haut pour toute page > 4 sections
+- **Divider** : séparer les grandes zones logiques — ne pas tout fondre
+
+### Blocs à privilégier (avec `/`)
+
+| Bloc | Cas d'usage |
+|------|-------------|
+| `/callout` | Statut, alerte, info critique — choisir une couleur selon l'urgence |
+| `/toggle` | Sections détaillées optionnelles — garder la page aérée |
+| `/synced block` | Contenu réutilisé dans plusieurs pages (ex: infos contact) |
+| `/table of contents` | Navigation en haut de page |
+| `/database — inline` | Liste de livrables, tâches ou étapes intégrée dans la page |
+| `/divider` | Séparer visuellement les zones |
+| `/mention` | Lier une autre page Notion (navigation interne) |
+| `/quote` | Mettre en valeur une citation ou un message clé |
+
+### Navigation interne
+- En haut de chaque page : lien `↗ [Page parent]` via `/mention`
+- Pour les wikis : ajouter un index des sous-pages avec `/subpage`
+- Pour les projets : lien vers le dashboard principal
+
+### Structures types
+
+**Page projet**
+```
+[Emoji] Nom du projet
+📌 Callout statut (En cours / En pause / Terminé)
+---
+## Contexte · Objectifs · Livrables · Liens · Notes
+```
+
+**Fiche client**
+```
+[Emoji] Nom du client
+📋 Callout infos clés (secteur, budget, deadline)
+---
+## Brief · Coordonnées · Historique · Documents
+```
+
+**Meeting notes**
+```
+📝 Réunion [Date]
+👥 Participants
+---
+## Ordre du jour · Décisions · Actions [todo list inline] · Suite
+```
+
+**Dashboard**
+```
+🏠 Dashboard [Nom]
+[Callout statut global]
+---
+## Vue d'ensemble [DB inline] · Priorités [todo] · Ressources
+```
+
+---
+
 ## Pour l'examen — points clés à maîtriser
 1. Créer une base de données avec les bons types de propriétés
 2. Créer une relation entre deux bases + un Rollup
