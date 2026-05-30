@@ -4,43 +4,156 @@
 
 // ── SUBJECTS (what user wants to draw) ──────────────────────────
 const SUBJECTS = [
-  { id: 'visage',       name: 'Visages',       icon: '👤', emoji: '😊' },
-  { id: 'portrait',     name: 'Portraits',     icon: '🎭', emoji: '🖼️' },
-  { id: 'anatomie',     name: 'Anatomie',      icon: '💪', emoji: '🦴' },
-  { id: 'animaux',      name: 'Animaux',       icon: '🐾', emoji: '🦁' },
+  { id: 'animaux',      name: 'Animaux',       icon: '🐾', emoji: '🦄' },
+  { id: 'personnages',  name: 'Personnages',   icon: '🎭', emoji: '👧' },
+  { id: 'kawaii',       name: 'Kawaii',        icon: '✨', emoji: '💖' },
+  { id: 'nourriture',   name: 'Gourmandises',  icon: '🍦', emoji: '🍩' },
   { id: 'nature',       name: 'Paysages',      icon: '🌿', emoji: '🏞️' },
-  { id: 'architecture', name: 'Architecture',  icon: '🏛️', emoji: '🏗️' },
-  { id: 'manga',        name: 'Manga',         icon: '✨', emoji: '⚡' },
-  { id: 'formes',       name: 'Formes',        icon: '🔷', emoji: '📐' },
-  { id: 'technique',    name: 'Techniques',    icon: '🎯', emoji: '✏️' },
-  { id: 'numerique',    name: 'Art Digital',   icon: '💻', emoji: '🖥️' },
-  { id: 'figure',       name: 'Personnages',   icon: '🧑‍🎨', emoji: '🏃' },
-  { id: 'perspective',  name: 'Perspective',   icon: '📐', emoji: '🔲' },
+  { id: 'objets',       name: 'Objets',        icon: '📚', emoji: '✏️' },
+  { id: 'architecture', name: 'Bâtiments',     icon: '🏛️', emoji: '🏠' },
+  { id: 'coloriage',    name: 'Coloriage',     icon: '🎨', emoji: '🖍️' },
 ];
 
 // ── TUTORIALS ───────────────────────────────────────────────────
+// Chaîne : Dessin Pour Enfants (@DessinPourEnfants2606)
 const TUTORIALS = [
-  // DÉBUTANT
-  { id:0,  title:"Dessiner un visage simple",          desc:"Apprenez les proportions de base du visage humain étape par étape. Un tutoriel accessible à tous.",                               level:"debutant",      duration:"12:34", xp:50,  ytId:"2lS6f5Ix5_c", subject:"visage",       thumbIcon:"😊" },
-  { id:1,  title:"Les formes géométriques de base",    desc:"Maîtrisez les fondamentaux : cercles, cubes, cylindres en 3 dimensions pour tout dessiner.",                                     level:"debutant",      duration:"8:22",  xp:30,  ytId:"ewMksAbgZBo", subject:"formes",       thumbIcon:"📐" },
-  { id:2,  title:"Tenir son crayon correctement",       desc:"Découvrez les différentes prises en main du crayon pour un tracé fluide et contrôlé.",                                           level:"debutant",      duration:"5:14",  xp:20,  ytId:"pMC0Cx3Uk84", subject:"technique",    thumbIcon:"✏️" },
-  { id:3,  title:"Dessiner des arbres et paysages",     desc:"Créez de beaux paysages naturels en apprenant à dessiner arbres, montagnes et ciels.",                                           level:"debutant",      duration:"15:08", xp:50,  ytId:"7TXEZ4tP06c", subject:"nature",       thumbIcon:"🌳" },
-  { id:4,  title:"Dessiner un chat kawaii",              desc:"Apprenez à dessiner des animaux mignons avec ce tutoriel facile et amusant.",                                                    level:"debutant",      duration:"7:45",  xp:30,  ytId:"qcR7uNvgkzQ", subject:"animaux",      thumbIcon:"🐱" },
-  { id:5,  title:"Les bases du manga",                  desc:"Introduction au style manga : yeux, cheveux, expressions et proportions de personnages.",                                        level:"debutant",      duration:"14:20", xp:50,  ytId:"IyMBqdnriXE", subject:"manga",        thumbIcon:"✨" },
-  // INTERMÉDIAIRE
-  { id:6,  title:"Portrait réaliste au crayon",          desc:"Techniques avancées pour dessiner des portraits expressifs avec des détails réalistes.",                                         level:"intermediaire", duration:"25:46", xp:100, ytId:"3wMzahTtzfM", subject:"portrait",     thumbIcon:"🎨" },
-  { id:7,  title:"Anatomie du corps humain",             desc:"Comprenez les proportions et la structure musculaire pour des figures dynamiques et crédibles.",                                 level:"intermediaire", duration:"32:18", xp:120, ytId:"r5tefFLwzkE", subject:"anatomie",     thumbIcon:"💪" },
-  { id:8,  title:"Ombrages et effets de lumière",        desc:"Créez du volume, de la profondeur et de l'atmosphère avec les techniques d'ombrage avancées.",                                  level:"intermediaire", duration:"18:55", xp:80,  ytId:"V3WmrWUEIJo", subject:"technique",    thumbIcon:"🌓" },
-  { id:9,  title:"Dessin de mains réalistes",            desc:"La partie la plus complexe du dessin de figure : apprenez à maîtriser les mains sous tous les angles.",                         level:"intermediaire", duration:"22:40", xp:90,  ytId:"2CmrMRXoA8Q", subject:"anatomie",     thumbIcon:"✋" },
-  { id:10, title:"Perspective à 2 points de fuite",     desc:"Maîtrisez la perspective architecturale avec deux points de fuite pour des bâtiments réalistes.",                                level:"intermediaire", duration:"20:10", xp:90,  ytId:"J5lLJfKR2KQ", subject:"perspective",  thumbIcon:"🏠" },
-  { id:11, title:"Dessiner des animaux réalistes",      desc:"Anatomie et techniques pour capturer la beauté et le mouvement des animaux.",                                                    level:"intermediaire", duration:"28:30", xp:100, ytId:"Rl0BB6MUEz0", subject:"animaux",      thumbIcon:"🦁" },
-  // EXPERT
-  { id:12, title:"Portrait hyper-réaliste",              desc:"Poussez vos limites avec des techniques professionnelles de rendu photo-réaliste.",                                              level:"expert",       duration:"45:20", xp:200, ytId:"dOiwOVczfMo", subject:"portrait",     thumbIcon:"👁️" },
-  { id:13, title:"Perspective architecturale complexe",  desc:"Dessinez des scènes urbaines et architecturales avec une perspective professionnelle à 3 points.",                               level:"expert",       duration:"38:12", xp:180, ytId:"0vbGzPCeX3g", subject:"architecture", thumbIcon:"🏙️" },
-  { id:14, title:"Art numérique professionnel",          desc:"Techniques avancées de peinture numérique pour créer des œuvres de qualité professionnelle.",                                    level:"expert",       duration:"52:30", xp:220, ytId:"sC6xFiCRZhM", subject:"numerique",    thumbIcon:"🖥️" },
-  { id:15, title:"Personnages en mouvement",             desc:"Capturez le dynamisme, l'énergie et l'émotion dans vos personnages en pleine action.",                                          level:"expert",       duration:"41:05", xp:190, ytId:"s39sbTnmJ3g", subject:"figure",       thumbIcon:"🏃" },
-  { id:16, title:"Manga avancé – Combat dynamique",     desc:"Dessinez des scènes de combat manga avec des poses dramatiques et des effets de vitesse.",                                       level:"expert",       duration:"35:40", xp:180, ytId:"bEHPMGFNxRw", subject:"manga",        thumbIcon:"⚔️" },
-  { id:17, title:"Paysages atmosphériques",              desc:"Créez des paysages épiques avec brouillard, lumière volumétrique et profondeur atmosphérique.",                                  level:"expert",       duration:"44:15", xp:200, ytId:"ZVR73MHMwUo", subject:"nature",       thumbIcon:"🌅" },
+  // DÉBUTANT — formes simples, 1 objet
+  { id:0,  title:"Deux cœurs amoureux",                desc:"Dessiner et colorier deux cœurs tout mignons. Parfait pour débuter en douceur.",                          level:"debutant",      duration:"5:00",  xp:20,  ytId:"1YJW3puHyJo", subject:"kawaii",       thumbIcon:"💕" },
+  { id:1,  title:"Une île tropicale",                  desc:"Dessine ton île de rêve avec palmier, soleil et arc-en-ciel.",                                            level:"debutant",      duration:"7:00",  xp:30,  ytId:"qOhN5rDwAd4", subject:"nature",       thumbIcon:"🏝️" },
+  { id:2,  title:"Un éléphant mignon",                 desc:"Apprends à dessiner un éléphant tout doux étape par étape.",                                              level:"debutant",      duration:"6:30",  xp:30,  ytId:"3mRPjANAbgw", subject:"animaux",       thumbIcon:"🐘" },
+  { id:3,  title:"Une glace licorne",                  desc:"Dessine la glace la plus mignonne du monde avec sa corne et son arc-en-ciel.",                            level:"debutant",      duration:"6:00",  xp:30,  ytId:"r7Ll5A4dIcQ", subject:"nourriture",   thumbIcon:"🍦" },
+  { id:4,  title:"Une licorne magique",                desc:"Dessine ta licorne arc-en-ciel toute mignonne, prête à enchanter ton cahier.",                            level:"debutant",      duration:"7:30",  xp:40,  ytId:"-h_rqUlWn7M", subject:"animaux",       thumbIcon:"🦄" },
+  { id:5,  title:"Cahier, crayon et ciseaux",          desc:"La rentrée en mode kawaii : trois fournitures scolaires trop choupies.",                                  level:"debutant",      duration:"8:00",  xp:40,  ytId:"sWlc-X-5bRc", subject:"objets",       thumbIcon:"✏️" },
+  { id:6,  title:"Peinture, palette et pinceau",       desc:"Dessine ton matériel d'artiste : palette, pinceau et tableau coloré.",                                    level:"debutant",      duration:"8:00",  xp:40,  ytId:"kPN_CKK6mE0", subject:"objets",       thumbIcon:"🎨" },
+  { id:7,  title:"Un sous-marin sous l'océan",         desc:"Plonge avec ton sous-marin tout mignon dans un océan plein de couleurs.",                                 level:"debutant",      duration:"9:00",  xp:50,  ytId:"m_6cRLOrasw", subject:"objets",       thumbIcon:"🚤" },
+
+  // INTERMÉDIAIRE — plusieurs éléments, plus de détails
+  { id:8,  title:"Une fille et un garçon",             desc:"Dessine et colorie deux personnages tout mignons, côte à côte.",                                          level:"intermediaire", duration:"12:00", xp:80,  ytId:"oXQjC-J2AtQ", subject:"personnages",  thumbIcon:"👧" },
+  { id:9,  title:"3 glaces gourmandes",                desc:"Trois cônes de glace à dessiner et colorier, avec plein de saveurs.",                                     level:"intermediaire", duration:"11:00", xp:80,  ytId:"Wqfr402H0es", subject:"nourriture",   thumbIcon:"🍧" },
+  { id:10, title:"Une école toute mignonne",           desc:"Dessine ton école kawaii avec ses fenêtres, son toit et sa cloche.",                                      level:"intermediaire", duration:"13:00", xp:90,  ytId:"cFODURnIVk8", subject:"architecture", thumbIcon:"🏫" },
+  { id:11, title:"Kuromi de Sanrio",                   desc:"Apprends à dessiner Kuromi, le personnage tout noir et rose, étape par étape.",                            level:"intermediaire", duration:"14:00", xp:100, ytId:"mrXI9G1AX6k", subject:"personnages",  thumbIcon:"🐰" },
+  { id:12, title:"Un paysage de village",              desc:"Dessine un village avec ses maisons, ses arbres et ses montagnes au loin.",                               level:"intermediaire", duration:"15:00", xp:100, ytId:"ismKo59Ub0c", subject:"nature",       thumbIcon:"🏠" },
+
+  // EXPERT — scènes complexes, plusieurs personnages
+  { id:13, title:"Bluey et sa famille",                desc:"Dessine toute la famille Bluey : Bluey, Bingo, Bandit et Chilli.",                                        level:"expert",       duration:"20:00", xp:150, ytId:"_82G6E4TXcU", subject:"personnages",  thumbIcon:"🐶" },
+  { id:14, title:"Bluey et Bingo se brossent les dents",desc:"Une scène amusante avec Bluey, Bingo et leur licorne. Plein de détails à reproduire.",                  level:"expert",       duration:"22:00", xp:170, ytId:"smGc5UObMCY", subject:"personnages",  thumbIcon:"🪥" },
+  { id:15, title:"Rumi, Mira et Zoey – K-pop Demon Hunters", desc:"Le défi ultime : dessine les 3 héroïnes de HUNTRIX avec leurs tenues détaillées.",                  level:"expert",       duration:"28:00", xp:200, ytId:"ZQbiHDTHpWw", subject:"personnages",  thumbIcon:"👩‍🎤" },
+
+  // ── DÉBUTANT — autres chaînes kawaii (Dessins Kawaii, Pollux Animation) ──
+  { id:16, title:"Un cœur kawaii facile",              desc:"Le grand classique pour démarrer : un cœur tout mignon en 2 minutes.",                                   level:"debutant",      duration:"4:00",  xp:20,  ytId:"eINRMC7KR_Q", subject:"kawaii",       thumbIcon:"💗" },
+  { id:17, title:"Un panda kawaii",                    desc:"Dessine ce panda noir et blanc trop mignon, super facile à reproduire.",                                  level:"debutant",      duration:"5:00",  xp:20,  ytId:"zxvfWkkEAM0", subject:"animaux",       thumbIcon:"🐼" },
+  { id:18, title:"Un chaton kawaii",                   desc:"Le chaton kawaii par excellence : petit, rond et adorable.",                                              level:"debutant",      duration:"6:00",  xp:30,  ytId:"tYgvWnyUwYs", subject:"animaux",       thumbIcon:"🐱" },
+  { id:19, title:"Un lapin kawaii",                    desc:"Un lapin tout doux à dessiner étape par étape, parfait pour s'entraîner.",                                level:"debutant",      duration:"6:00",  xp:30,  ytId:"FtFKBM5lSE8", subject:"animaux",       thumbIcon:"🐰" },
+  { id:20, title:"Un pot de Nutella kawaii",           desc:"Le pot de Nutella version super mignonne. Miam !",                                                        level:"debutant",      duration:"7:00",  xp:30,  ytId:"0bOum5V3nF8", subject:"nourriture",   thumbIcon:"🍫" },
+  { id:21, title:"Un Kinder Surprise kawaii",          desc:"L'œuf Kinder qu'on adore, transformé en dessin kawaii facile.",                                           level:"debutant",      duration:"7:00",  xp:30,  ytId:"mtYe9qVKfio", subject:"nourriture",   thumbIcon:"🥚" },
+  { id:22, title:"Une part de pastèque kawaii",        desc:"Fruit d'été en mode kawaii : ultra simple et trop choupi.",                                               level:"debutant",      duration:"5:00",  xp:20,  ytId:"zYOsBE7iHOU", subject:"nourriture",   thumbIcon:"🍉" },
+  { id:23, title:"Une brique de lait kawaii",          desc:"Un classique de la cuisine version dessin mignon. Idéal pour débuter.",                                   level:"debutant",      duration:"6:00",  xp:30,  ytId:"UFfpCAcfrmo", subject:"nourriture",   thumbIcon:"🥛" },
+  { id:24, title:"Une guimauve kawaii",                desc:"Toute douce et toute moelleuse — la guimauve la plus mignonne à dessiner.",                               level:"debutant",      duration:"6:00",  xp:30,  ytId:"rjhJGOvME9Q", subject:"nourriture",   thumbIcon:"🍡" },
+  { id:25, title:"Une licorne kawaii",                 desc:"Une autre licorne mignonne, dans un style légèrement différent.",                                         level:"debutant",      duration:"7:00",  xp:30,  ytId:"_R5WR0Cjfwo", subject:"animaux",       thumbIcon:"🦄" },
+
+  // ── INTERMÉDIAIRE — personnages plus détaillés, animaux complexes ──
+  { id:26, title:"Une fille kawaii facile",            desc:"Apprends à dessiner une fille mignonne avec ses cheveux et son expression.",                              level:"intermediaire", duration:"10:00", xp:70,  ytId:"3crpkLLKqJ0", subject:"personnages",  thumbIcon:"👧" },
+  { id:27, title:"Une poupée kawaii",                  desc:"Une poupée toute mignonne avec robe et accessoires : un peu plus de détails.",                            level:"intermediaire", duration:"12:00", xp:80,  ytId:"IqMCwDJ-Btc", subject:"personnages",  thumbIcon:"🎀" },
+  { id:28, title:"Maquillage kawaii",                  desc:"Dessine un visage avec un maquillage kawaii : rouge à lèvres, fard, blush.",                              level:"intermediaire", duration:"10:00", xp:70,  ytId:"6Ur1P8EtAVg", subject:"personnages",  thumbIcon:"💄" },
+  { id:29, title:"Un chat licorne kawaii",             desc:"Mélange parfait : un chat avec une corne de licorne et un arc-en-ciel.",                                  level:"intermediaire", duration:"10:00", xp:70,  ytId:"OC34XoUvbf8", subject:"animaux",       thumbIcon:"🐱" },
+  { id:30, title:"Un panda licorne kawaii",            desc:"Encore mieux : un panda avec une corne de licorne. Hybridation extrême !",                                level:"intermediaire", duration:"11:00", xp:80,  ytId:"tj5vxHREF2w", subject:"animaux",       thumbIcon:"🐼" },
+  { id:31, title:"Hamster Hamtaro kawaii",             desc:"Dessine Hamtaro, le hamster le plus mignon du dessin animé.",                                             level:"intermediaire", duration:"12:00", xp:80,  ytId:"xNtB2_FBv-s", subject:"personnages",  thumbIcon:"🐹" },
+  { id:32, title:"Un renard des forêts",               desc:"Un renard roux trop mignon, dans un style un peu plus illustratif.",                                      level:"intermediaire", duration:"11:00", xp:80,  ytId:"bDYxwVJqBHM", subject:"animaux",       thumbIcon:"🦊" },
+
+  // ── EXPERT — compilations & projets ──
+  { id:33, title:"10 dessins kawaii faciles",          desc:"Compilation de 10 mini-dessins kawaii à enchaîner. Le défi parfait pour s'entraîner.",                    level:"expert",       duration:"15:00", xp:130, ytId:"uPEcTz1zKek", subject:"coloriage",    thumbIcon:"✨" },
+  { id:34, title:"10 petits dessins par Rizzo Chris",  desc:"10 dessins kawaii originaux à dessiner d'affilée. Pour devenir un pro du kawaii.",                        level:"expert",       duration:"18:00", xp:150, ytId:"P1PZE467ovg", subject:"coloriage",    thumbIcon:"🎨" },
+
+  // ── DÉBUTANT — encore plus d'animaux, food, nature, magie ──
+  { id:35, title:"Un cochon kawaii",                   desc:"Petit cochon tout rose et tout rond — facile et super mignon.",                                            level:"debutant",      duration:"5:00",  xp:20,  ytId:"UbAp5TnDZ1k", subject:"animaux",       thumbIcon:"🐷" },
+  { id:36, title:"Un pingouin kawaii",                 desc:"Dessine ce petit pingouin tout doux, étape par étape.",                                                   level:"debutant",      duration:"6:00",  xp:30,  ytId:"IiPT1R8kuKs", subject:"animaux",       thumbIcon:"🐧" },
+  { id:37, title:"Un dauphin kawaii",                  desc:"Le dauphin le plus mignon des océans, facile à dessiner.",                                                 level:"debutant",      duration:"6:00",  xp:30,  ytId:"TXsPFrH5_1w", subject:"animaux",       thumbIcon:"🐬" },
+  { id:38, title:"Un cactus kawaii",                   desc:"Petit cactus tout vert avec un visage trop mignon — parfait pour décorer ton cahier.",                    level:"debutant",      duration:"5:00",  xp:20,  ytId:"fhSsmn1_ByQ", subject:"nature",       thumbIcon:"🌵" },
+  { id:39, title:"Un donut kawaii",                    desc:"Un beignet glacé tout sucré et tout mignon. Miam !",                                                       level:"debutant",      duration:"6:00",  xp:30,  ytId:"Ogc2Q5BF6PA", subject:"nourriture",   thumbIcon:"🍩" },
+  { id:40, title:"Une fraise kawaii",                  desc:"Petite fraise rouge avec un visage tout choupi.",                                                          level:"debutant",      duration:"5:00",  xp:20,  ytId:"E5sdmqlzEzY", subject:"nourriture",   thumbIcon:"🍓" },
+  { id:41, title:"Un nuage kawaii",                    desc:"Nuage tout doux avec un petit visage souriant.",                                                           level:"debutant",      duration:"4:00",  xp:20,  ytId:"9sm5btMecL0", subject:"kawaii",       thumbIcon:"☁️" },
+  { id:42, title:"Une lune et une étoile kawaii",      desc:"La lune et l'étoile les plus mignonnes du ciel.",                                                          level:"debutant",      duration:"5:00",  xp:20,  ytId:"Vbo5kWnTQzI", subject:"kawaii",       thumbIcon:"🌙" },
+
+  // ── INTERMÉDIAIRE — saisons & personnages célèbres ──
+  { id:43, title:"Citrouille Halloween kawaii",        desc:"Une citrouille d'Halloween toute mignonne, plus choupie qu'effrayante.",                                   level:"intermediaire", duration:"10:00", xp:70,  ytId:"WXLs6goaotw", subject:"kawaii",       thumbIcon:"🎃" },
+  { id:44, title:"Un sapin de Noël kawaii",            desc:"Beau sapin de Noël décoré avec boules, étoile et guirlandes.",                                             level:"intermediaire", duration:"11:00", xp:80,  ytId:"UnDpXJNC0GM", subject:"kawaii",       thumbIcon:"🎄" },
+  { id:45, title:"Pikachu kawaii",                     desc:"Le Pokémon le plus célèbre version super mignonne.",                                                       level:"intermediaire", duration:"12:00", xp:80,  ytId:"v3mm20Po7Fo", subject:"personnages",  thumbIcon:"⚡" },
+  { id:46, title:"Carapuce kawaii",                    desc:"Apprends à dessiner Carapuce (Squirtle), la petite tortue d'eau de Pokémon.",                              level:"intermediaire", duration:"11:00", xp:80,  ytId:"LYUF506x3G4", subject:"personnages",  thumbIcon:"🐢" },
+
+  // ── EXPERT — gros défis avec détails et accessoires ──
+  { id:47, title:"Ariel la Petite Sirène kawaii",      desc:"Dessine Ariel avec ses cheveux roux flottants et son grand sourire.",                                      level:"expert",       duration:"18:00", xp:150, ytId:"Fghu8cxAb5Y", subject:"personnages",  thumbIcon:"🧜" },
+  { id:48, title:"Une princesse Disney kawaii",        desc:"Dessine une princesse Disney avec robe et couronne — pleine de détails.",                                  level:"expert",       duration:"20:00", xp:170, ytId:"0noUEr6W6OM", subject:"personnages",  thumbIcon:"👸" },
+  { id:49, title:"10 dessins Halloween faciles",       desc:"Compilation de 10 dessins Halloween : citrouille, vampire, araignée, chauve-souris...",                   level:"expert",       duration:"15:00", xp:130, ytId:"vXUOZzd0SkI", subject:"coloriage",    thumbIcon:"🦇" },
+
+  // ═══ BIG WAVE — 50 tutos supplémentaires pour atteindre 100 ═══
+
+  // ── DÉBUTANT — animaux faciles ──
+  { id:50, title:"Un koala kawaii",                    desc:"Petit koala tout gris accroché à sa branche.",                                                             level:"debutant",      duration:"6:00",  xp:30,  ytId:"fSaHkUqNo0k", subject:"animaux",       thumbIcon:"🐨" },
+  { id:51, title:"Un chien kawaii facile",             desc:"Un chien tout mignon à dessiner en quelques minutes.",                                                     level:"debutant",      duration:"5:00",  xp:20,  ytId:"QOzO4Knm840", subject:"animaux",       thumbIcon:"🐶" },
+  { id:52, title:"Un ours kawaii",                     desc:"Gros nounours kawaii tout doux.",                                                                          level:"debutant",      duration:"6:00",  xp:30,  ytId:"lgk7qSSe8_o", subject:"animaux",       thumbIcon:"🐻" },
+  { id:53, title:"Un paresseux kawaii",                desc:"Le paresseux le plus mignon de la jungle, accroché à sa branche.",                                         level:"debutant",      duration:"7:00",  xp:30,  ytId:"qEPlatJmU1w", subject:"animaux",       thumbIcon:"🦥" },
+  { id:54, title:"Un oiseau kawaii",                   desc:"Petit oiseau tout mignon avec son bec et ses petites ailes.",                                              level:"debutant",      duration:"5:00",  xp:20,  ytId:"BBjEHxskvII", subject:"animaux",       thumbIcon:"🐦" },
+  { id:55, title:"Une tortue de mer kawaii",           desc:"Petite tortue verte qui nage dans l'océan.",                                                               level:"debutant",      duration:"6:00",  xp:30,  ytId:"WyCR0P7andM", subject:"animaux",       thumbIcon:"🐢" },
+  { id:56, title:"Une baleine kawaii",                 desc:"Grosse baleine bleue toute mignonne qui souffle de l'eau.",                                                level:"debutant",      duration:"6:00",  xp:30,  ytId:"5KgD_4L5Gh0", subject:"animaux",       thumbIcon:"🐳" },
+  { id:57, title:"Un poisson kawaii",                  desc:"Petit poisson coloré tout simple à dessiner.",                                                             level:"debutant",      duration:"5:00",  xp:20,  ytId:"1tUShLqwsJg", subject:"animaux",       thumbIcon:"🐠" },
+  { id:58, title:"Un autre dauphin kawaii",            desc:"Un dauphin dans un style différent, encore plus simple.",                                                  level:"debutant",      duration:"6:00",  xp:30,  ytId:"ciObTeHWPBk", subject:"animaux",       thumbIcon:"🐬" },
+  { id:59, title:"Un chien mignon",                    desc:"Un autre chien kawaii, à toi de choisir ton préféré.",                                                     level:"debutant",      duration:"6:00",  xp:30,  ytId:"MyfJXx7RKLU", subject:"animaux",       thumbIcon:"🐕" },
+
+  // ── DÉBUTANT — gourmandises ──
+  { id:60, title:"Un gâteau kawaii",                   desc:"Un gros gâteau d'anniversaire tout mignon avec bougies.",                                                  level:"debutant",      duration:"7:00",  xp:30,  ytId:"zjxTrbHPRKQ", subject:"nourriture",   thumbIcon:"🎂" },
+  { id:61, title:"Un cupcake kawaii",                  desc:"Le cupcake le plus sucré du monde, avec crème et cerise.",                                                 level:"debutant",      duration:"6:00",  xp:30,  ytId:"K6-4ftpOtLo", subject:"nourriture",   thumbIcon:"🧁" },
+  { id:62, title:"Une tarte kawaii",                   desc:"Une jolie tarte avec décors mignons sur le dessus.",                                                       level:"debutant",      duration:"6:00",  xp:30,  ytId:"OtJU0g2QyZU", subject:"nourriture",   thumbIcon:"🥧" },
+  { id:63, title:"Une banane kawaii",                  desc:"Banane jaune toute souriante.",                                                                            level:"debutant",      duration:"4:00",  xp:20,  ytId:"F1MWcSPc4xY", subject:"nourriture",   thumbIcon:"🍌" },
+  { id:64, title:"Une pomme kawaii",                   desc:"Pomme rouge avec une petite feuille verte.",                                                               level:"debutant",      duration:"5:00",  xp:20,  ytId:"4YoRT7IhHiI", subject:"nourriture",   thumbIcon:"🍎" },
+  { id:65, title:"Des cerises kawaii",                 desc:"Deux cerises bien rouges avec leur petite tige.",                                                          level:"debutant",      duration:"5:00",  xp:20,  ytId:"YcViv3nE1ao", subject:"nourriture",   thumbIcon:"🍒" },
+  { id:66, title:"Un autre donut kawaii",              desc:"Un autre style de donut, avec encore plus de paillettes.",                                                 level:"debutant",      duration:"6:00",  xp:30,  ytId:"2k3wpnQQeP0", subject:"nourriture",   thumbIcon:"🍩" },
+  { id:67, title:"Une autre pomme facile",             desc:"Variante simple et rapide pour dessiner une pomme.",                                                       level:"debutant",      duration:"4:00",  xp:20,  ytId:"hPlFi-OLC_U", subject:"nourriture",   thumbIcon:"🍏" },
+  { id:68, title:"Un gland kawaii",                    desc:"Petit gland tout choupi pour l'automne.",                                                                  level:"debutant",      duration:"5:00",  xp:20,  ytId:"2R_zRcLo8Oo", subject:"nourriture",   thumbIcon:"🌰" },
+  { id:69, title:"Une autre cerise kawaii",            desc:"Une cerise version encore plus simple.",                                                                   level:"debutant",      duration:"4:00",  xp:20,  ytId:"cyfFair2yL0", subject:"nourriture",   thumbIcon:"🍒" },
+
+  // ── DÉBUTANT — kawaii nature & magie ──
+  { id:70, title:"Une plante kawaii en pot",           desc:"Belle plante verte dans son pot, avec un petit visage souriant.",                                          level:"debutant",      duration:"6:00",  xp:30,  ytId:"KPuzv-K1bS0", subject:"nature",       thumbIcon:"🌱" },
+  { id:71, title:"Un arc-en-ciel facile",              desc:"Le plus simple des arcs-en-ciel, parfait pour démarrer.",                                                  level:"debutant",      duration:"4:00",  xp:20,  ytId:"yGGy0jISwaI", subject:"kawaii",       thumbIcon:"🌈" },
+  { id:72, title:"Un autre nuage kawaii",              desc:"Variante encore plus mignonne du nuage.",                                                                  level:"debutant",      duration:"4:00",  xp:20,  ytId:"2cpB02ZSCHE", subject:"kawaii",       thumbIcon:"☁️" },
+
+  // ── INTERMÉDIAIRE — animaux complexes & food ──
+  { id:73, title:"Un requin-baleine kawaii",           desc:"Le plus grand poisson du monde version mignonne.",                                                         level:"intermediaire", duration:"10:00", xp:70,  ytId:"EpcT-PTJe4o", subject:"animaux",       thumbIcon:"🦈" },
+  { id:74, title:"Un requin-marteau kawaii",           desc:"Requin-marteau original avec sa drôle de tête.",                                                           level:"intermediaire", duration:"11:00", xp:80,  ytId:"41RG92ulm5w", subject:"animaux",       thumbIcon:"🔨" },
+  { id:75, title:"3 animaux marins ensemble",          desc:"Dauphin, tortue et pieuvre dans la même scène océanique.",                                                 level:"intermediaire", duration:"14:00", xp:100, ytId:"HHAsIoyO9WI", subject:"animaux",       thumbIcon:"🌊" },
+  { id:76, title:"Un ours koala mignon",               desc:"Version plus détaillée du koala avec sa branche d'eucalyptus.",                                            level:"intermediaire", duration:"10:00", xp:70,  ytId:"DpkCjleqqDw", subject:"animaux",       thumbIcon:"🐨" },
+  { id:77, title:"Un bébé chaton siamois",             desc:"Petit chaton siamois avec ses oreilles et ses pattes.",                                                    level:"intermediaire", duration:"11:00", xp:80,  ytId:"0VlaUjn6u2E", subject:"animaux",       thumbIcon:"🐱" },
+
+  // ── INTERMÉDIAIRE — Pokémon & personnages ──
+  { id:78, title:"Pikachu version classique",          desc:"La version traditionnelle de Pikachu, avec sa pose iconique.",                                             level:"intermediaire", duration:"12:00", xp:80,  ytId:"d5krobDJt7Y", subject:"personnages",  thumbIcon:"⚡" },
+  { id:79, title:"Pikachu kawaii alternatif",          desc:"Encore une version de Pikachu, dans un style différent.",                                                  level:"intermediaire", duration:"10:00", xp:70,  ytId:"ztVFQ_h1hoY", subject:"personnages",  thumbIcon:"⚡" },
+  { id:80, title:"Pikachu super mignon",               desc:"Pikachu chibi tout petit et tout rond.",                                                                   level:"intermediaire", duration:"10:00", xp:70,  ytId:"rq0vZnEO7_A", subject:"personnages",  thumbIcon:"💛" },
+  { id:81, title:"Bulbizarre kawaii",                  desc:"Le Pokémon plante avec son bulbe sur le dos.",                                                             level:"intermediaire", duration:"11:00", xp:80,  ytId:"e6hONjS2ogs", subject:"personnages",  thumbIcon:"🌿" },
+  { id:82, title:"Carapuce facile",                    desc:"Variante simple de Carapuce, parfait pour s'entraîner.",                                                   level:"intermediaire", duration:"10:00", xp:70,  ytId:"WYqbc4XB96k", subject:"personnages",  thumbIcon:"🐢" },
+  { id:83, title:"Bulbizarre & Tiplouf",               desc:"Deux Pokémon mignons dans un seul tuto.",                                                                  level:"intermediaire", duration:"13:00", xp:90,  ytId:"btbJZxRMZxw", subject:"personnages",  thumbIcon:"🌱" },
+  { id:84, title:"Sirène kawaii",                      desc:"Sirène mignonne avec sa queue colorée.",                                                                   level:"intermediaire", duration:"12:00", xp:80,  ytId:"ee6XDsgeoUQ", subject:"personnages",  thumbIcon:"🧜" },
+
+  // ── INTERMÉDIAIRE — kawaii & arc-en-ciel ──
+  { id:85, title:"Un arc-en-ciel kawaii détaillé",     desc:"Arc-en-ciel avec nuages, paillettes et plein de couleurs.",                                                level:"intermediaire", duration:"10:00", xp:70,  ytId:"xRNGqNhf27M", subject:"kawaii",       thumbIcon:"🌈" },
+  { id:86, title:"Nuage qui vomit un arc-en-ciel",     desc:"Dessin drôle et original : un nuage qui crache un arc-en-ciel.",                                          level:"intermediaire", duration:"11:00", xp:80,  ytId:"4k1a6T537B4", subject:"kawaii",       thumbIcon:"🌧️" },
+  { id:87, title:"Arc-en-ciel à colorier",             desc:"Tuto coloriage complet d'un arc-en-ciel avec dégradés.",                                                   level:"intermediaire", duration:"12:00", xp:80,  ytId:"dO8yeIhYkOg", subject:"coloriage",    thumbIcon:"🖍️" },
+  { id:88, title:"Arc-en-ciel coloriage magique",      desc:"Coloriage magique d'un arc-en-ciel mignon.",                                                               level:"intermediaire", duration:"13:00", xp:90,  ytId:"jZZK-1TX5is", subject:"coloriage",    thumbIcon:"✨" },
+
+  // ── INTERMÉDIAIRE — Halloween & Noël ──
+  { id:89, title:"Citrouille avec fantômes Doodle",    desc:"Citrouille d'Halloween entourée de petits fantômes mignons.",                                              level:"intermediaire", duration:"12:00", xp:80,  ytId:"Yw0HZbstBjM", subject:"kawaii",       thumbIcon:"👻" },
+  { id:90, title:"Une chauve-souris mignonne",         desc:"Petite chauve-souris kawaii pour Halloween.",                                                              level:"intermediaire", duration:"10:00", xp:70,  ytId:"0GTCOmpQcZs", subject:"kawaii",       thumbIcon:"🦇" },
+  { id:91, title:"Père Noël kawaii",                   desc:"Le Père Noël en version super mignonne avec sa hotte.",                                                    level:"intermediaire", duration:"12:00", xp:80,  ytId:"3zJIJukV7Yk", subject:"personnages",  thumbIcon:"🎅" },
+  { id:92, title:"Père Noël facile",                   desc:"Variante simplifiée du Père Noël avec moins de détails.",                                                  level:"intermediaire", duration:"10:00", xp:70,  ytId:"ca8_3BU9E30", subject:"personnages",  thumbIcon:"🎅" },
+  { id:93, title:"Un autre sapin de Noël",             desc:"Sapin de Noël avec un style différent, encore plus décoré.",                                               level:"intermediaire", duration:"11:00", xp:80,  ytId:"W8CY-PMOMYA", subject:"kawaii",       thumbIcon:"🎄" },
+  { id:94, title:"Coloriage Halloween complet",        desc:"Citrouille, fantôme et chauves-souris dans une scène Halloween.",                                          level:"intermediaire", duration:"13:00", xp:90,  ytId:"D-x4OyBg6cg", subject:"coloriage",    thumbIcon:"🎃" },
+
+  // ── INTERMÉDIAIRE — objets & véhicules ──
+  { id:95, title:"Une fusée kawaii",                   desc:"Petite fusée toute mignonne prête à décoller.",                                                            level:"intermediaire", duration:"10:00", xp:70,  ytId:"OQOdh1bWv0g", subject:"objets",       thumbIcon:"🚀" },
+
+  // ── EXPERT — Disney & projets longs ──
+  { id:96, title:"Ariel Disney officiel",              desc:"Variante de la Petite Sirène fidèle au style Disney.",                                                     level:"expert",       duration:"20:00", xp:170, ytId:"cd5H08w1Rpg", subject:"personnages",  thumbIcon:"🧜‍♀️" },
+  { id:97, title:"Princesse Disney facile",            desc:"Une autre princesse Disney avec robe et coiffure.",                                                        level:"expert",       duration:"18:00", xp:150, ytId:"x7khyVPKPiw", subject:"personnages",  thumbIcon:"👑" },
+  { id:98, title:"Chibi démon Halloween",              desc:"Personnage chibi version démon avec cornes, pour les défis avancés.",                                      level:"expert",       duration:"16:00", xp:140, ytId:"FgFfg_O6tb8", subject:"personnages",  thumbIcon:"😈" },
+  { id:99, title:"Étoile arc-en-ciel pixel art",       desc:"Le défi ultime : pixel art à la main d'une étoile arc-en-ciel kawaii.",                                    level:"expert",       duration:"22:00", xp:180, ytId:"KB2gS6o1Tx8", subject:"coloriage",    thumbIcon:"⭐" },
 ];
 
 // ── LEVELS ──────────────────────────────────────────────────────
@@ -125,7 +238,7 @@ function showPage(name){
   if(name==='explore')renderExplore();
   if(name==='progress')renderProgress();
   if(name==='profile')renderProfile();
-  if(name==='draw')initCanvas();
+  if(name==='draw')requestAnimationFrame(initCanvas);
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -314,7 +427,7 @@ function watchTut(){
   closeModal();
   document.getElementById('vid-title').textContent=t.title;
   const frame=document.getElementById('yt-frame');
-  frame.src=`https://www.youtube.com/embed/${t.ytId}?autoplay=1&rel=0`;
+  frame.src=`https://www.youtube.com/embed/${t.ytId}?rel=0&modestbranding=1&playsinline=1`;
   frame.style.display='block';
   document.getElementById('vid-placeholder').style.display='none';
   showPage('draw');
@@ -423,6 +536,7 @@ function initCanvas(){
   const cv=document.getElementById('cv');
   const wrap=document.getElementById('cv-canvas-wrap');
   if(!cv||!wrap)return;
+  if(wrap.clientWidth===0){requestAnimationFrame(initCanvas);return;}
   resizeCv(cv,wrap);
   cvCtx=cv.getContext('2d');
   if(hist.length===0){fillBg();pushHist()}

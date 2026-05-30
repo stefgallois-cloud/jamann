@@ -373,18 +373,14 @@ img{display:block;max-width:100%}
 
 /* ═══ THUMB FALLBACKS ═══════════════════════════════════════════ */
 .thumb-fallback{background:var(--grad-card)}
-.tf-visage{background:linear-gradient(135deg,#fde68a,#fbbf24)}
-.tf-formes{background:linear-gradient(135deg,#93c5fd,#3b82f6)}
-.tf-technique{background:linear-gradient(135deg,#c4b5fd,#7c3aed)}
-.tf-nature{background:linear-gradient(135deg,#86efac,#22c55e)}
-.tf-portrait{background:linear-gradient(135deg,#fca5a5,#ef4444)}
-.tf-anatomie{background:linear-gradient(135deg,#fdba74,#f97316)}
-.tf-architecture{background:linear-gradient(135deg,#67e8f9,#06b6d4)}
-.tf-numerique{background:linear-gradient(135deg,#d8b4fe,#a855f7)}
-.tf-figure{background:linear-gradient(135deg,#f9a8d4,#ec4899)}
 .tf-animaux{background:linear-gradient(135deg,#fde68a,#f59e0b)}
-.tf-perspective{background:linear-gradient(135deg,#a5f3fc,#0891b2)}
-.tf-manga{background:linear-gradient(135deg,#f0abfc,#d946ef)}
+.tf-personnages{background:linear-gradient(135deg,#f9a8d4,#ec4899)}
+.tf-kawaii{background:linear-gradient(135deg,#fbcfe8,#f472b6)}
+.tf-nourriture{background:linear-gradient(135deg,#fed7aa,#fb923c)}
+.tf-nature{background:linear-gradient(135deg,#86efac,#22c55e)}
+.tf-objets{background:linear-gradient(135deg,#c4b5fd,#7c3aed)}
+.tf-architecture{background:linear-gradient(135deg,#67e8f9,#06b6d4)}
+.tf-coloriage{background:linear-gradient(135deg,#d8b4fe,#a855f7)}
 
 /* ═══ RESPONSIVE ═════════════════════════════════════════════════ */
 @media(orientation:landscape) and (max-height:500px){
