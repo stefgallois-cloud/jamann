@@ -16,7 +16,8 @@ Définir et documenter l'offre de services pour attirer de nouveaux clients apr�
 - [x] Créer la présentation web interactive pro de la fiche produit -> *Fait dans [presentation/index.html](file:///c:/Users/DELL/Desktop/test%20claude/projects/clockwork-ops-offre/presentation/index.html)*
 - [x] Concevoir le diaporama de présentation commerciale pro (Slides interactives) -> *Fait dans [presentation/slides.html](file:///c:/Users/DELL/Desktop/test%20claude/projects/clockwork-ops-offre/presentation/slides.html)*
 - [x] Modéliser la stratégie de produit d'appel & catalogue d'upsells B2B -> *Fait dans [strategie-produit-appel.md](file:///c:/Users/DELL/Desktop/test%20claude/projects/clockwork-ops-offre/strategie-produit-appel.md)*
-- [ ] Fixer une grille tarifaire définitive
+- [x] Étude de marché web basée sur données réelles (France + Suisse) → *Fait dans [etude-marche-web-2025.md](etude-marche-web-2025.md)*
+- [x] Benchmark concurrentiel + grille tarifaire définitive → *Fait dans [benchmark-concurrentiel.md](benchmark-concurrentiel.md)*
 - [ ] Préparer les supports de présentation / page de vente
 
 
