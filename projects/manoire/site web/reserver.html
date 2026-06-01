@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Réserver une table — Col de Jaman | Le Manoïre</title>
+  <meta name="description" content="Réservez votre table au Manoïre, café-restaurant d'alpage au Col de Jaman (1512m). Ouverture juin 2026 — réservations disponibles dès l'ouverture.">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div id="site-brand"></div>
+
+  <div class="page-header">
+    <h1>Réserver</h1>
+    <p>Votre table au-dessus des nuages</p>
+  </div>
+
+  <div class="breadcrumb">
+    <a href="index.html">‹ Accueil</a>
+  </div>
+
+  <div class="content-wrapper">
+
+    <div class="reserve-banner">
+      🔒 Réservations ouvertes dès juin 2026
+    </div>
+
+    <!--
+      ACTIVATION DU FORMULAIRE
+      ————————————————————————
+      Quand les réservations seront ouvertes, pour activer ce formulaire :
+      1. Supprimer l'attribut "disabled" sur chaque <input>, <select> et <textarea>.
+      2. Supprimer l'attribut "disabled" sur le bouton .form-submit et mettre à jour son texte.
+      3. Option A — Tally : remplacer le formulaire entier par le code embed Tally.
+         Option B — Webhook Make : ajouter action="URL_DU_WEBHOOK" method="POST" sur le <form>.
+         Option C — FormSubmit / EmailJS : ajouter action="https://formsubmit.co/contact@lemanoire-jaman.ch".
+    -->
+    <div class="reserve-form">
+      <form>
+
+        <div class="form-group">
+          <label for="res-nom">Nom complet</label>
+          <input class="form-input" type="text" id="res-nom" name="nom" placeholder="Jean Dupont" disabled>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-email">Email</label>
+            <input class="form-input" type="email" id="res-email" name="email" placeholder="jean@exemple.ch" disabled>
+          </div>
+          <div class="form-group">
+            <label for="res-tel">Téléphone</label>
+            <input class="form-input" type="tel" id="res-tel" name="telephone" placeholder="+41 79 000 00 00" disabled>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="res-date">Date</label>
+            <input class="form-input" type="date" id="res-date" name="date" disabled>
+          </div>
+          <div class="form-group">
+            <label for="res-heure">Heure</label>
+            <input class="form-input" type="time" id="res-heure" name="heure" min="11:30" max="20:00" disabled>
+          </div>
+          <div class="form-group">
+            <label for="res-couverts">Couverts</label>
+            <input class="form-input" type="number" id="res-couverts" name="couverts" min="1" max="20" placeholder="2" disabled>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="res-message">Message (allergies, demandes particulières…)</label>
+          <textarea class="form-input" id="res-message" name="message" placeholder="Précisez ici toute information utile pour votre venue." disabled></textarea>
+        </div>
+
+        <button class="form-submit" type="submit" disabled>
+          Réserver — bientôt disponible
+        </button>
+
+      </form>
+    </div>
+
+    <div class="reserve-alt">
+      <p>En attendant, soyez prévenu·e de l'ouverture des réservations.</p>
+      <a class="newsletter-btn" href="https://tally.so/r/0QJkG0" target="_blank" rel="noopener noreferrer">Être prévenu·e</a>
+    </div>
+
+  </div>
+
+  <div id="site-footer"></div>
+  <script src="nav.js"></script>
+</body>
+</html>

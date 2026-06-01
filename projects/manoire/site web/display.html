@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <meta http-equiv="refresh" content="300">
+  <title>Conditions en Direct — Le Manoïre</title>
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'Tenaciou';
+      src: url('./TenaciouHeavy.ttf') format('truetype');
+      font-weight: bold;
+    }
+    :root {
+      --charte-blanc: #FBFBF8;
+      --charte-beige: #EFE5DB;
+      --charte-ocre: #C48632;
+      --charte-bordeaux: #4B0F1F;
+      --charte-orange: #E06530;
+      --charte-marron: #954315;
+      --charte-taupe: #7B694D;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%;
+      height: 100%;
+      font-family: 'Clash Grotesk', sans-serif;
+      background: #1a0509;
+      color: var(--charte-blanc);
+      overflow: hidden;
+      user-select: none;
+    }
+
+    .display-wrapper {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      padding: 2.5vh 3vw;
+    }
+
+    /* TOP BAR */
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-bottom: 2vh;
+      border-bottom: 2px solid rgba(196, 134, 50, 0.35);
+      margin-bottom: 3vh;
+      flex-shrink: 0;
+    }
+    .logo-section {
+      display: flex;
+      align-items: center;
+      gap: 1.5vw;
+    }
+    .logo-section img {
+      height: 8vh;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.6));
+    }
+    .logo-name {
+      font-family: 'Tenaciou', sans-serif;
+      font-size: clamp(1.6rem, 3.2vw, 3.2rem);
+      color: var(--charte-ocre);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+    .logo-sub {
+      font-size: clamp(0.6rem, 1.1vw, 0.9rem);
+      color: var(--charte-taupe);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 0.3rem;
+    }
+    .conditions-title { text-align: right; }
+    .conditions-label {
+      font-size: clamp(0.6rem, 1vw, 0.8rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--charte-taupe);
+    }
+    .conditions-h {
+      font-size: clamp(0.9rem, 1.9vw, 1.7rem);
+      font-weight: 600;
+      color: var(--charte-ocre);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-top: 0.2rem;
+    }
+
+    /* MAIN AREA */
+    .main-area {
+      flex: 1;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2.5vw;
+      min-height: 0;
+    }
+
+    /* TEMPERATURE HERO */
+    .temp-hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      background: rgba(75, 15, 31, 0.6);
+      border: 2px solid rgba(196, 134, 50, 0.25);
+      border-radius: 12px;
+      padding: 2vh 2vw;
+    }
+    .temp-icon { font-size: clamp(2.8rem, 7vw, 7rem); margin-bottom: 1.5vh; }
+    .temp-value {
+      font-size: clamp(3rem, 10vw, 10rem);
+      font-weight: 700;
+      color: var(--charte-blanc);
+      line-height: 1;
+    }
+    .temp-desc {
+      font-size: clamp(0.8rem, 1.8vw, 1.6rem);
+      color: var(--charte-ocre);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-top: 1vh;
+    }
+
+    /* DATA GRID */
+    .data-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 1.5vw;
+    }
+    .data-card {
+      background: rgba(75, 15, 31, 0.5);
+      border: 2px solid rgba(123, 105, 77, 0.25);
+      border-radius: 10px;
+      padding: 2vh 2.5vw;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .data-card-label {
+      font-size: clamp(0.55rem, 1vw, 0.82rem);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--charte-taupe);
+      margin-bottom: 1vh;
+    }
+    .data-card-value {
+      font-size: clamp(1.4rem, 3.5vw, 3.8rem);
+      font-weight: 700;
+      color: var(--charte-blanc);
+      line-height: 1;
+    }
+    .data-card-sub {
+      font-size: clamp(0.55rem, 0.9vw, 0.78rem);
+      color: var(--charte-taupe);
+      margin-top: 0.5vh;
+    }
+
+    /* BOTTOM BAR */
+    .bottom-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 2vh;
+      border-top: 1px solid rgba(123, 105, 77, 0.25);
+      margin-top: 2vh;
+      flex-shrink: 0;
+    }
+    .live-badge {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #9b2c2c;
+      padding: 0.4rem 1rem;
+      border-radius: 4px;
+      font-size: clamp(0.6rem, 0.9vw, 0.78rem);
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .live-dot {
+      width: 8px; height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+    .update-text {
+      font-size: clamp(0.55rem, 0.85vw, 0.75rem);
+      color: var(--charte-taupe);
+      font-style: italic;
+    }
+    .altitude-text {
+      font-size: clamp(0.55rem, 0.85vw, 0.75rem);
+      color: rgba(196, 134, 50, 0.6);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="display-wrapper">
+  <!-- TOP BAR -->
+  <div class="top-bar">
+    <div class="logo-section">
+      <img src="https://i.postimg.cc/k5c7HJ3h/sans-fond.png" alt="Logo Le Manoïre">
+      <div>
+        <div class="logo-name">Le Manoïre</div>
+        <div class="logo-sub">Col de Jaman · 1512m</div>
+      </div>
+    </div>
+    <div class="conditions-title">
+      <div class="conditions-label">Météo</div>
+      <div class="conditions-h">Conditions en direct</div>
+    </div>
+  </div>
+
+  <!-- MAIN AREA -->
+  <div class="main-area">
+    <!-- TEMPERATURE HERO -->
+    <div class="temp-hero">
+      <div class="temp-icon" id="disp-icone">☀️</div>
+      <div class="temp-value" id="disp-temp">--°C</div>
+      <div class="temp-desc" id="disp-desc">Chargement</div>
+    </div>
+
+    <!-- DATA GRID -->
+    <div class="data-grid">
+      <div class="data-card">
+        <div class="data-card-label">💨 Vent</div>
+        <div class="data-card-value" id="disp-vent">-- km/h</div>
+        <div class="data-card-sub" id="disp-rafales">rafales -- km/h</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">💧 Humidité</div>
+        <div class="data-card-value" id="disp-humidite">-- %</div>
+        <div class="data-card-sub">relative</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">🌧️ Pluie</div>
+        <div class="data-card-value" id="disp-pluie">-- mm</div>
+        <div class="data-card-sub">précipitations</div>
+      </div>
+      <div class="data-card">
+        <div class="data-card-label">🌡️ Pression</div>
+        <div class="data-card-value" id="disp-pression">-- hPa</div>
+        <div class="data-card-sub">atmosphérique</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- BOTTOM BAR -->
+  <div class="bottom-bar">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      LIVE
+    </div>
+    <span class="update-text" id="disp-update">Chargement des données...</span>
+    <span class="altitude-text">⛰️ Col de Jaman · 1512m · Suisse</span>
+  </div>
+</div>
+
+<script>
+  const getMeteoInfo = (code) => {
+    let texte = "Ensoleillé", icone = "☀️";
+    if (code > 0 && code <= 3) { texte = "Nuageux"; icone = "☁️"; }
+    else if (code >= 45 && code <= 48) { texte = "Brouillard"; icone = "🌫️"; }
+    else if (code >= 51 && code <= 67) { texte = "Pluie"; icone = "🌧️"; }
+    else if (code >= 71 && code <= 77) { texte = "Neige"; icone = "❄️"; }
+    else if (code >= 80) { texte = "Averses"; icone = "🌦️"; }
+    return { texte, icone };
+  };
+
+  async function chargerDisplay() {
+    try {
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=46.4469&longitude=6.9744&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,precipitation,surface_pressure,weather_code&timezone=Europe/Zurich');
+      const d = await r.json();
+      const c = d.current;
+      const info = getMeteoInfo(c.weather_code);
+
+      document.getElementById('disp-icone').innerText = info.icone;
+      document.getElementById('disp-temp').innerText = `${Math.round(c.temperature_2m)}°C`;
+      document.getElementById('disp-desc').innerText = info.texte;
+      document.getElementById('disp-vent').innerText = `${Math.round(c.wind_speed_10m)} km/h`;
+      document.getElementById('disp-rafales').innerText = `rafales ${Math.round(c.wind_gusts_10m)} km/h`;
+      document.getElementById('disp-humidite').innerText = `${c.relative_humidity_2m} %`;
+      document.getElementById('disp-pluie').innerText = `${c.precipitation} mm`;
+      document.getElementById('disp-pression').innerText = `${Math.round(c.surface_pressure)} hPa`;
+
+      const maintenant = new Date();
+      document.getElementById('disp-update').innerText = `Mis à jour à ${maintenant.toLocaleTimeString('fr-CH', { hour: '2-digit', minute: '2-digit' })}`;
+    } catch (e) {
+      document.getElementById('disp-update').innerText = "Données temporairement indisponibles";
+    }
+  }
+
+  chargerDisplay();
+  setInterval(chargerDisplay, 300000);
+</script>
+</body>
+</html>

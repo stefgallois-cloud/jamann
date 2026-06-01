@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galerie Photos — Col de Jaman &amp; Le Manoïre | Paysages d'Alpage</title>
+  <meta name="description" content="Photos du Col de Jaman et du restaurant Le Manoïre : terrasse panoramique, alpages, couchers de soleil sur la Riviera vaudoise à 1512 m d'altitude.">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="site-nav"></div>
+  <div id="site-brand"></div>
+
+  <div class="page-header">
+    <h1>Galerie</h1>
+    <p>Le Manoïre · Col de Jaman · 1512 m</p>
+  </div>
+
+  <div class="content-wrapper">
+    <div id="mainGallery" class="gallery-grid"></div>
+  </div>
+
+  <div class="lightbox" id="lightboxOverlay">
+    <img src="#" alt="Aperçu photo" id="lightboxImg">
+  </div>
+
+  <div id="site-footer"></div>
+
+  <script>
+    const images = [
+      { src: "https://i.postimg.cc/BbfWNLms/terrasse-drapeau-resto.png", alt: "Terrasse du Manoïre au Col de Jaman avec vue sur les sommets" },
+      { src: "https://i.postimg.cc/9fHGmcgw/vue-vache-coucher.png", alt: "Vache dans les alpages du Col de Jaman" },
+      { src: "https://i.postimg.cc/XYfrgdLm/vue-terrasse.png", alt: "Grande table en bois sur la terrasse du Manoïre" },
+      { src: "https://i.postimg.cc/tCh6BKCK/vue-jeux.png", alt: "Balançoire en bois près du Manoïre au-dessus de Montreux" },
+      { src: "https://i.postimg.cc/V6rrnThm/coucher-soleil.png", alt: "Coucher de soleil sur le Col de Jaman" },
+      { src: "https://i.postimg.cc/4yv31Tb8/vue-drone.png", alt: "Vue en hauteur du chalet historique Le Manoïre" }
+    ];
+
+    const gallery = document.getElementById('mainGallery');
+    const lightbox = document.getElementById('lightboxOverlay');
+    const lightboxImg = document.getElementById('lightboxImg');
+
+    images.forEach(photo => {
+      const item = document.createElement('div');
+      item.className = 'gallery-item';
+      const img = document.createElement('img');
+      img.src = photo.src;
+      img.alt = photo.alt;
+      img.loading = "lazy";
+      img.addEventListener('click', () => {
+        lightboxImg.src = photo.src;
+        lightbox.classList.add('active');
+      });
+      item.appendChild(img);
+      gallery.appendChild(item);
+    });
+
+    lightbox.addEventListener('click', () => { lightbox.classList.remove('active'); });
+  </script>
+  <script src="nav.js"></script>
+</body>
+</html>

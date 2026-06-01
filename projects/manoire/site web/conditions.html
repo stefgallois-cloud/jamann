@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Conditions en Direct — Col de Jaman | Le Manoïre</title>
+  <meta name="description" content="Conditions météo en direct au Col de Jaman (1512m) — Le Manoïre.">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    @font-face {
+      font-family: 'Tenaciou';
+      src: url('./TenaciouHeavy.ttf') format('truetype');
+      font-weight: bold;
+    }
+    :root {
+      --charte-blanc: #FBFBF8;
+      --charte-beige: #EFE5DB;
+      --charte-ocre: #C48632;
+      --charte-bordeaux: #4B0F1F;
+      --charte-orange: #E06530;
+      --charte-marron: #954315;
+      --charte-taupe: #7B694D;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      font-family: 'Clash Grotesk', sans-serif;
+      font-weight: 400;
+      background-color: var(--charte-beige);
+      color: var(--charte-marron);
+      min-height: 100%;
+    }
+
+    /* HEADER */
+    .header {
+      background-color: var(--charte-bordeaux);
+      border-bottom: 6px solid var(--charte-ocre);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-logo {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+    }
+    .header-logo img {
+      height: 56px;
+      filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+    }
+    .header-title {
+      font-family: 'Tenaciou', sans-serif;
+      font-size: 1.7rem;
+      color: var(--charte-ocre);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+    .back-link {
+      color: var(--charte-beige);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      transition: color 0.3s;
+      white-space: nowrap;
+    }
+    .back-link:hover { color: var(--charte-ocre); }
+
+    /* PAGE TITLE */
+    .page-title-section {
+      background: var(--charte-bordeaux);
+      padding: 2rem 2rem 3rem;
+      text-align: center;
+    }
+    .page-title {
+      font-family: 'Clash Grotesk', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.9rem);
+      font-weight: 600;
+      color: var(--charte-blanc);
+      text-transform: uppercase;
+      letter-spacing: 3px;
+    }
+    .page-title-underline {
+      width: 60px;
+      height: 3px;
+      background: var(--charte-ocre);
+      margin: 1rem auto 0;
+      border-radius: 2px;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+    }
+
+    /* WEBCAM ZONE */
+    .webcam-section {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/7;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 3px solid rgba(123, 105, 77, 0.4);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.2);
+      margin-bottom: 2.5rem;
+      background: var(--charte-bordeaux);
+    }
+    /* WEBCAM : remplacer src par l'URL du flux en temps réel quand la caméra sera installée */
+    #webcam-feed {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .live-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: #c53030;
+      color: white;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.3rem 0.8rem;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      background: white;
+      border-radius: 50%;
+      animation: blink 1.2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+    /* METEO GRID */
+    .meteo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .meteo-card {
+      background: var(--charte-blanc);
+      border: 2px solid rgba(123, 105, 77, 0.3);
+      border-radius: 8px;
+      padding: 1.4rem 1rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      transition: all 0.3s ease;
+    }
+    .meteo-card:hover {
+      border-color: var(--charte-ocre);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    .card-icon { font-size: 1.8rem; margin-bottom: 0.5rem; display: block; }
+    .card-label {
+      font-size: 0.68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--charte-taupe);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+    .card-value {
+      font-size: 1.55rem;
+      font-weight: 700;
+      color: var(--charte-bordeaux);
+      display: block;
+      line-height: 1;
+    }
+    .card-sub {
+      font-size: 0.72rem;
+      color: var(--charte-taupe);
+      margin-top: 0.35rem;
+      display: block;
+    }
+
+    /* INFOS */
+    .update-info {
+      text-align: center;
+      font-size: 0.82rem;
+      color: var(--charte-taupe);
+      margin-top: 0.3rem;
+      font-style: italic;
+    }
+    .source-info {
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(123, 105, 77, 0.7);
+      margin-top: 0.3rem;
+    }
+
+    /* LIEN DISPLAY */
+    .display-link-section {
+      text-align: center;
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(123,105,77,0.25);
+    }
+    .display-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      color: var(--charte-orange);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      transition: color 0.3s;
+      letter-spacing: 0.5px;
+    }
+    .display-link:hover { color: var(--charte-bordeaux); }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      padding: 1.5rem 2rem;
+      background: var(--charte-bordeaux);
+      border-top: 4px solid var(--charte-ocre);
+    }
+    .footer p { font-size: 0.8rem; color: rgba(239, 229, 219, 0.7); letter-spacing: 1px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 640px) {
+      .header { padding: 0.8rem 1rem; }
+      .header-title { font-size: 1.2rem; letter-spacing: 1px; }
+      .header-logo img { height: 44px; }
+      .page-title-section { padding: 1.5rem 1rem 2rem; }
+      .container { padding: 1.5rem 1rem 3rem; }
+      .webcam-section { aspect-ratio: 16/9; margin-bottom: 1.5rem; }
+      .meteo-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; }
+      .card-value { font-size: 1.3rem; }
+      .card-icon { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="site-nav"></div>
+<div id="site-brand"></div>
+
+<div class="breadcrumb">
+  <a href="index.html">‹ Accueil</a>
+</div>
+
+<!-- TITRE -->
+<div class="page-title-section">
+  <h1 class="page-title">Conditions en direct — Col de Jaman</h1>
+  <div class="page-title-underline"></div>
+</div>
+
+<!-- CONTENU -->
+<div class="container">
+
+  <!-- ZONE WEBCAM (placeholder — à brancher quand la caméra sera installée) -->
+  <div class="webcam-section" id="webcam-container">
+    <!-- WEBCAM : remplacer src par l'URL du flux en temps réel quand la caméra sera installée -->
+    <img id="webcam-feed" src="https://i.postimg.cc/4yv31Tb8/vue-drone.png" alt="Vue du Col de Jaman — Le Manoïre">
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      LIVE
+    </div>
+  </div>
+
+  <!-- GRILLE MÉTÉO -->
+  <div class="meteo-grid">
+    <div class="meteo-card">
+      <span class="card-icon" id="cond-icone">☀️</span>
+      <span class="card-label">Température</span>
+      <span class="card-value" id="cond-temp">--°C</span>
+      <span class="card-sub" id="cond-desc">Chargement...</span>
+    </div>
+    <div class="meteo-card">
+      <span class="card-icon">💨</span>
+      <span class="card-label">Vent</span>
+      <span class="card-value" id="cond-vent">-- km/h</span>
+      <span class="card-sub" id="cond-rafales">rafales -- km/h</span>
+    </div>
+    <div class="meteo-card">
+      <span class="card-icon">🌧️</span>
+      <span class="card-label">Pluie</span>
+      <span class="card-value" id="cond-pluie">-- mm</span>
+      <span class="card-sub">précipitations</span>
+    </div>
+    <div class="meteo-card">
+      <span class="card-icon">💧</span>
+      <span class="card-label">Humidité</span>
+      <span class="card-value" id="cond-humidite">-- %</span>
+      <span class="card-sub">relative</span>
+    </div>
+    <div class="meteo-card">
+      <span class="card-icon">🌡️</span>
+      <span class="card-label">Pression</span>
+      <span class="card-value" id="cond-pression">-- hPa</span>
+      <span class="card-sub">atmosphérique</span>
+    </div>
+    <div class="meteo-card">
+      <span class="card-icon">⛰️</span>
+      <span class="card-label">Altitude</span>
+      <span class="card-value">1 512 m</span>
+      <span class="card-sub">Col de Jaman</span>
+    </div>
+  </div>
+
+  <p class="update-info" id="update-time">Actualisation en cours...</p>
+  <p class="source-info">Données Open-Meteo · Col de Jaman, Suisse · Mise à jour automatique toutes les 5 min</p>
+
+  <div class="display-link-section">
+    <a href="display.html" class="display-link" target="_blank">
+      📺 Affichage tablette restaurant →
+    </a>
+  </div>
+</div>
+
+<div id="site-footer"></div>
+
+<script src="nav.js"></script>
+<script>
+  const getMeteoInfo = (code) => {
+    let texte = "Ensoleillé", icone = "☀️";
+    if (code > 0 && code <= 3) { texte = "Nuageux"; icone = "☁️"; }
+    else if (code >= 45 && code <= 48) { texte = "Brouillard"; icone = "🌫️"; }
+    else if (code >= 51 && code <= 67) { texte = "Pluie"; icone = "🌧️"; }
+    else if (code >= 71 && code <= 77) { texte = "Neige"; icone = "❄️"; }
+    else if (code >= 80) { texte = "Averses"; icone = "🌦️"; }
+    return { texte, icone };
+  };
+
+  async function chargerConditions() {
+    try {
+      const r = await fetch('https://api.open-meteo.com/v1/forecast?latitude=46.4469&longitude=6.9744&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,precipitation,surface_pressure,weather_code&timezone=Europe/Zurich');
+      const d = await r.json();
+      const c = d.current;
+      const info = getMeteoInfo(c.weather_code);
+
+      document.getElementById('cond-icone').innerText = info.icone;
+      document.getElementById('cond-temp').innerText = `${Math.round(c.temperature_2m)}°C`;
+      document.getElementById('cond-desc').innerText = info.texte;
+      document.getElementById('cond-vent').innerText = `${Math.round(c.wind_speed_10m)} km/h`;
+      document.getElementById('cond-rafales').innerText = `rafales ${Math.round(c.wind_gusts_10m)} km/h`;
+      document.getElementById('cond-pluie').innerText = `${c.precipitation} mm`;
+      document.getElementById('cond-humidite').innerText = `${c.relative_humidity_2m} %`;
+      document.getElementById('cond-pression').innerText = `${Math.round(c.surface_pressure)} hPa`;
+
+      const maintenant = new Date();
+      document.getElementById('update-time').innerText = `Mise à jour le ${maintenant.toLocaleDateString('fr-CH')} à ${maintenant.toLocaleTimeString('fr-CH', { hour: '2-digit', minute: '2-digit' })}`;
+    } catch (e) {
+      console.log("Conditions indisponibles", e);
+      document.getElementById('update-time').innerText = "Données temporairement indisponibles";
+    }
+  }
+
+  chargerConditions();
+  setInterval(chargerConditions, 300000);
+</script>
+</body>
+</html>

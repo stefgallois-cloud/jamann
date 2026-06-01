@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <title>Mentions Légales & Confidentialité | Le Manoïre</title>
+  <meta name="robots" content="noindex, nofollow"> <!-- On évite que Google indexe cette page technique -->
+
+  <!-- Ajout des polices (Clash Grotesk via Fontshare) -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+
+  <style>
+    /* --- IMPORTATION DE TA POLICE LOCALE TENACIOU --- */
+    @font-face {
+      font-family: 'Tenaciou';
+      src: url('./TenaciouHeavy.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    :root {
+      --charte-blanc: #FBFBF8;
+      --charte-beige: #EFE5DB;
+      --charte-ocre: #C48632;      
+      --charte-bordeaux: #4B0F1F;  
+      --charte-orange: #E06530;    
+      --charte-marron: #954315;
+      --charte-taupe: #7B694D;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Clash Grotesk', sans-serif; 
+      font-weight: 400;
+      background-color: var(--charte-beige);
+      color: var(--charte-marron); 
+      line-height: 1.7;
+    }
+
+    /* === HEADER SIMPLIFIÉ === */
+    .header-legal { 
+        padding: 2rem 1.5rem; 
+        text-align: center; 
+        background-color: var(--charte-bordeaux);
+        border-bottom: 6px solid var(--charte-ocre);
+    }
+    
+    .logo-img { max-width: 250px; width: 100%; margin: 0 auto 1rem; filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3)); }
+    
+    .back-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        background: transparent;
+        color: var(--charte-beige);
+        border: 1px solid var(--charte-beige);
+        padding: 0.5rem 1.5rem;
+        border-radius: 4px;
+        text-decoration: none;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        transition: 0.3s;
+        margin-top: 1rem;
+    }
+    .back-btn:hover {
+        background: var(--charte-beige);
+        color: var(--charte-bordeaux);
+    }
+
+    /* === CONTENU === */
+    .content-wrapper { flex: 1; max-width: 800px; margin: 0 auto; padding: 4rem 1.5rem 6rem; width: 100%; }
+    
+    .page-title {
+        font-family: 'Tenaciou', sans-serif; 
+        font-size: clamp(2rem, 5vw, 3rem); 
+        color: var(--charte-bordeaux); 
+        text-align: center;
+        margin-bottom: 4rem;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+    }
+
+    .legal-section { margin-bottom: 3.5rem; background: var(--charte-blanc); padding: 2.5rem; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-top: 4px solid var(--charte-taupe); }
+    .legal-section:nth-child(even) { border-top-color: var(--charte-ocre); }
+
+    .section-title { font-family: 'Clash Grotesk', sans-serif; font-size: 1.4rem; font-weight: 600; letter-spacing: 1px; color: var(--charte-bordeaux); margin-bottom: 1.5rem; text-transform: uppercase; display: flex; align-items: center; gap: 0.5rem; }
+    
+    .legal-text { font-size: 1.05rem; margin-bottom: 1rem; }
+    .legal-text strong { color: var(--charte-bordeaux); font-weight: 600; }
+    
+    ul { margin-left: 1.5rem; margin-bottom: 1.5rem; }
+    li { margin-bottom: 0.5rem; }
+
+    .contact-highlight {
+        background: rgba(196, 134, 50, 0.1);
+        padding: 1rem;
+        border-left: 4px solid var(--charte-ocre);
+        margin-top: 1rem;
+        border-radius: 0 4px 4px 0;
+    }
+    .contact-highlight a { color: var(--charte-orange); text-decoration: none; font-weight: 600; }
+    .contact-highlight a:hover { text-decoration: underline; }
+
+    /* === FOOTER === */
+    .footer { text-align: center; padding: 2rem; background: var(--charte-bordeaux); border-top: 1px solid rgba(239, 229, 219, 0.1); color: var(--charte-beige); }
+    .footer p { font-size: 12px; color: #bbb; letter-spacing: 1px; }
+
+    @media (max-width: 640px) {
+        .content-wrapper { padding: 2rem 1rem 4rem; }
+        .legal-section { padding: 1.5rem; }
+        .page-title { margin-bottom: 2rem; }
+    }
+  </style>
+ </head>
+ <body>
+
+  <div class="app-wrapper flex flex-col h-full">
+   
+   <header class="header-legal">
+    <img src="https://i.postimg.cc/k5c7HJ3h/sans-fond.png" alt="Logo Le Manoïre" class="logo-img">
+    <div>
+        <a href="index.html" class="back-btn">← Retour au site</a>
+    </div>
+   </header>
+   
+   <main class="content-wrapper">
+    <h1 class="page-title">Mentions Légales & Confidentialité</h1>
+    
+    <div class="legal-section">
+        <h2 class="section-title">⚖️ 1. Éditeur du site</h2>
+        <p class="legal-text">Le présent site web <strong>lemanoire-jaman.ch</strong> est édité par l'équipe du Manoïre.</p>
+        <p class="legal-text"><strong>Statut de l'entreprise :</strong> Société en cours d'immatriculation.</p>
+        <p class="legal-text"><strong>Siège social (adresse d'exploitation) :</strong> Col de Jaman, 1820 Montreux, Suisse.</p>
+        
+        <div class="contact-highlight">
+            <p class="legal-text" style="margin-bottom: 0;"><strong>Gérant & Contact :</strong> Michael Moreau</p>
+            <p class="legal-text" style="margin-bottom: 0;">Téléphone : <a href="tel:+41799159192">+41 79 915 91 92</a></p>
+            <p class="legal-text" style="margin-bottom: 0;">Email : <a href="mailto:contact@lemanoire-jaman.ch">contact@lemanoire-jaman.ch</a></p>
+        </div>
+    </div>
+
+    <div class="legal-section">
+        <h2 class="section-title">💻 2. Conception et Hébergement</h2>
+        <p class="legal-text"><strong>Création et développement :</strong> Réalisé par <strong>Clockwork Ops</strong> (Agence d'Agents Automatisés et Product Building).</p>
+        <p class="legal-text"><strong>Hébergement du site :</strong> Le site est hébergé par Infomaniak (Infomaniak Network SA, Rue Eugène-Marziano 25, 1227 Genève, Suisse).</p>
+    </div>
+
+    <div class="legal-section">
+        <h2 class="section-title">🔒 3. Politique de Confidentialité (LPD)</h2>
+        <p class="legal-text">Conformément à la nouvelle <strong>Loi sur la Protection des Données (LPD) suisse</strong> entrée en vigueur le 1er septembre 2023, nous nous engageons à protéger vos données personnelles.</p>
+        
+        <p class="legal-text" style="margin-top: 1.5rem; font-weight: 600; color: var(--charte-bordeaux);">Collecte des données :</p>
+        <p class="legal-text">Nous collectons des informations lorsque vous effectuez une demande de réservation via notre formulaire ou vous inscrivez à notre newsletter. Les données collectées incluent :</p>
+        <ul>
+            <li>Votre adresse e-mail.</li>
+            <li>Votre nom, prénom et numéro de téléphone (pour les demandes de réservation).</li>
+            <li>Les détails de votre réservation (date, heure, nombre de couverts).</li>
+        </ul>
+
+        <p class="legal-text" style="margin-top: 1.5rem; font-weight: 600; color: var(--charte-bordeaux);">Utilisation des données :</p>
+        <p class="legal-text">Vos coordonnées sont utilisées exclusivement pour traiter et confirmer vos demandes de réservation, ou pour vous envoyer les actualités du restaurant Le Manoïre si vous y avez consenti. <strong>En aucun cas vos données ne seront vendues, louées ou cédées à des tiers.</strong></p>
+
+        <p class="legal-text" style="margin-top: 1.5rem; font-weight: 600; color: var(--charte-bordeaux);">Vos droits :</p>
+        <p class="legal-text">Vous disposez d'un droit d'accès, de rectification, de suppression et d'opposition concernant vos données. Pour exercer ce droit ou pour vous désabonner de nos actualités, il vous suffit de nous contacter à l'adresse e-mail mentionnée plus haut, ou d'utiliser le lien de désinscription présent au bas de chacune de nos communications.</p>
+    </div>
+
+    <div class="legal-section">
+        <h2 class="section-title">©️ 4. Propriété intellectuelle</h2>
+        <p class="legal-text">L'ensemble de ce site (structure, textes, logos, identité visuelle) relève de la législation suisse et internationale sur le droit d'auteur et la propriété intellectuelle. Toute reproduction, totale ou partielle, est strictement interdite sans l'autorisation expresse du Manoïre.</p>
+        <p class="legal-text">Le design et l'intégration technique ont été réalisés par Clockwork Ops.</p>
+    </div>
+    
+   </main>
+   
+   <footer class="footer">
+    <p style="margin-top: 0.3rem; font-size: 0.95em;">Réalisé par Clockwork Ops</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85em; color: rgba(239, 229, 219, 0.7);">
+        &copy; 2026 Le Manoïre | Tous droits réservés.
+    </p>
+   </footer>
+  </div>
+
+ </body>
+</html>
