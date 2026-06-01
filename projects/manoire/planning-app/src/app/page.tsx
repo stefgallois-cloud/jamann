@@ -4,9 +4,28 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { CalendarDays, Users, Settings, Wand2, Menu, X, Bell } from "lucide-react";
 import Image from "next/image";
+import { WeeklyCalendar } from "@/components/planning/WeeklyCalendar";
+import { MOCK_EMPLOYEES, MOCK_SHIFTS } from "@/lib/mock-data";
 
 export default function Dashboard() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isGenerated, setIsGenerated] = useState(false);
+  const [isGenerating, setIsGenerating] = useState(false);
+  const [shifts, setShifts] = useState(MOCK_SHIFTS);
+
+  const handleGenerate = async () => {
+    setIsGenerating(true);
+    try {
+      // Simulation locale du moteur IA (pour permettre un export HTML statique)
+      await new Promise(resolve => setTimeout(resolve, 2000));
+      setShifts(MOCK_SHIFTS);
+      setIsGenerated(true);
+    } catch (e) {
+      console.error(e);
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#FDFBF7] text-stone-800 font-sans flex flex-col md:flex-row">
@@ -73,9 +92,13 @@ export default function Dashboard() {
             <Button variant="outline" size="icon" className="hidden md:flex rounded-full bg-white border-stone-200 shadow-sm text-stone-500">
               <Bell className="w-4 h-4" />
             </Button>
-            <Button className="w-full md:w-auto bg-[#8b5a2b] hover:bg-[#6b421c] text-white gap-2 shadow-lg hover:shadow-xl transition-all rounded-full px-6 py-6 text-base">
-              <Wand2 className="w-5 h-5" />
-              Générer par IA
+            <Button 
+              onClick={handleGenerate}
+              disabled={isGenerating}
+              className="w-full md:w-auto bg-[#8b5a2b] hover:bg-[#6b421c] text-white gap-2 shadow-lg hover:shadow-xl transition-all rounded-full px-6 py-6 text-base"
+            >
+              <Wand2 className={`w-5 h-5 ${isGenerating ? "animate-spin" : ""}`} />
+              {isGenerating ? "Création en cours..." : isGenerated ? "Régénérer par IA" : "Générer par IA"}
             </Button>
           </div>
         </header>
@@ -87,7 +110,7 @@ export default function Dashboard() {
               <Users className="w-16 h-16 text-[#8b5a2b]" />
             </div>
             <h3 className="text-stone-500 text-sm font-semibold mb-2 uppercase tracking-wide">Équipe disponible</h3>
-            <p className="text-4xl font-extrabold text-stone-800">8 <span className="text-lg font-medium text-stone-400">/ 10</span></p>
+            <p className="text-4xl font-extrabold text-stone-800">{MOCK_EMPLOYEES.length} <span className="text-lg font-medium text-stone-400">/ {MOCK_EMPLOYEES.length}</span></p>
           </div>
 
           <div className="bg-white p-5 md:p-6 rounded-2xl border border-stone-100 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
@@ -95,36 +118,54 @@ export default function Dashboard() {
               <CalendarDays className="w-16 h-16 text-[#8b5a2b]" />
             </div>
             <h3 className="text-stone-500 text-sm font-semibold mb-2 uppercase tracking-wide">Heures à planifier</h3>
-            <p className="text-4xl font-extrabold text-stone-800">185h</p>
+            <p className="text-4xl font-extrabold text-stone-800">{isGenerated ? "135h" : "0h"}</p>
           </div>
 
           <div className="bg-white p-5 md:p-6 rounded-2xl border border-stone-100 shadow-sm sm:col-span-2 lg:col-span-1">
             <h3 className="text-stone-500 text-sm font-semibold mb-4 uppercase tracking-wide">Statut de la semaine</h3>
-            <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col items-center justify-center text-center">
-              <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 mb-2">
-                Brouillon non généré
-              </span>
-              <p className="text-xs text-amber-700 font-medium">L'IA est prête à concevoir le planning.</p>
-            </div>
+            {isGenerated ? (
+              <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex flex-col items-center justify-center text-center">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 mb-2">
+                  Généré par l'IA
+                </span>
+                <p className="text-xs text-emerald-700 font-medium">Planning prêt à être publié.</p>
+              </div>
+            ) : (
+              <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 flex flex-col items-center justify-center text-center">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-800 mb-2">
+                  Brouillon non généré
+                </span>
+                <p className="text-xs text-amber-700 font-medium">L'IA est prête à concevoir le planning.</p>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Calendar Placeholder */}
-        <div className="bg-white rounded-3xl border border-stone-100 shadow-sm overflow-hidden min-h-[400px] md:h-[600px] flex items-center justify-center p-6 relative">
-          <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-[0.03]"></div>
-          <div className="text-center relative z-10 p-8 max-w-md mx-auto">
-            <div className="w-24 h-24 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
-              <CalendarDays className="w-10 h-10 text-stone-400" />
+        {/* Calendar Area */}
+        {isGenerated ? (
+          <WeeklyCalendar employees={MOCK_EMPLOYEES} initialShifts={shifts} />
+        ) : (
+          <div className="bg-white rounded-3xl border border-stone-100 shadow-sm overflow-hidden min-h-[400px] md:h-[600px] flex items-center justify-center p-6 relative">
+            <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/wood-pattern.png')] opacity-[0.03]"></div>
+            <div className="text-center relative z-10 p-8 max-w-md mx-auto">
+              <div className="w-24 h-24 bg-stone-50 rounded-full flex items-center justify-center mx-auto mb-6 shadow-inner">
+                <CalendarDays className="w-10 h-10 text-stone-400" />
+              </div>
+              <h3 className="text-2xl font-bold text-stone-800 mb-2">La toile est vierge</h3>
+              <p className="text-stone-500 mb-8 leading-relaxed">
+                Le planning de cette semaine n'a pas encore été généré. Cliquez sur le bouton magique pour laisser l'IA attribuer les shifts en respectant vos règles.
+              </p>
+              <Button 
+                onClick={handleGenerate}
+                disabled={isGenerating}
+                variant="outline" 
+                className="border-stone-200 text-stone-600 hover:bg-stone-50 rounded-full px-6"
+              >
+                Générer un test
+              </Button>
             </div>
-            <h3 className="text-2xl font-bold text-stone-800 mb-2">La toile est vierge</h3>
-            <p className="text-stone-500 mb-8 leading-relaxed">
-              Le planning de cette semaine n'a pas encore été généré. Cliquez sur le bouton magique pour laisser l'IA attribuer les shifts en respectant vos règles.
-            </p>
-            <Button variant="outline" className="border-stone-200 text-stone-600 hover:bg-stone-50 rounded-full px-6">
-              Ou créer un planning manuellement
-            </Button>
           </div>
-        </div>
+        )}
       </main>
       
       {/* Overlay for mobile menu */}
