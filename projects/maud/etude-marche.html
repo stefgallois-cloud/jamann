@@ -104,6 +104,35 @@
       max-width: 500px;
       margin: 0 auto 48px;
     }
+    .hero-sourced {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(212,163,115,0.18);
+      border: 1px solid rgba(212,163,115,0.45);
+      border-radius: 30px;
+      padding: 8px 20px 8px 14px;
+      margin: 0 auto 48px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .sourced-badge {
+      background: var(--terra);
+      color: var(--green-dark);
+      font-family: var(--font-head);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+    .sourced-text {
+      color: rgba(244,241,234,0.8);
+      font-size: 0.82rem;
+      font-family: var(--font-body);
+    }
 
     /* KPIs */
     .kpi-grid {
@@ -175,9 +204,22 @@
       font-size: 0.95rem;
     }
     .source {
-      font-size: 0.75rem;
-      color: #999;
-      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #777;
+      margin-top: 14px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .source a {
+      color: var(--terra-dark);
+      text-decoration: none;
+      border-bottom: 1px solid rgba(176,125,74,0.35);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .source a:hover {
+      color: var(--terra);
+      border-color: var(--terra);
     }
 
     .chart-wrapper {
@@ -320,7 +362,10 @@
   <div class="hero">
     <div class="hero-tag">Étude de marché · Mai 2026</div>
     <h1>Dog Walking à Lausanne</h1>
-    <p class="hero-sub">Sources : Identitas, RTS, Kentley Insights, StarOfService, Yoojo.ch</p>
+    <div class="hero-sourced">
+      <span class="sourced-badge">✓ Données sourcées</span>
+      <span class="sourced-text">Identitas · Watson.ch · Kentley Insights · StarOfService.ch · Yoojo.ch</span>
+    </div>
 
     <div class="kpi-grid">
       <div class="kpi-card">
@@ -349,7 +394,7 @@
     <p class="section-desc">Données officielles Amicus (base nationale). Chaque chien vivant en Suisse est enregistré obligatoirement — ces chiffres sont fiables à 100%.</p>
     <div class="chart-wrapper">
       <canvas id="chartParc"></canvas>
-      <p class="source">Source : Identitas / Amicus & RTS 2024</p>
+      <p class="source">🔗 Source : <a href="https://tierstatistik.identitas.ch/fr/dogs.html" target="_blank" rel="noopener">Identitas / Amicus</a> & RTS 2024</p>
     </div>
   </div>
 
@@ -361,7 +406,7 @@
       <p class="section-desc">Ville à fort pouvoir d'achat, clientèle active qui externalise volontiers. 6 064 propriétaires potentiels dans un périmètre limité.</p>
       <div class="chart-wrapper">
         <canvas id="chartVilles"></canvas>
-        <p class="source">Source : Watson.ch / Identitas 2024</p>
+        <p class="source">🔗 Source : <a href="https://www.watson.ch/fr/suisse/animaux/392626426-geneve-est-la-ville-qui-compte-le-plus-de-chiens-en-suisse" target="_blank" rel="noopener">Watson.ch</a> / Identitas 2024</p>
       </div>
     </div>
   </div>
@@ -373,7 +418,7 @@
     <p class="section-desc">Le secteur pèse 5,6 Mds USD en 2025, en croissance de +9%/an. Urbanisation, modes de vie actifs et humanisation des animaux portent cette tendance.</p>
     <div class="chart-wrapper">
       <canvas id="chartMondial"></canvas>
-      <p class="source">Source : Kentley Insights / Mordor Intelligence 2025</p>
+      <p class="source">🔗 Source : Kentley Insights / Mordor Intelligence 2025 (rapports sectoriels payants)</p>
     </div>
   </div>
 
@@ -404,7 +449,7 @@
           <div class="tarif-bar-wrap"><div class="tarif-bar" style="width:100%"></div></div>
         </div>
       </div>
-      <p class="source" style="margin-top:20px">Source : StarOfService.ch & Yoojo.ch 2025</p>
+      <p class="source" style="margin-top:20px">🔗 Source : <a href="https://www.starofservice.ch/annubis/waadt/lausanne/lausanne/promenade-de-chiens" target="_blank" rel="noopener">StarOfService.ch</a> & <a href="https://www.yoojo.ch" target="_blank" rel="noopener">Yoojo.ch</a> 2025</p>
     </div>
   </div>
 
@@ -415,7 +460,7 @@
     <p class="section-desc">Formation Pro Canin (690 CHF, 33h) = passage à 5 chiens simultanés autorisé. Investissement rentabilisé en moins d'un mois.</p>
     <div class="chart-wrapper">
       <canvas id="chartRevenus"></canvas>
-      <p class="source">Calcul basé sur 35 CHF/promenade, 5 jours/semaine</p>
+      <p class="source">📊 Calcul interne — basé sur 35 CHF/promenade, 5 jours/semaine</p>
     </div>
   </div>
 

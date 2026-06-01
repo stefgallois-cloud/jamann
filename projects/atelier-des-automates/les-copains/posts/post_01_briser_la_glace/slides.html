@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: #0D0D0D; }
+
+  /* ─── Structure de base ─── */
+  .slide {
+    width: 1080px;
+    height: 1080px;
+    position: relative;
+    overflow: hidden;
+    display: block;
+    background: #1B2A4A;
+  }
+
+  .top-bar {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 8px;
+    background: #F5A623;
+  }
+
+  .tag {
+    position: absolute;
+    top: 32px; left: 60px;
+    color: #F5A623;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+  }
+
+  .handle {
+    position: absolute;
+    bottom: 42px; left: 60px;
+    color: rgba(158, 184, 208, 0.5);
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  /* ─── SLIDE 1 — TITRE ─── */
+  #s1 {
+    background: #1B2A4A;
+  }
+
+  #s1 .hero-label {
+    position: absolute;
+    top: 210px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: #F5A623;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 116px;
+    font-weight: 900;
+    line-height: 1.0;
+    letter-spacing: -2px;
+  }
+
+  #s1 .hero-sub {
+    position: absolute;
+    top: 370px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 46px;
+    font-weight: 700;
+    line-height: 1.25;
+  }
+
+  #s1 .sep-line {
+    position: absolute;
+    top: 572px;
+    left: 290px; right: 290px;
+    height: 2px;
+    background: rgba(245, 166, 35, 0.35);
+  }
+
+  #s1 .hero-desc {
+    position: absolute;
+    top: 598px;
+    left: 90px; right: 90px;
+    text-align: center;
+    color: #9EB8D0;
+    font-family: 'Inter', sans-serif;
+    font-size: 28px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  #s1 .deco {
+    position: absolute;
+    bottom: 52px; right: 60px;
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px solid rgba(245, 166, 35, 0.28);
+    background: rgba(245, 166, 35, 0.05);
+  }
+
+  /* ─── SLIDE 2 — CHIFFRES CLÉS ─── */
+  #s2 .section-label {
+    position: absolute;
+    top: 82px; left: 60px;
+    color: #F5A623;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  .stat {
+    position: absolute;
+    left: 60px; right: 60px;
+    display: flex;
+    align-items: center;
+    gap: 44px;
+  }
+
+  .stat-num {
+    flex-shrink: 0;
+    color: #F5A623;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 88px;
+    font-weight: 900;
+    line-height: 1;
+    min-width: 310px;
+  }
+
+  .stat-bar {
+    flex-shrink: 0;
+    width: 3px;
+    height: 90px;
+    background: rgba(245, 166, 35, 0.35);
+    border-radius: 2px;
+  }
+
+  .stat-txt {
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+
+  #s2 .r1 { top: 150px; }
+  #s2 .r2 { top: 440px; }
+  #s2 .r3 { top: 730px; }
+
+  #s2 .sep1 {
+    position: absolute;
+    top: 400px; left: 60px; right: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+  #s2 .sep2 {
+    position: absolute;
+    top: 690px; left: 60px; right: 60px;
+    height: 1px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  #s2 .sources {
+    position: absolute;
+    bottom: 42px; right: 60px;
+    text-align: right;
+    color: rgba(255,255,255,0.28);
+    font-family: 'Inter', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+  }
+
+  /* ─── SLIDES 3 & 4 — POINTS ─── */
+  .slide-pts .section-label {
+    position: absolute;
+    top: 82px; left: 60px;
+    color: #F5A623;
+    font-family: 'Inter', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+  }
+
+  .pt {
+    position: absolute;
+    left: 60px; right: 60px;
+    display: flex;
+    align-items: flex-start;
+    gap: 36px;
+  }
+
+  .pt-num {
+    flex-shrink: 0;
+    width: 72px; height: 72px;
+    border-radius: 50%;
+    background: #F5A623;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #1B2A4A;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 32px;
+    font-weight: 900;
+    margin-top: 4px;
+  }
+
+  .pt-txt {
+    color: #FFFFFF;
+    font-family: 'Inter', sans-serif;
+    font-size: 34px;
+    font-weight: 400;
+    line-height: 1.45;
+    padding-top: 8px;
+  }
+
+  #s3 .p1, #s4 .p1 { top: 155px; }
+  #s3 .p2, #s4 .p2 { top: 435px; }
+  #s3 .p3, #s4 .p3 { top: 715px; }
+
+  /* ─── SLIDE 5 — MA DÉMARCHE ─── */
+  #s5 .deco-bar {
+    position: absolute;
+    top: 80px;
+    left: 60px;
+    width: 6px;
+    height: 120px;
+    background: #F5A623;
+    border-radius: 3px;
+  }
+
+  #s5 .main {
+    position: absolute;
+    top: 155px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 58px;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+
+  #s5 .accent-line {
+    position: absolute;
+    top: 440px;
+    left: 280px; right: 280px;
+    height: 2px;
+    background: #F5A623;
+    opacity: 0.45;
+  }
+
+  #s5 .secondary {
+    position: absolute;
+    top: 475px;
+    left: 90px; right: 90px;
+    text-align: center;
+    color: #9EB8D0;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.65;
+  }
+
+  #s5 .cta {
+    position: absolute;
+    top: 810px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: #F5A623;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 36px;
+    font-weight: 700;
+  }
+
+  /* ─── SLIDE 6 — QUESTION ─── */
+  #s6 .big-q {
+    position: absolute;
+    top: 240px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 76px;
+    font-weight: 900;
+    line-height: 1.18;
+  }
+
+  #s6 .big-q .accent { color: #F5A623; }
+
+  #s6 .follow {
+    position: absolute;
+    top: 628px;
+    left: 80px; right: 80px;
+    text-align: center;
+    color: #9EB8D0;
+    font-family: 'Inter', sans-serif;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  #s6 .sources {
+    position: absolute;
+    bottom: 78px;
+    left: 60px; right: 60px;
+    text-align: center;
+    color: rgba(255,255,255,0.22);
+    font-family: 'Inter', sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+</style>
+</head>
+<body>
+
+<!-- ─── SLIDE 1 — TITRE ─── -->
+<div class="slide" id="s1">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="hero-label">Osez l'IA</div>
+  <div class="hero-sub">Pourquoi le gouvernement<br>pousse l'IA</div>
+  <div class="sep-line"></div>
+  <div class="hero-desc">Un projet stratégique pour les entreprises…<br>et pour les citoyens</div>
+  <div class="deco"></div>
+  <div class="handle">@stéphanie</div>
+</div>
+
+<!-- ─── SLIDE 2 — CHIFFRES CLÉS ─── -->
+<div class="slide" id="s2">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="section-label">Chiffres clés</div>
+
+  <div class="stat r1">
+    <div class="stat-num">200 M€</div>
+    <div class="stat-bar"></div>
+    <div class="stat-txt">Budget du plan « Osez l'IA »<br>pour aider les entreprises à adopter l'IA</div>
+  </div>
+
+  <div class="sep1"></div>
+
+  <div class="stat r2">
+    <div class="stat-num">109 Md€</div>
+    <div class="stat-bar"></div>
+    <div class="stat-txt">Investissements annoncés<br>dans l'IA française d'ici 2031</div>
+  </div>
+
+  <div class="sep2"></div>
+
+  <div class="stat r3">
+    <div class="stat-num">15 M</div>
+    <div class="stat-bar"></div>
+    <div class="stat-txt">de Français à former à l'IA<br>d'ici 2030 — l'objectif officiel</div>
+  </div>
+
+  <div class="sources">Sources : DGE · Le Monde · Clubic</div>
+  <div class="handle">@stéphanie</div>
+</div>
+
+<!-- ─── SLIDE 3 — POURQUOI MAINTENANT ─── -->
+<div class="slide slide-pts" id="s3">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="section-label">Pourquoi maintenant&nbsp;?</div>
+
+  <div class="pt p1">
+    <div class="pt-num">1</div>
+    <div class="pt-txt">L'IA devient incontournable dans le travail quotidien.</div>
+  </div>
+  <div class="pt p2">
+    <div class="pt-num">2</div>
+    <div class="pt-txt">Sans formation, on risque de créer un fossé entre ceux qui savent et ceux qui subissent.</div>
+  </div>
+  <div class="pt p3">
+    <div class="pt-num">3</div>
+    <div class="pt-txt">Les freins&nbsp;? Peur de l'inconnu. L'impression que c'est compliqué.</div>
+  </div>
+
+  <div class="handle">@stéphanie</div>
+</div>
+
+<!-- ─── SLIDE 4 — MON MESSAGE ─── -->
+<div class="slide slide-pts" id="s4">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="section-label">Mon message</div>
+
+  <div class="pt p1">
+    <div class="pt-num">1</div>
+    <div class="pt-txt">L'IA n'est pas un ami — c'est un outil.</div>
+  </div>
+  <div class="pt p2">
+    <div class="pt-num">2</div>
+    <div class="pt-txt">Pas besoin d'avoir peur. Juste besoin d'apprendre à s'en servir.</div>
+  </div>
+  <div class="pt p3">
+    <div class="pt-num">3</div>
+    <div class="pt-txt">Elle ne « comprend » pas comme un humain — et c'est important de le savoir.</div>
+  </div>
+
+  <div class="handle">@stéphanie</div>
+</div>
+
+<!-- ─── SLIDE 5 — MA DÉMARCHE ─── -->
+<div class="slide" id="s5">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="deco-bar"></div>
+  <div class="main">J'ai passé un an à apprendre à me servir de l'IA.</div>
+  <div class="accent-line"></div>
+  <div class="secondary">Autant partager ce que j'ai trouvé —<br>pour vous, gratuitement.<br>Tous les deux jours, un post.<br>Simple, sourcé, utile.</div>
+  <div class="cta">Dites-moi ce que vous en pensez 👇</div>
+  <div class="handle">@stéphanie</div>
+</div>
+
+<!-- ─── SLIDE 6 — QUESTION ─── -->
+<div class="slide" id="s6">
+  <div class="top-bar"></div>
+  <div class="tag">Les Copains</div>
+  <div class="big-q">Et vous, vous avez<br>déjà essayé<span class="accent"> ?</span></div>
+  <div class="follow">Qu'est-ce qui vous retient —<br>ou qu'est-ce qui vous a convaincu&nbsp;?</div>
+  <div class="sources">
+    Plan « Osez l'IA » — DGE &nbsp;·&nbsp; 109 Md€ — Le Monde &nbsp;·&nbsp; 15 M Français — Clubic &nbsp;·&nbsp; Freins — EFIMOVE &nbsp;·&nbsp; Limites IA — Aivancity
+  </div>
+  <div class="handle">@stéphanie</div>
+</div>
+
+</body>
+</html>

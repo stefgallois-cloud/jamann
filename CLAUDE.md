@@ -72,6 +72,7 @@ Elles se construisent au fil du temps quand un flux de travail revient souvent.
 | `webapp-testing` | Tests automatiques de sites et d'applications web |
 | `idees-ia-educatif` | Banque d'idées IA pour tous — traitement brain dump, YouTube, articles → slides, posts, carrousels pédagogiques |
 | `copywriting-personnel` | Storytelling perso FB/IG — textes chauds et naturels pour parler à ses amis (pas corporate) |
+| `carrousel-facebook` | Générer des visuels carrousel Facebook 1080×1080 en PNG — pipeline HTML/CSS → Puppeteer → images prêtes à publier |
 
 **Backlog — à construire :**
 
@@ -86,12 +87,23 @@ Claude Code maintient une mémoire persistante entre les conversations. Les patt
 Pour forcer une mémorisation : *"Souviens-toi que je veux toujours X."*
 Mémoire + fichiers de contexte + journal de décisions = un assistant qui s'améliore sans qu'on doive tout réexpliquer.
 
+## Démarrage de projet — règle obligatoire
+
+**À chaque nouveau projet OU nouvelle section importante d'un projet existant**, ne pas laisser Stéphanie démarrer sans passer par ces 3 étapes dans l'ordre. Prendre le contrôle proactivement — ne pas attendre qu'elle demande.
+
+1. **Le pourquoi** — lui demander de raconter le contexte et la motivation. Formaliser dans un fichier `storytelling.md`.
+2. **Le README** — créer un `README.md` vivant avec : concept en 3 lignes, audience cible, format, rythme, critère de succès.
+3. **La structure** — créer les dossiers avant tout contenu. Proposer une arborescence, attendre validation.
+
+→ Template de démarrage : `templates/nouveau-projet.md`
+
 ## Maintenance
 - **Focus change** → mettre à jour `context/current-priorities.md`
 - **Début de trimestre** → mettre à jour `context/goals.md`
 - **Décision importante** → consigner dans `decisions/log.md`
 - **Flux récurrent** → construire une compétence dans `.claude/skills/`
 - **Génération de prompts** → Toujours créer un dossier `prompt/` à la racine de chaque projet créé ou modifié (ex: `projects/nom-projet/prompt/`) et y sauvegarder automatiquement tous les prompts importants générés sous format `.md` (ex: `prompt_origine.md`).
+- **Priorité à l'IA Native et Générative** → Toujours proposer des prompts optimisés pour les assistants IA natifs des outils (Airtable AI, Notion AI, etc.) avant de suggérer une configuration manuelle laborieuse. Proposer proactivement ces "tips" de rapidité pour éviter à Stéphanie de bloquer sur des interfaces complexes.
 - **Fin de projet** → Toujours proposer de supprimer les fichiers temporaires avant de clore. Lister clairement ce qui peut être supprimé vs ce qui doit être conservé, et demander confirmation avant d'effacer.
 
 ## Règles d'hygiène (appliquées proactivement)
