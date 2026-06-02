@@ -8,6 +8,13 @@ Restaurant d'alpage à Montreux — client prioritaire de Clockwork Ops.
 ## Déjà livré
 - [x] Landing page
 - [x] Automatisation d'inscription (Airtable + Make)
+- [x] Refonte du site en multi-pages : menu de navigation + Accueil (hero photo) · Le Manoïre · Carte · Galerie · Infos pratiques · Réserver
+- [x] Page Conditions en direct (météo Col de Jaman) + affichage tablette (`display.html`)
+- [x] Corrections identité visuelle (31/05) : nav brand (logo + nom côte à côte), doublon supprimé, hero photo recentrée
+
+### Site web — structure
+Dossier `site web/` · fichiers partagés `styles.css` (charte + composants) et `nav.js` (menu + footer, à éditer pour modifier les onglets).
+À compléter par le client : photo hero définitive, vraie carte (menu), horaires, activation du formulaire de réservation.
 
 ## À livrer avant ouverture
 

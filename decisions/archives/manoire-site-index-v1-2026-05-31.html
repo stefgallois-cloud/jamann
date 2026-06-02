@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="fr" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <title>Le Manoïre - Col de Jaman | Nouveau Restaurant d'Altitude au Col de Jaman</title>
+  <meta name="description" content="Découvrez Le Manoïre au Col de Jaman (1512m). Ouverture juin 2026 au-dessus de Montreux. Inscrivez-vous pour suivre la renaissance de ce lieu mythique.">
+  <link rel="canonical" href="https://lemanoire-jaman.ch">
+
+  <!-- Ajout des polices -->
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Le Manoïre",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Col de Jaman",
+      "addressLocality": "Montreux",
+      "postalCode": "1820",
+      "addressCountry": "CH"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "46.4469",
+      "longitude": "6.9744"
+    },
+    "url": "https://lemanoire-jaman.ch",
+    "telephone": "+41799159192"
+  }
+  </script>
+
+  <style>
+    /* --- IMPORTATION POLICE LOCALE --- */
+    @font-face {
+      font-family: 'Tenaciou';
+      src: url('./TenaciouHeavy.ttf') format('truetype');
+      font-weight: bold;
+      font-style: normal;
+    }
+
+    /* --- VARIABLES CHARTE GRAPHIQUE --- */
+    :root {
+      --charte-blanc: #FBFBF8;
+      --charte-beige: #EFE5DB;
+      --charte-ocre: #C48632;
+      --charte-bordeaux: #4B0F1F;
+      --charte-orange: #E06530;
+      --charte-marron: #954315;
+      --charte-taupe: #7B694D;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html, body {
+      height: 100%;
+      font-family: 'Clash Grotesk', sans-serif; 
+      font-weight: 400;
+      background-color: var(--charte-beige);
+      color: var(--charte-marron);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* --- HEADER --- */
+    .header { 
+      padding: 0.5rem 1.5rem 4rem; 
+      text-align: center; 
+      background-color: var(--charte-bordeaux);
+      position: relative; 
+      z-index: 2; 
+      border-bottom: 8px solid var(--charte-ocre);
+    }
+    
+    /* Étoiles Filantes */
+    .stars-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; overflow: hidden; }
+    .shooting-star { position: absolute; width: 1px; height: 80px; background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(196, 165, 116, 0.6)); animation: fall 7s linear infinite; opacity: 0; transform: rotate(35deg); }
+    @keyframes fall {
+      0% { transform: translateY(-100px) translateX(100px) rotate(35deg); opacity: 0; }
+      5% { opacity: 1; }
+      15% { transform: translateY(100vh) translateX(calc(100vh * -0.7)) rotate(35deg); opacity: 0; }
+      100% { opacity: 0; }
+    }
+    .shooting-star:nth-child(1) { top: -100px; left: 80%; animation-delay: 0s; }
+    .shooting-star:nth-child(2) { top: -100px; left: 40%; animation-delay: 3.5s; }
+    .shooting-star:nth-child(3) { top: -100px; left: 95%; animation-delay: 5s; }
+
+    /* Animations Générales */
+    @keyframes fadeInLogo { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes slideInLeft { from { opacity: 0; transform: translateX(-40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes slideInRight { from { opacity: 0; transform: translateX(40px); } to { opacity: 1; transform: translateX(0); } }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes floatWeather { 0%, 100% { transform: translateY(0px) scale(1); } 50% { transform: translateY(-4px) scale(1.08); } }
+    @keyframes pulseCta { 0% { box-shadow: 0 0 0 0 rgba(224, 101, 48, 0.5); } 70% { box-shadow: 0 0 0 10px rgba(224, 101, 48, 0); } 100% { box-shadow: 0 0 0 0 rgba(224, 101, 48, 0); } }
+    @keyframes smokeRise { 0% { opacity: 0; transform: translate(0, 0) scale(1); } 20% { opacity: 0.6; } 100% { opacity: 0; transform: translate(-10px, -15px) scale(2.5); } }
+    
+    .sun-animated { display: inline-block; animation: floatWeather 3s ease-in-out infinite; }
+    .train-wrapper { position: relative; display: flex; align-items: center; justify-content: center; }
+    .smoke { position: absolute; background-color: var(--charte-taupe); border-radius: 50%; width: 5px; height: 5px; opacity: 0; top: 2px; left: -2px; pointer-events: none; }
+    .smoke-1 { animation: smokeRise 1.5s infinite ease-out; }
+    .smoke-2 { animation: smokeRise 1.5s infinite ease-out 0.75s; width: 3.5px; height: 3.5px; left: 0; top: 4px; }
+
+    .logo-img { max-width: 600px; width: 100%; margin: -3rem auto -11.5rem; position: relative; z-index: 1; filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.4)); opacity: 0; animation: fadeInLogo 1.2s ease-out forwards; }
+    .header-name { font-family: 'Tenaciou', sans-serif; font-size: clamp(3rem, 8vw, 5rem); font-weight: bold; text-transform: uppercase; letter-spacing: 5px; color: var(--charte-ocre); position: relative; z-index: 10; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5); margin-top: 0; opacity: 0; animation: slideInLeft 0.8s ease-out 0.6s forwards; }
+    .header-location { font-family: 'Courier New', Courier, monospace; font-weight: bold; font-size: 1.3rem; letter-spacing: 4px; color: var(--charte-beige); text-transform: uppercase; margin-top: 0.5rem; text-decoration: none; transition: color 0.3s ease; display: inline-block; position: relative; z-index: 10; opacity: 0; animation: slideInRight 0.8s ease-out 1s forwards; }
+    .header-location:hover { color: var(--charte-ocre); }
+    
+    .opening-badge { display: inline-block; background-color: var(--charte-orange); color: var(--charte-blanc); padding: 0.8rem 2rem; font-size: 0.9rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; margin: 3rem 0 1.5rem; box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-radius: 4px; position: relative; z-index: 10; opacity: 0; animation: fadeInUp 0.8s ease-out 1.4s forwards; transition: transform 0.3s ease; }
+    .opening-badge:hover { transform: scale(1.05); }
+
+    /* --- WIDGETS --- */
+    .widgets-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 800px; margin: 3rem auto 0; text-align: left; opacity: 0; animation: fadeInUp 0.8s ease-out 1.6s forwards; position: relative; z-index: 10; }
+    .widget-box { background: var(--charte-blanc); border: 2px solid var(--charte-taupe); border-radius: 8px; padding: 1rem 1.2rem; box-shadow: 0 10px 25px rgba(0,0,0,0.2); transition: all 0.4s ease; color: var(--charte-marron); display: flex; flex-direction: column; }
+    .widget-box:hover { transform: translateY(-5px); border-color: var(--charte-ocre); box-shadow: 0 15px 35px rgba(0,0,0,0.3); }
+    .widget-title { font-family: 'Clash Grotesk', sans-serif; font-size: 1.05rem; color: var(--charte-bordeaux); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; font-weight: 600; border-bottom: 1px solid rgba(123, 105, 77, 0.2); padding-bottom: 0.5rem; }
+    
+    .meteo-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5rem; }
+    .meteo-current-main { display: flex; align-items: center; gap: 1rem; }
+    .meteo-temp { font-size: 2rem; color: var(--charte-bordeaux); line-height: 1; font-weight: 600; display: flex; align-items: center; gap: 0.6rem; }
+    .meteo-desc { font-size: 1rem; color: var(--charte-taupe); font-weight: 500;}
+    
+    .meteo-link { display: inline-flex; align-items: center; gap: 0.6rem; font-size: 0.9rem; color: var(--charte-orange); text-decoration: none; transition: all 0.3s ease; font-weight: 600; margin-top: 0.5rem; }
+    .arrow-circle { background-color: var(--charte-orange); color: var(--charte-blanc); width: 24px; height: 24px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem; transition: transform 0.3s ease, background-color 0.3s ease; }
+    .meteo-link:hover { color: var(--charte-bordeaux); }
+    .meteo-link:hover .arrow-circle { background-color: var(--charte-bordeaux); transform: translateX(5px); }
+
+    .meteo-details { margin: 0.8rem 0; display: flex; flex-direction: column; gap: 0.4rem; }
+    .meteo-detail-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; }
+    .detail-icon { font-size: 1rem; width: 20px; text-align: center; flex-shrink: 0; }
+    .detail-label { color: var(--charte-taupe); text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; font-weight: 600; min-width: 65px; }
+    .detail-value { color: var(--charte-bordeaux); font-weight: 600; }
+    .detail-sub { color: var(--charte-taupe); font-size: 0.75rem; }
+    
+    .transport-item { display: flex; align-items: flex-start; gap: 0.8rem; font-size: 0.9rem; color: var(--charte-marron); margin-bottom: 0.8rem; line-height: 1.3; cursor: default; }
+    .transport-icon { font-size: 1.2rem; line-height: 1; }
+    .transport-text { display: flex; flex-direction: column; gap: 0.2rem; }
+    .transport-item strong { color: var(--charte-bordeaux); }
+    .transport-subtext { font-size: 0.85em; color: var(--charte-taupe); }
+
+    /* --- CONTENU PRINCIPAL --- */
+    .content-wrapper { flex: 1; max-width: 850px; margin: 0 auto; padding: 4rem 1.5rem 2rem; width: 100%; position: relative; z-index: 2; }
+    .section-title { font-family: 'Clash Grotesk', sans-serif; font-size: 1.6rem; font-weight: 600; letter-spacing: 2px; color: var(--charte-bordeaux); margin-bottom: 2rem; text-transform: uppercase; border-bottom: 3px solid var(--charte-ocre); display: inline-block; padding-bottom: 0.5rem; }
+    .section-block { margin-bottom: 5rem; }
+    p { margin-bottom: 1.5rem; font-size: 1.1rem; color: var(--charte-marron); }
+    .highlight-word, strong { color: var(--charte-bordeaux); font-weight: 600; }
+
+    .block-red { background: var(--charte-blanc); border-left: 6px solid var(--charte-orange); padding: 1.8rem 2rem; margin: 2.5rem 0; font-style: italic; color: var(--charte-bordeaux); line-height: 1.8; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-radius: 0 8px 8px 0; font-weight: 500;}
+    .block-brown { background: var(--charte-ocre); padding: 1.5rem 2rem; margin: 2.5rem 0; text-align: center; color: var(--charte-blanc); font-weight: 600; letter-spacing: 1px; border-radius: 8px; text-transform: uppercase; box-shadow: 0 4px 10px rgba(196, 134, 50, 0.3); }
+
+    /* --- GALERIE --- */
+    .gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 2rem; }
+    .gallery-item { aspect-ratio: 1; overflow: hidden; background: var(--charte-taupe); cursor: pointer; border: 2px solid transparent; box-shadow: 0 4px 10px rgba(0,0,0,0.1); transition: all 0.3s ease; border-radius: 4px; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+    .gallery-item:hover { transform: translateY(-4px); border-color: var(--charte-ocre); box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+    .gallery-item:hover img { transform: scale(1.08); }
+    
+    .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(75, 15, 31, 0.95); display: none; justify-content: center; align-items: center; z-index: 1000; cursor: pointer; opacity: 0; transition: opacity 0.3s ease; }
+    .lightbox.active { display: flex; opacity: 1; }
+    .lightbox img { max-width: 90%; max-height: 90vh; border: 4px solid var(--charte-beige); border-radius: 4px; box-shadow: 0 0 40px rgba(0,0,0,0.5); }
+
+    /* --- NEWSLETTER & FOOTER --- */
+    .newsletter-section { padding: 4rem 2rem; text-align: center; position: relative; z-index: 2; background: var(--charte-bordeaux); margin-top: 2rem; border-top: 8px solid var(--charte-ocre); color: var(--charte-beige); }
+    .newsletter-title { font-family: 'Clash Grotesk', sans-serif; font-size: 1.5rem; font-weight: 600; letter-spacing: 2px; color: var(--charte-ocre); margin-bottom: 1rem; text-transform: uppercase; }
+    .newsletter-desc { font-size: 1.05rem; margin-bottom: 2.5rem; color: var(--charte-beige); }
+    
+    .newsletter-btn { display: inline-block; background: var(--charte-orange); color: var(--charte-blanc); padding: 1rem 2.5rem; text-transform: uppercase; font-weight: 600; cursor: pointer; border: none; border-radius: 4px; letter-spacing: 1px; transition: 0.3s; animation: pulseCta 2s infinite; text-decoration: none; margin-bottom: 2rem; }
+    .newsletter-btn:hover { background: var(--charte-ocre); animation: none; transform: translateY(-3px); }
+
+    /* --- ENCART CONTACT --- */
+    .contact-encart { background: var(--charte-blanc); border: 2px solid var(--charte-taupe); border-radius: 12px; padding: 2.5rem 1.5rem; max-width: 600px; margin: 4rem auto 0; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+    .contact-encart-title { font-family: 'Clash Grotesk', sans-serif; font-size: 1.2rem; color: var(--charte-bordeaux); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 1.5rem; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 0.6rem; }
+    .social-icons { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem; }
+    .social-icon-btn { display: flex; align-items: center; justify-content: center; width: 55px; height: 55px; background-color: var(--charte-ocre); border-radius: 50%; color: var(--charte-blanc); text-decoration: none; transition: 0.3s; border: 2px solid transparent; }
+    .social-icon-btn:hover { background-color: var(--charte-blanc); color: var(--charte-ocre); border-color: var(--charte-ocre); transform: translateY(-5px); }
+    .social-icon-btn svg { width: 24px; height: 24px; fill: currentColor; }
+    
+    .maps-btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: var(--charte-bordeaux); color: var(--charte-beige); padding: 0.8rem 2rem; border-radius: 6px; text-decoration: none; text-transform: uppercase; font-weight: 600; font-size: 0.85rem; letter-spacing: 1px; transition: 0.3s; }
+    .maps-btn:hover { background-color: var(--charte-orange); color: var(--charte-blanc); }
+
+    .footer { text-align: center; padding: 2rem; background: var(--charte-bordeaux); border-top: 1px solid rgba(239, 229, 219, 0.1); color: var(--charte-beige); }
+    .footer p { font-size: 12px; color: #bbb; letter-spacing: 1px; }
+    
+    /* --- OPTIMISATIONS MOBILE --- */
+    @media (max-width: 850px) { 
+      .content-wrapper { padding: 3rem 1.5rem 0; }
+      .block-red, .block-brown { padding: 1.5rem; }
+    }
+    
+    @media (max-width: 640px) { 
+      .header { padding-top: 1rem; padding-bottom: 2rem; border-bottom-width: 4px; overflow: hidden; }
+      .logo-img { margin: -1rem auto -4.5rem; max-width: 100%; transform: scale(1.1); }
+      .header-name { font-size: clamp(2.8rem, 13vw, 4.5rem); letter-spacing: 2px; margin-top: 0; }
+      .header-location { font-size: 0.85rem; letter-spacing: 1px; }
+      .opening-badge { margin: 1.5rem 0 1rem; padding: 0.6rem 1.2rem; font-size: 0.75rem; }
+      
+      .widgets-grid { grid-template-columns: 1fr; gap: 0.8rem; margin-top: 1.5rem; }
+      .widget-box { padding: 0.8rem 1rem; border-width: 1px; }
+      .widget-title { font-size: 0.9rem; margin-bottom: 0.6rem; padding-bottom: 0.4rem; }
+      .meteo-temp { font-size: 1.5rem; }
+      .meteo-desc { font-size: 0.85rem; }
+      .meteo-link { font-size: 0.75rem; margin-top: 0.2rem; }
+      .arrow-circle { width: 20px; height: 20px; font-size: 0.7rem; }
+      .transport-item { font-size: 0.8rem; gap: 0.5rem; margin-bottom: 0.5rem; }
+      .transport-icon { font-size: 1rem; }
+      
+      .content-wrapper { padding: 2rem 1rem 0; }
+      .section-title { font-size: 1.3rem; margin-bottom: 1.5rem; }
+      .section-block { margin-bottom: 3.5rem; }
+      
+      .block-red { padding: 1.2rem; border-left-width: 4px; font-size: 1rem; margin: 1.5rem 0; }
+      .block-brown { font-size: 0.95rem; padding: 1.2rem; margin: 1.5rem 0; }
+      
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 0.6rem; margin-top: 1.5rem; }
+
+      .newsletter-section { padding: 2.5rem 1rem; margin-top: 1rem; border-top-width: 4px; }
+      .newsletter-btn { width: 100%; text-align: center; }
+      .maps-btn { width: 100%; text-align: center; padding: 1rem; }
+      .contact-encart { padding: 1.5rem 1rem; margin-top: 3rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="app-wrapper">
+  <!-- HEADER -->
+  <header class="header">
+    <div class="stars-container">
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+      <div class="shooting-star"></div>
+    </div>
+
+    <img src="https://i.postimg.cc/k5c7HJ3h/sans-fond.png" alt="Logo du restaurant Le Manoïre au Col de Jaman" class="logo-img">
+    <h1 class="header-name">Le Manoïre</h1>
+    
+    <a href="https://www.google.com/maps/search/?api=1&query=Col+de+Jaman+Montreux" target="_blank" rel="noopener noreferrer" class="header-location">📍 COL DE JAMAN - 1820 MONTREUX</a>
+    
+    <p style="font-style: italic; font-size: 1.35rem; color: var(--charte-beige); letter-spacing: 1px; opacity: 0; animation: fadeInUp 0.8s ease-out 1.2s forwards; margin-top: 1rem;">« Au-dessus du lac, au-dessus du bruit, au-dessus du temps. »</p>
+    
+    <div class="opening-badge">Ouverture Prochaine</div>
+
+    <div class="widgets-grid">
+      <!-- WIDGET METEO -->
+      <div class="widget-box">
+        <h3 class="widget-title">⛰️ Météo en direct</h3>
+        <div class="meteo-top">
+          <div class="meteo-current-main">
+            <div class="meteo-temp" id="current-temp"><span class="sun-animated">☀️</span> --°C</div>
+            <div class="meteo-desc" id="current-desc">Chargement...</div>
+          </div>
+        </div>
+        <div class="meteo-details">
+          <div class="meteo-detail-item">
+            <span class="detail-icon">💨</span>
+            <span class="detail-label">Vent</span>
+            <span class="detail-value" id="meteo-vent">--</span>
+            <span class="detail-sub" id="meteo-rafales"></span>
+          </div>
+          <div class="meteo-detail-item">
+            <span class="detail-icon">💧</span>
+            <span class="detail-label">Humidité</span>
+            <span class="detail-value" id="meteo-humidite">--</span>
+          </div>
+          <div class="meteo-detail-item">
+            <span class="detail-icon">🌧️</span>
+            <span class="detail-label">Pluie</span>
+            <span class="detail-value" id="meteo-pluie">--</span>
+          </div>
+        </div>
+        <div style="margin-top: auto;">
+          <a href="conditions.html" class="meteo-link">
+            <span>Conditions en direct →</span>
+            <span class="arrow-circle">➔</span>
+          </a>
+        </div>
+      </div>
+      
+      <!-- WIDGET TRANSPORT -->
+      <div class="widget-box">
+        <h3 class="widget-title">🗺️ Comment venir ?</h3>
+        <div class="transport-item">
+          <div class="transport-icon train-wrapper">
+            <span class="train-emoji">🚂</span>
+            <span class="smoke smoke-1"></span>
+            <span class="smoke smoke-2"></span>
+          </div>
+          <div class="transport-text">
+            <span><strong>Train (MOB) :</strong> Arrêt "Jaman".</span>
+            <span class="transport-subtext">Depuis Montreux. <strong>Prévoir env. 45 min de marche (petite balade)</strong> de la gare jusqu'au col.</span>
+          </div>
+        </div>
+        <div class="transport-item" style="margin-bottom: 0;">
+          <div class="transport-icon">
+            <span class="car-emoji">🚗</span>
+          </div>
+          <div class="transport-text">
+            <span><strong>Voiture :</strong> Parking au Col.</span>
+            <span class="transport-subtext">Routes via Montreux, Glion/Caux ou Les Avants.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  
+  <!-- CONTENU PRINCIPAL -->
+  <main class="content-wrapper">
+    <section class="section-block">
+      <h2 class="section-title">L'Histoire</h2>
+      <p>Le Manoïre a longtemps été une adresse emblématique du Col de Jaman. Un café-restaurant d'alpage, simple et authentique, connu pour sa convivialité et sa vue unique sur les Préalpes vaudoises.</p>
+      <div class="block-red">Un chef étoilé a marqué l'histoire du lieu avant sa fermeture. Des murs qui gardent les rires, une terrasse qui se souvient des regards vers le lac.</div>
+      <p>Puis le silence. Mais certains lieux ne disparaissent jamais vraiment. <span class="highlight-word">Ils attendent.</span> Et aujourd'hui, une nouvelle page s'écrit.</p>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">La Vision</h2>
+      <p>Le Manoïre renaît avec une ambition claire : respecter l'âme du lieu tout en lui redonnant une force durable.</p>
+      <div class="block-brown">Valoriser les produits locaux • Travailler avec les producteurs • Cuisine authentique</div>
+      <p><span class="highlight-word">Ici, la fondue n'est pas une mode.</span> Le rösti est un symbole. La viande, le fromage, les produits viennent d'artisans que l'on connaît — des producteurs suisses qui travaillent la terre avec le même respect que nous.</p>
+      <div class="block-brown">Le terroir suisse au cœur de chaque assiette</div>
+      <div class="block-red">Nous construisons ce projet avec patience, résilience et vision à long terme. Pas pour une saison. Pour des décennies. Ancré dans le terroir de nos montagnes.</div>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">Notre Engagement</h2>
+      <p>Nous voulons bâtir un projet durable, enraciné dans le territoire. Un lieu qui respecte la nature, l'histoire et les gens qui y travaillent.</p>
+      <div class="block-brown">Un lieu de rencontre • Une terrasse au-dessus des nuages • Un refuge pour les marcheurs</div>
+      <p>Le Manoïre n'est pas un concept. <strong>C'est une transmission.</strong></p>
+      <div class="block-red">Dans un monde qui va vite, nous avons choisi la solidité, la cohérence et l'authenticité. C'est un endroit où l'on prend le temps. Où l'on se reconnecte à l'essentiel.</div>
+    </section>
+
+    <section class="section-block">
+      <h2 class="section-title">Une étape pour les passionnés</h2>
+      <p>Situé à 1512m d'altitude, au carrefour des sentiers reliant la Riviera aux sommets, Le Manoïre est la <strong>halte naturelle des randonneurs</strong>.</p>
+      <div class="block-red">Que vous arriviez par le train du MOB (arrêt Jaman) ou à pied depuis les Dentaux, notre terrasse vous attend pour une pause bien méritée face au panorama.</div>
+      <p>Nous avons pensé ce lieu pour ceux qui aiment la montagne : un accueil authentique, une cuisine qui redonne de l'énergie et une vue qui coupe le souffle, même aux marcheurs les plus aguerris.</p>
+    </section>
+
+    <section class="section-block" style="margin-bottom: 2rem;">
+      <h2 class="section-title">Galerie</h2>
+      <div id="mainGallery" class="gallery-grid"></div>
+    </section>
+  </main>
+  
+  <!-- NEWSLETTER ET CONTACT -->
+  <section class="newsletter-section">
+    <h3 class="newsletter-title">Restez Informé</h3>
+    <p class="newsletter-desc">Inscrivez-vous à notre newsletter pour recevoir les actualités du Manoïre.</p>
+    
+    <a href="https://tally.so/r/0QJkG0" target="_blank" rel="noopener noreferrer" class="newsletter-btn">S'inscrire à la newsletter</a>
+
+    <div class="contact-encart">
+      <h3 class="contact-encart-title">✉️ Nous Contacter</h3>
+      <div class="social-icons">
+        <a href="tel:+41799159192" class="social-icon-btn" aria-label="Téléphone">
+          <svg viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        </a>
+        <a href="mailto:contact@lemanoire-jaman.ch" class="social-icon-btn" aria-label="Email">
+          <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        </a>
+        <a href="https://www.facebook.com/profile.php?id=61580550474258" target="_blank" class="social-icon-btn" aria-label="Facebook">
+          <svg viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+        </a>
+        <a href="https://www.instagram.com/le_manoire_jaman/" target="_blank" class="social-icon-btn" aria-label="Instagram">
+          <svg viewBox="0 0 24 24"><path d="M7.8 2H16.2C19.4 2 22 4.6 22 7.8V16.2C22 19.4 19.4 22 16.2 22H7.8C4.6 22 2 19.4 2 16.2V7.8C2 4.6 4.6 2 7.8 2ZM7.6 4C5.6 4 4 5.6 4 7.6V16.4C4 18.4 5.6 20 7.6 20H16.4C18.4 20 20 18.4 20 16.4V7.6C20 5.6 18.4 4 16.4 4H7.6ZM12 6.8C14.87 6.8 17.2 9.13 17.2 12C17.2 14.87 14.87 17.2 12 17.2C9.13 17.2 6.8 14.87 6.8 12C6.8 9.13 9.13 6.8 12 6.8ZM12 8.8C10.23 8.8 8.8 10.23 8.8 12C8.8 13.77 10.23 15.2 12 15.2C13.77 15.2 15.2 13.77 15.2 12C15.2 10.23 13.77 8.8 12 8.8ZM17.3 5.5C17.96 5.5 18.5 6.04 18.5 6.7C18.5 7.36 17.96 7.9 17.3 7.9C16.64 7.9 16.1 7.36 16.1 6.7C16.1 6.04 16.64 5.5 17.3 5.5Z"/></svg>
+        </a>
+      </div>
+      <a href="https://www.google.com/maps/search/?api=1&query=Col+de+Jaman+Montreux" target="_blank" rel="noopener noreferrer" class="maps-btn">📍 LOCALISATION SUR GOOGLE MAPS</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <p style="margin-top: 0.3rem; font-size: 0.95em;">Réalisé par Clockwork Ops</p>
+    <p style="margin-top: 0.5rem; font-size: 0.85em; color: rgba(239, 229, 219, 0.7);">
+      &copy; 2026 Le Manoïre | <a href="legal.html" target="_blank" style="color: rgba(239, 229, 219, 0.7); text-decoration: underline;">Mentions légales & Confidentialité (LPD)</a>
+    </p>
+  </footer>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightboxOverlay">
+  <img src="" alt="Aperçu" id="lightboxImg">
+</div>
+  
+<script>
+  /* --- GALERIE ET LIGHTBOX --- */
+  const images = [
+    { src: "https://i.postimg.cc/BbfWNLms/terrasse-drapeau-resto.png", alt: "Terrasse du Manoïre au Col de Jaman avec vue sur les sommets" },
+    { src: "https://i.postimg.cc/9fHGmcgw/vue-vache-coucher.png", alt: "Vache dans les alpages du Col de Jaman" },
+    { src: "https://i.postimg.cc/XYfrgdLm/vue-terrasse.png", alt: "Grande table en bois sur la terrasse du Manoïre" },
+    { src: "https://i.postimg.cc/tCh6BKCK/vue-jeux.png", alt: "Balançoire en bois près du Manoïre au-dessus de Montreux" },
+    { src: "https://i.postimg.cc/V6rrnThm/coucher-soleil.png", alt: "Coucher de soleil sur le Col de Jaman" },
+    { src: "https://i.postimg.cc/4yv31Tb8/vue-drone.png", alt: "Vue en hauteur du chalet historique Le Manoïre" }
+  ];
+
+  const gallery = document.getElementById('mainGallery');
+  const lightbox = document.getElementById('lightboxOverlay');
+  const lightboxImg = document.getElementById('lightboxImg');
+
+  images.forEach(photo => {
+    const item = document.createElement('div');
+    item.className = 'gallery-item';
+    const img = document.createElement('img');
+    
+    img.src = photo.src;
+    img.alt = photo.alt;
+    img.loading = "lazy";
+
+    img.addEventListener('click', () => {
+      lightboxImg.src = photo.src;
+      lightbox.classList.add('active');
+    });
+
+    item.appendChild(img);
+    gallery.appendChild(item);
+  });
+
+  lightbox.addEventListener('click', () => { lightbox.classList.remove('active'); });
+
+  /* --- METEO API --- */
+  const getMeteoInfo = (code) => {
+      let texte = "Ensoleillé"; let icone = "☀️";
+      if (code > 0 && code <= 3) { texte = "Nuageux"; icone = "☁️"; }
+      else if (code >= 45 && code <= 48) { texte = "Brouillard"; icone = "🌫️"; }
+      else if (code >= 51 && code <= 67) { texte = "Pluie"; icone = "🌧️"; }
+      else if (code >= 71 && code <= 77) { texte = "Neige"; icone = "❄️"; }
+      else if (code >= 80) { texte = "Averses"; icone = "🌦️"; }
+      return { texte, icone };
+  };
+
+  async function actualiserMeteo() {
+      try {
+          const reponse = await fetch('https://api.open-meteo.com/v1/forecast?latitude=46.4469&longitude=6.9744&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,precipitation,weather_code&timezone=Europe/Zurich');
+          const donnees = await reponse.json();
+          const c = donnees.current;
+
+          const info = getMeteoInfo(c.weather_code);
+          document.getElementById('current-temp').innerHTML = `<span class="sun-animated">${info.icone}</span> ${Math.round(c.temperature_2m)}°C`;
+          document.getElementById('current-desc').innerText = info.texte;
+          document.getElementById('meteo-vent').innerText = `${Math.round(c.wind_speed_10m)} km/h`;
+          document.getElementById('meteo-rafales').innerText = `rafales ${Math.round(c.wind_gusts_10m)} km/h`;
+          document.getElementById('meteo-humidite').innerText = `${c.relative_humidity_2m} %`;
+          document.getElementById('meteo-pluie').innerText = `${c.precipitation} mm`;
+
+      } catch (e) {
+          console.log("Météo indisponible", e);
+          document.getElementById('current-desc').innerText = "Indisponible";
+      }
+  }
+  actualiserMeteo();
+  setInterval(actualiserMeteo, 300000);
+</script>
+</body>
+</html>

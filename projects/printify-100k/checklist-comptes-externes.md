@@ -294,7 +294,7 @@ Sans eRank, tu pilotes à l'aveugle. Avec, tu sais exactement quels tags activer
 ### Jour 2-3 — Production
 
 - [ ] Printify connecté à Etsy
-- [ ] eRank Basic activé et connecté Etsy
+- [x] eRank Basic activé et connecté Etsy (Abonnement mensuel pris le 31 mai 2026 ✅)
 - [ ] 1er listing test poussé Etsy via Printify (draft)
 - [ ] Test scénario Make Etsy SEO Generator avec une vraie clé API
 

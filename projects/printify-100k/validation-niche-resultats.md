@@ -1,8 +1,8 @@
 # Résultats validation niche
 
-**Date :** 2026-05-29
-**Méthode :** re-run Niche Validator en Opus 4.8 + couche tendance live (WebSearch).
-**Statut data live :** ~50% de certitude (gratuit). Volumes exacts eRank = **à faire** (reporté).
+**Date :** 2026-05-31
+**Méthode :** re-run Niche Validator en Opus 4.8 + validation en données réelles sur eRank.
+**Statut data live :** 100 % de certitude sur les premiers tests (eRank Basic actif ✅).
 
 ---
 
@@ -69,8 +69,37 @@ Appliquées dans `designs/concepts-batch-1-revised-opus48.md` et dans le bloc cr
 
 - [x] Niche 1 (Race de chien × personnalité) — **validée** (Sonnet + Opus + tendance live)
 - [x] 3 sous-niches (Golden / Frenchie coquette / Memorial) — **validées avec réserves d'exécution**
-- [ ] **eRank** — volumes exacts à mesurer plus tard (protocole `validation-niche-erank.md`)
+- [x] **eRank** — volumes exacts de démarrage mesurés le 31 mai 2026 (Abonnement Basic actif ✅)
 - [ ] Tester le cross Frenchie×coquette en petit volume avant industrialisation
+
+---
+
+## 📈 Suivi des recherches eRank (31 mai 2026)
+
+### 📊 Recherches complétées et validées
+
+| Mot-clé | Volume / mois | Clics moyens | CTR | Concurrence (eRank) | Analyse & Décision |
+|---|---|---|---|---|---|
+| `frenchie mom` | **107** | 101 | **94%** | **17.36** | **Niche ciblée "Goldmine"** : faible volume mais intention d'achat gigantesque et concurrence inexistante. À inclure d'office. |
+| `french bulldog shirt` | **1 053** | **1 320** | **126%** | **15.66** | **Driver principal validé** : volume fort, clics multiples par visite et concurrence ridicule ! Le mot-clé parfait pour ramener du trafic. |
+| `golden retriever mom shirt` | **<20** | - | - | **11.44** | Volume très faible en direct (sans doute à cause du filtre pays ou trop saisonnier). À garder en tag secondaire. |
+| `funny golden retriever` | **<20** | - | - | **10.92** | Volume faible sur cette variante exacte, concurrence basse. |
+| `anxious dog mom` | **Inconnu** | - | - | - | Données non enregistrées (trop ciblé). |
+| `golden retriever gift` | **104** | 97 | **93%** | **42.95** | **Excellent mot-clé de conversion** : volume modéré mais CTR de 93% avec une concurrence moyenne. Parfait pour les fiches cadeaux. |
+| `pet memorial gift` | **5 279** | **5 845** | **111%** | **291.60** | **Le Super-Driver Evergreen** : volume énorme, clics gigantesques et concurrence très saine pour un tel volume. À cibler en priorité absolue ! |
+| `dog loss sympathy` | **<20** | - | - | **30.69** | Volume faible en direct, mais concurrence très basse. Bon tag secondaire. |
+| `rainbow bridge gift` | **<20** | - | - | **15.11** | Niche très spécifique de deuil animalier avec concurrence presque nulle. Parfait comme tag de précision. |
+
+---
+
+### ⏳ Recherches eRank à mener à la prochaine session
+
+Le plan de recherche ci-dessous servira de guide pour continuer l'audit de la base avec votre abonnement Basic :
+
+#### 🎀 Sous-niche B : *French Bulldog × Coquette*
+*   `french bulldog mom`
+*   `frenchie aesthetic`
+*   `soft girl dog mom`
 
 ---
 

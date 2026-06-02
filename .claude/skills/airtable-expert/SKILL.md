@@ -194,6 +194,21 @@ Le Record ID est indispensable pour Update/Delete.
 
 ---
 
+## ⚡ Utilisation de l'IA Native dans Airtable
+Airtable intègre des fonctionnalités d'IA générative dans les **Formules** et les **Automatisations** qui permettent de générer des configurations complexes en moins de 15 secondes.
+
+### 🤖 Pour les Automatisations (Prompting)
+Plutôt que de galérer dans l'UI avec des triggers complexes et des ID d'enregistrement :
+1. Cliquer sur l'assistant d'IA d'automatisation.
+2. Décrire la logique en langage naturel sous forme de trigger/conditions/action.
+*Exemple : "Create an automation for the 'Designs' table. When the 'Title' field is updated and is not empty, and the 'Status' is 'Concept', update the record's 'Status' to 'SEO done'."*
+
+### 🧮 Pour les Formules
+Utiliser l'assistant d'IA du champ Formule en décrivant le calcul désiré.
+*Exemple : "If both Concept and Product are not empty, combine Concept and Product separated by ' — ', otherwise show 'À nommer'."*
+
+---
+
 ## Pour l'examen — points clés à maîtriser
 1. Créer une base avec plusieurs tables reliées
 2. Utiliser Lookup et Rollup correctement
