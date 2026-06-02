@@ -3,35 +3,36 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>L'Harmonie — Françoise Davenas, Thérapeute</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>L'Harmonie — Françoise Davenas, Thérapeute mieux-être</title>
+  <meta name="description" content="Françoise Davenas, thérapeute spécialiste du mieux-être à Saint-Pierre-de-Chandieu. Constellations familiales, soins énergétiques, hypnose, TCC, astrologie." />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
 
   <!-- NAV -->
   <nav id="nav">
-    <a href="#" class="nav-logo">
-      <img src="images/logo-francoise.png" alt="L'Harmonie" style="height: 45px; width: auto; display: block;" />
+    <a href="#" class="nav-logo" aria-label="L'Harmonie — accueil">
+      <img src="images/logo-francoise.png" alt="L'Harmonie — Françoise Davenas" />
     </a>
-    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu"><span></span><span></span><span></span></button>
     <ul class="nav-links" id="nav-links">
-      <li><a href="#about">Thérapeute</a></li>
       <li><a href="#services">Soins</a></li>
+      <li><a href="#about">Thérapeute</a></li>
       <li><a href="#stages">Stages</a></li>
-      <li><a href="#partenaires">Partenaires</a></li>
+      <li><a href="#partenaires">Partenaire</a></li>
       <li><a href="#contact" class="nav-rdv">Prendre RDV</a></li>
     </ul>
   </nav>
 
-  <!-- HERO : split gauche texte / droite photo orchidée -->
+  <!-- HERO -->
   <header class="hero">
     <div class="hero-left">
       <p class="hero-eyebrow">Thérapeute spécialiste du mieux-être</p>
-      <h1>L'Harmonie</h1>
+      <h1 class="hero-logo"><img src="images/logo-francoise.png" alt="L'Harmonie" /></h1>
       <p class="hero-name">Françoise Davenas</p>
       <blockquote class="hero-quote">
-        « Il n'y a pas de hasard, il n'y a que des rendez-vous »
-        <cite>— Paul Éluard</cite>
+        Il n'y a pas de hasard, il n'y a que des rendez-vous.
+        <cite>Paul Éluard</cite>
       </blockquote>
       <a href="#contact" class="btn">Prendre rendez-vous</a>
     </div>
@@ -40,7 +41,7 @@
     </div>
   </header>
 
-  <!-- SERVICES -->
+  <!-- SOINS -->
   <section id="services">
     <div class="inner">
       <div class="services-top reveal">
@@ -51,116 +52,74 @@
         <p class="lead">Chaque parcours est unique. Je vous accompagne avec des méthodes complémentaires, adaptées à vos besoins et à votre histoire de vie.</p>
       </div>
       <div class="svc-list reveal">
-        <a href="soins/constellations.html" class="svc">
+        <a href="soins/constellations.html" class="svc" style="--img:url('images/constellations.jpg')">
           <span class="svc-n">01</span>
           <div class="svc-info">
             <h3>Constellations familiales</h3>
             <p>Thérapie transgénérationnelle pour identifier et libérer les schémas familiaux</p>
           </div>
-          <span class="svc-arrow">→</span>
+          <span class="svc-arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </a>
-        <a href="soins/soins-energetiques.html" class="svc">
+        <a href="soins/soins-energetiques.html" class="svc" style="--img:url('images/energie.jpg')">
           <span class="svc-n">02</span>
           <div class="svc-info">
             <h3>Soins énergétiques</h3>
-            <p>Rééquilibrage des flux d'énergie au niveau physique, mental, émotionnel et spirituel</p>
+            <p>Rééquilibrage des flux d'énergie aux niveaux physique, mental, émotionnel et spirituel</p>
           </div>
-          <span class="svc-arrow">→</span>
+          <span class="svc-arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </a>
-        <a href="soins/hypnose.html" class="svc">
+        <a href="soins/hypnose.html" class="svc" style="--img:url('images/hypnose.jpg')">
           <span class="svc-n">03</span>
           <div class="svc-info">
             <h3>Hypnose</h3>
             <p>État modifié de conscience pour accéder aux ressources profondes de l'inconscient</p>
           </div>
-          <span class="svc-arrow">→</span>
+          <span class="svc-arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </a>
-        <a href="soins/tcc.html" class="svc">
+        <a href="soins/tcc.html" class="svc" style="--img:url('images/tcc.jpg')">
           <span class="svc-n">04</span>
           <div class="svc-info">
             <h3>TCC &amp; Schémathérapie</h3>
             <p>Modifier ses pensées pour influencer positivement son comportement et ses schémas</p>
           </div>
-          <span class="svc-arrow">→</span>
+          <span class="svc-arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </a>
-        <a href="soins/astrologie.html" class="svc">
+        <a href="soins/astrologie.html" class="svc" style="--img:url('images/astrologie.jpg')">
           <span class="svc-n">05</span>
           <div class="svc-info">
             <h3>Astrologie &amp; Tarologie</h3>
             <p>Outil de connaissance de soi — thème natal, révolution solaire, développement personnel</p>
           </div>
-          <span class="svc-arrow">→</span>
+          <span class="svc-arrow"><svg class="ico" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
         </a>
       </div>
     </div>
   </section>
 
-  <!-- PRATICIENNE -->
-  <section id="about" style="padding:0">
+  <!-- À PROPOS -->
+  <section id="about">
     <div class="about-grid">
-      <div class="about-img-container">
-        <div class="glow-sphere"></div>
-        <div class="mandala-wrap">
-          <svg class="sacred-mandala" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="50" cy="50" r="45" fill="none" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.3"/>
-            <circle cx="50" cy="50" r="35" fill="none" stroke="url(#goldGradient)" stroke-width="0.5" opacity="0.4"/>
-            <!-- Petals -->
-            <path d="M50 5 C55 35, 45 35, 50 5 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-            <path d="M50 95 C55 65, 45 65, 50 95 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-            <path d="M5 50 C35 55, 35 45, 5 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-            <path d="M95 50 C65 55, 65 45, 95 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-            <!-- Diagonals -->
-            <g transform="rotate(45, 50, 50)">
-              <path d="M50 5 C55 35, 45 35, 50 5 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-              <path d="M50 95 C55 65, 45 65, 50 95 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-              <path d="M5 50 C35 55, 35 45, 5 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-              <path d="M95 50 C65 55, 65 45, 95 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.6"/>
-            </g>
-            <g transform="rotate(22.5, 50, 50)">
-              <path d="M50 5 C55 35, 45 35, 50 5 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M50 95 C55 65, 45 65, 50 95 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M5 50 C35 55, 35 45, 5 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M95 50 C65 55, 65 45, 95 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-            </g>
-            <g transform="rotate(67.5, 50, 50)">
-              <path d="M50 5 C55 35, 45 35, 50 5 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M50 95 C55 65, 45 65, 50 95 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M5 50 C35 55, 35 45, 5 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-              <path d="M95 50 C65 55, 65 45, 95 50 Z" fill="none" stroke="url(#goldGradient)" stroke-width="0.4" opacity="0.7"/>
-            </g>
-            <!-- Central Star -->
-            <polygon points="50,42 53,48 59,50 53,52 50,58 47,52 41,50 47,48" fill="url(#pinkGradient)"/>
-            
-            <defs>
-              <linearGradient id="goldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#C5A880" />
-                <stop offset="100%" stop-color="#E8E0D5" />
-              </linearGradient>
-              <linearGradient id="pinkGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#DE3163" />
-                <stop offset="100%" stop-color="#8E4A5C" />
-              </linearGradient>
-            </defs>
-          </svg>
-        </div>
+      <div class="about-photo reveal">
+        <img src="images/photo-francoise.png" alt="Françoise Davenas dans son cabinet" />
       </div>
       <div class="about-text reveal">
         <p class="eyebrow">Votre thérapeute</p>
         <h2 class="section-h">Françoise<br><em>Davenas</em></h2>
-        <div style="width:40px;height:1px;background:var(--line);margin:1.5rem 0 2rem"></div>
+        <div class="rule"></div>
         <p>Formée à l'École Européenne de Psychothérapie Socio Somato Analytique (EEPSSA), je vous propose des thérapies brèves et moyennes pour vous accompagner et vous aider dans vos objectifs de vie, quels qu'ils soient.</p>
         <p>Mon approche passe par l'écoute de votre histoire et de votre parcours, afin de vous conseiller une prise en charge adaptée et complète. Ensemble, nous trouverons la méthode qui vous correspond.</p>
-        <a href="#contact" class="btn" style="margin-top:.8rem">Prendre rendez-vous</a>
+        <a href="#contact" class="btn">Prendre rendez-vous</a>
       </div>
     </div>
   </section>
 
-  <!-- CITATION BREAK -->
+  <!-- CITATION -->
   <section class="quote-break">
     <img class="bg-img" src="images/constellations.jpg" alt="" aria-hidden="true" />
     <blockquote class="reveal">
-      <p>« Tout ce qui ne remonte pas en conscience<br>revient sous forme de destin »</p>
-      <cite>— Karl Gustav Jung</cite>
+      <span class="mark">“</span>
+      <p>Tout ce qui ne remonte pas en conscience<br>revient sous forme de destin.</p>
+      <cite>Carl Gustav Jung</cite>
     </blockquote>
   </section>
 
@@ -171,7 +130,7 @@
         <div class="reveal">
           <p class="eyebrow">Stages &amp; journées spéciales</p>
           <h2 class="section-h">Ateliers<br><em>collectifs</em></h2>
-          <div style="width:40px;height:1px;background:var(--line);margin:1.5rem 0 2rem"></div>
+          <div class="rule"></div>
           <div class="stages-text">
             <p>Des ateliers de Constellations Familiales en groupe, organisés à proximité de Bourgoin-Jallieu et Saint-Pierre-de-Chandieu.</p>
             <p>Une expérience collective puissante : chaque participant joue un rôle — celui qui constellate sa famille, ou les représentants qui incarnent les membres du système familial.</p>
@@ -179,7 +138,10 @@
         </div>
         <div class="stages-box reveal">
           <h3>Constellations Familiales</h3>
-          <p class="lieu">📍 Bourgoin-Jallieu / Saint-Pierre-de-Chandieu</p>
+          <p class="lieu">
+            <svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            Bourgoin-Jallieu / Saint-Pierre-de-Chandieu
+          </p>
           <div class="price-row">
             <span>Personne constellée</span>
             <span class="p">80 €</span>
@@ -195,11 +157,11 @@
     </div>
   </section>
 
-  <!-- PARTENAIRES -->
+  <!-- PARTENAIRE -->
   <section id="partenaires">
     <div class="inner">
       <div class="reveal" style="margin-bottom:3rem">
-        <p class="eyebrow">Partenaires</p>
+        <p class="eyebrow">Partenaire</p>
         <h2 class="section-h">En <em>collaboration</em></h2>
       </div>
       <div class="partner reveal">
@@ -209,7 +171,10 @@
           <p class="dom">Médecine traditionnelle chinoise · Ostéopathie · Coaching personnalisé</p>
           <p>L'essentiel de mon travail consistera à vous aider à comprendre vos maux en y mettant des mots. En comprenant pourquoi aujourd'hui votre corps vous fait souffrir, nous aborderons ensemble les aspects physique et psychologique de ces troubles.</p>
           <p>Que ce soit par l'énergétique chinoise, l'ostéopathie ou le coaching personnalisé, nous déploierons un protocole sur mesure pour vous aider à sortir de cette spirale.</p>
-          <p class="adr">📍 Attitude Équilibre — 5 rue Francisque Bois, 69780 Saint-Pierre-de-Chandieu · <a href="tel:0616231608">06 16 23 16 08</a></p>
+          <p class="adr">
+            <svg class="ico" viewBox="0 0 24 24" style="width:16px;height:16px;margin-top:4px"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Attitude Équilibre — 5 rue Francisque Bois, 69780 Saint-Pierre-de-Chandieu · <a href="tel:0616231608">06 16 23 16 08</a></span>
+          </p>
         </div>
       </div>
     </div>
@@ -225,21 +190,33 @@
       <div class="contact-grid">
         <div class="contact-items reveal">
           <div class="ci">
-            <h4>Téléphone</h4>
-            <a href="tel:0619208256">06 19 20 82 56</a>
+            <svg class="ico" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div>
+              <h4>Téléphone</h4>
+              <a href="tel:0619208256">06 19 20 82 56</a>
+            </div>
           </div>
           <div class="ci">
-            <h4>Email</h4>
-            <a href="mailto:f.davenas@gmail.com">f.davenas@gmail.com</a>
+            <svg class="ico" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            <div>
+              <h4>Email</h4>
+              <a href="mailto:f.davenas@gmail.com">f.davenas@gmail.com</a>
+            </div>
           </div>
           <div class="ci">
-            <h4>Adresse</h4>
-            <p>5 Rue Francisque Bois<br>69780 Saint-Pierre-de-Chandieu</p>
-            <p class="note">RDV à domicile possible (Bourgoin et alentours)</p>
+            <svg class="ico" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div>
+              <h4>Adresse</h4>
+              <p>5 Rue Francisque Bois<br>69780 Saint-Pierre-de-Chandieu</p>
+              <p class="note">RDV à domicile possible (Bourgoin et alentours)</p>
+            </div>
           </div>
           <div class="ci">
-            <h4>Horaires</h4>
-            <p>Lundi au Samedi · 9h00 – 19h00</p>
+            <svg class="ico" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <div>
+              <h4>Horaires</h4>
+              <p>Lundi au Samedi · 9h00 – 19h00</p>
+            </div>
           </div>
         </div>
         <form class="form reveal" onsubmit="submitForm(event)">
@@ -272,8 +249,11 @@
             <label>Message (optionnel)</label>
             <textarea placeholder="Décrivez brièvement ce qui vous amène…"></textarea>
           </div>
-          <button type="submit" class="btn" style="width:100%;border:none;cursor:pointer">Envoyer ma demande</button>
-          <div class="form-ok" id="form-ok">✓ Message envoyé — Françoise vous contactera rapidement.</div>
+          <button type="submit" class="btn">Envoyer ma demande</button>
+          <div class="form-ok" id="form-ok">
+            <svg class="ico" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+            Message envoyé — Françoise vous contactera rapidement.
+          </div>
         </form>
       </div>
     </div>
@@ -281,10 +261,14 @@
 
   <!-- FOOTER -->
   <footer>
-    <img class="ft-orchid" src="images/hero.jpg" alt="" aria-hidden="true" />
+    <img class="ft-orchid" src="images/orchidee.png" alt="" aria-hidden="true" />
     <div class="ft-inner">
-      <div class="ft-logo">L'Harmonie</div>
+      <div class="ft-logo"><img src="images/logo-francoise.png" alt="L'Harmonie" /></div>
       <p class="ft-sub">Françoise Davenas — Thérapeute spécialiste du mieux-être</p>
+      <div class="ft-social">
+        <a href="#" aria-label="Facebook" title="Facebook"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/></svg></a>
+        <a href="#" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23a3.7 3.7 0 0 1-.9 1.38 3.7 3.7 0 0 1-1.38.9c-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41a3.7 3.7 0 0 1-1.38-.9 3.7 3.7 0 0 1-.9-1.38c-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41C8.42 2.17 8.8 2.16 12 2.16zm0 1.8c-3.15 0-3.52.01-4.76.07-.96.04-1.48.2-1.83.34-.46.18-.79.39-1.13.74-.35.34-.56.67-.74 1.13-.14.35-.3.87-.34 1.83-.06 1.24-.07 1.61-.07 4.76s.01 3.52.07 4.76c.04.96.2 1.48.34 1.83.18.46.39.79.74 1.13.34.35.67.56 1.13.74.35.14.87.3 1.83.34 1.24.06 1.61.07 4.76.07s3.52-.01 4.76-.07c.96-.04 1.48-.2 1.83-.34.46-.18.79-.39 1.13-.74.35-.34.56-.67.74-1.13.14-.35.3-.87.34-1.83.06-1.24.07-1.61.07-4.76s-.01-3.52-.07-4.76c-.04-.96-.2-1.48-.34-1.83a3.05 3.05 0 0 0-.74-1.13 3.05 3.05 0 0 0-1.13-.74c-.35-.14-.87-.3-1.83-.34-1.24-.06-1.61-.07-4.76-.07zm0 3.06a5.13 5.13 0 1 1 0 10.26 5.13 5.13 0 0 1 0-10.26zm0 1.8a3.33 3.33 0 1 0 0 6.66 3.33 3.33 0 0 0 0-6.66zm5.34-3.2a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4z"/></svg></a>
+      </div>
       <ul class="ft-nav">
         <li><a href="#about">Votre thérapeute</a></li>
         <li><a href="soins/constellations.html">Constellations familiales</a></li>
@@ -297,7 +281,7 @@
       </ul>
       <div class="ft-bottom">
         <span><a href="tel:0619208256">06 19 20 82 56</a> · <a href="mailto:f.davenas@gmail.com">f.davenas@gmail.com</a></span>
-        <span>© 2025 L'Harmonie · Tous droits réservés</span>
+        <span>© 2026 L'Harmonie · Tous droits réservés</span>
       </div>
     </div>
   </footer>
@@ -313,12 +297,12 @@
 
     const obs = new IntersectionObserver(entries => {
       entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
-    }, { threshold: .08 });
+    }, { threshold: 0.08 });
     document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 
     function submitForm(e) {
       e.preventDefault();
-      document.getElementById('form-ok').style.display = 'block';
+      document.getElementById('form-ok').style.display = 'flex';
       e.target.reset();
     }
   </script>
