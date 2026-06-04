@@ -1,3 +1,4 @@
+// @ts-nocheck
 // jamann-screens.jsx — ProfileScreen + constantes Manoïre (piliers + few-shot)
 //
 // App mono-client Le Manoïre. Pas d'onboarding, pas de profil éditable —

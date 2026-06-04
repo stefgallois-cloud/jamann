@@ -6,7 +6,7 @@
   <title>Jamann — Le Manoïre</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Caveat:wght@500&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700;9..144,800&family=Caveat:wght@500;600&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
   <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,500,600,700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -15,32 +15,112 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { width: 100%; min-height: 100%; }
-    body { font-family: 'Clash Grotesk', 'DM Sans', sans-serif; background: #EFE5DB; }
+    body { font-family: 'Clash Grotesk', 'DM Sans', sans-serif; background: #060815; }
     #root { width: 100%; min-height: 100vh; display: flex; flex-direction: column; }
     * { scrollbar-width: none; -ms-overflow-style: none; }
     *::-webkit-scrollbar { display: none; }
     textarea:focus, input:focus { outline: none; }
     .font-fraunces { font-family: 'Fraunces', serif; }
     .font-caveat { font-family: 'Caveat', cursive; }
-    
-    /* Animations & Glassmorphism */
-    .fade-in { animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    .slide-up { animation: slideUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes slideUp { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
-    
-    .hover-scale { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease; }
-    .hover-scale:hover { transform: scale(1.02); box-shadow: 0 12px 32px rgba(42,8,16,0.08); }
-    .hover-scale:active { transform: scale(0.98); }
 
-    /* Beautiful Glass Surface */
-    .glass-surface {
-      background: rgba(251, 251, 248, 0.65);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.5);
-      box-shadow: 0 8px 32px rgba(42,8,16,0.05);
+    /* ── Animations ──────────────────────────────────────────────────────── */
+    .fade-in  { animation: fadeIn  0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    .slide-up { animation: slideUp 0.50s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    @keyframes fadeIn  { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes slideUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Card reveal with stagger */
+    @keyframes cardReveal {
+      from { opacity: 0; transform: translateY(16px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0)   scale(1);    }
     }
+    .card-reveal-1 { animation: cardReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .card-reveal-2 { animation: cardReveal 0.42s cubic-bezier(0.16, 1, 0.3, 1) 0.09s both; }
+
+    /* Badge pop */
+    @keyframes badgeFadeIn { from { opacity:0; transform:scale(0.78); } to { opacity:1; transform:scale(1); } }
+    .badge-pop { animation: badgeFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in, .slide-up, .card-reveal-1, .card-reveal-2, .badge-pop {
+        animation: none !important; opacity: 1 !important; transform: none !important;
+      }
+    }
+
+    /* ── Hover interactions ───────────────────────────────────────────────── */
+    .hover-lift {
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.22s ease;
+      cursor: pointer;
+    }
+    .hover-lift:hover  { transform: translateY(-3px); box-shadow: 0 16px 56px rgba(0,0,0,0.65), 0 0 30px rgba(232,192,96,0.08); }
+    .hover-lift:active { transform: translateY(0) scale(0.99); }
+
+    /* ── Glass surface dark ────────────────────────────────────────────────── */
+    .glass-surface {
+      background: rgba(7, 10, 28, 0.88);
+      -webkit-backdrop-filter: blur(20px);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.11);
+      box-shadow: 0 4px 32px rgba(0, 0, 0, 0.45);
+    }
+
+    /* ── Typography utilities ─────────────────────────────────────────────── */
+    .label-caps {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+    }
+    .editorial-title {
+      font-family: 'Fraunces', serif;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      line-height: 1.05;
+    }
+
+    /* ── Nav item active ──────────────────────────────────────────────────── */
+    .nav-item-active {
+      border-left: 3px solid #D4A853 !important;
+      padding-left: 11px !important;
+    }
+
+    /* ── Btn press ────────────────────────────────────────────────────────── */
+    .btn-press { transition: transform 0.12s, box-shadow 0.12s; }
+    .btn-press:hover  { transform: translateY(-1px); box-shadow: 0 8px 32px rgba(232,192,96,0.40); }
+    .btn-press:active { transform: translateY(1px);  box-shadow: 0 2px 8px rgba(0,0,0,0.30); }
+
+    /* ── Pillar button spring ─────────────────────────────────────────────── */
+    .pillar-btn {
+      transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1),
+                  background 0.17s, border-color 0.17s, color 0.17s, box-shadow 0.17s;
+    }
+    .pillar-btn:active { transform: scale(0.93) !important; }
+
+    /* ── Generate button shimmer ──────────────────────────────────────────── */
+    .btn-generate { position: relative; overflow: hidden; }
+    .btn-generate::after {
+      content: '';
+      position: absolute;
+      top: -50%; left: 0;
+      width: 40%; height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.22), transparent);
+      transform: translateX(-150%) skewX(-12deg);
+      pointer-events: none;
+      opacity: 0;
+    }
+    .btn-generate:not(:disabled):hover::after {
+      opacity: 1;
+      animation: shimmer 0.65s ease-in-out;
+    }
+    @keyframes shimmer {
+      from { transform: translateX(-150%) skewX(-12deg); }
+      to   { transform: translateX(400%)  skewX(-12deg); }
+    }
+    @keyframes goldGlow {
+      0%, 100% { box-shadow: 0 0 20px rgba(232,192,96,0.20), 0 6px 32px rgba(0,0,0,0.45); }
+      50%       { box-shadow: 0 0 50px rgba(232,192,96,0.45), 0 6px 32px rgba(0,0,0,0.45); }
+    }
+    .btn-gold-glow { animation: goldGlow 2.8s ease-in-out infinite; }
   </style>
 </head>
 <body>
@@ -52,22 +132,36 @@ const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
   "theme": "manoire"
 }/*EDITMODE-END*/;
 
-// ─── THEMES ──────────────────────────────────────────────────────────────────
+// ─── THEMES — Dark Alpine Premium ────────────────────────────────────────────
 const THEMES = {
   manoire: {
-    id:'manoire', dark:false,
-    pageBg:'linear-gradient(135deg, #FDFCF8 0%, #EFE5DB 100%)',
-    bg:'transparent', surface:'rgba(251, 251, 248, 0.75)', surface2:'rgba(241, 229, 211, 0.7)',
-    border:'rgba(75, 15, 31, 0.12)',
-    text:'#2A0810', textSub:'#683929', textMuted:'rgba(42,8,16,0.45)',
-    accent:'#9A2E3E', accentSoft:'#C58632',
-    accentGrad:'linear-gradient(135deg, #2A0810 0%, #4A1525 100%)',
-    accentBg:'rgba(197,134,50,0.1)', accentBorder:'rgba(197,134,50,0.3)',
-    tabBg:'rgba(249, 245, 239, 0.85)', tabBorder:'rgba(75,15,31,0.08)',
-    inputBg:'rgba(255, 255, 255, 0.6)', chipBg:'rgba(149,67,21,0.05)',
-    chipActive:'rgba(197,134,50,0.15)', chipActiveBorder:'rgba(197,134,50,0.4)',
-    btnGrad:'linear-gradient(135deg, #2A0810 0%, #4A1525 50%, #954315 100%)', btnText:'#FBFBF8',
-    errorBg:'rgba(168,52,52,0.12)', errorBorder:'rgba(168,52,52,0.5)', errorText:'#7A1F1F',
+    id:'manoire', dark:true,
+    pageBg:'transparent',
+    bg:'transparent',
+    surface:'rgba(7,10,28,0.90)',
+    surface2:'rgba(7,10,28,0.72)',
+    border:'rgba(255,255,255,0.11)',
+    text:'#FFFFFF',
+    textSub:'rgba(255,255,255,0.65)',
+    textMuted:'rgba(255,255,255,0.35)',
+    accent:'#E8C060',
+    accentSoft:'#D4A853',
+    accentGrad:'linear-gradient(135deg, #E8C060 0%, #C4923E 100%)',
+    accentBg:'rgba(232,192,96,0.12)',
+    accentBorder:'rgba(232,192,96,0.28)',
+    tabBg:'rgba(7,9,22,0.97)',
+    tabBorder:'rgba(255,255,255,0.08)',
+    inputBg:'rgba(255,255,255,0.06)',
+    chipBg:'rgba(255,255,255,0.05)',
+    chipActive:'rgba(232,192,96,0.15)',
+    chipActiveBorder:'rgba(232,192,96,0.35)',
+    btnGrad:'linear-gradient(135deg, #E8C060 0%, #C4923E 100%)',
+    btnText:'#1A0E00',
+    errorBg:'rgba(255,80,60,0.08)',
+    errorBorder:'rgba(255,80,60,0.35)',
+    errorText:'#FF9080',
+    shadow:'0 4px 32px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.25)',
+    shadowHover:'0 16px 56px rgba(0,0,0,0.65), 0 0 40px rgba(232,192,96,0.08)',
   }
 };
 
@@ -86,41 +180,20 @@ const BRAND = {
   baseHashtags:["LeManoire", "ColDeJaman", "Montreux"],
 };
 
-// Emojis utilisés pour préfixer le CTA URL (un piochage pseudo-aléatoire par génération)
 const CTA_EMOJIS = ['🏔️','🐾','✨','🤍','🍽️','📍','🔗','☀️','⛰️'];
 
-// Nettoie + reformate la caption pour garantir le format final attendu :
-//   [corps]
-//   [ligne vide]
-//   — L'équipe du Manoïre
-//   [emoji] https://lemanoire-jaman.ch
-// Garde-fou contre les variations Gemini (URL sur la même ligne que le texte,
-// signature absente, "\n" littéraux non interprétés, URL répétée, etc.).
 function normalizeCaption(rawCaption, brand) {
   if (!rawCaption) return '';
   let txt = String(rawCaption);
-
-  // Transforme les "\n" littéraux (échappés par Gemini) en vrais sauts de ligne
   txt = txt.replace(/\\n/g, '\n');
-
-  // Supprime toutes les occurrences de l'URL (avec ou sans https://, avec emoji optionnel devant)
   const urlPattern = /\s*[🏔️🐾✨🤍🍽️📍🔗☀️⛰️]?\s*(?:https?:\/\/)?(?:www\.)?lemanoire-jaman\.ch\/?/gu;
   txt = txt.replace(urlPattern, '');
-
-  // Supprime toutes les occurrences de la signature (variantes courantes)
   txt = txt.replace(/[—\-–]\s*L['']équipe\s+du\s+Manoïre[\s.!]*/gi, '');
-
-  // Compacte les sauts de ligne multiples (max 2 consécutifs) et trim
   txt = txt.replace(/\n{3,}/g, '\n\n').trim();
-
-  // Choisit un emoji CTA (rotation simple basée sur la longueur du texte pour varier sans alea)
   const emoji = CTA_EMOJIS[txt.length % CTA_EMOJIS.length];
-
-  // Ré-applique le format final
   return `${txt}\n\n— L'équipe du Manoïre\n${emoji} ${brand.siteUrl}`;
 }
 
-// Calcule un compte à rebours lisible vers l'ouverture (côté client, à chaque génération)
 function getCountdown(brand) {
   const today = new Date();
   const opening = new Date(brand.openingDate);
@@ -138,7 +211,6 @@ function getCountdown(brand) {
   return { days, weeks, human, todayFr };
 }
 
-// ─── SAMPLE CALENDAR DATA ────────────────────────────────────────────────────
 const SAMPLE_POSTS = [
   { day: 5,  platform:'facebook',  label:'Coulisses travaux — semaine 1' },
   { day: 12, platform:'instagram', label:'Anouck inspecte le chantier' },
@@ -147,7 +219,6 @@ const SAMPLE_POSTS = [
   { day: 28, platform:'facebook',  label:'J-30 avant ouverture' },
 ];
 
-// ─── BUILD AI PROMPT (1 prompt → 2 versions IG + FB) ─────────────────────────
 function buildAIPrompt(pillarId, idea, brand) {
   const pillar = PILLARS.find(p => p.id === pillarId) || PILLARS[0];
   const cd = getCountdown(brand);
@@ -234,9 +305,9 @@ Ta mission est de rédiger un post unique décliné en DEUX versions spécifique
 - **INTERDIT** : Ne jamais écrire "Réservez maintenant", "Commandez", ou "Venez ce week-end".
 - **CTA AUTORISÉS** : "Suivez l'aventure", "On vous attend là-haut", "Plus d'infos sur le projet".
 - Le post DOIT obligatoirement se terminer par la signature et l'URL cliquable structurée ainsi :
-  
+
   [Corps du post]
-  
+
   — L'équipe du Manoïre
   [emoji_unique] ${brand.siteUrl}
 
@@ -368,90 +439,294 @@ function useIsDesktop(bp = 1024) {
   return is;
 }
 
-// ─── SHARED ATOMS ────────────────────────────────────────────────────────────
-function Spinner({ T }) {
-  const [tick, setTick] = React.useState(0);
-  React.useEffect(() => {
-    const id = setInterval(() => setTick(n => n + 1), 420);
-    return () => clearInterval(id);
-  }, []);
-  return (
-    <div style={{ padding:'32px 0', display:'flex', flexDirection:'column', alignItems:'center', gap:18 }}>
-      <div style={{ display:'flex', gap:9 }}>
-        {[0,1,2].map(i => (
-          <div key={i} style={{ width:9, height:9, borderRadius:'50%', background: tick%3===i ? T.accentSoft : T.textMuted, transform:`scale(${tick%3===i?1.35:1})`, transition:'all 0.25s' }} />
-        ))}
-      </div>
-      <p style={{ fontSize:13, color:T.textSub }}>L'IA rédige les 2 versions…</p>
-    </div>
-  );
-}
-
-const IgIcon = ({ c }) => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill={c}>
+// ─── PLATFORM ICONS ──────────────────────────────────────────────────────────
+const IgIcon = ({ c, size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={c} aria-hidden="true">
     <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
   </svg>
 );
-const FbIcon = ({ c }) => (
-  <svg width="14" height="14" viewBox="0 0 24 24" fill={c}>
+const FbIcon = ({ c, size = 16 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill={c} aria-hidden="true">
     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
   </svg>
 );
 
-// ─── POST CARD (une carte par plateforme dans le résultat) ───────────────────
+// Copy icon SVG
+const CopyIcon = ({ c, size = 13 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+  </svg>
+);
+const CheckIcon = ({ c, size = 13 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={c} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+);
+
+// ─── ALPINE SVG ILLUSTRATIONS ────────────────────────────────────────────────
+const MountainSVG = () => (
+  <svg viewBox="0 0 240 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+       style={{position:'absolute',bottom:0,left:0,width:'100%',height:'100%',pointerEvents:'none'}}>
+    <path d="M0 70 L40 28 L65 42 L100 8 L135 35 L165 18 L200 32 L240 12 L240 70 Z"
+          fill="#D4A853" opacity="0.22"/>
+    <path d="M0 70 L30 44 L52 56 L82 28 L108 46 L132 34 L158 46 L188 28 L215 40 L240 30 L240 70 Z"
+          fill="#C4923E" opacity="0.12"/>
+  </svg>
+);
+
+const LakeSVG = () => (
+  <svg viewBox="0 0 240 70" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+       style={{position:'absolute',bottom:0,left:0,width:'100%',height:'100%',pointerEvents:'none'}}>
+    <path d="M0 35 Q30 18 60 35 Q90 52 120 35 Q150 18 180 35 Q210 52 240 35 L240 70 L0 70 Z"
+          fill="#D4A853" opacity="0.24"/>
+    <path d="M0 50 Q40 38 80 50 Q120 62 160 50 Q200 38 240 50 L240 70 L0 70 Z"
+          fill="#C4923E" opacity="0.14"/>
+  </svg>
+);
+
+// ─── STARRY BACKGROUND ───────────────────────────────────────────────────────
+const StarryBackground = () => {
+  const stars = React.useMemo(() => {
+    const arr = [];
+    for (let i = 0; i < 200; i++) {
+      arr.push({
+        cx: ((i * 73.7 + 11.3) % 99.2) + 0.4,
+        cy: ((i * 47.3 + 29.1) % 99.5) + 0.2,
+        r:  0.09 + ((i * 13 + 5) % 5) * 0.045,
+        op: (0.30 + ((i * 17 + 3) % 8) * 0.09).toFixed(2),
+      });
+    }
+    return arr;
+  }, []);
+
+  return (
+    <div style={{ position:'fixed', inset:0, zIndex:0, pointerEvents:'none', overflow:'hidden' }}>
+      {/* Gradient nuit étoilée — bleu nuit profond avec nuance violette */}
+      <div style={{
+        position:'absolute', inset:0,
+        background:'radial-gradient(ellipse at 65% 10%, #1E2A60 0%, #0E1438 38%, #060815 100%)',
+      }} />
+      {/* Étoiles SVG */}
+      <svg
+        style={{ position:'absolute', inset:0, width:'100%', height:'100%' }}
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid slice"
+        aria-hidden="true"
+      >
+        {stars.map((s, i) => (
+          <circle key={i} cx={s.cx} cy={s.cy} r={s.r} fill={`rgba(255,252,235,${s.op})`} />
+        ))}
+        {/* Quelques étoiles brillantes */}
+        <circle cx="72" cy="7"  r="0.52" fill="rgba(255,255,255,0.96)" />
+        <circle cx="17" cy="11" r="0.42" fill="rgba(255,248,220,0.92)" />
+        <circle cx="44" cy="4"  r="0.36" fill="rgba(255,255,255,0.88)" />
+        <circle cx="88" cy="19" r="0.30" fill="rgba(255,242,200,0.84)" />
+        <circle cx="31" cy="17" r="0.24" fill="rgba(200,222,255,0.80)" />
+        <circle cx="58" cy="9"  r="0.28" fill="rgba(255,255,240,0.82)" />
+      </svg>
+      {/* Lune */}
+      <div style={{
+        position:'absolute', top:'5%', right:'5%',
+        width:62, height:62, borderRadius:'50%',
+        background:'radial-gradient(circle at 36% 30%, #FFFDE8, #F8E068 42%, #D0A018 80%, transparent)',
+        boxShadow:'0 0 32px rgba(248,224,104,0.55), 0 0 80px rgba(248,224,104,0.20)',
+        opacity:0.90,
+      }} />
+      {/* Halo lune */}
+      <div style={{
+        position:'absolute',
+        top:'calc(5% - 22px)', right:'calc(5% - 22px)',
+        width:106, height:106, borderRadius:'50%',
+        background:'radial-gradient(circle, rgba(248,224,104,0.14) 0%, transparent 62%)',
+      }} />
+    </div>
+  );
+};
+
+// ─── SPINNER ─────────────────────────────────────────────────────────────────
+function Spinner({ T }) {
+  const [tick, setTick] = React.useState(0);
+  React.useEffect(() => {
+    const id = setInterval(() => setTick(n => n + 1), 380);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div style={{ padding:'44px 0', display:'flex', flexDirection:'column', alignItems:'center', gap:22 }}>
+      <div style={{ display:'flex', gap:10 }}>
+        {[0,1,2].map(i => (
+          <div key={i} style={{
+            width: 9, height: 9, borderRadius: '50%',
+            background: tick % 3 === i ? T.accentSoft : T.border,
+            transform: `scale(${tick % 3 === i ? 1.5 : 1})`,
+            transition: 'all 0.22s cubic-bezier(0.16, 1, 0.3, 1)',
+          }} />
+        ))}
+      </div>
+      <p style={{ fontSize:13, color:T.textSub, letterSpacing:'0.02em', fontStyle:'italic' }}>
+        L'IA rédige vos 2 versions…
+      </p>
+    </div>
+  );
+}
+
+// ─── POST CARD ────────────────────────────────────────────────────────────────
 function PostCard({ T, platform, data, brand, copied, onCopy }) {
   if (!data) return null;
   const isIg = platform === 'instagram';
   const cleanHashtags = (data.hashtags || []).map(h => String(h).replace(/^#+/, ''));
-  const tagJoin = cleanHashtags.map(h => `#${h}`).join(' ');
   const charCount = data.caption?.length || 0;
   const hashCount = data.hashtags?.length || 0;
   const hashRangeOk = isIg ? (hashCount >= 8 && hashCount <= 10) : (hashCount === 5);
   const charRangeOk = isIg ? (charCount >= 200 && charCount <= 350) : (charCount >= 300 && charCount <= 600);
+  const isCopied = copied === platform;
 
   return (
-    <div className="hover-scale glass-surface" style={{ flex:1, minWidth:0, borderRadius:18, padding:14, display:'flex', flexDirection:'column' }}>
-      <div style={{ display:'flex', alignItems:'center', gap:8, marginBottom:10 }}>
-        {isIg ? <IgIcon c={T.accentSoft} /> : <FbIcon c={T.accentSoft} />}
-        <p style={{ fontSize:13, fontWeight:700, color:T.text }}>{isIg ? 'Instagram' : 'Facebook'}</p>
-        <span style={{ marginLeft:'auto', fontSize:10, color: charRangeOk ? T.textSub : T.errorText, fontWeight:600 }}>
-          {charCount}c {charRangeOk ? '✓' : '⚠'}
-        </span>
+    <div className="hover-lift" style={{
+      flex:1, minWidth:0,
+      background: T.surface,
+      borderRadius: 22,
+      border: `1px solid ${T.border}`,
+      boxShadow: T.shadow,
+      display:'flex', flexDirection:'column',
+      overflow:'hidden',
+      backdropFilter:'blur(12px)',
+      WebkitBackdropFilter:'blur(12px)',
+      transition: 'box-shadow 0.25s ease, transform 0.25s ease',
+    }}>
+      {/* ── Photo header ── */}
+      <div style={{ position:'relative', overflow:'hidden', minHeight:100 }}>
+        <div style={{
+          position:'absolute', inset:0,
+          backgroundImage: isIg
+            ? `url('https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=600&h=200&fit=crop&q=70')`
+            : `url('https://images.unsplash.com/photo-1531366936337-7c912a4589a7?w=600&h=200&fit=crop&q=70')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center',
+        }} />
+        <div style={{
+          position:'absolute', inset:0,
+          background: isIg
+            ? 'linear-gradient(135deg, rgba(9,9,14,0.78) 0%, rgba(9,9,14,0.35) 100%)'
+            : 'linear-gradient(135deg, rgba(9,9,14,0.82) 0%, rgba(9,9,14,0.38) 100%)',
+        }} />
+        <div style={{ position:'relative', zIndex:1, display:'flex', alignItems:'center', gap:11, padding:'20px 18px 18px' }}>
+          {isIg
+            ? <IgIcon c="#FFFFFF" size={22} />
+            : <FbIcon c="#FFFFFF" size={22} />
+          }
+          <p className="font-fraunces" style={{ fontSize:19, fontWeight:700, color:'#FFFFFF', flex:1, letterSpacing:'-0.2px', textShadow:'0 1px 8px rgba(0,0,0,0.6)' }}>
+            {isIg ? 'Instagram' : 'Facebook'}
+          </p>
+          <span className="badge-pop" style={{
+            fontSize:11, fontWeight:700, letterSpacing:'0.04em',
+            padding:'4px 11px', borderRadius:20,
+            background: charRangeOk ? 'rgba(232,192,96,0.25)' : 'rgba(255,80,60,0.25)',
+            color: charRangeOk ? '#E8C060' : '#FF9080',
+            border: `1px solid ${charRangeOk ? 'rgba(232,192,96,0.55)' : 'rgba(255,80,60,0.55)'}`,
+          }}>
+            {charCount}c {charRangeOk ? '✓' : '⚠'}
+          </span>
+        </div>
       </div>
-      <p style={{ fontSize:13, lineHeight:1.6, color:T.text, whiteSpace:'pre-wrap', flex:1 }}>{data.caption}</p>
-      <div style={{ display:'flex', flexWrap:'wrap', gap:5, marginTop:10 }}>
-        {cleanHashtags.map((h,i) => (
-          <span key={i} style={{ fontSize:11, color:T.accentSoft, background:T.accentBg, borderRadius:6, padding:'2px 7px', fontWeight:500 }}>#{h}</span>
-        ))}
+
+      {/* Caption */}
+      <div style={{ padding:'18px 18px 12px', flex:1 }}>
+        <p style={{
+          fontSize:14, lineHeight:1.72, color:T.text,
+          whiteSpace:'pre-wrap', fontFamily:"'DM Sans', sans-serif",
+        }}>
+          {data.caption}
+        </p>
       </div>
-      <div style={{ display:'flex', alignItems:'center', gap:8, marginTop:10 }}>
-        <span style={{ fontSize:10, color: hashRangeOk ? T.textSub : T.errorText, fontWeight:600 }}>
-          {hashCount} hashtags {hashRangeOk ? '✓' : (isIg ? '⚠ attendu 8-10' : '⚠ attendu 5')}
+
+      {/* Hashtag pills */}
+      {cleanHashtags.length > 0 && (
+        <div style={{ display:'flex', flexWrap:'wrap', gap:6, padding:'0 18px 14px' }}>
+          {cleanHashtags.map((h, i) => (
+            <span key={i} style={{
+              fontSize:11, fontWeight:600,
+              color: T.accentSoft,
+              background: T.accentBg,
+              border:`1px solid ${T.accentBorder}`,
+              borderRadius:20, padding:'3px 10px',
+            }}>#{h}</span>
+          ))}
+        </div>
+      )}
+
+      {/* Footer */}
+      <div style={{
+        display:'flex', alignItems:'center', gap:10,
+        padding:'10px 18px 14px',
+        borderTop:`1px solid ${T.border}`,
+      }}>
+        <span style={{
+          fontSize:11, fontWeight:600, letterSpacing:'0.02em',
+          color: hashRangeOk ? T.textSub : T.errorText,
+        }}>
+          {hashCount} hashtags {hashRangeOk ? '✓' : (isIg ? '⚠ (8-10)' : '⚠ (5 exact)')}
         </span>
-        <button onClick={() => onCopy(platform)} className="hover-scale" style={{ marginLeft:'auto', padding:'7px 14px', borderRadius:10, fontFamily:'inherit', border:`1px solid ${copied===platform ? T.accentBorder : T.border}`, background: copied===platform ? T.chipActive : T.chipBg, color: copied===platform ? T.accentSoft : T.text, fontSize:12, fontWeight:600, cursor:'pointer' }}>
-          {copied===platform ? '✓ Copié' : `Copier ${isIg?'IG':'FB'}`}
+        <button
+          onClick={() => onCopy(platform)}
+          style={{
+            marginLeft:'auto',
+            display:'flex', alignItems:'center', gap:6,
+            padding:'8px 16px', borderRadius:11,
+            fontFamily:'inherit', fontWeight:700, fontSize:12,
+            cursor:'pointer',
+            border:`1.5px solid ${isCopied ? T.accent : T.border}`,
+            background: isCopied ? T.accent : T.surface,
+            color: isCopied ? T.btnText : T.textSub,
+            transition:'all 0.18s cubic-bezier(0.16, 1, 0.3, 1)',
+          }}
+        >
+          {isCopied
+            ? <><CheckIcon c={T.btnText} /> Copié</>
+            : <><CopyIcon c={T.textSub} /> {isIg ? 'Copier IG' : 'Copier FB'}</>
+          }
         </button>
       </div>
     </div>
   );
 }
 
-// ─── ERROR BANNER ────────────────────────────────────────────────────────────
+// ─── ERROR BANNER ─────────────────────────────────────────────────────────────
 function ErrorBanner({ T, message }) {
   if (!message) return null;
   return (
-    <div style={{ background:T.errorBg, border:`1px solid ${T.errorBorder}`, borderRadius:12, padding:'10px 14px', display:'flex', gap:10, alignItems:'flex-start' }}>
-      <span style={{ fontSize:16, lineHeight:1.2 }}>⚠️</span>
+    <div style={{
+      borderLeft:`4px solid ${T.errorBorder}`,
+      background: T.errorBg,
+      borderRadius:'0 12px 12px 0',
+      padding:'12px 16px',
+      display:'flex', gap:12, alignItems:'flex-start',
+    }}>
       <div style={{ flex:1, minWidth:0 }}>
-        <p style={{ fontSize:13, color:T.errorText, fontWeight:600, marginBottom:2 }}>Génération échouée — affichage du fallback hors-ligne</p>
-        <p style={{ fontSize:11, color:T.errorText, opacity:0.85, lineHeight:1.45, wordBreak:'break-word' }}>{message}</p>
-        <p style={{ fontSize:11, color:T.errorText, opacity:0.7, marginTop:4 }}>Vérifie <code>GEMINI_API_KEY</code> côté Netlify, ou ouvre la console (F12) pour voir le détail brut.</p>
+        <p style={{ fontSize:13, color:T.errorText, fontWeight:700, marginBottom:3 }}>
+          Génération échouée — affichage du fallback hors-ligne
+        </p>
+        <p style={{ fontSize:11, color:T.errorText, opacity:0.85, lineHeight:1.5, wordBreak:'break-word' }}>
+          {message}
+        </p>
+        <p style={{ fontSize:11, color:T.errorText, opacity:0.7, marginTop:5, fontStyle:'italic' }}>
+          Vérifie <code>GEMINI_API_KEY</code> côté Netlify, ou ouvre la console (F12) pour le détail.
+        </p>
       </div>
     </div>
   );
 }
 
-// ─── CREATE SCREEN ───────────────────────────────────────────────────────────
+// ─── PILLAR IMAGES ────────────────────────────────────────────────────────────
+const PILLAR_IMAGES = {
+  travaux:   'https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&h=180&fit=crop&q=65',
+  anouck:    'https://images.unsplash.com/photo-1477884213360-7e9d7dcc1e48?w=300&h=180&fit=crop&q=65',
+  terroir:   'https://images.unsplash.com/photo-1583788756448-6e726ac73772?w=300&h=180&fit=crop&q=65',
+  lieu:      'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=300&h=180&fit=crop&q=65',
+  histoire:  'https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&h=180&fit=crop&q=65',
+  countdown: 'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=300&h=180&fit=crop&q=65',
+};
+
+// ─── CREATE SCREEN ────────────────────────────────────────────────────────────
 function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview, setImagePreview, onGoPreview }) {
   const [mode, setMode]       = React.useState('text');
   const [idea, setIdea]       = React.useState('');
@@ -461,6 +736,7 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
   const [copied, setCopied]   = React.useState(null);
   const [error, setError]     = React.useState(null);
   const fileRef = React.useRef(null);
+  const desktop = useIsDesktop();
 
   const handleImage = e => {
     const f = e.target.files[0];
@@ -472,7 +748,6 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
     setResult(null);
     setError(null);
     const prompt = buildAIPrompt(pillar, idea, brand);
-
     try {
       let raw;
       if (typeof window.claude?.complete === 'function') {
@@ -492,10 +767,7 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
       }
       const cleaned = raw.trim().replace(/^```json?\s*/i, '').replace(/```\s*$/, '');
       const data    = JSON.parse(cleaned);
-      if (!data.instagram || !data.facebook) {
-        throw new Error('Réponse IA mal formée (manque instagram ou facebook)');
-      }
-      // Garde-fou : impose le format final (signature + URL cliquable à la ligne)
+      if (!data.instagram || !data.facebook) throw new Error('Réponse IA mal formée (manque instagram ou facebook)');
       data.instagram.caption = normalizeCaption(data.instagram.caption, brand);
       data.facebook.caption  = normalizeCaption(data.facebook.caption,  brand);
       setResult(data);
@@ -521,7 +793,7 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
     setLoading(false);
   };
 
-  const handleCopy = (platform) => {
+  const handleCopy = platform => {
     const data = result?.[platform];
     if (!data) return;
     const cap  = data.caption || '';
@@ -534,37 +806,118 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
     setTimeout(() => setCopied(null), 2400);
   };
 
-  const desktop = useIsDesktop();
-
   return (
     <div style={{ background:T.bg, display:'flex', flexDirection:'column' }}>
-      {/* Header */}
-      <div style={{ padding:'18px 20px 0' }}>
-        <p className="font-fraunces" style={{ fontSize:28, fontWeight:700, color:T.text, letterSpacing:'-0.5px' }}>Nouveau post <span style={{fontSize:20}}>✦</span></p>
-        <p style={{ fontSize:13, color:T.textSub, marginTop:4 }}>1 clic = 2 versions (Instagram + Facebook) côte à côte</p>
 
-        {/* Brand badge */}
-        <div style={{ display:'flex', alignItems:'center', gap:7, padding:'7px 12px', marginTop:12, background:T.accentBg, borderRadius:10, border:`1px solid ${T.accentBorder}` }}>
-          <span style={{ fontSize:14 }}>✦</span>
-          <p style={{ fontSize:12, color:T.accentSoft, fontWeight:500 }}>
-            App dédiée à <strong>{brand.name}</strong> — {brand.tagline}
+      {/* ── Hero Photo ── */}
+      <div style={{ position:'relative', overflow:'hidden', height: desktop ? 220 : 178 }}>
+        <div style={{
+          position:'absolute', inset:0,
+          backgroundImage:`url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1000&h=440&fit=crop&q=70')`,
+          backgroundSize:'cover',
+          backgroundPosition:'center 38%',
+        }} />
+        <div style={{
+          position:'absolute', inset:0,
+          background:'linear-gradient(to bottom, rgba(9,9,14,0.12) 0%, rgba(9,9,14,0.82) 100%)',
+        }} />
+        <div style={{
+          position:'relative', zIndex:1,
+          display:'flex', flexDirection:'column',
+          justifyContent:'flex-end', height:'100%',
+          padding: desktop ? '24px 32px' : '18px 20px',
+        }}>
+          <p className="editorial-title" style={{ fontSize: desktop ? 46 : 34, color:'#FFFFFF', textShadow:'0 2px 20px rgba(0,0,0,0.7)' }}>
+            Nouveau post <span style={{color:'#E8C060'}}>✦</span>
+          </p>
+          <p style={{ fontSize:13, color:'rgba(255,255,255,0.72)', marginTop:6, lineHeight:1.4 }}>
+            1 clic · 2 versions — Instagram &amp; Facebook
           </p>
         </div>
       </div>
 
-      {/* Body */}
-      <div style={{ padding:'16px 18px 24px', display:'flex', flexDirection:'column', gap:16 }}>
+      {/* Brand badge */}
+      <div style={{ padding: desktop ? '20px 32px 0' : '16px 20px 0' }}>
+        <div style={{
+          display:'flex', alignItems:'center', gap:0,
+          borderRadius:16,
+          border:`1px solid ${T.border}`,
+          background: T.surface,
+          boxShadow: T.shadow,
+          overflow:'hidden',
+          backdropFilter:'blur(12px)',
+          WebkitBackdropFilter:'blur(12px)',
+        }}>
+          <div style={{ width:5, alignSelf:'stretch', background:`linear-gradient(180deg, ${T.accent}, ${T.accentSoft})`, flexShrink:0 }} />
+          <div style={{ display:'flex', alignItems:'center', gap:12, padding:'12px 16px', flex:1 }}>
+            <img src="logo.png" alt="" style={{ width:30, height:30, objectFit:'contain', borderRadius:6, flexShrink:0 }} />
+            <div style={{ flex:1, minWidth:0 }}>
+              <p style={{ fontSize:13, fontWeight:700, color:T.text }}>{brand.name}</p>
+              <p style={{ fontSize:11, color:T.textSub, marginTop:1 }}>{brand.tagline}</p>
+            </div>
+            <span style={{ fontSize:10, fontWeight:700, textTransform:'uppercase', letterSpacing:'0.08em', color:T.accentSoft, background:T.accentBg, padding:'3px 8px', borderRadius:6, border:`1px solid ${T.accentBorder}` }}>
+              Client
+            </span>
+          </div>
+        </div>
+      </div>
+
+      {/* ── Body ── */}
+      <div style={{ padding: desktop ? '24px 32px 40px' : '20px 20px 28px', display:'flex', flexDirection:'column', gap:20 }}>
 
         {/* Pillar selector */}
         <div>
-          <p style={{ fontSize:11, fontWeight:700, color:T.textMuted, textTransform:'uppercase', letterSpacing:'0.07em', marginBottom:10 }}>Pilier éditorial</p>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:8 }}>
+          <p className="label-caps" style={{ color:T.textMuted, marginBottom:12 }}>Pilier éditorial</p>
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(3,1fr)', gap:10 }}>
             {PILLARS.map(p => {
               const on = pillar === p.id;
               return (
-                <button key={p.id} onClick={() => setPillar(p.id)} title={p.angle} style={{ padding:'12px 6px', borderRadius:12, fontFamily:'inherit', border:`1px solid ${on ? T.accentBorder : T.border}`, background: on ? T.chipActive : T.chipBg, color: on ? T.accentSoft : T.textSub, fontSize:11, fontWeight:600, cursor:'pointer', display:'flex', flexDirection:'column', alignItems:'center', gap:5, lineHeight:1.25, textAlign:'center', transition:'all 0.15s' }}>
-                  <span style={{fontSize:20}}>{p.emoji}</span>
-                  {p.label}
+                <button
+                  key={p.id}
+                  onClick={() => setPillar(p.id)}
+                  title={p.angle}
+                  className="pillar-btn"
+                  style={{
+                    minHeight:100, padding:0,
+                    borderRadius:16, fontFamily:'inherit',
+                    position:'relative', overflow:'hidden',
+                    border:`1.5px solid ${on ? T.accent : 'rgba(255,255,255,0.10)'}`,
+                    cursor:'pointer',
+                    boxShadow: on ? `0 0 28px rgba(232,192,96,0.35), 0 8px 32px rgba(0,0,0,0.5)` : '0 4px 20px rgba(0,0,0,0.40)',
+                  }}
+                >
+                  {/* Photo */}
+                  <div style={{
+                    position:'absolute', inset:0,
+                    backgroundImage:`url('${PILLAR_IMAGES[p.id]}')`,
+                    backgroundSize:'cover', backgroundPosition:'center',
+                    filter: on ? 'brightness(0.80)' : 'brightness(0.50)',
+                    transition:'filter 0.25s ease',
+                  }} />
+                  {/* Overlay dégradé */}
+                  <div style={{
+                    position:'absolute', inset:0,
+                    background: on
+                      ? 'linear-gradient(180deg, rgba(232,192,96,0.12) 0%, rgba(8,10,28,0.55) 100%)'
+                      : 'linear-gradient(180deg, rgba(8,10,28,0.25) 0%, rgba(8,10,28,0.72) 100%)',
+                    transition:'background 0.25s ease',
+                  }} />
+                  {/* Barre or en haut si actif */}
+                  {on && (
+                    <div style={{ position:'absolute', top:0, left:0, right:0, height:3, background:'linear-gradient(90deg, #E8C060, #C4923E)', zIndex:2 }} />
+                  )}
+                  {/* Contenu */}
+                  <div style={{
+                    position:'relative', zIndex:1,
+                    display:'flex', flexDirection:'column',
+                    alignItems:'center', justifyContent:'center',
+                    height:'100%', minHeight:100,
+                    padding:'8px 8px',
+                    textAlign:'center', gap:5,
+                  }}>
+                    <span style={{ fontSize:10, fontWeight:800, textTransform:'uppercase', letterSpacing:'0.10em', color:'#FFFFFF', lineHeight:1.35, textShadow:'0 1px 8px rgba(0,0,0,0.98)', wordBreak:'break-word' }}>{p.label}</span>
+                    {on && <div style={{ width:18, height:2, borderRadius:1, background:'#E8C060' }} />}
+                  </div>
                 </button>
               );
             })}
@@ -572,62 +925,157 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
         </div>
 
         {/* Input card */}
-        <div style={{ background:T.surface, borderRadius:20, padding:14, border:`1px solid ${T.border}` }}>
-          <div style={{ display:'flex', gap:4, background:T.surface2, borderRadius:12, padding:3, marginBottom:12 }}>
+        <div style={{
+          background:T.surface, borderRadius:22,
+          padding:18,
+          border:`1px solid rgba(232,192,96,0.22)`,
+          boxShadow:`0 0 0 1px rgba(232,192,96,0.08), 0 8px 40px rgba(0,0,0,0.55)`,
+          backdropFilter:'blur(16px)',
+          WebkitBackdropFilter:'blur(16px)',
+        }}>
+          {/* Mode toggle */}
+          <div style={{ display:'flex', gap:3, background:T.surface2, borderRadius:13, padding:3, marginBottom:14 }}>
             {[{id:'text',l:'💬 Idée (optionnel)'},{id:'image',l:'📸 Photo'}].map(m => (
-              <button key={m.id} onClick={() => setMode(m.id)} style={{ flex:1, padding:'7px 0', textAlign:'center', fontFamily:'inherit', fontSize:13, fontWeight:600, borderRadius:9, border:'none', cursor:'pointer', background: mode===m.id ? T.surface : 'transparent', color: mode===m.id ? T.text : T.textSub, boxShadow: mode===m.id ? '0 1px 3px rgba(0,0,0,0.15)' : 'none', transition:'all 0.15s' }}>{m.l}</button>
+              <button
+                key={m.id}
+                onClick={() => setMode(m.id)}
+                style={{
+                  flex:1, padding:'8px 0', textAlign:'center',
+                  fontFamily:'inherit', fontSize:13, fontWeight:600,
+                  borderRadius:10, border:'none', cursor:'pointer',
+                  background: mode===m.id ? T.surface : 'transparent',
+                  color: mode===m.id ? T.text : T.textSub,
+                  boxShadow: mode===m.id ? '0 1px 4px rgba(0,0,0,0.1)' : 'none',
+                  transition:'all 0.15s',
+                }}
+              >
+                {m.l}
+              </button>
             ))}
           </div>
+
           {mode === 'text' ? (
-            <textarea value={idea} onChange={e => setIdea(e.target.value)}
+            <textarea
+              value={idea}
+              onChange={e => setIdea(e.target.value)}
               placeholder="Optionnel — précise l'angle si tu as une idée précise (ex: semaine 3 de travaux, on a démoli le mur du fond / Anouck a piqué un croissant au maçon / le fromager d'Ormonts vient livrer demain). Sinon, laisse vide et le pilier suffit."
-              style={{ width:'100%', minHeight:96, background:T.inputBg, border:`1px solid ${T.border}`, borderRadius:12, padding:'11px 13px', color:T.text, fontSize:14, lineHeight:1.55, resize:'none', fontFamily:'inherit' }}
+              style={{
+                width:'100%', minHeight:100,
+                background:T.inputBg,
+                border:`1.5px solid ${T.border}`,
+                borderRadius:14,
+                padding:'12px 14px',
+                color:T.text, fontSize:14, lineHeight:1.6,
+                resize:'none', fontFamily:'inherit',
+                transition:'border-color 0.15s',
+              }}
             />
           ) : (
             <>
-              <div onClick={() => fileRef.current?.click()} style={{ height:120, background:T.inputBg, border:`1.5px dashed ${T.border}`, borderRadius:12, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:8, cursor:'pointer', overflow:'hidden', position:'relative' }}>
+              <div
+                onClick={() => fileRef.current?.click()}
+                style={{
+                  height:130, background:T.inputBg,
+                  border:`1.5px dashed ${T.border}`,
+                  borderRadius:14,
+                  display:'flex', flexDirection:'column',
+                  alignItems:'center', justifyContent:'center',
+                  gap:9, cursor:'pointer', overflow:'hidden', position:'relative',
+                }}
+              >
                 {imagePreview
                   ? <img src={imagePreview} alt="" style={{ width:'100%', height:'100%', objectFit:'cover' }} />
-                  : <><span style={{fontSize:30}}>📎</span><p style={{fontSize:13,color:T.textSub}}>Appuyez pour ajouter une photo</p></>
+                  : (
+                    <>
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={T.textMuted} strokeWidth="1.5" strokeLinecap="round">
+                        <rect x="3" y="3" width="18" height="18" rx="3"/>
+                        <circle cx="8.5" cy="8.5" r="1.5" fill={T.textMuted} stroke="none"/>
+                        <path d="M21 15l-5-5L5 21" strokeLinejoin="round"/>
+                      </svg>
+                      <p style={{ fontSize:13, color:T.textSub }}>Appuyer pour ajouter une photo</p>
+                    </>
+                  )
                 }
                 <input ref={fileRef} type="file" accept="image/*" style={{display:'none'}} onChange={handleImage} />
               </div>
-              <textarea value={idea} onChange={e => setIdea(e.target.value)} placeholder="Contexte (optionnel)…" style={{ width:'100%', minHeight:56, marginTop:10, background:T.inputBg, border:`1px solid ${T.border}`, borderRadius:12, padding:'10px 13px', color:T.text, fontSize:13, lineHeight:1.5, resize:'none', fontFamily:'inherit' }} />
+              <textarea
+                value={idea}
+                onChange={e => setIdea(e.target.value)}
+                placeholder="Contexte (optionnel)…"
+                style={{
+                  width:'100%', minHeight:60, marginTop:10,
+                  background:T.inputBg, border:`1.5px solid ${T.border}`,
+                  borderRadius:12, padding:'10px 14px',
+                  color:T.text, fontSize:13, lineHeight:1.55,
+                  resize:'none', fontFamily:'inherit',
+                }}
+              />
             </>
           )}
-        </div>
-
-        {/* Rules hint */}
-        <div style={{ padding:'9px 13px', borderRadius:11, background:T.surface, border:`1px solid ${T.border}` }}>
-          <p style={{ fontSize:12, color:T.textSub, lineHeight:1.55 }}>
-            📸 IG : 200-350 caractères · 8-10 hashtags<br/>
-            👥 FB : 300-500 caractères · 5 hashtags exact
+          <p style={{ fontSize:11, color:T.textMuted, marginTop:10, fontStyle:'italic', lineHeight:1.5 }}>
+            IG : 200–350 car. · 8–10 hashtags &nbsp;·&nbsp; FB : 300–600 car. · 5 hashtags exacts
           </p>
         </div>
 
-        {/* Generate */}
-        <button onClick={handleGenerate} disabled={loading} className={loading ? "" : "hover-scale"} style={{ width:'100%', padding:'15px', borderRadius:16, border:'none', background: loading ? T.surface2 : T.btnGrad, color: loading ? T.textMuted : T.btnText, fontSize:16, fontWeight:700, cursor: loading ? 'default' : 'pointer', fontFamily:'inherit', transition:'opacity 0.15s' }}>
+        {/* Generate button */}
+        <button
+          onClick={handleGenerate}
+          disabled={loading}
+          className={loading ? '' : 'btn-generate btn-press btn-gold-glow'}
+          style={{
+            width:'100%', padding:'20px',
+            borderRadius:18, border:'none',
+            background: loading ? T.surface2 : T.accentGrad,
+            color: loading ? T.textMuted : T.btnText,
+            fontSize:18, fontWeight:700,
+            cursor: loading ? 'default' : 'pointer',
+            fontFamily:"'Fraunces', serif",
+            fontStyle: loading ? 'normal' : 'italic',
+            letterSpacing:'-0.1px',
+            boxShadow: loading ? 'none' : '0 6px 32px rgba(232,192,96,0.35)',
+            transition:'background 0.15s, color 0.15s, box-shadow 0.15s',
+          }}
+        >
           ✦ Générer les 2 posts
         </button>
 
         {loading && <Spinner T={T} />}
 
-        {/* Error banner (always above results if any) */}
         {!loading && error && <ErrorBanner T={T} message={error} />}
 
-        {/* Results — 2 cards side by side */}
+        {/* Results */}
         {!loading && result && (
-          <div style={{ display:'flex', flexDirection:'column', gap:12 }}>
-            <div style={{ display:'flex', gap:12, flexDirection: desktop ? 'row' : 'column' }}>
-              <PostCard T={T} platform="instagram" data={result.instagram} brand={brand} copied={copied} onCopy={handleCopy} />
-              <PostCard T={T} platform="facebook"  data={result.facebook}  brand={brand} copied={copied} onCopy={handleCopy} />
+          <div style={{ display:'flex', flexDirection:'column', gap:14 }}>
+            <div style={{ display:'flex', gap:14, flexDirection: desktop ? 'row' : 'column' }}>
+              <div className="card-reveal-1" style={{ flex:1, minWidth:0 }}>
+                <PostCard T={T} platform="instagram" data={result.instagram} brand={brand} copied={copied} onCopy={handleCopy} />
+              </div>
+              <div className="card-reveal-2" style={{ flex:1, minWidth:0 }}>
+                <PostCard T={T} platform="facebook"  data={result.facebook}  brand={brand} copied={copied} onCopy={handleCopy} />
+              </div>
             </div>
             {result.visual_tip && (
-              <p style={{ fontSize:12, color:T.textSub, fontStyle:'italic', lineHeight:1.5, padding:'10px 14px', background:T.surface, borderRadius:11, border:`1px solid ${T.border}` }}>
-                💡 {result.visual_tip}
-              </p>
+              <div style={{
+                padding:'12px 16px',
+                background:T.surface, borderRadius:13,
+                border:`1px solid ${T.border}`,
+                borderLeft:`3px solid ${T.accentBorder}`,
+              }}>
+                <p style={{ fontSize:12, color:T.textSub, fontStyle:'italic', lineHeight:1.55 }}>
+                  <span style={{ fontStyle:'normal', marginRight:5 }}>💡</span>{result.visual_tip}
+                </p>
+              </div>
             )}
-            <button onClick={onGoPreview} style={{ padding:'11px', borderRadius:12, fontFamily:'inherit', border:'none', background:T.btnGrad, color:T.btnText, fontSize:13, fontWeight:700, cursor:'pointer' }}>
+            <button
+              onClick={onGoPreview}
+              style={{
+                padding:'13px', borderRadius:14,
+                fontFamily:'inherit', border:`1.5px solid ${T.accentBorder}`,
+                background:T.chipActive, color:T.accentSoft,
+                fontSize:13, fontWeight:700, cursor:'pointer',
+                transition:'all 0.15s',
+              }}
+            >
               Aperçu sur mockup →
             </button>
           </div>
@@ -637,61 +1085,79 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
   );
 }
 
-// ─── PREVIEW SCREEN ──────────────────────────────────────────────────────────
+// ─── PREVIEW SCREEN ───────────────────────────────────────────────────────────
 function PreviewScreen({ T, brand, generatedPost, imagePreview, onSchedule }) {
   const [view, setView] = React.useState('instagram');
-  const data = generatedPost?.[view];
-  const caption = data?.caption || `Votre post ${view==='instagram'?'Instagram':'Facebook'} apparaîtra ici après génération. ✨`;
+  const data    = generatedPost?.[view];
+  const caption = data?.caption || `Votre post ${view==='instagram'?'Instagram':'Facebook'} apparaîtra ici après génération.`;
   const tags    = (data?.hashtags || []).map(h => `#${String(h).replace(/^#+/, '')}`).join(' ');
 
-  const Avatar = ({ s=36 }) => <div style={{ width:s, height:s, borderRadius:'50%', background:T.accentGrad, flexShrink:0 }} />;
+  const Avatar = ({ s=38 }) => (
+    <div style={{ width:s, height:s, borderRadius:'50%', background:T.accentGrad, flexShrink:0 }} />
+  );
   const ImgSlot = ({ ratio='1/1' }) => (
-    <div style={{ aspectRatio:ratio, background:T.surface2, overflow:'hidden', position:'relative', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:8 }}>
+    <div style={{ aspectRatio:ratio, background:T.surface2, overflow:'hidden', position:'relative', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:10 }}>
       {imagePreview
         ? <img src={imagePreview} alt="" style={{width:'100%',height:'100%',objectFit:'cover'}} />
-        : <>
-            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={T.textMuted} strokeWidth="1.5"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5" fill={T.textMuted} stroke="none"/><path d="M21 15l-5-5L5 21" strokeLinecap="round" strokeLinejoin="round"/></svg>
-            <p style={{fontSize:11,color:T.textMuted,fontFamily:'monospace'}}>visuel du post</p>
+        : (
+          <>
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke={T.textMuted} strokeWidth="1.5">
+              <rect x="3" y="3" width="18" height="18" rx="3"/>
+              <circle cx="8.5" cy="8.5" r="1.5" fill={T.textMuted} stroke="none"/>
+              <path d="M21 15l-5-5L5 21" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+            <p style={{fontSize:11,color:T.textMuted}}>visuel du post</p>
           </>
+        )
       }
     </div>
   );
 
   const IgPost = () => (
-    <div style={{ background:T.surface, borderRadius:20, overflow:'hidden', border:`1px solid ${T.border}` }}>
-      <div style={{ display:'flex', alignItems:'center', gap:10, padding:'12px 14px' }}>
+    <div style={{ background:T.surface, borderRadius:22, overflow:'hidden', border:`1px solid ${T.border}`, boxShadow: T.shadow }}>
+      <div style={{ display:'flex', alignItems:'center', gap:10, padding:'13px 16px' }}>
         <Avatar />
-        <div style={{flex:1}}><p style={{fontSize:13,fontWeight:700,color:T.text}}>{brand.ig}</p><p style={{fontSize:11,color:T.textSub}}>Col de Jaman, Montreux</p></div>
-        <span style={{color:T.textSub,fontSize:18,letterSpacing:2}}>···</span>
+        <div style={{flex:1}}>
+          <p style={{fontSize:13,fontWeight:700,color:T.text}}>{brand.ig}</p>
+          <p style={{fontSize:11,color:T.textSub}}>Col de Jaman, Montreux</p>
+        </div>
+        <span style={{color:T.textSub,fontSize:20,letterSpacing:3}}>···</span>
       </div>
       <ImgSlot ratio="1/1" />
-      <div style={{ padding:'11px 14px 4px', display:'flex', gap:14, alignItems:'center' }}>
+      <div style={{ padding:'12px 16px 6px', display:'flex', gap:16, alignItems:'center' }}>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={T.textSub} strokeWidth="2" strokeLinecap="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={T.textSub} strokeWidth="2" strokeLinecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={T.textSub} strokeWidth="2" strokeLinecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
         <div style={{marginLeft:'auto'}}><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke={T.textSub} strokeWidth="2" strokeLinecap="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg></div>
       </div>
-      <div style={{ padding:'6px 14px 14px' }}>
-        <p style={{fontSize:13,color:T.text,lineHeight:1.55,whiteSpace:'pre-wrap'}}><span style={{fontWeight:700}}>{brand.ig} </span>{caption}</p>
-        {tags && <p style={{fontSize:13,color:T.accentSoft,marginTop:5,lineHeight:1.5}}>{tags}</p>}
-        <p style={{fontSize:11,color:T.textMuted,marginTop:6}}>Il y a quelques secondes</p>
+      <div style={{ padding:'6px 16px 16px' }}>
+        <p style={{fontSize:13,color:T.text,lineHeight:1.6,whiteSpace:'pre-wrap'}}>
+          <span style={{fontWeight:700}}>{brand.ig} </span>{caption}
+        </p>
+        {tags && <p style={{fontSize:13,color:T.accentSoft,marginTop:7,lineHeight:1.55}}>{tags}</p>}
+        <p style={{fontSize:11,color:T.textMuted,marginTop:8}}>Il y a quelques secondes</p>
       </div>
     </div>
   );
 
   const FbPost = () => (
-    <div style={{ background:T.surface, borderRadius:20, overflow:'hidden', border:`1px solid ${T.border}` }}>
-      <div style={{ display:'flex', gap:10, padding:'14px 14px 10px', alignItems:'center' }}>
-        <Avatar s={42} />
-        <div style={{flex:1}}><p style={{fontSize:14,fontWeight:700,color:T.text}}>{brand.fb}</p><p style={{fontSize:12,color:T.textSub}}>À l'instant · 🌍</p></div>
-        <span style={{color:T.textSub,fontSize:18,letterSpacing:2}}>···</span>
+    <div style={{ background:T.surface, borderRadius:22, overflow:'hidden', border:`1px solid ${T.border}`, boxShadow: T.shadow }}>
+      <div style={{ display:'flex', gap:12, padding:'16px 16px 12px', alignItems:'center' }}>
+        <Avatar s={44} />
+        <div style={{flex:1}}>
+          <p style={{fontSize:14,fontWeight:700,color:T.text}}>{brand.fb}</p>
+          <p style={{fontSize:12,color:T.textSub}}>À l'instant · 🌍</p>
+        </div>
+        <span style={{color:T.textSub,fontSize:20,letterSpacing:3}}>···</span>
       </div>
-      <p style={{ padding:'0 14px 10px', fontSize:14, color:T.text, lineHeight:1.62, whiteSpace:'pre-wrap' }}>{caption}</p>
-      {tags && <p style={{ padding:'0 14px 12px', fontSize:13, color:T.accentSoft }}>{tags}</p>}
+      <p style={{ padding:'0 16px 12px', fontSize:14, color:T.text, lineHeight:1.65, whiteSpace:'pre-wrap' }}>{caption}</p>
+      {tags && <p style={{ padding:'0 16px 14px', fontSize:13, color:T.accentSoft }}>{tags}</p>}
       <ImgSlot ratio="1.91/1" />
       <div style={{ display:'flex', borderTop:`1px solid ${T.border}` }}>
         {["👍 J'aime","💬 Commenter","↗ Partager"].map(a => (
-          <button key={a} style={{ flex:1, padding:'11px 0', background:'none', border:'none', borderRight:`1px solid ${T.border}`, color:T.textSub, fontSize:12, fontWeight:600, cursor:'pointer', fontFamily:'inherit' }}>{a}</button>
+          <button key={a} style={{ flex:1, padding:'12px 0', background:'none', border:'none', borderRight:`1px solid ${T.border}`, color:T.textSub, fontSize:12, fontWeight:600, cursor:'pointer', fontFamily:'inherit', transition:'background 0.15s' }}>
+            {a}
+          </button>
         ))}
       </div>
     </div>
@@ -699,17 +1165,50 @@ function PreviewScreen({ T, brand, generatedPost, imagePreview, onSchedule }) {
 
   return (
     <div style={{ background:T.bg, display:'flex', flexDirection:'column' }}>
-      <div style={{ padding:'18px 20px 14px' }}>
-        <p className="font-fraunces" style={{ fontSize:26, fontWeight:700, color:T.text }}>Aperçu du post</p>
-        <div style={{ display:'flex', gap:4, marginTop:12, background:T.surface, borderRadius:12, padding:3 }}>
+      <div style={{ padding:'28px 24px 16px' }}>
+        <p className="font-fraunces" style={{ fontSize:32, fontWeight:800, color:T.text, letterSpacing:'-0.3px' }}>
+          Aperçu du post
+        </p>
+
+        {/* Platform toggle */}
+        <div style={{ display:'flex', gap:3, marginTop:16, background:T.surface2, borderRadius:16, padding:4, maxWidth:300 }}>
           {[{id:'instagram',l:'Instagram'},{id:'facebook',l:'Facebook'}].map(p => (
-            <button key={p.id} onClick={() => setView(p.id)} style={{ flex:1, padding:'8px 0', textAlign:'center', fontFamily:'inherit', borderRadius:9, border:'none', cursor:'pointer', background: view===p.id ? T.chipActive : 'transparent', color: view===p.id ? T.accentSoft : T.textSub, fontSize:13, fontWeight:600, transition:'all 0.15s' }}>{p.l}</button>
+            <button
+              key={p.id}
+              onClick={() => setView(p.id)}
+              style={{
+                flex:1, padding:'9px 0',
+                textAlign:'center', fontFamily:'inherit',
+                borderRadius:12, border:'none', cursor:'pointer',
+                background: view===p.id ? T.surface : 'transparent',
+                color: view===p.id ? T.text : T.textSub,
+                fontSize:13, fontWeight:700,
+                boxShadow: view===p.id ? T.shadow : 'none',
+                transition:'all 0.17s',
+              }}
+            >
+              {p.l}
+            </button>
           ))}
         </div>
       </div>
-      <div style={{ padding:'4px 16px 24px', display:'flex', flexDirection:'column', gap:12, maxWidth:520, width:'100%', margin:'0 auto' }}>
-        {view === 'instagram' ? <IgPost /> : <FbPost />}
-        <button onClick={onSchedule} style={{ width:'100%', padding:'14px', borderRadius:16, border:'none', background:T.btnGrad, color:T.btnText, fontSize:15, fontWeight:700, cursor:'pointer', fontFamily:'inherit' }}>
+
+      <div style={{ padding:'4px 20px 32px', display:'flex', flexDirection:'column', gap:14, maxWidth:520, width:'100%', margin:'0 auto' }}>
+        <div className="fade-in">
+          {view === 'instagram' ? <IgPost /> : <FbPost />}
+        </div>
+        <button
+          onClick={onSchedule}
+          className="btn-press"
+          style={{
+            width:'100%', padding:'16px',
+            borderRadius:18, border:'none',
+            background:T.btnGrad, color:T.btnText,
+            fontSize:15, fontWeight:800,
+            cursor:'pointer', fontFamily:'inherit',
+            boxShadow:`0 6px 28px rgba(60, 20, 15, 0.25)`,
+          }}
+        >
           📅 Planifier ce post
         </button>
       </div>
@@ -717,7 +1216,7 @@ function PreviewScreen({ T, brand, generatedPost, imagePreview, onSchedule }) {
   );
 }
 
-// ─── CALENDAR SCREEN ─────────────────────────────────────────────────────────
+// ─── CALENDAR SCREEN ──────────────────────────────────────────────────────────
 function CalendarScreen({ T, onNewPost }) {
   const [selected, setSelected] = React.useState(null);
   const MONTHS = ['Janvier','Février','Mars','Avril','Mai','Juin','Juillet','Août','Septembre','Octobre','Novembre','Décembre'];
@@ -728,61 +1227,110 @@ function CalendarScreen({ T, onNewPost }) {
   const daysInM  = new Date(y,m+1,0).getDate();
   const cells    = [...Array(firstDow).fill(null), ...Array.from({length:daysInM},(_,i)=>i+1)];
   const postMap  = Object.fromEntries(SAMPLE_POSTS.map(p=>[p.day,p]));
-  const platC    = p => p==='instagram' ? T.accent : (T.id==='light'?'#1877F2':'#6BA8FF');
+  const platColor = p => p === 'instagram' ? T.accent : '#1877F2';
 
   return (
     <div style={{ background:T.bg, display:'flex', flexDirection:'column' }}>
-      <div style={{ padding:'18px 20px 12px' }}>
-        <p className="font-fraunces" style={{ fontSize:26, fontWeight:700, color:T.text }}>Calendrier</p>
-        <p style={{ fontSize:13, color:T.textSub, marginTop:3 }}>Vue d'ensemble des publications planifiées</p>
+      <div style={{ padding:'28px 24px 14px' }}>
+        <p className="font-fraunces" style={{ fontSize:32, fontWeight:800, color:T.text, letterSpacing:'-0.3px' }}>
+          Calendrier
+        </p>
+        <p style={{ fontSize:14, color:T.textSub, marginTop:5 }}>Vue d'ensemble des publications planifiées</p>
       </div>
-      {/* Bannière démo */}
-      <div style={{ margin:'0 16px 14px', padding:'10px 14px', background:T.surface, borderRadius:12, border:`1px dashed ${T.accentBorder}`, display:'flex', gap:10, alignItems:'flex-start' }}>
-        <span style={{ fontSize:16, lineHeight:1.2 }}>🚧</span>
+
+      {/* Demo banner */}
+      <div style={{ margin:'0 20px 16px', padding:'12px 16px', background:T.surface, borderRadius:14, borderLeft:`3px solid ${T.accentBorder}`, border:`1px solid ${T.border}`, borderLeft:`3px solid ${T.accentBorder}`, display:'flex', gap:12, alignItems:'flex-start' }}>
+        <span style={{ fontSize:15, lineHeight:1.2 }}>🚧</span>
         <div style={{ flex:1 }}>
-          <p style={{ fontSize:12, color:T.accentSoft, fontWeight:600 }}>Module en démo</p>
-          <p style={{ fontSize:11, color:T.textSub, marginTop:2, lineHeight:1.45 }}>
-            Les posts ci-dessous sont des exemples. Le calendrier sera connecté à ton Airtable (table <code>tblqLY0hmMINANI9s</code>) plus tard, pour piloter le scénario Make 5469302 de publication automatique.
+          <p style={{ fontSize:12, color:T.accentSoft, fontWeight:700 }}>Module en démo</p>
+          <p style={{ fontSize:11, color:T.textSub, marginTop:3, lineHeight:1.5 }}>
+            Les posts ci-dessous sont des exemples. Le calendrier sera connecté à Airtable (<code>tblqLY0hmMINANI9s</code>) + scénario Make 5469302.
           </p>
         </div>
       </div>
-      <div style={{ padding:'0 16px 24px' }}>
-        <div style={{ background:T.surface, borderRadius:20, padding:'14px 12px', border:`1px solid ${T.border}`, marginBottom:16 }}>
-          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0 4px', marginBottom:14 }}>
-            <button style={{ width:30, height:30, borderRadius:'50%', background:T.chipBg, border:`1px solid ${T.border}`, color:T.textSub, fontSize:16, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>‹</button>
-            <span style={{ fontSize:15, fontWeight:700, color:T.text }}>{MONTHS[m]} {y}</span>
-            <button style={{ width:30, height:30, borderRadius:'50%', background:T.chipBg, border:`1px solid ${T.border}`, color:T.textSub, fontSize:16, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center' }}>›</button>
+
+      <div style={{ padding:'0 20px 32px' }}>
+        {/* Calendar card */}
+        <div style={{ background:T.surface, borderRadius:22, padding:'16px 14px', border:`1px solid ${T.border}`, boxShadow:T.shadow, marginBottom:18 }}>
+          <div style={{ display:'flex', alignItems:'center', justifyContent:'space-between', padding:'0 4px', marginBottom:16 }}>
+            <button style={{ width:32, height:32, borderRadius:'50%', background:T.chipBg, border:`1px solid ${T.border}`, color:T.textSub, fontSize:18, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', transition:'background 0.15s' }}>‹</button>
+            <span className="font-fraunces" style={{ fontSize:17, fontWeight:700, color:T.text }}>{MONTHS[m]} {y}</span>
+            <button style={{ width:32, height:32, borderRadius:'50%', background:T.chipBg, border:`1px solid ${T.border}`, color:T.textSub, fontSize:18, cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', transition:'background 0.15s' }}>›</button>
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:4, marginBottom:6 }}>
-            {DAYS.map((d,i) => <div key={i} style={{ textAlign:'center', fontSize:11, fontWeight:700, color:T.textMuted, padding:'2px 0' }}>{d}</div>)}
+          {/* Day headers */}
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:3, marginBottom:6 }}>
+            {DAYS.map((d,i) => <div key={i} className="label-caps" style={{ textAlign:'center', color:T.textMuted, padding:'2px 0' }}>{d}</div>)}
           </div>
-          <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:4 }}>
+          {/* Day cells */}
+          <div style={{ display:'grid', gridTemplateColumns:'repeat(7,1fr)', gap:3 }}>
             {cells.map((d,i) => {
               const isT = d===today, post=d?postMap[d]:null, sel=d===selected;
               return (
-                <div key={i} onClick={() => d && setSelected(sel?null:d)} style={{ aspectRatio:'1', borderRadius:9, cursor:d?'pointer':'default', background: sel?T.accent:isT?T.accentBg:'transparent', border:`1px solid ${isT&&!sel?T.accentBorder:'transparent'}`, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', gap:3 }}>
-                  {d && <span style={{ fontSize:12, fontWeight:isT||sel?700:400, color:sel?'#fff':isT?T.accentSoft:T.text }}>{d}</span>}
-                  {post && <div style={{ width:5, height:5, borderRadius:'50%', background:sel?'rgba(255,255,255,0.8)':platC(post.platform) }} />}
+                <div
+                  key={i}
+                  onClick={() => d && setSelected(sel?null:d)}
+                  style={{
+                    aspectRatio:'1', borderRadius:8, cursor:d?'pointer':'default',
+                    background: sel ? T.accent : isT ? T.accentBg : d ? 'rgba(255,255,255,0.05)' : 'transparent',
+                    border: d
+                      ? (sel ? '2px solid transparent' : isT ? `2px solid ${T.accentBorder}` : '1px solid rgba(255,255,255,0.10)')
+                      : 'none',
+                    display:'flex', flexDirection:'column',
+                    alignItems:'center', justifyContent:'center', gap:3,
+                    transition:'all 0.15s',
+                  }}
+                >
+                  {d && <span style={{ fontSize:12, fontWeight:isT||sel?700:400, color:sel?'#fff':isT?T.accentSoft:T.text, lineHeight:1 }}>{d}</span>}
+                  {post && <div style={{ width:5, height:5, borderRadius:'50%', background:sel?'rgba(255,255,255,0.8)':platColor(post.platform) }} />}
                 </div>
               );
             })}
           </div>
         </div>
-        <p style={{ fontSize:11, fontWeight:700, color:T.textMuted, textTransform:'uppercase', letterSpacing:'0.07em', marginBottom:10 }}>Posts planifiés (exemples)</p>
+
+        {/* Post list */}
+        <p className="label-caps" style={{ color:T.textMuted, marginBottom:12 }}>Posts planifiés (exemples)</p>
         {SAMPLE_POSTS.map((p,i) => (
-          <div key={i} onClick={() => setSelected(p.day===selected?null:p.day)} style={{ display:'flex', alignItems:'center', gap:12, padding:'11px 14px', background:selected===p.day?T.chipActive:T.surface, borderRadius:16, marginBottom:8, border:`1px solid ${selected===p.day?T.accentBorder:T.border}`, cursor:'pointer' }}>
-            <div style={{ width:40, height:40, borderRadius:12, background:T.surface2, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
-              <span style={{fontSize:14,fontWeight:700,color:T.text,lineHeight:1}}>{p.day}</span>
-              <span style={{fontSize:10,color:T.textMuted}}>{MONTHS[m].slice(0,3)}</span>
+          <div
+            key={i}
+            onClick={() => setSelected(p.day===selected?null:p.day)}
+            style={{
+              display:'flex', alignItems:'center', gap:14,
+              padding:'13px 16px',
+              background: selected===p.day ? T.chipActive : T.surface,
+              borderRadius:16, marginBottom:9,
+              border:`1px solid ${selected===p.day ? T.chipActiveBorder : T.border}`,
+              borderLeft:`4px solid ${platColor(p.platform)}`,
+              cursor:'pointer',
+              transition:'all 0.17s',
+              boxShadow: selected===p.day ? T.shadow : 'none',
+            }}
+          >
+            <div style={{ width:42, height:42, borderRadius:13, background:T.surface2, display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center', flexShrink:0 }}>
+              <span className="font-fraunces" style={{fontSize:15,fontWeight:800,color:T.text,lineHeight:1}}>{p.day}</span>
+              <span style={{fontSize:10,color:T.textMuted,letterSpacing:'0.03em'}}>{MONTHS[m].slice(0,3).toUpperCase()}</span>
             </div>
             <div style={{flex:1,minWidth:0}}>
-              <p style={{fontSize:13,fontWeight:600,color:T.text}}>{p.label}</p>
-              <p style={{fontSize:11,color:platC(p.platform),fontWeight:500,marginTop:2}}>{p.platform==='instagram'?'📸 Instagram':'👥 Facebook'}</p>
+              <p style={{fontSize:13,fontWeight:600,color:T.text,lineHeight:1.3}}>{p.label}</p>
+              <p style={{fontSize:11,color:platColor(p.platform),fontWeight:600,marginTop:3}}>
+                {p.platform==='instagram'?'📸 Instagram':'👥 Facebook'}
+              </p>
             </div>
-            <div style={{width:8,height:8,borderRadius:'50%',background:platC(p.platform),flexShrink:0}} />
           </div>
         ))}
-        <button onClick={onNewPost} style={{ width:'100%', padding:'13px', borderRadius:14, border:`1.5px dashed ${T.accentBorder}`, background:T.chipActive, color:T.accentSoft, fontSize:14, fontWeight:600, cursor:'pointer', fontFamily:'inherit', marginTop:4 }}>
+
+        <button
+          onClick={onNewPost}
+          style={{
+            width:'100%', padding:'14px', marginTop:6,
+            borderRadius:16,
+            border:`1.5px dashed ${T.accentBorder}`,
+            background:T.chipActive, color:T.accentSoft,
+            fontSize:14, fontWeight:700,
+            cursor:'pointer', fontFamily:'inherit',
+            transition:'all 0.15s',
+          }}
+        >
           ✦ Générer un nouveau post
         </button>
       </div>
@@ -790,90 +1338,203 @@ function CalendarScreen({ T, onNewPost }) {
   );
 }
 
-// ─── TAB BAR / SIDEBAR ───────────────────────────────────────────────────────
+// ─── TAB BAR / SIDEBAR ────────────────────────────────────────────────────────
 function TabBar({ T, active, setActive }) {
   const desktop = useIsDesktop();
   const tabs = [
-    { id:'create',   l:'Créer',
-      icon: a => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a?T.accent:T.textSub} strokeWidth="2.2" strokeLinecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg> },
-    { id:'preview',  l:'Aperçu',
-      icon: a => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a?T.accent:T.textSub} strokeWidth="2.2" strokeLinecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg> },
-    { id:'calendar', l:'Planning',
-      icon: a => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a?T.accent:T.textSub} strokeWidth="2.2" strokeLinecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> },
-    { id:'profile',  l:'Marque',
-      icon: a => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a?T.accent:T.textSub} strokeWidth="2.2" strokeLinecap="round"><path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/></svg> },
+    {
+      id:'create', l:'Créer',
+      icon: a => (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#FFFFFF' : 'rgba(255,255,255,0.45)'} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+        </svg>
+      )
+    },
+    {
+      id:'preview', l:'Aperçu',
+      icon: a => (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#FFFFFF' : 'rgba(255,255,255,0.45)'} strokeWidth="2.2" strokeLinecap="round">
+          <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/>
+        </svg>
+      )
+    },
+    {
+      id:'calendar', l:'Planning',
+      icon: a => (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#FFFFFF' : 'rgba(255,255,255,0.45)'} strokeWidth="2.2" strokeLinecap="round">
+          <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+      )
+    },
+    {
+      id:'profile', l:'Marque',
+      icon: a => (
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke={a ? '#FFFFFF' : 'rgba(255,255,255,0.45)'} strokeWidth="2.2" strokeLinecap="round">
+          <path d="M3 21l1.65-3.8a9 9 0 1 1 3.4 2.9z"/>
+        </svg>
+      )
+    },
   ];
 
   if (desktop) {
     return (
-      <aside className="glass-surface" style={{ position:'fixed', top:0, bottom:0, left:0, width:240, zIndex:30, borderRight:`1px solid ${T.tabBorder}`, display:'flex', flexDirection:'column', padding:'30px 14px 24px' }}>
-        <div style={{ padding:'0 12px 22px', borderBottom:`1px solid ${T.border}`, marginBottom:14 }}>
-          <img src="logo.png" alt="Logo Le Manoïre" style={{ width: '100%', maxWidth: 100, marginBottom: 16, display: 'block' }} />
-          <p className="font-fraunces" style={{ fontSize:26, fontWeight:700, color:T.text, letterSpacing:'-0.5px' }}>Jamann <span style={{color:T.accent}}>✦</span></p>
-          <p style={{ fontSize:12, color:T.textSub, marginTop:2 }}>Posts IA · Le Manoïre</p>
+      <aside style={{
+        position:'fixed', top:0, bottom:0, left:0,
+        width:256, zIndex:30,
+        background:'rgba(6,8,21,0.97)',
+        borderRight:`1px solid rgba(255,255,255,0.08)`,
+        backdropFilter:'blur(20px)',
+        WebkitBackdropFilter:'blur(20px)',
+        display:'flex', flexDirection:'column',
+        padding:'0 0 24px',
+      }}>
+        {/* Brand section */}
+        <div style={{ padding:'28px 20px 24px', borderBottom:'1px solid rgba(255,255,255,0.08)', marginBottom:8 }}>
+          <div style={{ display:'flex', alignItems:'center', gap:12, marginBottom:14 }}>
+            <img src="logo.png" alt="Logo Le Manoïre" style={{ width:44, height:44, objectFit:'contain', borderRadius:8, flexShrink:0 }} />
+            <div>
+              <p className="font-fraunces" style={{ fontSize:24, fontWeight:800, color:'#FFFFFF', letterSpacing:'-0.3px', lineHeight:1.1 }}>
+                Jamann <span style={{color:'#E8C060', fontSize:20}}>✦</span>
+              </p>
+              <p style={{ fontSize:11, color:'rgba(255,255,255,0.55)', marginTop:2 }}>Posts IA · Le Manoïre</p>
+            </div>
+          </div>
+          <div style={{ padding:'8px 10px', background:'rgba(232,192,96,0.14)', border:'1px solid rgba(232,192,96,0.25)', borderRadius:8 }}>
+            <p style={{ fontSize:11, color:'#E8C060', fontWeight:600, lineHeight:1.4 }}>
+              Restaurant d'alpage · Col de Jaman · 1512m
+            </p>
+          </div>
         </div>
-        {tabs.map(tab => {
-          const on = active === tab.id;
-          return (
-            <button key={tab.id} onClick={() => setActive(tab.id)} style={{ background: on ? T.chipActive : 'transparent', border:`1px solid ${on ? T.accentBorder : 'transparent'}`, cursor:'pointer', display:'flex', flexDirection:'row', alignItems:'center', gap:12, padding:'11px 14px', borderRadius:12, marginBottom:4, width:'100%', textAlign:'left', fontFamily:'inherit', transition:'all 0.15s' }}>
-              {tab.icon(on)}
-              <span style={{ fontSize:14, fontWeight:600, color: on ? T.accent : T.text }}>{tab.l}</span>
-            </button>
-          );
-        })}
-        {/* Footer crédit */}
-        <div style={{ marginTop:'auto', padding:'14px 12px 4px', borderTop:`1px solid ${T.border}` }}>
-          <p style={{ fontSize:11, color:T.textMuted, lineHeight:1.5 }}>© 2026 · Conçu par<br/><span className="font-caveat" style={{ color:T.textSub, fontSize:18, fontWeight:500 }}>L'Atelier des Automates</span><br/><span style={{ color:T.textMuted, fontSize:10 }}>by Clockwork Ops</span></p>
+
+        {/* Nav items */}
+        <div style={{ padding:'4px 12px', flex:1 }}>
+          {tabs.map(tab => {
+            const on = active === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActive(tab.id)}
+                style={{
+                  width:'100%', textAlign:'left',
+                  fontFamily:'inherit', cursor:'pointer',
+                  display:'flex', alignItems:'center', gap:12,
+                  padding:'12px 14px',
+                  borderRadius:12, marginBottom:4,
+                  background: on ? 'rgba(232,192,96,0.14)' : 'transparent',
+                  border:`1px solid ${on ? 'rgba(232,192,96,0.30)' : 'transparent'}`,
+                  transition:'all 0.17s cubic-bezier(0.16, 1, 0.3, 1)',
+                }}
+              >
+                {tab.icon(on)}
+                <span style={{ fontSize:14, fontWeight:700, color: on ? '#E8C060' : 'rgba(255,255,255,0.72)' }}>{tab.l}</span>
+                {on && <span style={{ marginLeft:'auto', width:6, height:6, borderRadius:'50%', background:'#E8C060', flexShrink:0 }} />}
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Footer */}
+        <div style={{ padding:'16px 20px 4px', borderTop:'1px solid rgba(255,255,255,0.08)', marginTop:4 }}>
+          <p style={{ fontSize:11, color:'rgba(255,255,255,0.25)', lineHeight:1.65 }}>
+            © 2026 · Conçu par<br/>
+            <span className="font-caveat" style={{ color:'rgba(255,255,255,0.65)', fontSize:20, fontWeight:600, lineHeight:1.3 }}>L'Atelier des Automates</span><br/>
+            <span style={{ color:'rgba(255,255,255,0.22)', fontSize:10 }}>une branche de Clockwork Ops</span>
+          </p>
         </div>
       </aside>
     );
   }
 
+  // Mobile tab bar — dark premium
   return (
-    <nav style={{ position:'fixed', bottom:0, left:0, right:0, zIndex:30, background:T.tabBg, borderTop:`1px solid ${T.tabBorder}`, backdropFilter:'blur(20px)', WebkitBackdropFilter:'blur(20px)', display:'flex', justifyContent:'space-around', padding:'8px 0 22px' }}>
-      {tabs.map(tab => (
-        <button key={tab.id} onClick={() => setActive(tab.id)} style={{ background:'none', border:'none', cursor:'pointer', display:'flex', flexDirection:'column', alignItems:'center', gap:3, padding:'4px 12px', fontFamily:'inherit' }}>
-          {tab.icon(active===tab.id)}
-          <span style={{ fontSize:10, fontWeight:600, color: active===tab.id ? T.accent : T.textSub }}>{tab.l}</span>
-        </button>
-      ))}
+    <nav style={{
+      position:'fixed', bottom:0, left:0, right:0, zIndex:30,
+      background:'rgba(6,8,21,0.96)',
+      borderTop:'1px solid rgba(232,192,96,0.22)',
+      backdropFilter:'blur(24px)',
+      WebkitBackdropFilter:'blur(24px)',
+      display:'flex', justifyContent:'space-around',
+      padding:'10px 0 24px',
+    }}>
+      {tabs.map(tab => {
+        const on = active === tab.id;
+        return (
+          <button
+            key={tab.id}
+            onClick={() => setActive(tab.id)}
+            style={{
+              background:'none', border:'none', cursor:'pointer',
+              display:'flex', flexDirection:'column', alignItems:'center',
+              gap:4, padding:'4px 14px', fontFamily:'inherit',
+              transition:'opacity 0.15s',
+            }}
+          >
+            {tab.icon(on)}
+            <span style={{ fontSize:10, fontWeight:700, color: on ? '#FFFFFF' : 'rgba(255,255,255,0.45)' }}>{tab.l}</span>
+            {on && <span style={{ width:16, height:2, borderRadius:1, background:'#E8C060', marginTop:1 }} />}
+          </button>
+        );
+      })}
     </nav>
   );
 }
 
-// ─── MOBILE HEADER ────────────────────────────────────────────────────────────
+// ─── MOBILE HEADER ─────────────────────────────────────────────────────────────
 function MobileHeader({ T }) {
   return (
-    <div className="glass-surface fade-in" style={{ position:'sticky', top:0, zIndex:20, display:'flex', alignItems:'center', justifyContent:'center', padding:'12px 16px', borderBottom:`1px solid ${T.tabBorder}`, borderRadius:'0 0 20px 20px', marginBottom:16 }}>
-      <img src="logo.png" alt="Logo Le Manoïre" style={{ height: 42, width:'auto', marginRight: 12 }} />
-      <div style={{ display:'flex', flexDirection:'column' }}>
-        <p className="font-fraunces" style={{ fontSize:22, fontWeight:700, color:T.text, letterSpacing:'-0.5px', lineHeight:1.1 }}>Jamann <span style={{color:T.accent}}>✦</span></p>
-        <p style={{ fontSize:11, color:T.textSub }}>Posts IA · Le Manoïre</p>
+    <div
+      className="fade-in"
+      style={{
+        position:'sticky', top:0, zIndex:20,
+        display:'flex', alignItems:'center',
+        padding:'14px 18px 14px',
+        background:'rgba(6,8,21,0.94)',
+        borderBottom:'1px solid rgba(255,255,255,0.08)',
+        backdropFilter:'blur(20px)',
+        WebkitBackdropFilter:'blur(20px)',
+        marginBottom:14,
+        gap:14,
+      }}
+    >
+      <img src="logo.png" alt="Logo Le Manoïre" style={{ height:40, width:'auto', flexShrink:0 }} />
+      <div style={{ borderLeft:'2px solid rgba(255,255,255,0.15)', paddingLeft:14 }}>
+        <p className="font-fraunces" style={{ fontSize:22, fontWeight:800, color:'#FFFFFF', letterSpacing:'-0.3px', lineHeight:1.1 }}>
+          Jamann <span style={{color:'#E8C060'}}>✦</span>
+        </p>
+        <p style={{ fontSize:11, color:'rgba(255,255,255,0.55)', marginTop:2 }}>Posts IA · Le Manoïre</p>
       </div>
     </div>
   );
 }
 
-// ─── APP ROOT ────────────────────────────────────────────────────────────────
+// ─── APP ROOT ─────────────────────────────────────────────────────────────────
 function JamannApp() {
-  const T                       = THEMES.manoire;
-  const desktop                 = useIsDesktop();
-  const [tab, setTab]           = React.useState('create');
-  const [post, setPost]         = React.useState(null);
-  const [imgPrev, setImgPrev]   = React.useState(null);
+  const T                     = THEMES.manoire;
+  const desktop               = useIsDesktop();
+  const [tab, setTab]         = React.useState('create');
+  const [post, setPost]       = React.useState(null);
+  const [imgPrev, setImgPrev] = React.useState(null);
 
   const shared = { T, brand:BRAND, generatedPost:post, setGeneratedPost:setPost, imagePreview:imgPrev, setImagePreview:setImgPrev };
 
   return (
-    <div style={{ width:'100%', minHeight:'100vh', background:T.pageBg, fontFamily:"'DM Sans', sans-serif", WebkitFontSmoothing:'antialiased' }}>
+    <div style={{
+      width:'100%', minHeight:'100vh',
+      background:'#060815',
+      fontFamily:"'DM Sans', sans-serif",
+      WebkitFontSmoothing:'antialiased',
+      MozOsxFontSmoothing:'grayscale',
+    }}>
+      <StarryBackground />
       {!desktop && <MobileHeader T={T} />}
       <main className="fade-in" style={{
-        paddingLeft: desktop ? 240 : 0,
-        paddingBottom: desktop ? 40 : 90,
-        paddingTop: desktop ? 40 : 10,
+        paddingLeft: desktop ? 256 : 0,
+        paddingBottom: desktop ? 48 : 96,
+        paddingTop: desktop ? 40 : 8,
         minHeight:'100vh',
+        position:'relative', zIndex:1,
       }}>
-        <div style={{ maxWidth: 960, margin:'0 auto', padding: desktop ? '0 32px' : '0 16px' }}>
+        <div style={{ maxWidth:1000, margin:'0 auto', padding: desktop ? '0 40px' : '0 16px' }}>
           {tab==='create'   && <div className="slide-up"><CreateScreen   {...shared} onGoPreview={()=>setTab('preview')} /></div>}
           {tab==='preview'  && <div className="slide-up"><PreviewScreen  {...shared} onSchedule={()=>setTab('calendar')} /></div>}
           {tab==='calendar' && <div className="slide-up"><CalendarScreen T={T} onNewPost={()=>setTab('create')} /></div>}
