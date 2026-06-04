@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>L'Atelier des Automates — un cadeau pour les copains</title>
+<meta name="description" content="J'attaque mes examens. Pour marquer le coup, j'offre 3 packs : ton site pro, ton app de posts réseaux et ton IA configurée pour ton métier. Un cadeau, zéro risque. Par Stéphanie." />
+
+<!-- Open Graph -->
+<meta property="og:title" content="L'Atelier des Automates — un cadeau pour les copains" />
+<meta property="og:description" content="Ton site, ton app de posts IA et ton IA sur-mesure. Offerts. C'est un cadeau, il n'y a aucun risque." />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="fr_FR" />
+
+<!-- Fonts : Clash Display (display) + Hanken Grotesk (corps) + Fraunces (accents) -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://api.fontshare.com/v2/css?f[]=clash-display@500,600,700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet" />
+
+<style>
+:root{
+  --cream:#FAF7F2;
+  --cream-2:#F1EBE0;
+  --ink:#16130F;
+  --ink-soft:#2A251E;
+  --orange:#FF5436;
+  --orange-deep:#C73A20;
+  --violet:#6C47FF;
+  --muted:#7A7064;
+  --line:#E4DBCC;
+  --radius:22px;
+  --maxw:1180px;
+  --display:'Clash Display','Hanken Grotesk',sans-serif;
+  --body:'Hanken Grotesk',system-ui,sans-serif;
+  --serif:'Fraunces',Georgia,serif;
+}
+
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--body);
+  font-size:18px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+  position:relative;
+}
+/* subtle paper grain — premium texture */
+body::before{
+  content:"";position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.04;mix-blend-mode:multiply;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;position:relative;z-index:2}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ---------- Typography ---------- */
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:.98;letter-spacing:-.02em}
+.eyebrow{
+  font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--orange);display:inline-flex;align-items:center;gap:10px;
+}
+.eyebrow::before{content:"";width:28px;height:2px;background:var(--orange);display:inline-block}
+.serif-accent{font-family:var(--serif);font-style:italic;font-weight:400}
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:12px;cursor:pointer;border:none;
+  font-family:var(--body);font-weight:600;font-size:1.05rem;
+  padding:18px 30px;border-radius:100px;transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,background .25s;
+  position:relative;
+}
+.btn-primary{background:var(--orange);color:#fff;box-shadow:0 8px 0 var(--orange-deep)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 11px 0 var(--orange-deep)}
+.btn-primary:active{transform:translateY(3px);box-shadow:0 3px 0 var(--orange-deep)}
+.btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--ink)}
+.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+.btn svg{width:20px;height:20px}
+
+/* ---------- Nav ---------- */
+nav{
+  position:sticky;top:0;z-index:50;background:rgba(250,247,242,.82);
+  backdrop-filter:blur(12px);border-bottom:1px solid transparent;transition:border-color .3s;
+}
+nav.scrolled{border-color:var(--line)}
+.nav-in{display:flex;align-items:center;justify-content:space-between;height:74px}
+.brand{font-family:var(--display);font-weight:700;font-size:1.15rem;letter-spacing:-.02em;display:flex;align-items:center;gap:9px}
+.brand .dot{width:11px;height:11px;border-radius:50%;background:var(--orange);display:inline-block;animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.35);opacity:.6}}
+.nav-cta{font-weight:600;font-size:.95rem;padding:11px 22px;border-radius:100px;background:var(--ink);color:var(--cream);transition:transform .2s}
+.nav-cta:hover{transform:translateY(-2px)}
+@media(max-width:640px){.nav-cta{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;padding:54px 0 84px;overflow:hidden}
+.hero-glow{
+  position:absolute;top:-220px;left:50%;transform:translateX(-50%);
+  width:1000px;height:680px;pointer-events:none;z-index:0;
+  background:radial-gradient(closest-side,rgba(108,71,255,.18),transparent 70%),
+             radial-gradient(closest-side,rgba(255,84,54,.16),transparent 70%);
+  background-position:24% 40%,76% 58%;background-repeat:no-repeat;
+  filter:blur(24px);animation:float 16s ease-in-out infinite;
+}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(30px)}}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center;position:relative;z-index:2}
+@media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:48px}}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);
+  padding:9px 16px 9px 12px;border-radius:100px;font-size:.85rem;font-weight:600;margin-bottom:26px;
+  box-shadow:0 4px 18px rgba(22,19,15,.05);
+}
+.hero-badge .pip{display:inline-flex;gap:4px}
+.hero-badge .pip i{width:8px;height:8px;border-radius:50%;background:var(--orange);display:block}
+.hero-badge .pip i.off{background:var(--line)}
+h1.hero-title{
+  font-size:clamp(2.7rem,7vw,5.6rem);max-width:13ch;margin-bottom:4px;
+}
+h1.hero-title .em{color:var(--orange)}
+.hero-kicker{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.3rem,3vw,1.9rem);color:var(--ink);margin:14px 0 0}
+.hero-sub{
+  font-size:clamp(1.02rem,1.7vw,1.18rem);color:var(--ink-soft);max-width:48ch;
+  margin:22px 0 32px;line-height:1.55;
+}
+.hero-sub b{color:var(--ink);font-weight:700}
+.hero-cta-row{display:flex;flex-wrap:wrap;gap:16px;align-items:center}
+.hero-note{font-size:.92rem;color:var(--muted);margin-top:18px;display:flex;align-items:center;gap:8px}
+.hero-note svg{width:17px;height:17px;color:var(--orange)}
+
+/* hero stage — Rézolab mise en scène (sans photo) */
+.hero-stage{
+  position:relative;border-radius:30px;padding:40px 34px 34px;isolation:isolate;
+  background:linear-gradient(158deg,#211b33 0%,#16130F 58%,#2a1424 100%);
+  box-shadow:0 50px 90px -34px rgba(22,19,15,.62),inset 0 0 0 1px rgba(255,255,255,.06);
+  overflow:hidden;
+}
+.hero-stage .sg{
+  position:absolute;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(closest-side,rgba(108,71,255,.55),transparent 70%) -40px -30px/440px 440px no-repeat,
+    radial-gradient(closest-side,rgba(255,84,54,.45),transparent 70%) 86% 96%/420px 420px no-repeat;
+  filter:blur(8px);opacity:.85;animation:float 17s ease-in-out infinite;
+}
+.hero-stage .stage-eyebrow{position:relative;z-index:2;color:rgba(250,247,242,.55);font-size:.72rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;text-align:center;margin-bottom:18px}
+.hero-stage .phone{margin:0 auto}
+.float-badge{
+  position:absolute;z-index:5;background:var(--cream);color:var(--ink);border-radius:15px;
+  padding:11px 15px;font-weight:700;font-size:.82rem;box-shadow:0 18px 34px rgba(0,0,0,.34);
+  display:flex;gap:8px;align-items:center;
+}
+.float-badge svg{width:16px;height:16px;color:var(--orange)}
+.float-badge.fb-1{right:-6px;top:54px;transform:rotate(3deg);animation:bob 4.5s ease-in-out infinite}
+.float-badge.fb-2{left:-8px;bottom:46px;transform:rotate(-3deg);animation:bob 5.2s ease-in-out infinite .6s}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(var(--r,0))}50%{transform:translateY(-9px) rotate(var(--r,0))}}
+.float-badge.fb-1{--r:3deg}.float-badge.fb-2{--r:-3deg}
+
+/* staggered load */
+.load{opacity:0;transform:translateY(26px);animation:rise .9s cubic-bezier(.2,.8,.2,1) forwards}
+.load.d1{animation-delay:.05s}.load.d2{animation-delay:.16s}.load.d3{animation-delay:.27s}
+.load.d4{animation-delay:.38s}.load.d5{animation-delay:.49s}.load.d6{animation-delay:.60s}
+@keyframes rise{to{opacity:1;transform:none}}
+
+/* ---------- Marquee ---------- */
+.marquee{
+  background:var(--ink);color:var(--cream);padding:20px 0;overflow:hidden;
+  border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);
+}
+.marquee-track{display:flex;gap:0;white-space:nowrap;width:max-content;animation:scroll 34s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+.marquee-track span{font-family:var(--display);font-weight:500;font-size:1.35rem;padding:0 30px;display:flex;align-items:center;gap:30px}
+.marquee-track span::after{content:"✳";color:var(--orange);font-size:1rem}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section{padding:96px 0;position:relative}
+.sec-head{max-width:680px;margin-bottom:54px}
+.sec-head h2{font-size:clamp(2.1rem,5vw,3.6rem);margin:18px 0 0}
+.sec-head p{margin-top:20px;color:var(--ink-soft);font-size:1.12rem}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.reveal.delay1{transition-delay:.12s}.reveal.delay2{transition-delay:.24s}.reveal.delay3{transition-delay:.36s}
+
+/* ---------- Editorial photo (unifié) ---------- */
+.editorial{position:relative}
+.editorial .frame{
+  position:relative;border-radius:20px;overflow:hidden;border:1px solid rgba(22,19,15,.12);
+  box-shadow:0 36px 70px -26px rgba(22,19,15,.45);
+}
+.editorial .frame img{width:100%;filter:contrast(1.05) saturate(.94) brightness(.99);transition:transform .7s cubic-bezier(.2,.8,.2,1);display:block}
+.editorial:hover .frame img{transform:scale(1.035)}
+.editorial .frame::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(150deg,rgba(108,71,255,.10),transparent 42%),
+             linear-gradient(0deg,rgba(22,19,15,.46),transparent 46%);mix-blend-mode:multiply}
+.editorial .accent{position:absolute;border-radius:20px;inset:0;z-index:-1}
+.editorial.a-orange .accent{background:var(--orange);transform:translate(16px,16px) rotate(1.5deg)}
+.editorial.a-violet .accent{background:var(--violet);transform:translate(-16px,16px) rotate(-1.5deg)}
+.editorial .cap{
+  position:absolute;left:16px;bottom:14px;z-index:3;color:#fff;font-family:var(--serif);font-style:italic;
+  font-size:1rem;background:rgba(22,19,15,.34);backdrop-filter:blur(6px);padding:7px 15px;border-radius:100px;
+  border:1px solid rgba(255,255,255,.16);
+}
+
+/* ---------- Problem ---------- */
+.problem{background:var(--cream-2)}
+.problem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+@media(max-width:860px){.problem-grid{grid-template-columns:1fr;gap:44px}}
+.pain-list{display:flex;flex-direction:column;gap:18px;margin-top:30px}
+.pain{display:flex;gap:18px;align-items:flex-start;background:var(--cream);padding:24px;border-radius:18px;border:1px solid var(--line);transition:transform .3s,box-shadow .3s}
+.pain:hover{transform:translateX(6px);box-shadow:0 16px 34px -16px rgba(22,19,15,.22)}
+.pain .ic{flex:0 0 46px;width:46px;height:46px;border-radius:13px;background:var(--ink);color:var(--orange);display:grid;place-items:center}
+.pain .ic svg{width:24px;height:24px}
+.pain h4{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:4px}
+.pain p{font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+
+/* ---------- Solution ---------- */
+.solution .sec-head{max-width:760px}
+.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:860px){.pack-grid{grid-template-columns:1fr}}
+.pack{
+  background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 30px;position:relative;
+  transition:transform .3s,box-shadow .3s;overflow:hidden;
+}
+.pack::before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;transform:scaleX(0);transform-origin:left;transition:transform .35s}
+.pack:nth-child(1)::before{background:var(--orange)}
+.pack:nth-child(2)::before{background:var(--violet)}
+.pack:nth-child(3)::before{background:var(--ink)}
+.pack:hover::before{transform:scaleX(1)}
+.pack:hover{transform:translateY(-8px);box-shadow:0 22px 44px rgba(22,19,15,.12)}
+.pack .num{font-family:var(--display);font-weight:700;font-size:3.2rem;color:var(--cream-2);line-height:1;position:absolute;top:16px;right:22px}
+.pack .ic{width:58px;height:58px;border-radius:16px;display:grid;place-items:center;margin-bottom:22px}
+.pack:nth-child(1) .ic{background:rgba(255,84,54,.12);color:var(--orange)}
+.pack:nth-child(2) .ic{background:rgba(108,71,255,.12);color:var(--violet)}
+.pack:nth-child(3) .ic{background:rgba(22,19,15,.08);color:var(--ink)}
+.pack .ic svg{width:30px;height:30px}
+.pack h3{font-size:1.45rem;margin-bottom:10px}
+.pack p{font-size:1rem;color:var(--ink-soft)}
+.pack .pill{display:inline-block;margin-top:18px;font-size:.8rem;font-weight:600;color:var(--muted);background:var(--cream);padding:6px 13px;border-radius:100px;border:1px solid var(--line)}
+.speed-banner{
+  margin-top:34px;background:var(--ink);color:var(--cream);border-radius:var(--radius);
+  padding:30px 36px;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+}
+.speed-banner .big{font-family:var(--display);font-weight:600;font-size:clamp(1.4rem,3vw,2rem);letter-spacing:-.02em}
+.speed-banner .big em{color:var(--orange);font-style:normal}
+.speed-banner .chip{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream);opacity:.8}
+
+/* ---------- Demo (Rézolab) ---------- */
+.demo{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+@media(max-width:920px){.demo-grid{grid-template-columns:1fr;gap:46px}}
+.steps{display:flex;flex-direction:column;gap:8px;margin-top:14px}
+.step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
+.step:last-child{border-bottom:none}
+.step .n{flex:0 0 42px;width:42px;height:42px;border-radius:50%;border:2px solid var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:600;font-size:1.1rem}
+.step h4{font-family:var(--display);font-weight:600;font-size:1.25rem;margin-bottom:4px}
+.step p{font-size:.98rem;color:var(--ink-soft)}
+
+/* result panel (au lieu d'un 2e téléphone) */
+.result{background:#fff;border:1px solid var(--line);border-radius:24px;padding:24px;box-shadow:0 30px 60px -28px rgba(22,19,15,.4)}
+.result-top{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.9rem;color:var(--ink);margin-bottom:18px}
+.result-top .ok{width:24px;height:24px;border-radius:50%;background:var(--orange);display:grid;place-items:center;flex:0 0 24px}
+.result-top .ok svg{width:14px;height:14px;color:#fff}
+.result-top .when{margin-left:auto;font-family:var(--serif);font-style:italic;font-weight:400;color:var(--muted);font-size:.92rem}
+
+/* phone mockup */
+.phone{
+  width:300px;max-width:84vw;margin:0 auto;background:#0c0a08;border-radius:42px;padding:14px;
+  box-shadow:0 40px 80px rgba(0,0,0,.4),0 0 0 2px rgba(255,255,255,.05) inset;position:relative;z-index:2;
+}
+.phone::before{content:"";position:absolute;top:24px;left:50%;transform:translateX(-50%);width:80px;height:6px;background:#000;border-radius:10px;opacity:.6;z-index:3}
+.screen{background:var(--cream);border-radius:30px;overflow:hidden;height:560px;display:flex;flex-direction:column}
+.app-top{padding:34px 20px 14px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+.app-top .at-brand{font-family:var(--display);font-weight:700;font-size:1.05rem}
+.app-top .at-brand b{color:var(--violet)}
+.app-top .at-av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,var(--orange),var(--violet))}
+.app-body{padding:20px;flex:1;display:flex;flex-direction:column;gap:14px;overflow:hidden}
+.app-label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.app-input{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:14px;font-size:.92rem;color:var(--ink);min-height:58px}
+.app-input .cursor{display:inline-block;width:2px;height:1em;background:var(--orange);vertical-align:-2px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.app-gen{background:var(--orange);color:#fff;border-radius:14px;padding:13px;text-align:center;font-weight:600;font-size:.95rem;display:flex;align-items:center;justify-content:center;gap:9px;transition:transform .3s}
+.app-gen svg{width:18px;height:18px}
+.app-out{display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(10px);transition:.6s}
+.app-out.show{opacity:1;transform:none}
+.post-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:13px}
+.post-card .ph{display:flex;align-items:center;gap:7px;font-size:.72rem;font-weight:700;margin-bottom:7px}
+.post-card .ph .badge{width:18px;height:18px;border-radius:5px;display:grid;place-items:center;color:#fff}
+.post-card.ig .badge{background:linear-gradient(135deg,#F58529,#DD2A7B)}
+.post-card.fb .badge{background:#1877F2}
+.post-card p{font-size:.78rem;color:var(--ink-soft);line-height:1.45}
+.post-card .tags{margin-top:6px;font-size:.72rem;color:var(--violet);font-weight:600}
+/* bigger post cards inside result panel */
+.result .post-card{padding:18px;border-radius:16px}
+.result .post-card .ph{font-size:.82rem;margin-bottom:10px}
+.result .post-card .ph .badge{width:22px;height:22px}
+.result .post-card p{font-size:.95rem;line-height:1.5}
+.result .post-card .tags{margin-top:10px;font-size:.85rem}
+
+/* ---------- Proof / Caroline ---------- */
+.proof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+@media(max-width:920px){.proof-grid{grid-template-columns:1fr;gap:40px}}
+.deliv{display:flex;flex-direction:column;gap:14px;margin-top:28px}
+.deliv-item{display:flex;align-items:center;gap:14px;font-weight:500}
+.deliv-item .ck{flex:0 0 26px;width:26px;height:26px;border-radius:50%;background:var(--orange);display:grid;place-items:center}
+.deliv-item .ck svg{width:15px;height:15px;color:#fff}
+blockquote{
+  margin-top:30px;font-family:var(--serif);font-style:italic;font-size:1.45rem;line-height:1.4;
+  padding-left:24px;border-left:3px solid var(--orange);color:var(--ink);
+}
+
+/* ---------- Pour qui (avatars) ---------- */
+.who{background:var(--ink);color:var(--cream)}
+.who .sec-head h2{color:var(--cream)}
+.who .eyebrow{color:var(--orange)}
+.who .sec-head p{color:rgba(250,247,242,.7)}
+.avatars{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+@media(max-width:860px){.avatars{grid-template-columns:1fr}}
+.av-card{
+  background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:28px;
+  transition:background .3s,transform .3s,border-color .3s;
+}
+.av-card:hover{background:rgba(255,84,54,.1);border-color:var(--orange);transform:translateY(-6px)}
+.av-card .ic{width:48px;height:48px;border-radius:13px;background:rgba(255,84,54,.15);color:var(--orange);display:grid;place-items:center;margin-bottom:18px}
+.av-card .ic svg{width:26px;height:26px}
+.av-card h4{font-family:var(--display);font-weight:600;font-size:1.3rem;color:var(--cream);margin-bottom:7px}
+.av-card p{font-size:.96rem;color:rgba(250,247,242,.66);line-height:1.5}
+
+/* ---------- FAQ ---------- */
+.faq-list{max-width:820px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--line)}
+.faq-q{
+  width:100%;background:none;border:none;text-align:left;cursor:pointer;font-family:var(--display);
+  font-weight:600;font-size:clamp(1.2rem,2.6vw,1.6rem);letter-spacing:-.01em;color:var(--ink);
+  padding:28px 50px 28px 0;position:relative;display:flex;align-items:center;
+}
+.faq-q .plus{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:30px;height:30px;transition:transform .3s}
+.faq-q .plus::before,.faq-q .plus::after{content:"";position:absolute;background:var(--orange);border-radius:2px}
+.faq-q .plus::before{width:18px;height:2.5px;top:14px;left:6px}
+.faq-q .plus::after{width:2.5px;height:18px;top:6px;left:14px;transition:transform .3s}
+.faq-item.open .faq-q .plus::after{transform:rotate(90deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-a p{padding:0 50px 28px 0;color:var(--ink-soft);font-size:1.05rem;line-height:1.6}
+
+/* ---------- Final CTA ---------- */
+.final{background:var(--orange);color:#fff;position:relative;overflow:hidden}
+.final::before{content:"✳";position:absolute;font-size:30rem;opacity:.08;top:-60px;right:-40px;font-family:var(--display);line-height:1}
+.final .wrap{position:relative;z-index:2;text-align:center}
+.final h2{font-size:clamp(2.4rem,6vw,4.6rem);color:#fff;max-width:18ch;margin:0 auto}
+.final .sub{font-family:var(--serif);font-style:italic;font-size:clamp(1.3rem,3vw,2rem);margin-top:18px;opacity:.95}
+.final-form{
+  max-width:560px;margin:44px auto 0;background:var(--cream);color:var(--ink);
+  border-radius:26px;padding:14px;box-shadow:0 30px 60px rgba(0,0,0,.22);
+}
+.final-form .ff-inner{border:1.5px dashed var(--line);border-radius:16px;padding:34px 26px}
+.tally-placeholder{font-size:.92rem;color:var(--muted);margin-bottom:20px}
+.final .counter{margin-top:26px;font-weight:600;font-size:1rem;display:inline-flex;align-items:center;gap:10px;background:rgba(0,0,0,.16);padding:10px 20px;border-radius:100px}
+.final .counter .pip{display:inline-flex;gap:5px}
+.final .counter .pip i{width:9px;height:9px;border-radius:50%;background:#fff;display:block}
+.final .counter .pip i.off{opacity:.3}
+
+/* ---------- Footer ---------- */
+footer{background:var(--ink);color:rgba(250,247,242,.6);padding:54px 0;text-align:center}
+footer .brand{justify-content:center;color:var(--cream);font-size:1.4rem;margin-bottom:14px}
+footer p{font-size:.92rem}
+footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
+
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  .reveal{opacity:1;transform:none}
+  .load{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav id="nav">
+  <div class="wrap nav-in">
+    <a href="#top" class="brand"><span class="dot"></span>L'Atelier des Automates</a>
+    <a href="#candidater" class="nav-cta">Je veux mon pack</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<header class="hero" id="top">
+  <div class="hero-glow"></div>
+  <div class="wrap">
+    <div class="hero-grid">
+      <!-- colonne texte -->
+      <div>
+        <div class="hero-badge load d1">
+          <span class="pip"><i></i><i></i><i></i></span>
+          3 packs offerts · pour marquer le coup
+        </div>
+        <h1 class="hero-title load d2">Ça profite<br>toujours <span class="em">aux mêmes.</span></h1>
+        <p class="hero-kicker load d3">J'ai décidé que c'était fini.</p>
+        <p class="hero-sub load d4">
+          Après des mois de formation aux outils no-code et à l'IA, <b>j'attaque mes examens</b>. Pour marquer le coup, j'offre <b>3 packs complets</b> à trois personnes de mon entourage : ton site pro, ton app de posts réseaux, et ton IA configurée pour ton métier. Spoiler — c'est bluffant, ce que ça permet.
+        </p>
+        <div class="hero-cta-row load d5">
+          <a href="#candidater" class="btn btn-primary">Je veux mon pack
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a href="#solution" class="btn btn-ghost">C'est quoi exactement ?</a>
+        </div>
+        <p class="hero-note load d6">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          C'est gratuit. C'est un cadeau. Il n'y a aucun risque.
+        </p>
+      </div>
+
+      <!-- colonne mise en scène Rézolab (sans photo) -->
+      <div class="hero-stage load d4">
+        <div class="sg"></div>
+        <div class="stage-eyebrow">Ton app de posts · démo en direct</div>
+        <div class="float-badge fb-1">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>
+          Post prêt en 15 s
+        </div>
+        <div class="float-badge fb-2">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.5-1.5 3.5C13.5 11 13 12 13 13h-2c0-1-.5-2-1.5-3.5C8.8 8.5 8 7.5 8 6a4 4 0 0 1 4-4z"/><line x1="9" y1="18" x2="15" y2="18"/></svg>
+          Écrit dans ton ton
+        </div>
+        <div class="phone">
+          <div class="screen">
+            <div class="app-top">
+              <span class="at-brand">Réz<b>o</b>lab</span>
+              <span class="at-av"></span>
+            </div>
+            <div class="app-body">
+              <span class="app-label">Ton idée du jour</span>
+              <div class="app-input" id="appInput"></div>
+              <div class="app-gen" id="appGen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3v4M3 5h4M6 17v4M4 19h4M13 3l2.5 6.5L22 12l-6.5 2.5L13 21l-2.5-6.5L4 12l6.5-2.5z"/></svg>
+                Générer mes posts
+              </div>
+              <div class="app-out" id="appOut">
+                <div class="post-card ig">
+                  <div class="ph"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>Instagram</div>
+                  <p>✨ Nouvelle fournée tout juste sortie du four. L'odeur du pain chaud, c'est notre signature du matin…</p>
+                  <div class="tags">#boulangerie #faitmaison #local</div>
+                </div>
+                <div class="post-card fb">
+                  <div class="ph"><span class="badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.5c0-.9.3-1.5 1.6-1.5H18V.2C17.5.1 16.4 0 15.2 0 12.5 0 11 1.6 11 4.2V6H8v3h3v9h3z"/></svg></span>Facebook</div>
+                  <p>Ce matin, on a préparé quelque chose de spécial pour vous. Passez avant 11h — il n'y en aura pas pour tout le monde 😊</p>
+                  <div class="tags">#commercedeproximité</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ===== MARQUEE ===== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>Esthéticienne</span><span>Coach</span><span>Sophrologue</span><span>Fleuriste</span><span>Ostéopathe</span><span>Food truck</span><span>Prof de yoga</span><span>Naturopathe</span><span>Coiffeuse</span><span>Prothésiste ongulaire</span>
+    <span>Esthéticienne</span><span>Coach</span><span>Sophrologue</span><span>Fleuriste</span><span>Ostéopathe</span><span>Food truck</span><span>Prof de yoga</span><span>Naturopathe</span><span>Coiffeuse</span><span>Prothésiste ongulaire</span>
+  </div>
+</div>
+
+<!-- ===== PROBLÈME ===== -->
+<section class="problem">
+  <div class="wrap problem-grid">
+    <div>
+      <span class="eyebrow reveal">Le vrai problème</span>
+      <h2 class="reveal" style="font-family:var(--display);font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:.98">Tu travailles bien.<br>Personne ne te voit.</h2>
+      <div class="pain-list">
+        <div class="pain reveal delay1">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
+          <div><h4>L'invisible</h4><p>Tu fais un travail que tes clients adorent. Mais en ligne, on ne te trouve pas. Comme si tu n'existais pas.</p></div>
+        </div>
+        <div class="pain reveal delay2">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+          <div><h4>Le soir, encore les posts</h4><p>Tu finis tes journées sur les textes, les photos, les messages qui ont attendu. Et demain, ça recommence.</p></div>
+        </div>
+        <div class="pain reveal delay3">
+          <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.66 18.66A6 6 0 0 1 12 7a6 6 0 0 1 2.34 11.66"/><line x1="12" y1="22" x2="12" y2="18"/><path d="M8 22h8"/></svg></span>
+          <div><h4>L'idée qui reste dans la tête</h4><p>Tu as un projet à lancer. Mais le site, la présence en ligne, la technique… ça te freine depuis des mois.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="editorial a-orange reveal delay1">
+      <div class="accent"></div>
+      <div class="frame">
+        <img src="../assets/soir_debordee.jpg" alt="Indépendante débordée le soir, entourée de papiers et d'un café, devant son ordinateur" loading="lazy" />
+      </div>
+      <span class="cap">…et demain, ça recommence.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SOLUTION ===== -->
+<section class="solution" id="solution">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">Ton pack 3-en-1</span>
+      <h2 class="reveal">Tout ce qu'il te faut.<br>Livré en quelques jours.</h2>
+      <p class="reveal delay1">Pas du ChatGPT générique — quelque chose de construit pour ton métier, ton ton et tes clients. La première étape, c'est juste de dire oui. Le reste, je m'en occupe.</p>
+    </div>
+    <div class="pack-grid">
+      <div class="pack reveal">
+        <span class="num">01</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg></span>
+        <h3>Ton site pro</h3>
+        <p>Une vraie page web aux couleurs de ton activité. Soignée, rapide, qui inspire confiance dès la première seconde.</p>
+        <span class="pill">Design sur-mesure</span>
+      </div>
+      <div class="pack reveal delay1">
+        <span class="num">02</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="3"/><line x1="12" y1="18" x2="12" y2="18"/></svg></span>
+        <h3>Ton app Rézolab</h3>
+        <p>Ton appli de posts réseaux sociaux. Une idée en tête → ton post Instagram + Facebook prêt à publier. En quelques secondes.</p>
+        <span class="pill">Posts IG + FB</span>
+      </div>
+      <div class="pack reveal delay2">
+        <span class="num">03</span>
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4c0 1.5-.8 2.5-1.5 3.5C13.5 11 13 12 13 13h-2c0-1-.5-2-1.5-3.5C8.8 8.5 8 7.5 8 6a4 4 0 0 1 4-4z"/><line x1="9" y1="18" x2="15" y2="18"/><line x1="10" y1="22" x2="14" y2="22"/></svg></span>
+        <h3>Ton IA sur-mesure</h3>
+        <p>Une intelligence configurée pour ton métier, ton ton, tes clients. Elle te connaît. Elle écrit comme toi.</p>
+        <span class="pill">Configurée pour toi</span>
+      </div>
+    </div>
+    <div class="speed-banner reveal delay1">
+      <div class="big">Une idée → ton post IG + FB en <em>15 secondes.</em></div>
+      <div class="chip">oui, vraiment.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DÉMO RÉZOLAB ===== -->
+<section class="demo">
+  <div class="wrap demo-grid">
+    <div>
+      <span class="eyebrow reveal">Comment marche Rézolab</span>
+      <h2 class="reveal" style="font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:.98">Trois gestes.<br>Et c'est publié.</h2>
+      <div class="steps">
+        <div class="step reveal delay1">
+          <span class="n">1</span>
+          <div><h4>Tu donnes ton idée</h4><p>« Promo du jour », « nouvelle collection », ou juste une humeur. Une phrase suffit.</p></div>
+        </div>
+        <div class="step reveal delay2">
+          <span class="n">2</span>
+          <div><h4>L'IA rédige</h4><p>Elle écrit ton post Instagram et ton post Facebook, dans ton ton, avec les bons hashtags.</p></div>
+        </div>
+        <div class="step reveal delay3">
+          <span class="n">3</span>
+          <div><h4>Tu publies</h4><p>Tu relis, tu ajustes si tu veux, tu copies. C'est en ligne. Tu as récupéré ta soirée.</p></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal delay1">
+      <div class="result">
+        <div class="result-top">
+          <span class="ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>
+          Tes 2 posts, prêts à copier
+          <span class="when">généré en 15 s</span>
+        </div>
+        <div class="post-card ig">
+          <div class="ph"><span class="badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></span>Instagram</div>
+          <p>✨ Nouvelle fournée tout juste sortie du four. L'odeur du pain chaud, c'est notre signature du matin — et franchement, on ne s'en lasse pas. À tout de suite ?</p>
+          <div class="tags">#boulangerie #faitmaison #local #fournéedumatin</div>
+        </div>
+        <div class="post-card fb" style="margin-top:14px">
+          <div class="ph"><span class="badge"><svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.5c0-.9.3-1.5 1.6-1.5H18V.2C17.5.1 16.4 0 15.2 0 12.5 0 11 1.6 11 4.2V6H8v3h3v9h3z"/></svg></span>Facebook</div>
+          <p>Ce matin, on a préparé quelque chose de spécial pour vous. Passez nous voir avant 11h — il n'y en aura pas pour tout le monde 😊 On vous garde le meilleur coin de la vitrine.</p>
+          <div class="tags">#commercedeproximité #faitavecamour</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PREUVE / CAROLINE ===== -->
+<section class="proof">
+  <div class="wrap proof-grid">
+    <div class="editorial a-violet reveal">
+      <div class="accent"></div>
+      <div class="frame">
+        <img src="../assets/caroline_dogwalk.jpg" alt="Caroline qui promène un chien sur un chemin en forêt — Woof and Walk" loading="lazy" />
+      </div>
+      <span class="cap">Caroline · Woof and Walk</span>
+    </div>
+    <div>
+      <span class="eyebrow reveal">Un exemple concret</span>
+      <h2 class="reveal" style="font-size:clamp(2rem,4.6vw,3.3rem);margin-top:18px;line-height:1">L'histoire de Caroline</h2>
+      <p class="reveal delay1" style="margin-top:20px;color:var(--ink-soft);font-size:1.08rem">Caroline voulait arrondir ses fins de mois avec la randonnée et les chiens. Elle se retenait depuis des mois — peur de la paperasse, de la complexité. En une session, on a tout construit :</p>
+      <div class="deliv">
+        <div class="deliv-item reveal delay1"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Son site web Woof and Walk</div>
+        <div class="deliv-item reveal delay2"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Son étude de marché (demande, tarifs, concurrence)</div>
+        <div class="deliv-item reveal delay3"><span class="ck"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>Son guide pour se lancer en règle</div>
+      </div>
+      <blockquote class="reveal delay2">Aujourd'hui, Caroline promène des chiens en forêt — dans les balades qu'elle aime de toute façon. Et elle est payée pour ça.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ===== POUR QUI ===== -->
+<section class="who">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow reveal">C'est pour toi si…</span>
+      <h2 class="reveal">Tu te reconnais<br>dans l'un de ces cas ?</h2>
+      <p class="reveal delay1">Cinq profils, une même envie : enfin avancer sans se battre avec la technique.</p>
+    </div>
+    <div class="avatars">
+      <div class="av-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9.66 18.66A6 6 0 0 1 12 7a6 6 0 0 1 2.34 11.66"/><line x1="12" y1="22" x2="12" y2="18"/><path d="M8 22h8"/></svg></span>
+        <h4>L'idée qui tourne</h4>
+        <p>Tu as quelque chose à lancer, mais ça reste dans ta tête depuis trop longtemps.</p>
+      </div>
+      <div class="av-card reveal delay1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-12V5l-8-3-8 3v5c0 8 8 12 8 12z"/></svg></span>
+        <h4>Le lancement récent</h4>
+        <p>Ton activité est ouverte, mais ta présence en ligne n'est pas encore à la hauteur.</p>
+      </div>
+      <div class="av-card reveal delay2">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span>
+        <h4>Le business qui tourne</h4>
+        <p>Tu finis tes journées sur les posts et les messages qui ont attendu. Tu veux respirer.</p>
+      </div>
+      <div class="av-card reveal">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <h4>L'invisible</h4>
+        <p>Tu travailles bien, mais les clients ne te trouvent pas facilement en ligne.</p>
+      </div>
+      <div class="av-card reveal delay1">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M2 8h20M12 8V4M9 4h6"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg></span>
+        <h4>La curiosité IA</h4>
+        <p>Tu te demandes ce que l'IA peut vraiment faire pour toi, concrètement.</p>
+      </div>
+      <div class="av-card reveal delay2" style="background:rgba(255,84,54,.12);border-color:var(--orange)">
+        <span class="ic" style="background:var(--orange);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12M2 7h20v5H2zM12 22V7M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7zM12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg></span>
+        <h4 style="color:var(--cream)">…ou juste un copain.</h4>
+        <p style="color:rgba(250,247,242,.85)">Tu fais partie des gens qui ont traversé le temps avec moi. C'est suffisant.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section>
+  <div class="wrap">
+    <div class="sec-head" style="margin:0 auto 54px;text-align:center;max-width:600px">
+      <span class="eyebrow reveal" style="justify-content:center">Les vraies questions</span>
+      <h2 class="reveal" style="margin-top:18px">Ce que tu te demandes,<br>sûrement.</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item reveal">
+        <button class="faq-q">C'est vraiment gratuit ? Où est l'arnaque ?<span class="plus"></span></button>
+        <div class="faq-a"><p>Pas d'arnaque. C'est un cadeau, sincèrement. Je sors de plusieurs mois de formation, j'attaque mes examens — et j'ai envie de marquer le coup en faisant profiter mes proches de ce que je sais faire maintenant. Tu ne paies rien.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Il faut être à l'aise avec la technique ?<span class="plus"></span></button>
+        <div class="faq-a"><p>Pas du tout. C'est même tout l'intérêt. Tu me racontes ton activité, je m'occupe de toute la partie technique. Ton app est pensée pour être utilisée par quelqu'un qui n'a jamais touché à ce genre d'outil.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Et toi, qu'est-ce que tu y gagnes ?<span class="plus"></span></button>
+        <div class="faq-a"><p>De l'expérience réelle sur de vrais projets, au moment où je passe mes examens. Et — si tu es content·e — ton retour et le droit de montrer ce qu'on a construit ensemble. C'est tout. Tu m'aides autant que je t'aide.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final" id="candidater">
+  <div class="wrap">
+    <h2 class="reveal">La première étape, c'est juste de passer à l'action.</h2>
+    <p class="sub reveal delay1">Le reste, je m'en occupe.</p>
+
+    <div class="final-form reveal delay1">
+      <div class="ff-inner">
+        <!-- ============================================================= -->
+        <!-- TODO : remplacer ce bloc par l'embed Tally une fois créé.     -->
+        <!-- Exemple : <iframe src="https://tally.so/embed/XXXX" ...>      -->
+        <!-- ou bouton data-tally-open="XXXX".                             -->
+        <!-- ============================================================= -->
+        <p class="tally-placeholder">Le formulaire de candidature arrive ici (Tally).</p>
+        <a href="#" id="tallyBtn" class="btn btn-primary" style="box-shadow:0 8px 0 #C73A20">
+          Je dépose ma candidature
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="counter reveal delay2">
+      <span class="pip"><i></i><i></i><i></i></span>
+      Il reste <strong style="margin:0 4px">3 packs</strong> sur 3
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="brand"><span class="dot" style="background:var(--orange)"></span>L'Atelier des Automates</div>
+    <p>Les outils no-code et l'IA — enfin pour tout le monde, pas qu'aux grosses boîtes.</p>
+    <p class="loc">Stéphanie · Évian-les-Bains</p>
+  </div>
+</footer>
+
+<script>
+// Nav border on scroll
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>10));
+
+// Scroll reveal
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+},{threshold:.15});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+// FAQ accordion
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    const item=q.parentElement;
+    const a=item.querySelector('.faq-a');
+    const open=item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i=>{i.classList.remove('open');i.querySelector('.faq-a').style.maxHeight=null});
+    if(!open){item.classList.add('open');a.style.maxHeight=a.scrollHeight+'px'}
+  });
+});
+
+// Rézolab app demo — typing + generate (le téléphone est dans le hero, visible au chargement)
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const input=document.getElementById('appInput');
+const out=document.getElementById('appOut');
+const gen=document.getElementById('appGen');
+const phrase="Nouvelle fournée du matin 🥐";
+function runDemo(){
+  if(reduce){input.textContent=phrase;out.classList.add('show');return;}
+  input.innerHTML='';out.classList.remove('show');
+  let i=0;
+  const type=()=>{
+    if(i<=phrase.length){
+      input.innerHTML=phrase.slice(0,i)+'<span class="cursor"></span>';
+      i++;setTimeout(type,70);
+    }else{
+      input.textContent=phrase;
+      gen.style.transform='scale(.96)';
+      setTimeout(()=>{gen.style.transform='';out.classList.add('show')},500);
+    }
+  };
+  setTimeout(type,900);
+}
+addEventListener('load',runDemo);
+
+// Tally placeholder guard
+document.getElementById('tallyBtn').addEventListener('click',(e)=>{
+  if(e.currentTarget.getAttribute('href')==='#'){
+    e.preventDefault();
+    alert("Le formulaire Tally n'est pas encore branché. Ajoute le lien dans le code (section #candidater).");
+  }
+});
+</script>
+</body>
+</html>
