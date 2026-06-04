@@ -51,6 +51,12 @@ projects/manoire/charte_graphique/
 !projects/printify-100k/landing-page/assets/*.jpeg
 !projects/printify-100k/landing-page/assets/*.webp
 
+# Exception : assets de la landing page L'Atelier des Automates (livrable web → à versionner)
+!projects/atelier-des-automates/landing/assets/*.png
+!projects/atelier-des-automates/landing/assets/*.jpg
+!projects/atelier-des-automates/landing/assets/*.jpeg
+!projects/atelier-des-automates/landing/assets/*.webp
+
 # Brouillons temporaires (jamais dans l'historique)
 scratch/
 
@@ -76,3 +82,5 @@ scratch/
 .claude/skills/xlsx/
 .claude/workflows/
 
+
+.vercel
