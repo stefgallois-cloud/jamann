@@ -58,7 +58,7 @@ a{color:inherit;text-decoration:none}
 img{max-width:100%;display:block}
 
 /* ---------- Typography ---------- */
-h1,h2,h3{font-family:var(--display);font-weight:600;line-height:.98;letter-spacing:-.02em}
+h1,h2,h3{font-family:var(--display);font-weight:600;line-height:1.05;letter-spacing:-.005em}
 .eyebrow{
   font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.18em;
   text-transform:uppercase;color:var(--orange);display:inline-flex;align-items:center;gap:10px;
@@ -95,7 +95,7 @@ nav.scrolled{border-color:var(--line)}
 @media(max-width:640px){.nav-cta{display:none}}
 
 /* ---------- Hero ---------- */
-.hero{position:relative;padding:54px 0 84px;overflow:hidden}
+.hero{position:relative;padding:34px 0 54px;overflow:hidden}
 .hero-glow{
   position:absolute;top:-220px;left:50%;transform:translateX(-50%);
   width:1000px;height:680px;pointer-events:none;z-index:0;
@@ -105,7 +105,7 @@ nav.scrolled{border-color:var(--line)}
   filter:blur(24px);animation:float 16s ease-in-out infinite;
 }
 @keyframes float{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(30px)}}
-.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:54px;align-items:center;position:relative;z-index:2}
+.hero-grid{display:grid;grid-template-columns:1.06fr .94fr;gap:44px;align-items:center;position:relative;z-index:2}
 @media(max-width:940px){.hero-grid{grid-template-columns:1fr;gap:48px}}
 
 .hero-badge{
@@ -175,8 +175,8 @@ h1.hero-title .em{color:var(--orange)}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* ---------- Sections ---------- */
-section{padding:96px 0;position:relative}
-.sec-head{max-width:680px;margin-bottom:54px}
+section{padding:64px 0;position:relative}
+.sec-head{max-width:680px;margin-bottom:36px}
 .sec-head h2{font-size:clamp(2.1rem,5vw,3.6rem);margin:18px 0 0}
 .sec-head p{margin-top:20px;color:var(--ink-soft);font-size:1.12rem}
 
@@ -207,7 +207,7 @@ section{padding:96px 0;position:relative}
 
 /* ---------- Problem ---------- */
 .problem{background:var(--cream-2)}
-.problem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}
+.problem-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:46px;align-items:center}
 @media(max-width:860px){.problem-grid{grid-template-columns:1fr;gap:44px}}
 .pain-list{display:flex;flex-direction:column;gap:18px;margin-top:30px}
 .pain{display:flex;gap:18px;align-items:flex-start;background:var(--cream);padding:24px;border-radius:18px;border:1px solid var(--line);transition:transform .3s,box-shadow .3s}
@@ -216,6 +216,18 @@ section{padding:96px 0;position:relative}
 .pain .ic svg{width:24px;height:24px}
 .pain h4{font-family:var(--display);font-weight:600;font-size:1.2rem;letter-spacing:-.01em;margin-bottom:4px}
 .pain p{font-size:.98rem;color:var(--ink-soft);line-height:1.5}
+
+/* ---------- Stats ---------- */
+.stats{background:var(--ink);color:var(--cream)}
+.stats .eyebrow{color:var(--orange)}
+.stats .sec-head h2{color:var(--cream)}
+.stat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+@media(max-width:860px){.stat-grid{grid-template-columns:1fr;gap:16px}}
+.stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:18px;padding:30px 26px;transition:transform .3s,border-color .3s}
+.stat:hover{transform:translateY(-6px);border-color:var(--orange)}
+.stat .snum{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,6vw,3.6rem);line-height:1;background:linear-gradient(120deg,var(--orange),var(--violet));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:12px}
+.stat p{color:rgba(250,247,242,.78);font-size:1rem;line-height:1.5}
+.stat .src{display:inline-block;margin-top:14px;font-size:.72rem;letter-spacing:.04em;color:rgba(250,247,242,.42);text-transform:uppercase;font-weight:600}
 
 /* ---------- Solution ---------- */
 .solution .sec-head{max-width:760px}
@@ -250,7 +262,7 @@ section{padding:96px 0;position:relative}
 
 /* ---------- Demo (Rézolab) ---------- */
 .demo{background:linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
-.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
 @media(max-width:920px){.demo-grid{grid-template-columns:1fr;gap:46px}}
 .steps{display:flex;flex-direction:column;gap:8px;margin-top:14px}
 .step{display:flex;gap:20px;padding:22px 0;border-bottom:1px solid var(--line)}
@@ -301,7 +313,7 @@ section{padding:96px 0;position:relative}
 .result .post-card .tags{margin-top:10px;font-size:.85rem}
 
 /* ---------- Proof / Caroline ---------- */
-.proof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:center}
+.proof-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:48px;align-items:center}
 @media(max-width:920px){.proof-grid{grid-template-columns:1fr;gap:40px}}
 .deliv{display:flex;flex-direction:column;gap:14px;margin-top:28px}
 .deliv-item{display:flex;align-items:center;gap:14px;font-weight:500}
@@ -399,7 +411,7 @@ footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
         <h1 class="hero-title load d2">Ça profite<br>toujours <span class="em">aux mêmes.</span></h1>
         <p class="hero-kicker load d3">J'ai décidé que c'était fini.</p>
         <p class="hero-sub load d4">
-          Après des mois de formation aux outils no-code et à l'IA, <b>j'attaque mes examens</b>. Pour marquer le coup, j'offre <b>3 packs complets</b> à trois personnes de mon entourage : ton site pro, ton app de posts réseaux, et ton IA configurée pour ton métier. Spoiler — c'est bluffant, ce que ça permet.
+          Ma branche pro vient de se lancer, et j'attaque mes examens. À la rentrée, j'ouvrirai ces outils au grand public — mais avant, c'est avec mes amis que je veux commencer. Alors j'offre <b>3 packs complets</b> à trois d'entre vous : ton site pro, ton app de posts réseaux, et ton IA configurée pour ton métier. Spoiler — c'est bluffant, ce que ça permet.
         </p>
         <div class="hero-cta-row load d5">
           <a href="#candidater" class="btn btn-primary">Je veux mon pack
@@ -471,7 +483,7 @@ footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
   <div class="wrap problem-grid">
     <div>
       <span class="eyebrow reveal">Le vrai problème</span>
-      <h2 class="reveal" style="font-family:var(--display);font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:.98">Tu travailles bien.<br>Personne ne te voit.</h2>
+      <h2 class="reveal" style="font-family:var(--display);font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:1.05">Tu travailles bien.<br>Personne ne te voit.</h2>
       <div class="pain-list">
         <div class="pain reveal delay1">
           <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></span>
@@ -493,6 +505,33 @@ footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
         <img src="../assets/soir_debordee.jpg" alt="Indépendante débordée le soir, entourée de papiers et d'un café, devant son ordinateur" loading="lazy" />
       </div>
       <span class="cap">…et demain, ça recommence.</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHIFFRES ===== -->
+<section class="stats">
+  <div class="wrap">
+    <div class="sec-head" style="text-align:center;margin:0 auto 40px;max-width:660px">
+      <span class="eyebrow reveal" style="justify-content:center">Pourquoi c'est vital</span>
+      <h2 class="reveal" style="margin-top:16px">Aujourd'hui, on te cherche<br>en ligne. Forcément.</h2>
+    </div>
+    <div class="stat-grid">
+      <div class="stat reveal">
+        <div class="snum">97 %</div>
+        <p>des gens se renseignent en ligne avant de choisir un commerce ou un prestataire près de chez eux.</p>
+        <span class="src">BrightLocal · 2024</span>
+      </div>
+      <div class="stat reveal delay1">
+        <div class="snum">75 %</div>
+        <p>jugent le sérieux d'une entreprise… rien qu'en regardant son site web.</p>
+        <span class="src">Stanford Web Credibility</span>
+      </div>
+      <div class="stat reveal delay2">
+        <div class="snum">85 %</div>
+        <p>font autant confiance à un avis en ligne qu'à la recommandation d'un proche.</p>
+        <span class="src">BrightLocal · 2024</span>
+      </div>
     </div>
   </div>
 </section>
@@ -540,7 +579,7 @@ footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
   <div class="wrap demo-grid">
     <div>
       <span class="eyebrow reveal">Comment marche Rézolab</span>
-      <h2 class="reveal" style="font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:.98">Trois gestes.<br>Et c'est publié.</h2>
+      <h2 class="reveal" style="font-size:clamp(2.1rem,5vw,3.6rem);margin-top:18px;line-height:1.05">Trois gestes.<br>Et c'est publié.</h2>
       <div class="steps">
         <div class="step reveal delay1">
           <span class="n">1</span>
@@ -655,7 +694,15 @@ footer .loc{margin-top:8px;font-family:var(--serif);font-style:italic}
     <div class="faq-list">
       <div class="faq-item reveal">
         <button class="faq-q">C'est vraiment gratuit ? Où est l'arnaque ?<span class="plus"></span></button>
-        <div class="faq-a"><p>Pas d'arnaque. C'est un cadeau, sincèrement. Je sors de plusieurs mois de formation, j'attaque mes examens — et j'ai envie de marquer le coup en faisant profiter mes proches de ce que je sais faire maintenant. Tu ne paies rien.</p></div>
+        <div class="faq-a"><p>Pas d'arnaque. C'est un cadeau, sincèrement. Je sors de plusieurs mois de formation, j'attaque mes examens — et j'ai envie de marquer le coup en faisant profiter mes proches de ce que je sais faire maintenant. Tu ne paies rien, et il n'y a pas de petite ligne en bas du contrat.</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Ça vaut combien, normalement ?<span class="plus"></span></button>
+        <div class="faq-a"><p>À la rentrée, j'ouvre cette offre au grand public — le pack complet sera autour de <strong>990 €</strong> (plus un petit abonnement pour faire tourner l'app). Et si tu faisais faire la même chose ailleurs — un site sur-mesure, une app de posts, une IA configurée pour toi — une agence te facturerait facilement <strong>plusieurs milliers d'euros</strong>. Là, c'est offert. Voilà pourquoi je dis « cadeau ».</p></div>
+      </div>
+      <div class="faq-item reveal">
+        <button class="faq-q">Pourquoi tu peux te le permettre gratuitement ?<span class="plus"></span></button>
+        <div class="faq-a"><p>Parce que les outils ont tout changé. Ce qui demandait des semaines de travail — et un vrai budget — se construit aujourd'hui en <strong>moins de 24 h</strong>. Du coup, t'offrir un pack ne me coûte plus une fortune en temps. C'est même exactement ce que je voulais te montrer : ce que ces outils permettent vraiment.</p></div>
       </div>
       <div class="faq-item reveal">
         <button class="faq-q">Il faut être à l'aise avec la technique ?<span class="plus"></span></button>
@@ -746,6 +793,7 @@ function runDemo(){
       input.textContent=phrase;
       gen.style.transform='scale(.96)';
       setTimeout(()=>{gen.style.transform='';out.classList.add('show')},500);
+      setTimeout(runDemo,3800); // boucle en continu
     }
   };
   setTimeout(type,900);
