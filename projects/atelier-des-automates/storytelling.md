@@ -29,11 +29,15 @@
 
 ## Le "Pourquoi" de Stéphanie
 
-Stéphanie a eu la chance de se former pendant plusieurs mois aux outils no-code et à l'intelligence artificielle. Sa branche pro (Clockwork Ops) tourne déjà avant même qu'elle ait son diplôme en poche.
+Stéphanie s'est formée pendant plusieurs mois aux outils no-code et à l'intelligence artificielle — au bon moment, pile avant le tournant. Sa branche travaille déjà dans le monde des entreprises.
 
 **Le constat qui l'a énervée :** ces outils profitent toujours aux mêmes — les entreprises avec les budgets, les équipes, les consultants. Pendant ce temps, le fleuriste du coin, la kiné, ta cousine qui lance son activité font tout à la main, tous les soirs, après une longue journée.
 
-**La décision :** créer L'Atelier des Automates pour que ça profite enfin à tout le monde.
+**Le tournant, c'est maintenant :** on n'est plus à l'époque ChatGPT. On entre dans l'ère agentique — l'IA n'attend plus qu'on lui pose des questions, elle agit. Un site pro, une app sur-mesure, une facturation automatisée — ce qui coûtait des semaines et des milliers d'euros se fait aujourd'hui en quelques heures. Le temps, c'est de l'argent. Et là, les deux sont récupérables.
+
+**La vision :** D'ici quelques semaines, L'Atelier des Automates proposera des apps et des automatisations grand public — facturation, devis, newsletters automatisées, et tout ce qui bouffait du temps et de l'argent sans être accessible. Le cadeau d'aujourd'hui, c'est l'entrée dans ce monde. Faire réaliser aux proches de Stéphanie que c'est possible — maintenant, pour eux aussi.
+
+**La décision :** commencer par les amis. Leur ouvrir les yeux. Leur montrer concrètement ce que ça permet — avant que tout le monde s'y mette.
 
 ---
 

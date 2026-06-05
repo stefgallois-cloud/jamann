@@ -23,117 +23,206 @@ Voix : **ami·e à ami·e**, chaud, phrases courtes, 2-4 phrases par paragraphe.
 
 ---
 
-# LOT A — Voix & angle  ⏳ EN VALIDATION (v3 — cadeau au centre, agentique en toile de fond)
+# LOT A — Voix & angle ✅ ENTIÈREMENT VALIDÉ (session précédente)
 
-> Fixe le ton de toute la page. On le verrouille avant le reste.
-> **Dosage (correction Stéphanie) :** le héros, c'est le **cadeau concret** — ton site web + ton app de posts (cerveau IA inclus). Les **agents IA = le moyen** (je crée tout ça en quelques heures grâce à eux) + **la vague qui arrive** (bientôt tout le monde en aura, Google va changer). Ne PAS saturer le hero d'« agents IA » → la vision s'étale dans le Lot B (momentum).
+> **Ne pas toucher.** Tout le Lot A a été validé en session précédente.
 
-## A1 · Meta / SEO / OG `[ ]`
-**Réf :** `index.html` l. 6-13
+## A1 · Meta / SEO / OG `[x]`
+**title** → L'Atelier des Automates — un cadeau pour les copains
+**description** → Je crée des sites et des apps avec l'IA en quelques heures — alors j'en offre à des ami·es. Ton site web pro + ton app de posts avec un cerveau réglé sur ton business. Profite de la bascule avant tout le monde. Par Stéphanie.
+**og:title** → L'Atelier des Automates — un cadeau pour les copains
+**og:description** → Ton site web pro + ton app de posts avec un cerveau réglé sur ton business. Offerts — pendant que le monde bascule.
 
-**Actuel — title**
-> L'Atelier des Automates — un cadeau pour les copains
+## A2 · Nav `[x]`
+Marque inchangée · CTA **« Je veux mon pack »**
 
-**Proposé — title**
-> L'Atelier des Automates — un cadeau pour les copains
-
-**Variante — title**
-> L'Atelier des Automates — ton site web, offert (et de quoi le faire vivre)
-
-**Actuel — description**
-> J'attaque mes examens. Pour marquer le coup, j'offre 3 packs : ton site pro, ton app de posts réseaux et ton IA configurée pour ton métier. Un cadeau, zéro risque. Par Stéphanie.
-
-**Proposé — description**
-> Je crée des sites et des apps avec l'IA en quelques heures — alors j'en offre à des ami·es. Ton site web pro + ton app de posts avec un cerveau réglé sur ton business. Profite de la bascule avant tout le monde. Par Stéphanie.
-
-**Proposé — og:title / og:description**
-> og:title → *L'Atelier des Automates — un cadeau pour les copains*
-> og:description → *Ton site web pro + ton app de posts avec un cerveau réglé sur ton business. Offerts — pendant que le monde bascule.*
-
----
-
-## A2 · Nav `[ ]`
-**Réf :** l. 397-398
-
-**Actuel** — marque « L'Atelier des Automates » · CTA « Je veux mon pack »
-**Proposé** — marque inchangée · CTA **« Je veux mon pack »** (clair, on garde)
-**Variante CTA** — « J'embarque »
-
----
-
-## A3 · Hero — badge `[ ]`
-**Réf :** l. 411
-
-**Actuel**
-> 3 packs offerts · pour marquer le coup
-
-**Proposé**
+## A3 · Hero — badge `[x]`
 > 3 packs offerts · pour les copains
 
-**Variante**
-> Un cadeau pour les gens qui comptent · 3 packs
+## A4 · Hero — titre + kicker `[x]`
+**Titre** → Hier, ça profitait<br>aux mêmes.
+**Kicker** → Aujourd'hui, c'est à la portée de tout le monde.
 
----
-
-## A4 · Hero — titre + kicker `[x]` ✅ VALIDÉ — Direction 2
-**Réf :** l. 413-414
-
-**Titre validé**
-> **Hier, ça profitait** *(em :* **aux mêmes.** *)*
-> *(`<br>` conservé : « Hier, ça profitait<br>aux mêmes. »)*
-
-**Kicker validé (A)**
-> Aujourd'hui, c'est à la portée de tout le monde.
-
----
-
-## A5 · Hero — sous-titre `[x]` ✅ VALIDÉ (avec correction Stéphanie)
-**Réf :** l. 415-417
-
-**Actuel**
-> Ma branche pro vient de se lancer, et j'attaque mes examens. À la rentrée, j'ouvrirai ces outils au grand public — mais avant, c'est avec mes amis que je veux commencer. Alors j'offre **3 packs complets** à trois d'entre vous : ton site pro, ton app de posts réseaux, et ton IA configurée pour ton métier. Spoiler — c'est bluffant, ce que ça permet.
-
-**Validé**
+## A5 · Hero — sous-titre `[x]`
 > Ma branche pro tourne déjà auprès des entreprises. Et j'ai eu une chance folle : apprendre à créer des applications et des automatisations avec des outils IA, pile au moment où tout bascule — ce qui coûtait des semaines et des milliers d'euros se monte aujourd'hui en quelques heures. Alors j'en offre **3 packs complets** à trois personnes qui comptent pour moi : ton site web pro, et ton app de posts avec un cerveau réglé sur ton business.
 
-**Variante (plus courte)**
-> Ma branche pro tourne déjà auprès des entreprises. Aujourd'hui, ce qui coûtait des semaines et des milliers d'euros se monte en quelques heures (oui, vraiment) — alors j'en offre **3 packs** à trois personnes qui comptent pour moi : ton site web pro + ton app de posts, avec un cerveau réglé sur ton business.
+## A6 · Hero — CTA + note `[x]`
+**primary** → Je veux mon pack
+**ghost** → C'est quoi, exactement ?
+**note** → C'est gratuit, c'est un cadeau, sans petite ligne en bas du contrat. Le seul risque : prendre une longueur d'avance. 😊
 
 ---
 
-## A6 · Hero — CTA + note `[ ]`
-**Réf :** l. 419-426
+# LOT B — Tension + momentum ✅ VALIDÉ
 
-**Actuel** — primary « Je veux mon pack » · ghost « C'est quoi exactement ? » · note « C'est gratuit. C'est un cadeau. Il n'y a aucun risque. »
+## B1 · Problème `[x]`
+**Réf :** l. 487-501
 
-**Proposé**
-> primary → **Je veux mon pack** *(on garde)*
-> ghost → **C'est quoi, exactement ?** *(on garde)*
-> note → **C'est gratuit, c'est un cadeau, sans petite ligne en bas du contrat. Le seul risque : prendre une longueur d'avance.** 😊
+**Titre de section**
+> Ça profite toujours aux mêmes.
 
-**Variante note** — C'est gratuit. C'est un cadeau. Il n'y a aucun risque. *(version actuelle, plus sobre)*
+**Paragraphe intro**
+> Honnêtement, c'est ce qui m'a un peu énervée. Le fleuriste du coin, ta cousine qui lance son activité, toi — vous faites tout à la main. Le soir, après une longue journée. Pendant que d'autres ont des équipes pour ça.
+
+**Carte 1**
+*Tu travailles bien — mais personne ne le sait.*
+> Pas de site, ou un truc qui date. Les gens cherchent, te trouvent pas, et passent à côté.
+
+**Carte 2**
+*Les posts, c'est pour le soir.*
+> La journée est finie, les réseaux attendent encore. Tu fixes ton téléphone, tu cherches quoi dire, t'as plus vraiment le jus. Et pourtant tu le fais.
+
+**Carte 3**
+*L'idée tourne toujours dans ta tête.*
+> T'as quelque chose à lancer depuis des semaines. Mais entre le site, les démarches, la visibilité — ça reste là, en attente.
+
+**Phrase pivot**
+> Sauf que le monde vient de basculer. Ce qui prenait des semaines et coûtait des milliers d'euros se fait aujourd'hui en quelques heures. Et la plupart des gens ne le savent pas encore.
 
 ---
 
-# LOT B — Tension + momentum  🔒 (après validation du Lot A)
-- B1 · Problème — titre + 3 douleurs (l. 487-501)
-- B2 · Chiffres — 3 stats (l. 518-535) → arbitrer : garder 97/75/85 % ou basculer sur chiffres « bascule IA »
+## B2 · Chiffres `[x]`
+**Réf :** l. 518-535
 
-# LOT C — Offre  🔒
-- C1 · Solution — **passer de « pack 3-en-1 » à « 2-en-1 »** : (1) ton site web pro · (2) ton app de posts avec un cerveau réglé sur ton business. La 3e carte « IA configurée » **fusionne dans l'app** — plus de livrable IA séparé. (l. 545-569)
-- C2 · Bandeau vitesse (l. 572-574)
-- C3 · Démo Rézolab — titre + 3 étapes (l. 583-597)
+**Stat 1**
+> **97 %** des gens cherchent un pro en ligne avant de le contacter. *(BrightLocal)*
 
-# LOT D — Réassurance  🔒
-- D1 · Caroline — paragraphe + 3 livrables + citation (l. 633-641)
-- D2 · Pour qui — titre + intro + 6 avatars (l. 650-684)
+**Stat 2**
+> **75 %** font plus confiance à un business avec un vrai site web. *(Stanford Web Credibility Research)*
 
-# LOT E — Conversion  🔒
-- E1 · FAQ — 5 Q/R + 1 nouvelle « pourquoi maintenant / les agents » (l. 693-716)
-- E2 · CTA final — accroche + sous-titre + bouton + compteur (l. 724-745)
-- E3 · Footer (l. 752-754)
+**Stat 3**
+> **85 %** font autant confiance aux avis en ligne qu'au bouche-à-oreille. *(BrightLocal)*
+
+---
+
+# LOT C — Offre ✅ VALIDÉ
+
+## C1 · Solution 2-en-1 `[x]`
+**Réf :** l. 545-569
+
+**Titre de section**
+> Ce que tu reçois.
+
+**Carte 01 — Site web pro**
+*Ton site web pro*
+> Un site à tes couleurs, avec tes vrais mots. Quelque chose qui te représente vraiment — et que les gens peuvent trouver.
+
+**Carte 02 — App Rézolab**
+*Ton app de posts*
+> Une idée ou une photo → un post IG et FB en 15 secondes. L'IA à l'intérieur est configurée pour ton métier et ton business.
+*(mini aperçu IG + FB en CSS dans la carte)*
+
+---
+
+## C2 · Bandeau vitesse `[x]`
+**Réf :** l. 572-574
+
+> Ce qui prenait des semaines et coûtait des milliers d'euros — ça se fait aujourd'hui en quelques heures.
+
+---
+
+## C3 · Démo Rézolab `[x]`
+**Réf :** l. 583-597
+
+**Titre**
+> Comment ça marche.
+
+**Étape 1** → Tu donnes une idée ou une photo.
+**Étape 2** → L'app génère ton post IG et FB.
+**Étape 3** → Tu valides et tu publies. En 15 secondes.
+
+---
+
+# LOT D — Réassurance ✅ VALIDÉ
+
+## D1 · Caroline `[x]`
+**Réf :** l. 633-641
+
+**Paragraphe**
+> Caroline voulait arrondir ses fins de mois avec la randonnée et les chiens. Elle se retenait depuis des mois — peur de la législation, de la complexité administrative. En une session, on a réglé ça.
+
+**3 livrables**
+> — Son site Woof and Walk (dog walking à Lausanne)
+> — Une étude de marché (demande, tarifs, concurrence à Lausanne)
+> — Un guide légalité Suisse pour se lancer comme indépendante
+
+**Résultat**
+> Aujourd'hui, Caroline promène des chiens en forêt, dans les balades qu'elle aime de toute façon. Et elle est rémunérée pour ça.
+
+---
+
+## D2 · Pour qui `[x]`
+**Réf :** l. 650-684
+
+**Titre**
+> C'est pour toi si...
+
+**Avatar 1**
+> T'as un projet dans la tête depuis un moment. Une activité, un service, quelque chose. Mais tu n'as pas encore sauté.
+
+**Avatar 2**
+> Tu viens de te lancer. Mais ta présence en ligne ne reflète pas encore vraiment ce que tu fais.
+
+**Avatar 3**
+> Ça marche. Mais le soir, t'es encore là à écrire des posts. T'aimerais que ça tourne un peu tout seul.
+
+**Avatar 4**
+> Ton boulot est bon. Mais en ligne, les gens ne te trouvent pas — ou pas facilement.
+
+**Avatar 5**
+> T'entends parler de l'IA partout. Tu te demandes ce que ça pourrait vraiment changer pour toi, concrètement.
+
+**Avatar 6**
+> On se connaît depuis longtemps. T'as vu le chemin. Et je voulais commencer par vous.
+
+---
+
+# LOT E — Conversion ✅ VALIDÉ
+
+## E1 · FAQ `[x]`
+**Réf :** l. 693-716
+
+**Q1 — C'est vraiment gratuit ?**
+> Oui. C'est un cadeau — pas une offre d'appel, pas une période d'essai. Aucune petite ligne en bas.
+
+**Q2 — Pourquoi tu offres ça ?**
+> Parce que j'ai envie que ce soit mes proches qui profitent en premier de ce que j'ai appris. Trois packs, trois personnes qui comptent pour moi. C'est tout.
+
+**Q3 — Et si je suis nul·le en tech ?**
+> C'est exactement pour ça que je m'en occupe. Toi tu me parles de ton activité — le reste, c'est mon boulot.
+
+**Q4 — Ça prend combien de temps ?**
+> Une session de travail ensemble. Moins de 24h après, tu as ton site et ton app.
+
+**Q5 — C'est quoi, Rézolab exactement ?**
+> Une app que je construis pour toi. Tu donnes une idée ou une photo, elle génère un post IG et FB en 15 secondes. L'IA à l'intérieur est réglée sur ton business — pas du générique.
+
+**Q6 — Pourquoi maintenant ?**
+> Parce qu'on vient d'entrer dans l'ère agentique — l'IA n'attend plus qu'on lui pose des questions, elle agit. Ce qui coûtait des semaines et des milliers d'euros il y a encore quelques mois se fait aujourd'hui en quelques heures. C'est maintenant que ça bascule. Autant en profiter.
+
+---
+
+## E2 · CTA final `[x]`
+**Réf :** l. 724-745
+
+**Accroche** → La première étape, c'est juste de passer à l'action.
+**Sous-titre** → Le reste, je m'en occupe. C'est gratuit. C'est un cadeau. Il n'y a aucun risque.
+**Bouton** → Je veux mon pack
+**Compteur** → 3 packs · 3 personnes · 0 €
+
+---
+
+## E3 · Footer `[x]`
+**Réf :** l. 752-754
+
+> L'Atelier des Automates · Par Stéphanie
+> Pour que ça profite enfin à tout le monde — pas qu'aux grosses boîtes.
 
 ---
 
 ## Journal de validation
-- *(rien encore — on coche les `[ ]` au fur et à mesure)*
+- 2026-06-05 : LOT A entièrement validé (session précédente)
+- 2026-06-05 : LOT B validé (B1 réécriture complète avec ère agentique + B2 stats conservées)
+- 2026-06-05 : LOT C validé (2-en-1, carte IA fusionnée dans app, 3 étapes Rézolab)
+- 2026-06-05 : LOT D validé (Caroline sans "paperasse" + 6 avatars)
+- 2026-06-05 : LOT E validé (FAQ 6 Q/R + CTA + footer)
