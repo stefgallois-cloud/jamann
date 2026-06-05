@@ -58,6 +58,8 @@ Ces phrases ont été testées et validées. Elles sonnent juste dans la voix de
 
 "Pas du ChatGPT générique — quelque chose de construit pour ton métier et tes clients."
 (note : ChatGPT c'est la préhistoire 🤖😄 — peut être utilisé avec humour)
+
+"Aujourd'hui, même sans savoir coder, on peut coder — on a accès à des cerveaux ultra puissants."
 ```
 
 ---
