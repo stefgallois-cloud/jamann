@@ -1,0 +1,25 @@
+{
+  "version": "0.2",
+  "language": "fr,en",
+  "words": [
+    "Printify", "printify", "Etsy", "Shopify", "Airtable", "airtable",
+    "Notion", "Make", "n8n", "Softr", "Netlify", "netlify",
+    "Fraunces", "Nunito", "Ideogram", "eRank", "mockup", "mockups",
+    "Anthropic", "Claude", "Gemini", "ChatGPT", "Bpifrance",
+    "Clockwork", "Jamann", "Manoïre", "automates", "automatisation",
+    "SEO", "CTA", "KPI", "POD", "TPE", "PME", "ETI",
+    "roadmap", "rollup", "rollups", "lookup", "lookups",
+    "frontend", "backend", "webhook", "webhooks", "Canva",
+    "datastore", "dataset", "Tailwind", "cSpell", "markdownlint",
+    "ARRAYJOIN", "ARRAYUNIQUE", "DATETIME",
+    "Stéphanie", "Stef", "Evian"
+  ],
+  "ignorePaths": [
+    "node_modules",
+    "*.min.js",
+    "dist/",
+    ".netlify/",
+    "*.pptx",
+    "*.pdf"
+  ]
+}
