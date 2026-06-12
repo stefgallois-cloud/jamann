@@ -2,7 +2,7 @@
 
 **Client :** Françoise Davenas — thérapeute bien-être
 **Site original :** https://www.fd-harmonie.com/
-**Statut :** Refonte « Soft Wellness » réalisée — à valider par Stéphanie puis Françoise
+**Statut :** En ligne sur Tiiny.host (preview) — retours Françoise en attente
 
 ## Livrables
 - `index.html` — page principale (nav logo+nom, hero, 5 soins, à propos avec photo, citation, stages, partenaire, contact, footer)
@@ -34,10 +34,16 @@ HTML/CSS/JS vanilla — déployable sur Cloudflare Pages, Netlify ou tout héber
 - Toutes les images locales chargent
 - Photo de Françoise présente dans « À propos »
 
+## Déploiement
+- **Preview en ligne** : https://fd-harmonie-preview.tiiny.site (plan gratuit Tiiny.host — temporaire)
+- **Déploiement final prévu** : Hostinger (Stef a déjà un hébergement actif) → gestionnaire de fichiers Hostinger, uploader le dossier `francoise/` dans `public_html/preview-francoise/`
+- À faire après retours de Françoise : transférer sur Hostinger et connecter le domaine `fd-harmonie.com`
+
 ## Prochaines étapes
-1. Validation visuelle par Stéphanie (puis envoi d'un lien à Françoise)
-2. Point d'attention : revoir si besoin l'image hero de `constellations.html` (asset local thématiquement à confirmer)
-3. (Optionnel) accessibilité stricte : foncer le rose des petits libellés (`--rose-deep`) pour passer WCAG AA sur le texte < 14px
-4. Déploiement (Cloudflare Pages) + lien de prévisualisation
-5. Migration éventuelle vers Framer si Françoise veut être autonome sur le contenu
-6. Connexion domaine fd-harmonie.com
+1. ✅ Lien de preview envoyé à Françoise
+2. Recueillir les retours de Françoise (contenu, corrections mobile, ajustements visuels)
+3. Corriger les problèmes mobile identifiés (à détailler après retours)
+4. Point d'attention : revoir si besoin l'image hero de `constellations.html`
+5. (Optionnel) accessibilité stricte : foncer le rose des petits libellés (`--rose-deep`) pour passer WCAG AA
+6. Déploiement final sur Hostinger + connexion domaine fd-harmonie.com
+7. Migration éventuelle vers Framer si Françoise veut être autonome sur le contenu

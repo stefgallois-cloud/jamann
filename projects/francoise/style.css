@@ -313,6 +313,8 @@ section { padding: 92px 4rem; }
 .form .btn { width: 100%; justify-content: center; }
 .form-ok { display: none; align-items: center; justify-content: center; gap: 0.6rem; text-align: center; padding: 1.1rem; background: var(--veil); border-radius: 12px; color: var(--rose-deep); font-weight: 600; font-size: 0.95rem; }
 .form-ok .ico { stroke: var(--rose-deep); }
+.cta { display: flex; align-items: flex-start; justify-content: center; }
+.cta .btn { min-width: 280px; }
 
 /* ════ FOOTER ════ */
 footer { background: radial-gradient(880px 520px at 85% 118%, rgba(201,168,106,0.12), transparent 60%), var(--espresso); color: rgba(253,250,246,0.82); padding: 6.5rem 4rem 2.6rem; position: relative; overflow: hidden; }
