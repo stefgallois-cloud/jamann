@@ -1,0 +1,1134 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cap Solo — Les 7 destinations parfaites pour ton premier voyage solo après 50 ans</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --tc:   #C4633A;
+      --tc-d: #9E4E27;
+      --tc-dk:#6B3318;
+      --tc-p: #F5E8DF;
+      --tc-m: #B85C33;
+      --ca:   #D4A66A;
+      --ca-l: #EDD9B2;
+      --ca-p: #F9F0E3;
+      --cream:#FAF7F2;
+      --ant:  #2C2C2C;
+      --mid:  #5A5A5A;
+      --gl:   #E8E0D8;
+      --white:#FFFFFF;
+      --ft: 'Playfair Display', Georgia, serif;
+      --fb: 'Lato', Arial, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--fb);
+      background: #D8D4CE;
+      color: var(--ant);
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto 6mm;
+      background: var(--white);
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 28px rgba(0,0,0,0.18);
+    }
+
+    @media print {
+      body { background: none; }
+      .page {
+        margin: 0;
+        box-shadow: none;
+        page-break-after: always;
+        break-after: page;
+        width: 210mm;
+        min-height: 297mm;
+      }
+      @page { size: A4; margin: 0; }
+    }
+
+    /* ═══════════════ COVER ═══════════════ */
+    .cover {
+      background: linear-gradient(160deg, var(--tc) 0%, var(--tc-d) 45%, var(--tc-dk) 100%);
+      min-height: 297mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14mm 18mm 12mm;
+      position: relative;
+    }
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -18mm; right: -14mm;
+      width: 75mm; height: 75mm;
+      background: rgba(255,255,255,0.06);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -12mm; left: -8mm;
+      width: 55mm; height: 55mm;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+    .cover-top { text-align: center; width: 100%; position: relative; z-index: 1; }
+    .cover-tag {
+      font-family: var(--fb);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--ca-l);
+      display: block;
+      margin-bottom: 4mm;
+    }
+    .cover-rule {
+      width: 100%;
+      height: 0.3mm;
+      background: rgba(212,166,106,0.28);
+    }
+    .cover-main {
+      text-align: center;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 8mm 0;
+      position: relative;
+      z-index: 1;
+    }
+    .cover-title {
+      font-family: var(--ft);
+      font-size: 36pt;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      text-align: center;
+      margin-bottom: 5mm;
+    }
+    .cover-sub {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 21pt;
+      color: var(--ca-l);
+      margin-bottom: 7mm;
+    }
+    .cover-accent {
+      width: 18mm; height: 0.5mm;
+      background: var(--ca);
+      margin: 0 auto 8mm;
+    }
+    .cover-details {
+      font-family: var(--fb);
+      font-size: 8pt;
+      font-weight: 400;
+      letter-spacing: 0.14em;
+      color: var(--ca-l);
+      text-transform: uppercase;
+    }
+    .cover-bottom {
+      text-align: center;
+      position: relative;
+      z-index: 1;
+      width: 100%;
+    }
+    .cover-brand {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 14pt;
+      color: var(--ca-l);
+      display: block;
+      margin-bottom: 1.5mm;
+    }
+    .cover-tagline {
+      font-family: var(--fb);
+      font-size: 8pt;
+      color: rgba(237,217,178,0.6);
+      font-style: italic;
+    }
+
+    /* ═══════════════ CONTENT PAGE SHELL ═══════════════ */
+    .cp {
+      background: var(--cream);
+      display: flex;
+      flex-direction: column;
+      min-height: 297mm;
+    }
+    .cp-head {
+      background: var(--white);
+      padding: 4.5mm 14mm 3.5mm;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1.5pt solid var(--tc);
+      flex-shrink: 0;
+    }
+    .cp-head .brand {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 8.5pt;
+      color: var(--tc);
+    }
+    .cp-head .gtitle {
+      font-family: var(--fb);
+      font-size: 7pt;
+      color: var(--mid);
+      font-style: italic;
+    }
+    .cp-body {
+      flex: 1;
+      padding: 8mm 14mm 6mm;
+    }
+    .cp-foot {
+      padding: 3mm 14mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-top: 0.5pt solid var(--ca-l);
+      flex-shrink: 0;
+      background: var(--white);
+    }
+    .cp-foot span {
+      font-family: var(--fb);
+      font-size: 8pt;
+      color: #9A9187;
+    }
+
+    /* ═══════════════ TYPOGRAPHY ═══════════════ */
+    .lbl {
+      font-family: var(--fb);
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--tc);
+      display: block;
+      margin-bottom: 2mm;
+    }
+    .h1 {
+      font-family: var(--ft);
+      font-size: 22pt;
+      font-weight: 700;
+      color: var(--ant);
+      line-height: 1.2;
+      margin-bottom: 3.5mm;
+    }
+    .h2 {
+      font-family: var(--ft);
+      font-size: 16pt;
+      font-weight: 700;
+      color: var(--ant);
+      line-height: 1.25;
+      margin-bottom: 3mm;
+    }
+    .h3 {
+      font-family: var(--fb);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--tc);
+      margin-top: 4.5mm;
+      margin-bottom: 1.5mm;
+    }
+    .bi {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 10.5pt;
+      line-height: 1.7;
+      color: var(--mid);
+      margin-bottom: 3.5mm;
+    }
+    .b {
+      font-family: var(--fb);
+      font-size: 9.5pt;
+      line-height: 1.65;
+      color: var(--ant);
+      margin-bottom: 2.5mm;
+    }
+    .divider {
+      height: 0.5pt;
+      background: var(--ca-l);
+      margin: 3.5mm 0;
+      border: none;
+    }
+    .divider-ca {
+      height: 1pt;
+      background: var(--ca);
+      margin: 5mm 0;
+      border: none;
+    }
+    .quote {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 10.5pt;
+      color: var(--tc);
+      text-align: center;
+      padding: 4mm 10mm;
+      line-height: 1.65;
+      margin: 4mm 0;
+    }
+
+    /* ═══════════════ INTRO HOOK ═══════════════ */
+    .hook {
+      background: var(--tc-p);
+      border-left: 3pt solid var(--tc);
+      padding: 4.5mm 6mm;
+      border-radius: 0 6pt 6pt 0;
+      margin-bottom: 4mm;
+    }
+
+    /* ═══════════════ DESTINATION BADGE ═══════════════ */
+    .dbadge {
+      display: flex;
+      align-items: stretch;
+      background: var(--white);
+      border-radius: 7pt;
+      overflow: hidden;
+      margin-bottom: 3.5mm;
+      box-shadow: 0 2pt 10pt rgba(44,44,44,0.09);
+    }
+    .dbadge-num {
+      background: var(--tc);
+      color: var(--white);
+      font-family: var(--ft);
+      font-size: 20pt;
+      font-weight: 700;
+      width: 15mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .dbadge-info { padding: 3mm 5mm; flex: 1; }
+    .dbadge-name {
+      font-family: var(--ft);
+      font-size: 15pt;
+      font-weight: 700;
+      color: var(--ant);
+      line-height: 1.2;
+    }
+    .dbadge-lbl {
+      font-family: var(--fb);
+      font-size: 8pt;
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 1mm;
+    }
+
+    /* ═══════════════ INFO ROW ═══════════════ */
+    .irow {
+      display: flex;
+      background: var(--cream);
+      border: 0.5pt solid var(--ca-l);
+      border-radius: 5pt;
+      overflow: hidden;
+      margin-bottom: 3.5mm;
+    }
+    .irow-item {
+      flex: 1;
+      padding: 2.5mm 3mm;
+      text-align: center;
+      border-right: 0.5pt solid var(--ca-l);
+    }
+    .irow-item:last-child { border-right: none; }
+    .irow-lbl {
+      display: block;
+      font-family: var(--fb);
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--mid);
+      margin-bottom: 0.8mm;
+    }
+    .irow-val {
+      display: block;
+      font-family: var(--fb);
+      font-size: 9pt;
+      font-weight: 700;
+      color: var(--ant);
+    }
+
+    /* ═══════════════ BULLET & CHECK LISTS ═══════════════ */
+    .blist, .clist { list-style: none; margin-bottom: 2.5mm; }
+    .blist li, .clist li {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5mm;
+      font-family: var(--fb);
+      font-size: 9.5pt;
+      line-height: 1.55;
+      color: var(--ant);
+      margin-bottom: 1.8mm;
+    }
+    .blist li::before {
+      content: '◆';
+      color: var(--tc);
+      font-size: 7pt;
+      flex-shrink: 0;
+      margin-top: 1.5pt;
+    }
+    .clist li::before {
+      content: '☐';
+      color: var(--tc);
+      font-size: 10pt;
+      flex-shrink: 0;
+      line-height: 1.3;
+    }
+
+    /* ═══════════════ SECURITY BOX ═══════════════ */
+    .secbox {
+      display: flex;
+      align-items: stretch;
+      background: #FEF3EC;
+      border: 0.5pt solid var(--tc);
+      border-radius: 5pt;
+      margin-top: 3.5mm;
+      overflow: hidden;
+    }
+    .secbox-icon {
+      background: var(--tc);
+      color: var(--white);
+      font-family: var(--ft);
+      font-size: 13pt;
+      font-weight: 700;
+      width: 9mm;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .secbox-body {
+      padding: 3mm 4mm 3mm 2mm;
+      font-family: var(--fb);
+      font-size: 8.5pt;
+      line-height: 1.6;
+      color: var(--ant);
+    }
+    .secbox-body strong {
+      display: block;
+      color: var(--tc);
+      margin-bottom: 1mm;
+    }
+
+    /* ═══════════════ CRITERIA ═══════════════ */
+    .crit {
+      display: flex;
+      align-items: flex-start;
+      gap: 4mm;
+      padding: 4mm 0;
+      border-bottom: 0.5pt solid var(--ca-l);
+    }
+    .crit:last-child { border-bottom: none; }
+    .crit-num {
+      font-family: var(--ft);
+      font-size: 15pt;
+      font-weight: 700;
+      color: var(--tc);
+      min-width: 10mm;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .crit-title {
+      font-family: var(--fb);
+      font-size: 10pt;
+      font-weight: 700;
+      color: var(--ant);
+      margin-bottom: 1.5mm;
+    }
+    .crit-desc {
+      font-family: var(--fb);
+      font-size: 9pt;
+      line-height: 1.55;
+      color: var(--mid);
+    }
+
+    /* ═══════════════ SIGN ITEMS ═══════════════ */
+    .sign {
+      display: flex;
+      align-items: flex-start;
+      gap: 4mm;
+      padding: 5mm 0;
+      border-bottom: 0.5pt solid var(--ca-l);
+    }
+    .sign:last-child { border-bottom: none; }
+    .sign-num {
+      font-family: var(--ft);
+      font-size: 17pt;
+      font-weight: 700;
+      color: var(--tc);
+      min-width: 11mm;
+      text-align: center;
+      flex-shrink: 0;
+    }
+    .sign-title {
+      font-family: var(--fb);
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--ant);
+      margin-bottom: 2mm;
+    }
+    .sign-desc {
+      font-family: var(--fb);
+      font-size: 9.5pt;
+      line-height: 1.6;
+      color: var(--mid);
+    }
+
+    /* ═══════════════ CTA ═══════════════ */
+    .cta-wrap {
+      background: linear-gradient(135deg, var(--ant) 0%, #3D2214 100%);
+      min-height: 297mm;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 16mm 20mm;
+      text-align: center;
+    }
+    .cta-tag {
+      font-family: var(--fb);
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--ca);
+      margin-bottom: 6mm;
+    }
+    .cta-h1 {
+      font-family: var(--ft);
+      font-size: 28pt;
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 3mm;
+    }
+    .cta-sub {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 14pt;
+      color: var(--ca-l);
+      margin-bottom: 8mm;
+    }
+    .cta-rule { width: 16mm; height: 0.5mm; background: var(--ca); margin: 0 auto 8mm; }
+    .cta-body {
+      font-family: var(--fb);
+      font-size: 10pt;
+      line-height: 1.7;
+      color: rgba(255,255,255,0.75);
+      max-width: 130mm;
+      margin: 0 auto 10mm;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: var(--tc);
+      color: var(--white);
+      font-family: var(--fb);
+      font-size: 11pt;
+      font-weight: 700;
+      padding: 5mm 10mm;
+      border-radius: 7pt;
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      box-shadow: 0 4pt 18pt rgba(196,99,58,0.45);
+      margin-bottom: 10mm;
+    }
+    .cta-brand {
+      font-family: var(--ft);
+      font-style: italic;
+      font-size: 13pt;
+      color: var(--ca-l);
+      display: block;
+      margin-bottom: 1.5mm;
+    }
+    .cta-tl {
+      font-family: var(--fb);
+      font-size: 8pt;
+      color: rgba(237,217,178,0.5);
+      font-style: italic;
+    }
+
+    /* ═══════════════ CHECKLIST SECTION ═══════════════ */
+    .cl-section {
+      margin-bottom: 4mm;
+    }
+    .cl-section-title {
+      font-family: var(--fb);
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--tc);
+      padding: 2mm 3mm;
+      background: var(--tc-p);
+      border-left: 3pt solid var(--tc);
+      margin-bottom: 2.5mm;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 1 — COUVERTURE
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cover">
+    <div class="cover-top">
+      <span class="cover-tag">Guide Gratuit &nbsp;·&nbsp; Cap Solo</span>
+      <div class="cover-rule"></div>
+    </div>
+    <div class="cover-main">
+      <div class="cover-title">Les 7 destinations<br>parfaites pour ton<br>premier voyage solo</div>
+      <div class="cover-sub">après 50 ans</div>
+      <div class="cover-accent"></div>
+      <div class="cover-details">Sécurité &nbsp;·&nbsp; Hébergements &nbsp;·&nbsp; Itinéraires &nbsp;·&nbsp; Budgets</div>
+    </div>
+    <div class="cover-bottom">
+      <span class="cover-brand">Cap Solo</span>
+      <span class="cover-tagline">Parce que la liberté n'a pas d'âge.</span>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 2 — INTRODUCTION
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <span class="lbl">Introduction</span>
+    <div class="h1">Pourquoi voyager seule est la meilleure décision que tu puisses prendre</div>
+    <hr class="divider">
+
+    <div class="hook">
+      <p class="bi">Il y a ce moment où quelque chose bascule. Une rupture, une perte, une longue période difficile dont tu t'extirpes enfin. Ou simplement une maison qui s'est vidée et une question qui flotte : <em>et moi, maintenant, qu'est-ce que je veux ?</em></p>
+    </div>
+
+    <p class="b">Ce guide est né de cette question-là. Je l'ai vécue aussi — après une rééducation qui a duré un an et demi, puis le départ de mes enfants. J'avais besoin de prouver que ma vie m'appartenait encore. J'ai pris un billet d'avion. Seule.</p>
+
+    <p class="b">Voyager seule après 50 ans, c'est retrouver un truc rare : choisir. Choisir où tu vas, à quelle heure tu te lèves, ce que tu manges, combien de temps tu restes devant ce tableau dans le musée. Sans demander. Sans ajuster.</p>
+
+    <p class="b">Dans ce guide, j'ai sélectionné 7 destinations spécialement pensées pour un premier solo. Pas les plus exotiques. Les plus <em>adaptées</em> — sûres, accessibles, belles, et conçues pour que tu rentres en voulant recommencer.</p>
+
+    <blockquote class="quote">« Ce n'était pas que le voyage. C'était la preuve que ma vie m'appartenait encore. »</blockquote>
+  </div>
+  <div class="cp-foot"><span>2</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 3 — MÉTHODE DE SÉLECTION
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <span class="lbl">Méthode de sélection</span>
+    <div class="h1">Comment j'ai choisi ces 7 destinations</div>
+    <hr class="divider">
+    <p class="b">Toutes les destinations ne se valent pas quand on part solo pour la première fois. J'ai appliqué 4 critères stricts :</p>
+
+    <div style="margin-top:4mm;">
+      <div class="crit">
+        <div class="crit-num">01</div>
+        <div>
+          <div class="crit-title">Sécurité pour une femme seule</div>
+          <div class="crit-desc">Classement sécurité, retours d'expériences de femmes solos, infrastructure locale, densité touristique.</div>
+        </div>
+      </div>
+      <div class="crit">
+        <div class="crit-num">02</div>
+        <div>
+          <div class="crit-title">Facilité d'organisation</div>
+          <div class="crit-desc">Transports intuitifs, hébergements variés et disponibles, peu de barrières linguistiques, présence touristique établie.</div>
+        </div>
+      </div>
+      <div class="crit">
+        <div class="crit-num">03</div>
+        <div>
+          <div class="crit-title">Ambiance favorable aux solos</div>
+          <div class="crit-desc">Restaurants et cafés où manger seule est normal, hôtels avec espaces communs, culture de la rencontre.</div>
+        </div>
+      </div>
+      <div class="crit">
+        <div class="crit-num">04</div>
+        <div>
+          <div class="crit-title">Richesse de l'expérience</div>
+          <div class="crit-desc">Histoire, gastronomie, nature ou culture — quelque chose qui donne envie de revenir.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cp-foot"><span>3</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 4 — DESTINATION 01 : LISBONNE
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">01</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Lisbonne, Portugal</div>
+        <div class="dbadge-lbl">Coup de cœur débutante ⭐</div>
+      </div>
+    </div>
+
+    <p class="bi">Lisbonne est la destination que je recommande à toutes celles qui partent seules pour la première fois. Compacte, magnifique, et incroyablement accueillante.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">600–850 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">7 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Centre-ville entièrement praticable à pied ou en tram iconique</li>
+      <li>Portugais très chaleureux avec les voyageuses solos</li>
+      <li>Ambiance méditerranéenne sans la foule de Rome ou Barcelone</li>
+      <li>Restaurants avec comptoir ou bar — manger seule est parfaitement normal</li>
+      <li>Sécurité excellente, même la nuit dans le centre</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Alfama (authentique, panoramas), Bairro Alto (soirées, restaurants), Belém (monuments, pâtisseries), Príncipe Real (boutiques, jardins).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">Cherche des guesthouses avec salon commun dans Alfama ou Chiado — les hôtes portugais créent naturellement des espaces de rencontre. Évite les grandes chaînes.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Tram 28, Miradouro da Graça au coucher du soleil, Mosteiro dos Jerónimos, Musée du Fado, pasteis de nata à Belém, un soir de fado dans un petit restaurant de l'Alfama.</p>
+  </div>
+  <div class="cp-foot"><span>4</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 5 — DESTINATION 02 : SÉVILLE
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">02</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Séville, Espagne</div>
+        <div class="dbadge-lbl">Chaleur et flamenco</div>
+      </div>
+    </div>
+
+    <p class="bi">Séville est la ville la plus vivante de ce guide. Ville du flamenco, des orangers, de la gastronomie andalouse — et d'une énergie qui donne envie de rester.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">500–750 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">5–7 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Très sûre, très animée — tu ne seras jamais seule dans les rues</li>
+      <li>Culture de la tapa : parfaite pour manger seule au bar, comme tout le monde</li>
+      <li>Architecture éblouissante à chaque coin de rue</li>
+      <li>Transports excellents, très walkable</li>
+      <li>Espagnol de base suffit — les Sévillans adorent les touristes</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Santa Cruz (cœur historique), Triana (flamenco authentique, marché), El Arenal (cathédrale, Alcázar).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">Hôtels de charme dans Santa Cruz, souvent installés dans d'anciens palais avec patio intérieur. Le patio est le point de rencontre naturel.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Real Alcázar (réserver à l'avance), Catedral de Séville et la Giralda, Plaza de España, spectacle de flamenco à Triana, marché du matin.</p>
+  </div>
+  <div class="cp-foot"><span>5</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 6 — DESTINATION 03 : DUBROVNIK & CÔTE DALMATE
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">03</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Dubrovnik &amp; Côte Dalmate, Croatie</div>
+        <div class="dbadge-lbl">Mer, falaises et vieilles pierres</div>
+      </div>
+    </div>
+
+    <p class="bi">La Croatie combine ce que les voyageuses solos adorent : une mer cristalline, une histoire millénaire, et une infrastructure touristique tellement bien rodée que l'organisation devient un plaisir.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">650–900 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">7–10 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante–Inter.</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Vieille ville de Dubrovnik classée UNESCO — à couper le souffle</li>
+      <li>Ferries locaux pour explorer les îles : liberté totale</li>
+      <li>Population très habituée aux voyageurs solos</li>
+      <li>Sécurité parmi les meilleures d'Europe</li>
+      <li>Combine plage, culture et gastronomie sans effort</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Vieille ville de Dubrovnik (incontournable), île de Hvar (vivante), île de Korčula (calme et authentique), Split (architecture romaine).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">Petites pensions familiales (<em>sobe</em>) sur les îles — l'hébergement le plus chaleureux de ce guide. Les hôtes cuisinent souvent pour toi si tu le demandes.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Remparts de Dubrovnik au lever du soleil, ferry inter-îles, plages des îles Pakleni, vieille ville de Korčula, fruits de mer frais partout.</p>
+  </div>
+  <div class="cp-foot"><span>6</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 7 — DESTINATION 04 : FLORENCE
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">04</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Florence, Italie</div>
+        <div class="dbadge-lbl">Renaissance et gastronomie</div>
+      </div>
+    </div>
+
+    <p class="bi">Florence est la destination pour celles qui veulent s'offrir quelque chose de beau. Art, architecture, gastronomie — chaque heure est un cadeau.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">700–1 000 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">5–7 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>La plus belle concentration d'art au monde sur une surface walkable</li>
+      <li>Culture italienne du café : parfaite pour s'installer seule et observer</li>
+      <li>Trattorie avec tables communes — idéales pour rencontrer d'autres voyageurs</li>
+      <li>Très bien desservie en transports depuis toute l'Europe</li>
+      <li>Taille humaine : tout se fait à pied</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Oltrarno (authentique, moins touristique), Santa Croce (local), San Marco (musées), ateliers d'artisans dans les ruelles.</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">B&amp;B dans les quartiers résidentiels plutôt que les grandes chaînes du centre — tu rencontreras des locaux et auras des conseils inestimables.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Galerie des Offices (réserver longtemps à l'avance), David de Michel-Ange, Piazzale Michelangelo au coucher du soleil, marché de San Lorenzo, tour de vélo dans les collines du Chianti.</p>
+  </div>
+  <div class="cp-foot"><span>7</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 8 — DESTINATION 05 : NAXOS / MILOS
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">05</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Naxos ou Milos, Grèce</div>
+        <div class="dbadge-lbl">Le secret des connaisseurs</div>
+      </div>
+    </div>
+
+    <p class="bi">Oublie Santorin bondé et hors de prix. Naxos et Milos offrent la vraie Grèce : authentique, abordable, et tellement belle qu'on comprend pourquoi les anciens en ont fait le berceau des dieux.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">600–850 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">7 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Beaucoup moins de monde que Santorin ou Mykonos</li>
+      <li>Habitants chaleureux qui ont gardé leur mode de vie</li>
+      <li>Location de scooter ou quad : liberté totale pour explorer</li>
+      <li>Plages parmi les plus belles d'Europe</li>
+      <li>Prix raisonnables comparés aux îles trop connues</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b"><strong>Naxos :</strong> Chora (capitale), villages de montagne, plages d'Agios Prokopios. <strong>Milos :</strong> Plaka (village blanc perché), plage de Sarakiniko (paysage lunaire).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">Petits hôtels familiaux dans les villages. Cherche des maisons cyclades traditionnelles — souvent gérées par des femmes qui adorent accueillir les voyageuses solos.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Plage de Sarakiniko (Milos), villages de montagne de Naxos, coucher de soleil depuis Plaka (Milos), marché local le matin.</p>
+  </div>
+  <div class="cp-foot"><span>8</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 9 — DESTINATION 06 : PRAGUE
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">06</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Prague, République Tchèque</div>
+        <div class="dbadge-lbl">Le meilleur rapport qualité-expérience</div>
+      </div>
+    </div>
+
+    <p class="bi">Prague est la destination idéale si ton budget est une contrainte. Elle offre une beauté architecturale exceptionnelle, une infrastructure touristique parfaite, et des prix qui font sourire.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">400–600 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">4–5 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Débutante</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Transports en commun excellents et très économiques</li>
+      <li>Ville très sûre, très touristique — jamais isolée</li>
+      <li>Architecture de conte de fées : Vieille Ville, Château, Pont Charles</li>
+      <li>Restaurants et cafés de qualité à des prix très accessibles</li>
+      <li>Courte durée de vol depuis la plupart des villes françaises</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Staré Město (Vieille Ville, incontournable), Malá Strana (sous le château, romantique), Vinohrady (résidentiel, local et sympa).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b">Boutique hôtels dans Malá Strana ou Vinohrady — meilleur rapport qualité/prix d'Europe. Évite les auberges de jeunesse du centre, souvent bruyantes.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Pont Charles au lever du soleil (avant les touristes), Château de Prague, Vieille Ville et l'Horloge astronomique, quartier juif, concert de musique classique le soir.</p>
+  </div>
+  <div class="cp-foot"><span>9</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 10 — DESTINATION 07 : MARRAKECH
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <div class="dbadge">
+      <div class="dbadge-num">07</div>
+      <div class="dbadge-info">
+        <div class="dbadge-name">Marrakech, Maroc</div>
+        <div class="dbadge-lbl">Pour celles qui veulent pimenter leur solo</div>
+      </div>
+    </div>
+
+    <p class="bi">Marrakech est dans une catégorie à part. Dépaysement total, couleurs, odeurs, architecture — une expérience sensorielle unique. Avec les bons réflexes, c'est une destination accessible et inoubliable.</p>
+
+    <div class="irow">
+      <div class="irow-item"><span class="irow-lbl">Budget / 7 jours</span><span class="irow-val">500–700 €</span></div>
+      <div class="irow-item"><span class="irow-lbl">Durée idéale</span><span class="irow-val">5–7 jours</span></div>
+      <div class="irow-item"><span class="irow-lbl">Niveau</span><span class="irow-val">Intermédiaire</span></div>
+    </div>
+
+    <div class="h3">Pourquoi c'est parfait pour un premier solo</div>
+    <ul class="blist">
+      <li>Dépaysement maximal à 3h de vol de Paris</li>
+      <li>Riads — hébergements traditionnels — parmi les plus beaux au monde</li>
+      <li>Gastronomie extraordinaire : tajines, pastilla, mint tea</li>
+      <li>Médina classée UNESCO, souks labyrinthiques</li>
+      <li>Communauté de voyageuses solos très active — facile de trouver des conseils</li>
+    </ul>
+
+    <div class="h3">Quartiers recommandés</div>
+    <p class="b">Médina (vieux Marrakech, incontournable), Guéliz (ville moderne, plus détendu), Palmeraie (excursions).</p>
+
+    <div class="h3">Hébergement</div>
+    <p class="b"><strong>Indispensable :</strong> réserve un riad bien noté, avec hôte réactif. Les riads sont des havres de paix après l'intensité de la médina. Lis les avis spécifiques aux femmes solos.</p>
+
+    <div class="h3">À ne pas manquer</div>
+    <p class="b">Place Jemaa el-Fna (mais reste groupée le soir), souks le matin (plus calme), Jardins Majorelle, hammam dans ton riad, excursion d'une journée dans l'Atlas.</p>
+
+    <div class="secbox">
+      <div class="secbox-icon">!</div>
+      <div class="secbox-body">
+        <strong>Conseils sécurité spécifiques — Marrakech</strong>
+        Évite de te promener seule dans la médina après 21h. Porte des vêtements couvrant épaules et genoux dans les quartiers religieux. Fixe les prix avant tout achat dans les souks. Utilise des taxis officiels (petits taxis rouges avec compteur). Ne suis jamais un inconnu qui propose de te montrer le chemin.
+      </div>
+    </div>
+  </div>
+  <div class="cp-foot"><span>10</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 11 — CHECKLIST AVANT DE PARTIR
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <span class="lbl">Checklist</span>
+    <div class="h1">Avant de partir — ta liste complète</div>
+    <hr class="divider">
+    <p class="b">Imprime cette liste et coche chaque point avant de boucler ta valise. Ce sont les essentiels que j'aurais voulu avoir pour mon premier solo.</p>
+
+    <div class="cl-section" style="margin-top:4mm;">
+      <div class="cl-section-title">Documents &amp; administration</div>
+      <ul class="clist">
+        <li>Passeport / carte d'identité valide (vérifier la date d'expiration)</li>
+        <li>Copie numérique de tous tes documents (Drive ou email à toi-même)</li>
+        <li>Copie papier dans un endroit séparé de l'original</li>
+        <li>Assurance voyage avec assistance rapatriement</li>
+        <li>Numéros d'urgence du pays de destination sauvegardés</li>
+      </ul>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">Sécurité &amp; communication</div>
+      <ul class="clist">
+        <li>Partager ton itinéraire complet avec 2 personnes de confiance</li>
+        <li>Mémoriser l'adresse de ton hébergement (pas juste sur le téléphone)</li>
+        <li>Application Maps.me téléchargée hors ligne</li>
+        <li>Pochette anti-RFID pour passeport et carte bancaire</li>
+        <li>Batterie externe chargée</li>
+      </ul>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">Hébergement &amp; logistique</div>
+      <ul class="clist">
+        <li>Première nuit d'hébergement confirmée avant de partir</li>
+        <li>Vérifier les horaires de check-in de ton hébergement</li>
+        <li>Avoir du cash local pour les premiers échanges</li>
+        <li>Prévenir ta banque de tes dates et destination (évite les blocages)</li>
+        <li>Numéro de taxi ou transport fiable noté à l'avance</li>
+      </ul>
+    </div>
+
+    <div class="cl-section">
+      <div class="cl-section-title">Confort &amp; tranquillité d'esprit</div>
+      <ul class="clist">
+        <li>Liste des restaurants / cafés notés à l'avance (pour ne pas errer affamée)</li>
+        <li>1 activité réservée à l'avance (musée, visite guidée) — te donne une ancre</li>
+        <li>Tenue adaptée aux us locaux (épaules couvertes si pays musulman, etc.)</li>
+        <li>Bouchons d'oreilles + masque de sommeil</li>
+        <li>Cahier ou notes sur ton téléphone pour capturer tes impressions</li>
+      </ul>
+    </div>
+  </div>
+  <div class="cp-foot"><span>11</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 12 — BONUS HÉBERGEMENTS
+════════════════════════════════════════════════════════ -->
+<div class="page cp">
+  <div class="cp-head">
+    <span class="brand">Cap Solo</span>
+    <span class="gtitle">Les 7 destinations pour ton premier voyage solo</span>
+  </div>
+  <div class="cp-body">
+    <span class="lbl">Bonus</span>
+    <div class="h1">Comment choisir un hébergement solo-friendly</div>
+    <hr class="divider">
+    <p class="b">L'hébergement fait 40 % de ton expérience solo. Un bon choix = des rencontres, une sécurité, et un cocon où décompresser. Voici les 3 signes qui ne trompent pas.</p>
+
+    <div style="margin-top:5mm;">
+      <div class="sign">
+        <div class="sign-num">01</div>
+        <div>
+          <div class="sign-title">Un espace commun mentionné dans les avis</div>
+          <div class="sign-desc">Salon, terrasse, cuisine commune, salle du petit-déjeuner conviviale — ces espaces sont les lieux de rencontre naturels. Cherche les mots "salon", "terrasse", "communauté", "ambiance" dans les commentaires Booking ou Airbnb.</div>
+        </div>
+      </div>
+      <div class="sign">
+        <div class="sign-num">02</div>
+        <div>
+          <div class="sign-title">La mention "parfait pour les voyageurs solos"</div>
+          <div class="sign-desc">Certains hébergements le mentionnent explicitement dans leur description ou dans les avis. Ce sont ceux qui ont compris. Filtre sur Booking.com : "voyageur solo" dans la barre de recherche des avis.</div>
+        </div>
+      </div>
+      <div class="sign">
+        <div class="sign-num">03</div>
+        <div>
+          <div class="sign-title">Un hôte qui répond personnellement</div>
+          <div class="sign-desc">Si l'hôte répond à chaque avis avec un message personnalisé (pas un copier-coller), c'est bon signe. Ça signifie qu'il est présent, attentionné, et que tu auras quelqu'un à qui parler si besoin.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="cp-foot"><span>12</span></div>
+</div>
+
+<!-- ════════════════════════════════════════════════════════
+     PAGE 13 — MOT DE FIN + CTA
+════════════════════════════════════════════════════════ -->
+<div class="page">
+  <div class="cta-wrap">
+    <div class="cta-tag">La prochaine étape</div>
+    <div class="cta-h1">Tu as le guide.<br>Maintenant, tu pars.</div>
+    <div class="cta-sub">La seule vraie décision, c'est la date.</div>
+    <div class="cta-rule"></div>
+    <p class="cta-body">Si tu veux aller plus loin — une méthode complète, des hébergements validés, les scripts pour répondre à ta famille, et une préparation mentale en 14 jours — je t'ai tout mis dans <strong style="color:var(--ca-l)">Mon Premier Solo</strong>.</p>
+    <a href="[LIEN_PAIEMENT]" class="cta-btn">→ Découvrir Mon Premier Solo — 67 €</a>
+    <span class="cta-brand">Cap Solo</span>
+    <span class="cta-tl">Parce que la liberté n'a pas d'âge.</span>
+  </div>
+</div>
+
+</body>
+</html>

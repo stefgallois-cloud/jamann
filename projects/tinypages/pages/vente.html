@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Premier Solo — Le programme complet · Cap Solo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --cream: #FAF7F2;
+      --terracotta: #C4633A;
+      --terracotta-light: #d97a54;
+      --terracotta-pale: #F5E8DF;
+      --caramel: #D4A66A;
+      --caramel-light: #EDD9B2;
+      --anthracite: #2C2C2C;
+      --anthracite-mid: #5A5A5A;
+      --white: #FFFFFF;
+      --font-title: 'Playfair Display', Georgia, serif;
+      --font-body: 'Lato', system-ui, sans-serif;
+      --shadow: 0 4px 24px rgba(44,44,44,0.08);
+      --radius: 16px;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--anthracite); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+
+    .container { max-width: 760px; margin: 0 auto; padding: 0 1.5rem; }
+    .container-wide { max-width: 1000px; margin: 0 auto; padding: 0 1.5rem; }
+
+    /* ── HERO ── */
+    .hero {
+      background: linear-gradient(160deg, var(--anthracite) 0%, #3D2214 100%);
+      padding: 5rem 1.5rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: rgba(196,99,58,0.15);
+      border-radius: 50%;
+    }
+    .hero-inner { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--caramel-light);
+      border: 1.5px solid rgba(212,166,106,0.5);
+      border-radius: 999px;
+      padding: 0.35rem 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-title);
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--caramel-light); }
+
+    .hero p {
+      font-size: 1.1rem; color: rgba(255,255,255,0.75);
+      font-weight: 300; max-width: 560px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .btn-hero {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--terracotta), #A8522A);
+      color: var(--white);
+      font-size: 1.05rem; font-weight: 700;
+      padding: 1.1rem 2.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      box-shadow: 0 6px 24px rgba(196,99,58,0.45);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-hero:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(196,99,58,0.5); }
+
+    .price-hero {
+      display: inline-block;
+      font-size: 0.88rem;
+      color: rgba(255,255,255,0.5);
+      margin-top: 1rem;
+    }
+    .price-hero strong { color: var(--caramel-light); font-size: 1.1rem; }
+
+    /* ── SECTION DOULEUR ── */
+    .section-douleur {
+      background: var(--white);
+      padding: 4.5rem 1.5rem;
+    }
+
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-douleur h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--anthracite);
+      margin-bottom: 2rem;
+      line-height: 1.25;
+    }
+
+    .douleur-list {
+      list-style: none;
+      display: flex; flex-direction: column; gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .douleur-list li {
+      display: flex; align-items: flex-start; gap: 1rem;
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.1rem 1.25rem;
+      font-size: 1rem;
+      color: var(--anthracite);
+    }
+    .douleur-list li::before {
+      content: '→';
+      color: var(--terracotta);
+      font-weight: 700;
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+
+    .douleur-conclusion {
+      font-family: var(--font-title);
+      font-style: italic;
+      font-size: 1.15rem;
+      color: var(--terracotta);
+      border-left: 3px solid var(--caramel);
+      padding-left: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ── TRANSFORMATION ── */
+    .section-transfo {
+      padding: 4.5rem 1.5rem;
+      background: var(--cream);
+    }
+
+    .transfo-inner { max-width: 760px; margin: 0 auto; }
+
+    .transfo-inner h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--anthracite);
+      margin-bottom: 2.5rem;
+      line-height: 1.25;
+    }
+
+    .transfo-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 0;
+    }
+    @media (min-width: 600px) {
+      .transfo-grid { grid-template-columns: 1fr auto 1fr; align-items: center; }
+    }
+
+    .transfo-col {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 2rem;
+      box-shadow: var(--shadow);
+    }
+    .transfo-col.before { border-top: 3px solid #D0CBCA; }
+    .transfo-col.after  { border-top: 3px solid var(--terracotta); }
+
+    .transfo-col-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+    .before .transfo-col-label { color: #9A9187; }
+    .after  .transfo-col-label { color: var(--terracotta); }
+
+    .transfo-col p { font-size: 0.95rem; color: var(--anthracite-mid); line-height: 1.65; }
+    .after .transfo-col p { color: var(--anthracite); }
+
+    .transfo-arrow {
+      font-size: 2rem;
+      color: var(--caramel);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    /* ── CE QUE TU OBTIENS ── */
+    .section-programme {
+      background: var(--anthracite);
+      padding: 5rem 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .section-programme::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 500px; height: 500px;
+      background: rgba(196,99,58,0.08);
+      border-radius: 50%;
+    }
+
+    .section-programme .section-label { color: var(--caramel-light); }
+
+    .section-programme h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 0.5rem;
+      line-height: 1.2;
+    }
+    .programme-sub {
+      font-size: 1rem; color: rgba(255,255,255,0.6);
+      margin-bottom: 3rem;
+    }
+
+    .programme-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    @media (min-width: 600px) {
+      .programme-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .programme-item {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .programme-item:hover { background: rgba(255,255,255,0.10); }
+
+    .prog-check {
+      width: 28px; height: 28px; flex-shrink: 0;
+      background: var(--terracotta);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.75rem; color: var(--white); font-weight: 700;
+    }
+
+    .prog-text h3 {
+      font-family: var(--font-body); font-weight: 700;
+      font-size: 0.95rem; color: var(--white);
+      margin-bottom: 0.3rem;
+    }
+    .prog-text p {
+      font-size: 0.85rem; color: rgba(255,255,255,0.6);
+      line-height: 1.5;
+    }
+
+    .prix-block {
+      background: rgba(196,99,58,0.15);
+      border: 1px solid rgba(196,99,58,0.3);
+      border-radius: var(--radius);
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    .prix-label { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-bottom: 0.5rem; letter-spacing: 0.1em; text-transform: uppercase; }
+    .prix-valeur { font-size: 0.9rem; color: rgba(255,255,255,0.4); text-decoration: line-through; margin-bottom: 0.4rem; }
+    .prix-principal {
+      font-family: var(--font-title);
+      font-size: 3.5rem; font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+    .prix-detail { font-size: 0.85rem; color: rgba(255,255,255,0.5); margin-bottom: 2rem; }
+
+    .btn-cta {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--terracotta), #A8522A);
+      color: var(--white);
+      font-size: 1.05rem; font-weight: 700;
+      padding: 1.1rem 2.4rem;
+      border-radius: 10px;
+      text-decoration: none;
+      width: 100%;
+      justify-content: center;
+      box-shadow: 0 6px 24px rgba(196,99,58,0.5);
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 32px rgba(196,99,58,0.55); }
+
+    /* ── TÉMOIGNAGES ── */
+    .section-temoignages {
+      background: var(--white);
+      padding: 5rem 1.5rem;
+    }
+    .section-temoignages h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--anthracite);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .section-temoignages h2 em { font-style: italic; color: var(--terracotta); }
+
+    .temoignages-grid {
+      display: grid; grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    @media (min-width: 600px) { .temoignages-grid { grid-template-columns: 1fr 1fr 1fr; } }
+
+    .temoignage-card {
+      background: var(--cream);
+      border-radius: var(--radius);
+      padding: 1.75rem;
+      border-bottom: 3px solid var(--terracotta-pale);
+    }
+    .stars { color: var(--caramel); font-size: 0.85rem; margin-bottom: 0.75rem; }
+    .temoignage-text {
+      font-family: var(--font-title);
+      font-style: italic;
+      font-size: 0.97rem;
+      color: var(--anthracite);
+      line-height: 1.65;
+      margin-bottom: 1.25rem;
+    }
+    .temoignage-author { font-weight: 700; font-size: 0.85rem; color: var(--anthracite); }
+    .temoignage-author span { font-weight: 400; color: var(--anthracite-mid); display: block; font-size: 0.8rem; }
+
+    /* ── FAQ ── */
+    .section-faq {
+      padding: 5rem 1.5rem;
+      background: var(--cream);
+    }
+    .section-faq h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+      color: var(--anthracite);
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .faq-list { display: flex; flex-direction: column; gap: 1rem; }
+
+    .faq-item {
+      background: var(--white);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 12px rgba(44,44,44,0.05);
+    }
+    .faq-item h3 {
+      font-family: var(--font-body); font-weight: 700;
+      font-size: 1rem; color: var(--anthracite);
+      margin-bottom: 0.6rem;
+    }
+    .faq-item p { font-size: 0.95rem; color: var(--anthracite-mid); line-height: 1.65; }
+
+    /* ── GARANTIE ── */
+    .section-garantie {
+      background: var(--terracotta-pale);
+      padding: 4rem 1.5rem;
+      text-align: center;
+    }
+    .garantie-inner { max-width: 560px; margin: 0 auto; }
+    .garantie-icon { font-size: 3rem; margin-bottom: 1.25rem; }
+    .garantie-inner h2 {
+      font-family: var(--font-title);
+      font-size: 1.6rem;
+      color: var(--anthracite);
+      margin-bottom: 0.75rem;
+    }
+    .garantie-inner p { font-size: 0.97rem; color: var(--anthracite-mid); line-height: 1.7; }
+
+    /* ── CTA FINAL ── */
+    .section-cta-final {
+      background: linear-gradient(160deg, var(--anthracite) 0%, #3D2214 100%);
+      padding: 5rem 1.5rem;
+      text-align: center;
+    }
+    .cta-final-inner { max-width: 600px; margin: 0 auto; }
+    .cta-final-inner h2 {
+      font-family: var(--font-title);
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--white);
+      margin-bottom: 0.75rem;
+      line-height: 1.2;
+    }
+    .cta-final-inner h2 em { font-style: italic; color: var(--caramel-light); }
+    .cta-final-inner p { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 2.5rem; }
+    .cta-reassurance { font-size: 0.82rem; color: rgba(255,255,255,0.35); margin-top: 1rem; }
+
+    /* ── FOOTER ── */
+    footer { background: #1A1A1A; padding: 2rem 1.5rem; text-align: center; }
+    footer p { font-size: 0.82rem; color: rgba(255,255,255,0.3); }
+    footer strong { font-family: var(--font-title); font-style: italic; color: rgba(255,255,255,0.5); }
+    footer a { color: rgba(255,255,255,0.4); text-decoration: none; }
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Programme complet</span>
+      <h1>Tu mérites un voyage<br><em>à toi.</em></h1>
+      <p>Pas un groupe, pas un guide, pas quelqu'un pour décider à ta place.<br>Mon Premier Solo — le programme pour organiser ton premier voyage solo après 50 ans.</p>
+      <a href="#programme" class="btn-hero">Je veux Mon Premier Solo →</a>
+      <p class="price-hero">Accès immédiat · <strong>67 €</strong> · Garantie 30 jours</p>
+    </div>
+  </section>
+
+  <!-- DOULEUR -->
+  <section class="section-douleur">
+    <div class="container">
+      <span class="section-label">Tu te reconnais dans ça ?</span>
+      <h2>Ce qui t'empêche de partir</h2>
+      <ul class="douleur-list">
+        <li>Tu repousses ce voyage depuis des années parce que l'organisation te dépasse</li>
+        <li>Tu as peur de manger seule au restaurant, de sembler "pitoyable"</li>
+        <li>Tes proches ne comprennent pas et te découragent sans le vouloir</li>
+        <li>Tu sors d'une longue période difficile — maladie, rééducation — et tu réalises que tu n'as jamais voyagé pour toi</li>
+        <li>Tes enfants ont quitté la maison et pour la première fois tu te demandes : et moi, qu'est-ce que je veux ?</li>
+        <li>Tu veux partir mais tu ne sais pas par où commencer — et ça te bloque</li>
+      </ul>
+      <p class="douleur-conclusion">Tu n'es pas seule. Et tu n'as pas tort de vouloir ça.</p>
+    </div>
+  </section>
+
+  <!-- TRANSFORMATION -->
+  <section class="section-transfo">
+    <div class="transfo-inner">
+      <span class="section-label">Ce que Mon Premier Solo change</span>
+      <h2>Avant. Après.</h2>
+      <div class="transfo-grid">
+        <div class="transfo-col before">
+          <p class="transfo-col-label">Avant</p>
+          <p>Tu rêves d'un voyage mais tu t'auto-censures. L'organisation te dépasse, la peur du regard des autres te paralyse. Et chaque année qui passe, le projet reste dans ta tête.</p>
+        </div>
+        <div class="transfo-arrow" aria-hidden="true">→</div>
+        <div class="transfo-col after">
+          <p class="transfo-col-label">Après</p>
+          <p>Tu as un itinéraire concret, les bons hébergements réservés, et tu pars avec une confiance que tu ne savais pas avoir. Et tu rentres en voulant recommencer.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section class="section-programme" id="programme">
+    <div class="container-wide">
+      <span class="section-label">Le contenu complet</span>
+      <h2>Mon Premier Solo</h2>
+      <p class="programme-sub">Tout ce dont tu as besoin pour organiser ton premier voyage solo, de A à Z.</p>
+
+      <div class="programme-grid">
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>Les destinations validées</h3>
+            <p>25 destinations solo-friendly pour les 50+, avec niveau, budget et durée idéale</p>
+          </div>
+        </div>
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>La méthode d'organisation</h3>
+            <p>Comment construire un itinéraire pas à pas, sans agence, sans se perdre</p>
+          </div>
+        </div>
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>La liste d'hébergements de confiance</h3>
+            <p>Hôtels, guesthouses et appartements recommandés pour femmes voyageant seules</p>
+          </div>
+        </div>
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>Les scripts prêts à l'emploi</h3>
+            <p>Comment répondre à la famille, commander au restaurant, engager la conversation</p>
+          </div>
+        </div>
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>Le journal de préparation mentale</h3>
+            <p>14 jours d'exercices pour partir avec confiance, pas avec peur</p>
+          </div>
+        </div>
+        <div class="programme-item">
+          <div class="prog-check">✓</div>
+          <div class="prog-text">
+            <h3>Communauté privée "Cap Solo"</h3>
+            <p>Des femmes qui se lancent, s'encouragent et partagent leurs bons plans</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="prix-block">
+        <p class="prix-label">Programme complet</p>
+        <p class="prix-valeur">Valeur estimée : 347 €</p>
+        <p class="prix-principal">67 €</p>
+        <p class="prix-detail">Accès à vie · Mises à jour incluses · Accès immédiat</p>
+        <a href="[LIEN_PAIEMENT]" class="btn-cta">Je rejoins Mon Premier Solo — 67 € →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TÉMOIGNAGES -->
+  <section class="section-temoignages">
+    <div class="container-wide">
+      <h2>Elles avaient les mêmes peurs <em>que toi</em></h2>
+      <div class="temoignages-grid">
+        <div class="temoignage-card">
+          <div class="stars">★★★★★</div>
+          <p class="temoignage-text">"J'avais peur d'avoir l'air ridicule à 58 ans à voyager seule. Maintenant je plains ceux qui ne l'ont pas encore fait."</p>
+          <p class="temoignage-author">Véronique<span>58 ans · Retour de Grèce solo</span></p>
+        </div>
+        <div class="temoignage-card">
+          <div class="stars">★★★★★</div>
+          <p class="temoignage-text">"Le journal de préparation mentale m'a changée avant même de partir. Je ne pensais pas que voyager seule était pour moi. J'avais tort."</p>
+          <p class="temoignage-author">Dominique<span>62 ans · Premier solo en Italie</span></p>
+        </div>
+        <div class="temoignage-card">
+          <div class="stars">★★★★★</div>
+          <p class="temoignage-text">"La liste d'hébergements m'a sauvé des heures de recherche et d'angoisse. Je savais exactement où j'allais dormir en sécurité."</p>
+          <p class="temoignage-author">Anne-Sophie<span>55 ans · Premier solo à Prague</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-faq">
+    <div class="container">
+      <h2>Questions fréquentes</h2>
+      <div class="faq-list">
+        <div class="faq-item">
+          <h3>Est-ce que c'est fait pour moi si je n'ai JAMAIS voyagé seule ?</h3>
+          <p>Oui, c'est exactement pour ça que ce programme existe. Tout commence de zéro. Pas de prérequis, pas d'expérience nécessaire.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Est-ce que ça marche si j'ai un budget limité ?</h3>
+          <p>Oui — il y a des destinations pour tous les budgets. Le programme inclut des options à partir de 400 € pour 5 jours. Le voyage solo n'est pas réservé aux voyages luxe.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Je ne suis pas très à l'aise avec les outils numériques.</h3>
+          <p>Le programme est accessible depuis n'importe quel appareil, smartphone inclus. Format simple, aucune compétence technique requise.</p>
+        </div>
+        <div class="faq-item">
+          <h3>Et si ça ne me convient pas ?</h3>
+          <p>Garantie satisfaite ou remboursée 30 jours. Tu envoies un email, tu es remboursée intégralement. Sans question, sans justification.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GARANTIE -->
+  <section class="section-garantie">
+    <div class="garantie-inner">
+      <div class="garantie-icon" aria-hidden="true">🛡️</div>
+      <h2>Garantie 30 jours — satisfaite ou remboursée</h2>
+      <p>Si dans 30 jours tu n'as pas commencé à organiser ton voyage, je te rembourse intégralement. Tu ne prends aucun risque. La seule chose que tu risques, c'est de ne plus avoir d'excuse pour ne pas partir.</p>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section class="section-cta-final">
+    <div class="cta-final-inner">
+      <h2>Tu mérites ce voyage.<br><em>Maintenant.</em></h2>
+      <p>Pas dans 5 ans. Pas quand les enfants sont casés. Pas quand tu auras "le temps". Maintenant.</p>
+      <a href="[LIEN_PAIEMENT]" class="btn-cta" style="display:inline-flex;">Je rejoins Mon Premier Solo — 67 € →</a>
+      <p class="cta-reassurance">🔒 Paiement sécurisé · Accès immédiat · Garantie 30 jours</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>Cap Solo</strong> — Parce que la liberté n'a pas d'âge.<br>
+    Questions ? <a href="mailto:contact@cap-solo.fr">contact@cap-solo.fr</a></p>
+  </footer>
+
+</body>
+</html>
