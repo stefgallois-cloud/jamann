@@ -60,27 +60,30 @@ NEWSLETTERS = [
             "On ne va pas se mentir : on trépigne d'impatience à l'idée de vous accueillir au Manoïre, "
             "notre repaire tout neuf au Col de Jaman, perché au-dessus de Montreux avec une vue sur le lac "
             "qui donne envie de tout quitter. Et on n'est pas les seuls — Anouck, notre Saint-Bernard maison, "
-            "qui avait débarqué ici toute chiot il y a quelques mois, s'apprête à faire son grand retour. "
-            "Double homecoming, double émotion.",
+            "est déjà là, bien installée au Col, à surveiller les travaux de près. "
+            "Certains chiens gardent la maison. Elle, elle garde le chantier.",
             "D'ici quelques semaines, la magie opère : cuisine créative, terroir du Chablais, et une équipe "
             "au sommet (littéralement) prête à vous chouchouter après vos randonnées. Restez connectés — "
             "on a encore des surprises dans les cartons…",
         ],
-        "ps": "PS : Un Bon Cadeau Fondateur avec 15% de remise pointe bientôt le bout de son museau. Anouck valide.",
-        "cta": "👉  Suivez l'aventure : www.lemanoire-jaman.ch",
+        "ps": None,
+        "cta": [
+            "📸  Instagram : instagram.com/le_manoire_jaman",
+            "👍  Facebook : facebook.com/profile.php?id=61580550474258",
+        ],
     },
     {
         "num": "2", "title": "Les Coulisses Gourmandes",
         "accroche": "On vous révèle (presque) tous nos secrets !",
         "paragraphs": [
-            "Vous vous demandez ce qui mijote derrière les portes du Manoïre ? Entre fromages affinés du Chablais, "
+            "Vous vous demandez ce qui mijote derrière les portes du Manoïre ? Entre fromages affinés des Préalpes vaudoises, "
             "herbes cueillies sur les hauteurs et fournisseurs locaux qu'on connaît par leur prénom, on construit "
             "quelque chose de vraiment ancré dans ce coin de montagne. Le chef chante faux, mais avec une passion "
             "totalement assumée.",
             "Et Anouck ? Elle supervise. Elle goûte. Elle donne son avis (non-verbal mais très expressif). "
             "Pour elle, un bon plat ça se sent — au sens propre.",
         ],
-        "ps": "Le Bon Cadeau Fondateur arrive… patience, randonneurs !",
+        "ps": "Le Bon Cadeau Le Manoïre arrive… patience, randonneurs !",
         "cta": "👉  www.lemanoire-jaman.ch",
     },
     {
@@ -88,26 +91,27 @@ NEWSLETTERS = [
         "accroche": "C'est officiel, la date approche !",
         "paragraphs": [
             "Notez-le dans vos agendas, programmez une alerte, gravez-le dans la roche du Col si nécessaire : "
-            "l'ouverture du Manoïre, c'est fin juin. On astique les verres, on finalise la carte, et Anouck fait "
+            "l'ouverture du Manoïre, c'est pour début juillet. La date exacte arrive très bientôt — et vous serez "
+            "les premiers à en être informés, promis. On astique les verres, on finalise la carte, et Anouck fait "
             "ses valises depuis une semaine (elle est très organisée pour une Saint-Bernard).",
             "Le Col de Jaman vous attend — sentiers de randonnée, vue imprenable sur le Léman, et une table où "
             "souffler après l'effort. C'est ça, le programme parfait.",
         ],
-        "ps": "Le Bon Cadeau Fondateur est en route… encore un peu de patience !",
+        "ps": "Le Bon Cadeau Le Manoïre est en route… encore un peu de patience !",
         "cta": "👉  Réservez votre table dès l'ouverture : www.lemanoire-jaman.ch",
     },
     {
         "num": "4", "title": "Le Bon Cadeau Magique (15% off)",
         "accroche": "Le cadeau parfait existe (et il est en promo) !",
         "paragraphs": [
-            "C'est le moment de craquer — pour vous ou pour offrir. Notre Bon Cadeau Fondateur est disponible "
-            "avec 15% de remise pour fêter l'ouverture du Manoïre. Parfait pour les amateurs de montagne qui "
+            "C'est le moment de craquer — pour vous ou pour offrir. Notre Bon Cadeau Le Manoïre est disponible "
+            "avec 15% de remise pour fêter l'ouverture. Parfait pour les amateurs de montagne qui "
             "méritent une bonne table après une journée sur les sentiers des Rochers de Naye ou du Tour du Lac. "
             "Parfait aussi pour tous ceux qui cherchent un cadeau original cet été.",
             "Quantités limitées — Anouck garde un œil sur le compteur.",
         ],
         "ps": None,
-        "cta": "👉  Bon Cadeau Fondateur — Le Manoïre, Col de Jaman : www.lemanoire-jaman.ch",
+        "cta": "👉  Bon Cadeau Le Manoïre — Col de Jaman : www.lemanoire-jaman.ch",
     },
     {
         "num": "5", "title": "Montreux, Manoïre et Vous",
@@ -115,12 +119,12 @@ NEWSLETTERS = [
         "paragraphs": [
             "Au Manoïre, on est convaincus que la meilleure cuisine, c'est celle qui raconte un lieu. Et ce lieu, "
             "c'est le Col de Jaman — porte d'entrée des Alpes vaudoises, point de départ de randonnées mythiques, "
-            "et belvédère naturel sur le lac Léman et les Alpes. Les producteurs du Chablais, les artisans de la "
+            "et belvédère naturel sur le lac Léman et les Alpes. Les producteurs des Préalpes vaudoises, les artisans de la "
             "région, les voisins du col : cette aventure, c'est la leur autant que la nôtre.",
             "Anouck, elle, est déjà convaincue. Elle connaît chaque sentier, chaque recoin, chaque odeur de "
             "fromage fondu qui monte de la cuisine.",
         ],
-        "ps": "Le Bon Cadeau Fondateur est toujours là pour les retardataires — 15% de remise, pas longtemps !",
+        "ps": "Le Bon Cadeau Le Manoïre est toujours là pour les retardataires — 15% de remise, pas longtemps !",
         "cta": "👉  www.lemanoire-jaman.ch",
     },
     {
@@ -132,7 +136,9 @@ NEWSLETTERS = [
             "— vue sur le Léman comprise.",
             "Après une randonnée sur les hauteurs ou simplement pour le plaisir d'une belle table en montagne, "
             "c'est le moment. Merci pour votre soutien, votre enthousiasme, et votre gourmandise.",
-            "Dernière chance pour profiter du Bon Cadeau Fondateur (15% de remise) :",
+            "Et ce n'est pas fini — une inauguration officielle est prévue prochainement. "
+            "On vous réserve une soirée à la hauteur du Col. Restez connectés.",
+            "Dernière chance pour profiter du Bon Cadeau Le Manoïre (15% de remise) :",
         ],
         "ps": None,
         "cta": "👉  www.lemanoire-jaman.ch",
@@ -202,7 +208,12 @@ for nl in NEWSLETTERS:
         block.append(Paragraph(p, S_BODY))
     if nl["ps"]:
         block.append(Paragraph(nl["ps"], S_PS))
-    block.append(Paragraph(nl["cta"], S_CTA))
+    cta = nl["cta"]
+    if isinstance(cta, list):
+        for c in cta:
+            block.append(Paragraph(c, S_CTA))
+    else:
+        block.append(Paragraph(cta, S_CTA))
     block.append(HRFlowable(width="100%", thickness=0.5, color=PIERRE, spaceAfter=4))
 
     story.append(KeepTogether(block[:3]))   # titre + accroche ensemble

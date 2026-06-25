@@ -74,21 +74,23 @@ const newsletters = [
     accroche: "Le Manoïre ouvre bientôt ses portes… et vous êtes sur la liste VIP !",
     paragraphs: [
       "Chers amis gourmands,",
-      "On ne va pas se mentir : on trépigne d'impatience à l'idée de vous accueillir au Manoïre, notre repaire tout neuf au Col de Jaman, perché au-dessus de Montreux avec une vue sur le lac qui donne envie de tout quitter. Et on n'est pas les seuls — Anouck, notre Saint-Bernard maison, qui avait débarqué ici toute chiot il y a quelques mois, s'apprête à faire son grand retour. Double homecoming, double émotion.",
+      "On ne va pas se mentir : on trépigne d'impatience à l'idée de vous accueillir au Manoïre, notre repaire tout neuf au Col de Jaman, perché au-dessus de Montreux avec une vue sur le lac qui donne envie de tout quitter. Et on n'est pas les seuls — Anouck, notre Saint-Bernard maison, est déjà là, bien installée au Col, à surveiller les travaux de près. Certains chiens gardent la maison. Elle, elle garde le chantier.",
       "D'ici quelques semaines, la magie opère : cuisine créative, terroir du Chablais, et une équipe au sommet (littéralement) prête à vous chouchouter après vos randonnées. Restez connectés — on a encore des surprises dans les cartons…",
     ],
-    ps: "PS : Un Bon Cadeau Fondateur avec 15% de remise pointe bientôt le bout de son museau. Anouck valide.",
-    ctaLabel: "👉 Suivez l'aventure : www.lemanoire-jaman.ch",
-    ctaUrl: "https://www.lemanoire-jaman.ch"
+    ps: null,
+    ctas: [
+      { label: "📸 Instagram : @le_manoire_jaman", url: "https://www.instagram.com/le_manoire_jaman/" },
+      { label: "👍 Facebook : Le Manoïre", url: "https://www.facebook.com/profile.php?id=61580550474258" }
+    ]
   },
   {
     num: "2", title: "Les Coulisses Gourmandes",
     accroche: "On vous révèle (presque) tous nos secrets !",
     paragraphs: [
-      "Vous vous demandez ce qui mijote derrière les portes du Manoïre ? Entre fromages affinés du Chablais, herbes cueillies sur les hauteurs et fournisseurs locaux qu'on connaît par leur prénom, on construit quelque chose de vraiment ancré dans ce coin de montagne. Le chef chante faux, mais avec une passion totalement assumée.",
+      "Vous vous demandez ce qui mijote derrière les portes du Manoïre ? Entre fromages affinés des Préalpes vaudoises, herbes cueillies sur les hauteurs et fournisseurs locaux qu'on connaît par leur prénom, on construit quelque chose de vraiment ancré dans ce coin de montagne. Le chef chante faux, mais avec une passion totalement assumée.",
       "Et Anouck ? Elle supervise. Elle goûte. Elle donne son avis (non-verbal mais très expressif). Pour elle, un bon plat ça se sent — au sens propre.",
     ],
-    ps: "Le Bon Cadeau Fondateur arrive… patience, randonneurs !",
+    ps: "Le Bon Cadeau Le Manoïre arrive… patience, randonneurs !",
     ctaLabel: "👉 www.lemanoire-jaman.ch",
     ctaUrl: "https://www.lemanoire-jaman.ch"
   },
@@ -96,10 +98,10 @@ const newsletters = [
     num: "3", title: "Save the Date : Ouverture Imminente",
     accroche: "C'est officiel, la date approche !",
     paragraphs: [
-      "Notez-le dans vos agendas, programmez une alerte, gravez-le dans la roche du Col si nécessaire : l'ouverture du Manoïre, c'est fin juin. On astique les verres, on finalise la carte, et Anouck fait ses valises depuis une semaine (elle est très organisée pour une Saint-Bernard).",
+      "Notez-le dans vos agendas, programmez une alerte, gravez-le dans la roche du Col si nécessaire : l'ouverture du Manoïre, c'est pour début juillet. La date exacte arrive très bientôt — et vous serez les premiers à en être informés, promis. On astique les verres, on finalise la carte, et Anouck fait ses valises depuis une semaine (elle est très organisée pour une Saint-Bernard).",
       "Le Col de Jaman vous attend — sentiers de randonnée, vue imprenable sur le Léman, et une table où souffler après l'effort. C'est ça, le programme parfait.",
     ],
-    ps: "Le Bon Cadeau Fondateur est en route… encore un peu de patience !",
+    ps: "Le Bon Cadeau Le Manoïre est en route… encore un peu de patience !",
     ctaLabel: "👉 Réservez votre table dès l'ouverture : www.lemanoire-jaman.ch",
     ctaUrl: "https://www.lemanoire-jaman.ch"
   },
@@ -107,21 +109,21 @@ const newsletters = [
     num: "4", title: "Le Bon Cadeau Magique (15% off)",
     accroche: "Le cadeau parfait existe (et il est en promo) !",
     paragraphs: [
-      "C'est le moment de craquer — pour vous ou pour offrir. Notre Bon Cadeau Fondateur est disponible avec 15% de remise pour fêter l'ouverture du Manoïre. Parfait pour les amateurs de montagne qui méritent une bonne table après une journée sur les sentiers des Rochers de Naye ou du Tour du Lac. Parfait aussi pour tous ceux qui cherchent un cadeau original cet été.",
+      "C'est le moment de craquer — pour vous ou pour offrir. Notre Bon Cadeau Le Manoïre est disponible avec 15% de remise pour fêter l'ouverture. Parfait pour les amateurs de montagne qui méritent une bonne table après une journée sur les sentiers des Rochers de Naye ou du Tour du Lac. Parfait aussi pour tous ceux qui cherchent un cadeau original cet été.",
       "Quantités limitées — Anouck garde un œil sur le compteur.",
     ],
     ps: null,
-    ctaLabel: "👉 Bon Cadeau Fondateur — Le Manoïre, Col de Jaman : www.lemanoire-jaman.ch",
+    ctaLabel: "👉 Bon Cadeau Le Manoïre — Col de Jaman : www.lemanoire-jaman.ch",
     ctaUrl: "https://www.lemanoire-jaman.ch"
   },
   {
     num: "5", title: "Montreux, Manoïre et Vous",
     accroche: "Le terroir, c'est vous, c'est nous !",
     paragraphs: [
-      "Au Manoïre, on est convaincus que la meilleure cuisine, c'est celle qui raconte un lieu. Et ce lieu, c'est le Col de Jaman — porte d'entrée des Alpes vaudoises, point de départ de randonnées mythiques, et belvédère naturel sur le lac Léman et les Alpes. Les producteurs du Chablais, les artisans de la région, les voisins du col : cette aventure, c'est la leur autant que la nôtre.",
+      "Au Manoïre, on est convaincus que la meilleure cuisine, c'est celle qui raconte un lieu. Et ce lieu, c'est le Col de Jaman — porte d'entrée des Alpes vaudoises, point de départ de randonnées mythiques, et belvédère naturel sur le lac Léman et les Alpes. Les producteurs des Préalpes vaudoises, les artisans de la région, les voisins du col : cette aventure, c'est la leur autant que la nôtre.",
       "Anouck, elle, est déjà convaincue. Elle connaît chaque sentier, chaque recoin, chaque odeur de fromage fondu qui monte de la cuisine.",
     ],
-    ps: "Le Bon Cadeau Fondateur est toujours là pour les retardataires — 15% de remise, pas longtemps !",
+    ps: "Le Bon Cadeau Le Manoïre est toujours là pour les retardataires — 15% de remise, pas longtemps !",
     ctaLabel: "👉 www.lemanoire-jaman.ch",
     ctaUrl: "https://www.lemanoire-jaman.ch"
   },
@@ -131,7 +133,8 @@ const newsletters = [
     paragraphs: [
       "Ça y est. Anouck est officiellement de retour au Col de Jaman. La porte du Manoïre est grande ouverte. On vous attend pour trinquer, savourer, et écrire ensemble les premières pages de cette belle histoire — vue sur le Léman comprise.",
       "Après une randonnée sur les hauteurs ou simplement pour le plaisir d'une belle table en montagne, c'est le moment. Merci pour votre soutien, votre enthousiasme, et votre gourmandise.",
-      "Dernière chance pour profiter du Bon Cadeau Fondateur (15% de remise) :",
+      "Et ce n'est pas fini — une inauguration officielle est prévue prochainement. On vous réserve une soirée à la hauteur du Col. Restez connectés.",
+      "Dernière chance pour profiter du Bon Cadeau Le Manoïre (15% de remise) :",
     ],
     ps: null,
     ctaLabel: "👉 www.lemanoire-jaman.ch",
@@ -145,7 +148,11 @@ function buildNewsletter(nl) {
   blocks.push(accroche(nl.accroche));
   for (const p of nl.paragraphs) blocks.push(body(p));
   if (nl.ps) blocks.push(ps(nl.ps));
-  blocks.push(cta(nl.ctaLabel, nl.ctaUrl));
+  if (nl.ctas) {
+    for (const c of nl.ctas) blocks.push(cta(c.label, c.url));
+  } else {
+    blocks.push(cta(nl.ctaLabel, nl.ctaUrl));
+  }
   blocks.push(separator());
   return blocks;
 }
