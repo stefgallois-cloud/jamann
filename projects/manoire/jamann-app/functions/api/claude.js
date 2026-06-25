@@ -26,6 +26,8 @@ export async function onRequestPost(context) {
   const openRouterKey = env.OPENROUTER_API_KEY;
   const geminiKey     = env.GEMINI_API_KEY;
   const anthropicKey  = env.ANTHROPIC_API_KEY;
+  let debugAnthropicError = null;
+  let debugGeminiError    = null;
 
   console.log("--- Routeur multi-modèles Jamann ---");
   console.log("Clés : Anthropic:", !!anthropicKey, "| Gemini:", !!geminiKey, "| OpenRouter:", !!openRouterKey);
@@ -68,6 +70,7 @@ export async function onRequestPost(context) {
       console.log("Génération Claude réussie. Longueur :", text.length);
       return Response.json({ text });
     } catch (e) {
+      debugAnthropicError = String(e);
       console.error("Échec Anthropic. Fallback vers Gemini...", e);
     }
   }
@@ -76,7 +79,7 @@ export async function onRequestPost(context) {
   if (geminiKey) {
     console.log("Mode : Google Gemini (fallback)");
     try {
-      const model    = 'gemini-2.5-flash-lite';
+      const model    = 'gemini-1.5-flash-latest';
       const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(geminiKey)}`;
 
       const r = await fetch(endpoint, {
@@ -106,6 +109,7 @@ export async function onRequestPost(context) {
       console.log("Génération Gemini réussie. Longueur :", text.length);
       return Response.json({ text });
     } catch (e) {
+      debugGeminiError = String(e);
       console.error("Échec Gemini. Fallback vers OpenRouter...", e);
     }
   }
@@ -147,6 +151,8 @@ export async function onRequestPost(context) {
     {
       error: 'Toutes les clés API ont échoué ou sont absentes.',
       detail: 'Vérifie ANTHROPIC_API_KEY, GEMINI_API_KEY ou OPENROUTER_API_KEY dans Cloudflare Pages → Settings → Environment variables.',
+      debug_anthropic: debugAnthropicError,
+      debug_gemini: debugGeminiError,
     },
     { status: 502 },
   );

@@ -773,7 +773,8 @@ function CreateScreen({ T, brand, generatedPost, setGeneratedPost, imagePreview,
         const j = await r.json();
         if (!r.ok || j.error) {
           const detail = j.detail?.error?.message || j.detail?.message || JSON.stringify(j.detail || {});
-          throw new Error(`${j.error || 'HTTP '+r.status} — ${detail}`);
+          const dbg = [j.debug_anthropic, j.debug_gemini].filter(Boolean).join(' | ');
+          throw new Error(`${j.error || 'HTTP '+r.status} — ${detail}${dbg ? ' | DEBUG: ' + dbg : ''}`);
         }
         raw = j.text;
       }
