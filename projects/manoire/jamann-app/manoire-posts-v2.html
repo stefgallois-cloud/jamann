@@ -68,7 +68,7 @@
     /* ── Top bar ── */
     .topbar {
       display: flex; align-items: center; gap: 14px;
-      padding: 14px 20px;
+      padding: 16px 22px;
       border-bottom: 1px solid var(--bdr);
       background: rgba(25,65,45,.94);
       backdrop-filter: blur(26px); -webkit-backdrop-filter: blur(26px);
@@ -110,7 +110,7 @@
     /* ── Desktop ≥900px ── */
     @media (min-width: 900px) {
       .main-body  { height: calc(100vh - 58px); overflow: hidden; }
-      .lpanel     { width: 440px; flex-shrink: 0; border-right: 1px solid var(--bdr); padding: 28px 28px 40px; overflow-y: auto; }
+      .lpanel     { width: 440px; flex-shrink: 0; border-right: 1px solid var(--bdr); padding: 28px 28px 40px; overflow-y: auto; display: flex !important; flex-direction: column !important; }
       .rpanel     { display: flex !important; flex: 1; padding: 28px 36px 40px; }
       .mob-tabbar { display: none; }
     }
@@ -169,7 +169,7 @@
     .pg-countdown { background: linear-gradient(135deg,#401008 0%,#a03020 55%,#e87030 100%); }
 
     .pc-body { padding: 10px 12px 12px; }
-    .pc-top  { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 5px; }
+    .pc-top  { display: flex; align-items: flex-start; justify-content: flex-end; margin-bottom: 5px; }
     .pc-code { font-size: 10px; font-weight: 800; letter-spacing: .12em; color: var(--di); }
     .pc-chk  { width: 15px; height: 15px; border-radius: 50%; background: var(--gb); border: 1.5px solid var(--bdr2); display: flex; align-items: center; justify-content: center; transition: all .25s; }
     .pc-chk.on { transform: scale(1.35); }
@@ -228,7 +228,7 @@
 
     /* ── Platform tabs ── */
     .ptabs { display: flex; gap: 5px; padding: 4px; border-radius: 16px; background: var(--surf); border: 1px solid var(--bdr); }
-    .ptab  { flex: 1; padding: 10px; border-radius: 12px; border: none; font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--mu); background: transparent; transition: all .2s; }
+    .ptab  { flex: 1; padding: 10px; border-radius: 12px; border: none; font-family: 'Space Grotesk'; font-size: 12px; font-weight: 700; cursor: pointer; color: var(--mu); background: transparent; transition: all .2s; display: flex; align-items: center; justify-content: center; gap: 5px; }
     .ptab.on-fb { background: rgba(147,197,253,.12); color: var(--blue); border: 1px solid rgba(147,197,253,.22); }
     .ptab.on-ig { background: rgba(249,168,212,.1); color: var(--rose); border: 1px solid rgba(249,168,212,.2); }
     .ptab:active { transform: scale(.94); }
@@ -239,7 +239,7 @@
     .pcw.fb     { border-left: 3px solid rgba(147,197,253,.42); }
     .pcw.ig     { border-left: 3px solid rgba(249,168,212,.42); }
     .pchd       { padding: 11px 16px 9px; display: flex; align-items: center; gap: 10px; border-bottom: 1px solid rgba(160,240,192,.06); }
-    .pcbdg      { padding: 2px 9px; border-radius: 6px; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .pcbdg      { padding: 2px 9px; border-radius: 6px; font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; display: inline-flex; align-items: center; gap: 4px; }
     .pcbdg.fb   { background: rgba(147,197,253,.12); color: var(--blue); }
     .pcbdg.ig   { background: rgba(249,168,212,.1); color: var(--rose); }
     .pcvar      { font-size: 10px; color: var(--di); font-weight: 600; }
@@ -318,12 +318,73 @@
     .mtb-dot    { position:absolute; top:8px; right:14px; width:5px; height:5px; border-radius:50%; background:var(--gld); box-shadow:0 0 7px rgba(255,215,0,.7); animation:tdot 2s infinite; }
 
     @media (prefers-reduced-motion:reduce) { *,*::before,*::after { animation:none !important; transition-duration:.01ms !important; } }
+
+    /* ── Mobile back button (hidden on desktop) ── */
+    .back-mob { display: flex; align-items: center; gap: 5px; background: none; border: none; color: var(--mu); font-family: 'Space Grotesk'; font-size: 12px; font-weight: 600; cursor: pointer; padding: 2px 0; margin-bottom: -4px; }
+    .back-mob:hover { color: var(--grn); }
+    @media (min-width: 900px) { .back-mob { display: none; } }
+
+    /* ── Topbar RS group (desktop only) ── */
+    .tb-rs { display: none; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .tb-rs-icons { display: flex; gap: 6px; align-items: center; }
+    .tb-rs-lbl { font-size: 9px; color: var(--di); font-weight: 700; margin-top: 3px; letter-spacing: .08em; }
+    @media (min-width: 900px) { .tb-rs { display: flex; } }
+
+    /* ── Cockpit RS display ── */
+    .ck-rs { display: flex; align-items: center; gap: 7px; margin-top: 4px; }
+    .ck-rs-item { display: flex; align-items: center; gap: 4px; }
+    .ck-rs-lbl { font-size: 10px; font-weight: 700; color: var(--mu); }
+
+    /* ── Upload zone ── */
+    .upload-zone { width: 100%; padding: 14px 15px; border-radius: 13px; background: var(--surf2); border: 1px dashed var(--bdr2); color: var(--mu); font-family: 'Space Grotesk', sans-serif; font-size: 13px; cursor: pointer; transition: border-color .2s, background .2s; display: flex; align-items: center; gap: 9px; }
+    .upload-zone:hover { border-color: rgba(160,240,192,.4); background: var(--surf); }
+    .upload-preview { display: flex; align-items: center; gap: 10px; padding: 8px 12px; border-radius: 13px; background: var(--surf2); border: 1px solid var(--bdr2); }
+    .upload-prev-img { width: 64px; height: 64px; border-radius: 8px; object-fit: cover; flex-shrink: 0; }
+    .upload-prev-info { flex: 1; min-width: 0; }
+    .upload-prev-name { font-size: 12px; color: var(--mu); font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .upload-prev-sub { font-size: 10px; color: var(--di); margin-top: 2px; }
+    .upload-rm { padding: 4px 9px; border-radius: 8px; border: 1px solid rgba(239,68,68,.2); background: rgba(239,68,68,.06); color: #fca5a5; font-family: 'Space Grotesk'; font-size: 11px; font-weight: 700; cursor: pointer; flex-shrink: 0; transition: background .15s; }
+    .upload-rm:hover { background: rgba(239,68,68,.14); }
+
+    /* ── ResScreen photo source ── */
+    .res-photo { border-radius: 12px; overflow: hidden; height: 160px; position: relative; flex-shrink: 0; }
+    .res-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .res-photo-label { position: absolute; bottom: 8px; left: 10px; background: rgba(0,0,0,.55); -webkit-backdrop-filter: blur(4px); backdrop-filter: blur(4px); padding: 3px 8px; border-radius: 6px; font-size: 10px; color: rgba(255,255,255,.8); font-weight: 600; letter-spacing: .04em; }
   </style>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute;overflow:hidden">
+  <defs>
+    <linearGradient id="ig-grad" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0%" stop-color="#f9ce34"/>
+      <stop offset="35%" stop-color="#ee2a7b"/>
+      <stop offset="100%" stop-color="#6228d7"/>
+    </linearGradient>
+  </defs>
+</svg>
 <div id="root"></div>
 <script type="text/babel">
   const { useState, useEffect, useRef } = React;
+
+  function FBIcon({ size = 14 }) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{flexShrink:0}}>
+        <rect width="24" height="24" rx="5" fill="#1877F2"/>
+        <path fill="white" d="M16 8h-2c-.55 0-1 .45-1 1v2h3l-.5 3H13v7h-3v-7H8v-3h2V9a4 4 0 0 1 4-4h2v3z"/>
+      </svg>
+    );
+  }
+
+  function IGIcon({ size = 14 }) {
+    return (
+      <svg width={size} height={size} viewBox="0 0 24 24" fill="none" style={{flexShrink:0}}>
+        <rect width="24" height="24" rx="7" fill="url(#ig-grad)"/>
+        <rect x="6" y="6" width="12" height="12" rx="4" stroke="white" strokeWidth="1.8" fill="none"/>
+        <circle cx="12" cy="12" r="3" stroke="white" strokeWidth="1.8" fill="none"/>
+        <circle cx="16.5" cy="7.5" r="1" fill="white"/>
+      </svg>
+    );
+  }
 
   const WEBHOOK = 'https://stefbystep.app.n8n.cloud/webhook/manoire-posts';
   const OPENING = new Date('2026-07-09');
@@ -377,7 +438,11 @@
       <div className="topbar">
         <div>
           <div className="brand">Le Manoïre</div>
-          <div className="brand-sub">Studio Posts · Clockwork Ops</div>
+          <div className="brand-sub">Studio Posts — Génération IA</div>
+        </div>
+        <div className="tb-rs">
+          <div className="tb-rs-icons"><FBIcon size={26}/><IGIcon size={26}/></div>
+          <div className="tb-rs-lbl">Facebook · Instagram</div>
         </div>
         <div className="topnav">
           {[{id:'generate',lbl:'✦ Générer'},{id:'results',lbl:'◈ Résultats'},{id:'profile',lbl:'◎ Marque'}].map(t => (
@@ -419,11 +484,16 @@
             <div style={{position:'relative',zIndex:1}}>
               <div className="ck-num"><JXCount jx={jx}/></div>
               <div className="ck-sub">{jx.sub}</div>
+              <div style={{fontSize:10,color:'var(--grn)',fontWeight:700,marginTop:6,letterSpacing:'.06em'}}>Prêt à publier ?</div>
             </div>
             <div className="ck-div"/>
             <div className="ck-r">
               <div className="ck-date">9 juillet 2026</div>
-              <span className="ck-pill">✦ FB + IG</span>
+              <div className="ck-rs">
+                <div className="ck-rs-item"><FBIcon size={18}/><span className="ck-rs-lbl">Facebook</span></div>
+                <span style={{color:'var(--di)',fontSize:10}}>·</span>
+                <div className="ck-rs-item"><IGIcon size={18}/><span className="ck-rs-lbl">Instagram</span></div>
+              </div>
             </div>
           </>
         )}
@@ -457,7 +527,6 @@
         </div>
         <div className="pc-body">
           <div className="pc-top">
-            <span className="pc-code" style={{color:on?p.ac:undefined}}>{p.code}</span>
             <div className={`pc-chk${on?' on':''}`} style={on?{background:p.ac,borderColor:p.ac}:{}}>
               {on && <span style={{color:'#0a2010',fontSize:9,fontWeight:900}}>✓</span>}
             </div>
@@ -506,7 +575,7 @@
         transition: 'opacity .5s ease, transform .55s cubic-bezier(.16,1,.3,1)',
       }}>
         <div className="pchd">
-          <span className={`pcbdg ${plat}`}>{plat==='fb'?'Facebook':'Instagram'}</span>
+          <span className={`pcbdg ${plat}`}>{plat==='fb'?<><FBIcon size={11}/>Facebook</>:<><IGIcon size={11}/>Instagram</>}</span>
           <span className="pcvar">Variante {idx+1}</span>
           <button className={`btn-pv${prev?' on':''}`} onClick={()=>setPrev(p=>!p)}>{prev?'✕':'◱'}</button>
         </div>
@@ -556,23 +625,56 @@
     );
   }
 
+  async function compressToBase64(file) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      const url = URL.createObjectURL(file);
+      img.onload = () => {
+        URL.revokeObjectURL(url);
+        const MAX = 1600;
+        let { width, height } = img;
+        if (width > MAX || height > MAX) {
+          if (width > height) { height = Math.round(height * MAX / width); width = MAX; }
+          else { width = Math.round(width * MAX / height); height = MAX; }
+        }
+        const canvas = document.createElement('canvas');
+        canvas.width = width; canvas.height = height;
+        canvas.getContext('2d').drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL('image/jpeg', 0.82).split(',')[1]);
+      };
+      img.onerror = reject;
+      img.src = url;
+    });
+  }
+
   function GenScreen({ jx, onDone }) {
     const [pillar, setPillar] = useState(null);
     const [brief, setBrief] = useState('');
     const [date, setDate] = useState('');
+    const [imageB64, setImageB64] = useState(null);
+    const [imageName, setImageName] = useState(null);
     const [loading, setLoading] = useState(false);
     const [err, setErr] = useState(null);
     const [errk, setErrk] = useState(0);
 
     async function gen() {
-      if (!pillar) { setErr('Sélectionne un pilier.'); setErrk(k=>k+1); return; }
+      if (!pillar && !brief.trim() && !imageB64) {
+        setErr('Sélectionne un pilier, ajoute un brief ou une photo.');
+        setErrk(k=>k+1); return;
+      }
       setLoading(true); setErr(null);
       try {
-        const r = await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pillar_id:pillar,brief:brief.trim(),target_date:date})});
+        let visionDescription = null;
+        if (imageB64) {
+          const vr = await fetch('/api/describe-image',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({imageBase64:imageB64})});
+          const vd = await vr.json();
+          visionDescription = vd.description || null;
+        }
+        const r = await fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({pillar_id:pillar||null,brief:brief.trim(),target_date:date,visionDescription:visionDescription||''})});
         if (!r.ok) throw new Error(`HTTP ${r.status}`);
         const d = await r.json();
         if (!d.ok) throw new Error(d.error||'Erreur workflow');
-        onDone(d);
+        onDone(d, imageB64);
       } catch(e) {
         setErr(`${e.message} — vérifie que le workflow n8n est actif.`);
         setErrk(k=>k+1);
@@ -588,7 +690,36 @@
         </div>
         <div className="fgrp">
           <span className="caps">Brief / Idée du post</span>
-          <textarea rows={3} placeholder="Ex : Micka a trouvé les vieilles poutres d'origine sous le plâtre…" value={brief} onChange={e=>setBrief(e.target.value)}/>
+          <textarea rows={3} placeholder="Ex : Micka a trouvé les vieilles poutres d'origine sous le plâtre… ou décris juste la photo !" value={brief} onChange={e=>setBrief(e.target.value)}/>
+        </div>
+        <div className="fgrp">
+          <span className="caps">Photo source (optionnel)</span>
+          {imageB64 ? (
+            <div className="upload-preview">
+              <img className="upload-prev-img" src={`data:image/jpeg;base64,${imageB64}`} alt="Aperçu"/>
+              <div className="upload-prev-info">
+                <div className="upload-prev-name">{imageName}</div>
+                <div className="upload-prev-sub">Le post s'appuiera sur ce visuel</div>
+              </div>
+              <button className="upload-rm" onClick={()=>{setImageB64(null);setImageName(null);}}>✕</button>
+            </div>
+          ) : (
+            <label className="upload-zone">
+              <span style={{fontSize:16}}>📷</span>
+              <span>Ajouter une photo (JPG, PNG, HEIC…)</span>
+              <input type="file" accept="image/*" hidden onChange={async e=>{
+                const f = e.target.files?.[0];
+                if (!f) return;
+                try {
+                  const b64 = await compressToBase64(f);
+                  setImageB64(b64); setImageName(f.name);
+                } catch {
+                  setErr('Impossible de lire la photo.'); setErrk(k=>k+1);
+                }
+                e.target.value = '';
+              }}/>
+            </label>
+          )}
         </div>
         <div className="fgrp">
           <span className="caps">Date de publication cible</span>
@@ -600,7 +731,7 @@
     );
   }
 
-  function ResScreen({ results, jx, onBack }) {
+  function ResScreen({ results, jx, onBack, photoB64 }) {
     const [plat, setPlat] = useState('fb');
     const [vis, setVis] = useState(new Set());
     const posts = results ? (plat==='fb' ? results.fb||[] : results.ig||[]) : [];
@@ -624,14 +755,21 @@
 
     return (
       <div className="screen">
+        <button className="back-mob" onClick={onBack}>← Nouveau post</button>
         <Cockpit jx={{label:results.jx||jx.label, val:0, sub:pillar}} compact/>
+        {photoB64 && (
+          <div className="res-photo">
+            <img src={`data:image/jpeg;base64,${photoB64}`} alt="Photo source"/>
+            <span className="res-photo-label">Photo source</span>
+          </div>
+        )}
         <div className="saved">
           <span className="saved-icon">✦</span>
           <div><div className="saved-t">Variante 1 enregistrée dans Airtable</div><div className="saved-s">Calendrier des posts · prête pour Make</div></div>
         </div>
         <div className="ptabs">
-          <button className={`ptab${plat==='fb'?' on-fb':''}`} onClick={()=>setPlat('fb')}>Facebook · {fb.length}</button>
-          <button className={`ptab${plat==='ig'?' on-ig':''}`} onClick={()=>setPlat('ig')}>Instagram · {ig.length}</button>
+          <button className={`ptab${plat==='fb'?' on-fb':''}`} onClick={()=>setPlat('fb')}><FBIcon size={15}/>Facebook · {fb.length}</button>
+          <button className={`ptab${plat==='ig'?' on-ig':''}`} onClick={()=>setPlat('ig')}><IGIcon size={15}/>Instagram · {ig.length}</button>
         </div>
         <div>
           {posts.length > 0
@@ -673,6 +811,7 @@
   function App() {
     const [tab, setTab] = useState('generate');
     const [results, setResults] = useState(null);
+    const [photoB64, setPhotoB64] = useState(null);
     const jx = getJX();
 
     return (
@@ -683,12 +822,12 @@
           <TopBar tab={tab} setTab={setTab} jx={jx} hasRes={!!results}/>
           <div className="main-body">
             <div className="lpanel" style={{display: tab==='generate'?'flex':'none', flexDirection:'column'}}>
-              <GenScreen jx={jx} onDone={d=>{setResults(d);setTab('results');}}/>
+              <GenScreen jx={jx} onDone={(d,img)=>{setResults(d);setPhotoB64(img||null);setTab('results');}}/>
             </div>
             <div className="rpanel" style={{display: tab!=='generate'?'flex':undefined}}>
               {tab==='profile'
                 ? <ProfScreen jx={jx}/>
-                : <ResScreen results={results} jx={jx} onBack={()=>setTab('generate')}/>
+                : <ResScreen results={results} jx={jx} photoB64={photoB64} onBack={()=>setTab('generate')}/>
               }
             </div>
           </div>
