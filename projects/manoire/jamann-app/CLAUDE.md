@@ -17,9 +17,15 @@ Ne jamais déployer sur Netlify — ancienne plateforme abandonnée.
 
 ## Architecture
 
-- `index.html` — app React/Babel (no build step)
-- `jamann-screens.jsx` — piliers éditoriaux + few-shot examples + ProfileScreen
-- `functions/api/claude.js` — Cloudflare Pages Function (POST `/api/claude`)
+```
+jamann-app/
+├── index.html                    ← app V2 React/Babel (no build step) — page principale
+├── functions/api/claude.js       ← Cloudflare Function — routing IA (POST /api/claude)
+├── functions/api/describe-image.js ← Cloudflare Function — vision Gemini (POST /api/describe-image)
+├── uploads/                      ← chartes graphiques PDF
+├── logo.png
+└── _archive/                     ← V1 et fichiers obsolètes (ne pas modifier)
+```
 
 ## Routing IA — priorité
 
@@ -41,9 +47,6 @@ Ne jamais déployer sur Netlify — ancienne plateforme abandonnée.
 - `buildUserPrompt(pillar, date, idea)` — dynamique (pilier + brief)
 - Référence éditoriale : `../../ligne-editoriale.md`
 
-## Code debug temporaire à supprimer
+## Code debug à nettoyer (restant)
 
-Présent depuis session 24/06/2026 — à retirer une fois Anthropic rechargé :
-- `functions/api/test.js` — endpoint GET `/api/test` (diagnostic env vars)
-- Champs `debug_anthropic` / `debug_gemini` dans `claude.js` (lignes ~30, ~73, ~110, ~147)
-- Ligne `dbg` dans `index.html` (error handling `handleGenerate`)
+Champs `debug_anthropic` / `debug_gemini` dans `claude.js` — à retirer une fois Anthropic rechargé.
