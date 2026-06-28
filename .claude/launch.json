@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "manoire-posts-v2",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4189", "--directory", "projects/manoire/jamann-app"],
+      "port": 4189
+    }
+  ]
+}

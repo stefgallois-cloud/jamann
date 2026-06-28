@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Studio Posts — Guide d'utilisation · Le Manoïre</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800&family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --grn:   #2d6a4f;
+      --grn2:  #1b4332;
+      --mint:  #a0f0c0;
+      --gld:   #c8a800;
+      --gld2:  #ffd700;
+      --bg:    #f8faf9;
+      --surf:  #ffffff;
+      --bdr:   #e2ede7;
+      --tx:    #1a2e25;
+      --mu:    #5a7a6a;
+      --red:   #b91c1c;
+      --redbg: #fef2f2;
+      --redbdr:#fecaca;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--tx);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* ── Layout ── */
+    .page { max-width: 860px; margin: 0 auto; padding: 0 24px 60px; }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--grn2);
+      color: #f0fff4;
+      padding: 48px 40px 40px;
+      border-radius: 0 0 24px 24px;
+      margin: 0 -24px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 80% at 80% 20%, rgba(160,240,192,.08) 0%, transparent 60%);
+    }
+    .hero-label {
+      font-size: 11px; font-weight: 800; letter-spacing: .18em; text-transform: uppercase;
+      color: rgba(160,240,192,.6); margin-bottom: 14px; position: relative;
+    }
+    .hero-brand {
+      font-family: 'Fraunces', serif; font-size: 36px; font-weight: 800;
+      color: #fff; line-height: 1.1; position: relative;
+    }
+    .hero-title {
+      font-size: 18px; font-weight: 600; color: var(--mint);
+      margin-top: 6px; position: relative;
+    }
+    .hero-url {
+      display: inline-block;
+      font-size: 13px; font-weight: 700; color: var(--mint);
+      background: rgba(160,240,192,.1); border: 1px solid rgba(160,240,192,.2);
+      padding: 6px 14px; border-radius: 8px; letter-spacing: .02em;
+      margin-top: 16px; position: relative;
+      text-decoration: none;
+    }
+    .hero-url:hover {
+      background: rgba(160,240,192,.15);
+      text-decoration: underline;
+    }
+
+    /* ── Sections ── */
+    section { margin-bottom: 40px; }
+    .section-label {
+      font-size: 10px; font-weight: 800; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--mint); background: var(--grn); display: inline-block;
+      padding: 4px 12px; border-radius: 6px; margin-bottom: 14px;
+    }
+    h2 {
+      font-family: 'Fraunces', serif; font-size: 24px; font-weight: 700;
+      color: var(--grn2); margin-bottom: 4px; line-height: 1.2;
+    }
+    .section-intro { color: var(--mu); font-size: 14px; margin-bottom: 16px; }
+
+    /* ── En bref ── */
+    .brief-list { display: flex; flex-direction: column; gap: 12px; }
+    .brief-item {
+      display: flex; gap: 14px; align-items: flex-start;
+      font-size: 14px; color: var(--tx); line-height: 1.5;
+    }
+    .brief-icon { font-size: 22px; flex-shrink: 0; }
+    .brief-text { flex: 1; }
+    .brief-text strong { color: var(--grn2); }
+
+    /* ── Guide pas-à-pas ── */
+    .steps { display: flex; flex-direction: column; gap: 0; }
+    .step {
+      display: flex; gap: 18px; position: relative; padding-bottom: 24px;
+    }
+    .step:last-child { padding-bottom: 0; }
+    .step-left { display: flex; flex-direction: column; align-items: center; flex-shrink: 0; }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--grn); color: #fff;
+      font-weight: 800; font-size: 14px;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .step-line {
+      width: 2px; flex: 1; background: var(--bdr); margin-top: 6px; min-height: 16px;
+    }
+    .step:last-child .step-line { display: none; }
+    .step-content { padding-top: 4px; flex: 1; }
+    .step-title { font-size: 14px; font-weight: 700; color: var(--grn2); margin-bottom: 3px; }
+    .step-desc { font-size: 13px; color: var(--mu); line-height: 1.5; }
+    .step-code {
+      display: inline-block; background: #f0fdf4; border: 1px solid #bbf7d0;
+      color: var(--grn2); font-family: monospace; font-size: 12px; font-weight: 700;
+      padding: 2px 8px; border-radius: 5px; margin: 0 2px; text-decoration: none;
+    }
+    .step-code:hover {
+      background: #d0efe0;
+    }
+
+    .info-box {
+      background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px;
+      padding: 16px 18px; margin-top: 20px;
+    }
+    .info-box-title { font-size: 12px; font-weight: 700; color: var(--grn2); margin-bottom: 10px; }
+    .info-box ul { padding-left: 16px; display: flex; flex-direction: column; gap: 5px; }
+    .info-box li { font-size: 12px; color: var(--mu); }
+    .info-box strong { color: var(--grn2); }
+
+    /* ── Piliers ── */
+    .pillars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pillar {
+      background: var(--surf); border: 1px solid var(--bdr); border-radius: 12px;
+      padding: 14px 16px; display: flex; gap: 12px; align-items: flex-start;
+    }
+    .pillar-code {
+      font-size: 9px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase;
+      background: var(--grn); color: var(--mint);
+      padding: 3px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px;
+    }
+    .pillar-name { font-size: 13px; font-weight: 700; color: var(--grn2); margin-bottom: 2px; }
+    .pillar-when { font-size: 11px; color: var(--mu); line-height: 1.4; }
+
+    /* ── Règles ── */
+    .rules-table { width: 100%; border-collapse: collapse; border-radius: 12px; overflow: hidden; border: 1px solid var(--bdr); }
+    .rules-table th {
+      background: var(--grn2); color: #fff; padding: 10px 14px;
+      font-size: 12px; font-weight: 700; text-align: left;
+    }
+    .rules-table th:not(:first-child) { text-align: center; }
+    .rules-table td { padding: 10px 14px; border-bottom: 1px solid var(--bdr); font-size: 12px; vertical-align: top; }
+    .rules-table tr:last-child td { border-bottom: none; }
+    .rules-table tr:nth-child(even) td { background: #f8faf9; }
+    .rules-table td:not(:first-child) { text-align: center; }
+    .rules-table td:first-child { font-weight: 600; color: var(--grn2); }
+    .tag-fb { color: #1d4ed8; font-weight: 700; font-size: 11px; }
+    .tag-ig { color: #9d174d; font-weight: 700; font-size: 11px; }
+
+    .never-box {
+      background: var(--redbg); border: 1px solid var(--redbdr); border-radius: 12px;
+      padding: 16px 18px; margin-top: 14px;
+    }
+    .never-title { font-size: 12px; font-weight: 800; color: var(--red); margin-bottom: 10px; text-transform: uppercase; letter-spacing: .1em; }
+    .never-list { display: flex; flex-direction: column; gap: 7px; }
+    .never-item { display: flex; gap: 10px; align-items: flex-start; font-size: 12px; color: #7f1d1d; }
+    .never-x { font-size: 13px; flex-shrink: 0; margin-top: 1px; font-weight: 700; }
+
+    /* ── Hashtags ── */
+    .hashtags-wrap { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+    .htag {
+      padding: 4px 10px; border-radius: 16px; font-size: 11px; font-weight: 700;
+      border: 1px solid; display: inline-block;
+    }
+    .htag.required { background: #f0fdf4; border-color: #86efac; color: var(--grn2); }
+    .htag.optional { background: #f8faf9; border-color: var(--bdr); color: var(--mu); }
+
+    /* ── Contact ── */
+    .support-card {
+      background: var(--grn2); color: #f0fff4; border-radius: 16px;
+      padding: 28px 32px; text-align: center;
+    }
+    .support-icon { font-size: 32px; margin-bottom: 12px; }
+    .support-title { font-family: 'Fraunces', serif; font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .support-line { font-size: 13px; color: rgba(240,255,244,.75); margin-bottom: 4px; }
+    .support-line strong { color: var(--mint); }
+    .credit { font-size: 11px; color: rgba(240,255,244,.35); margin-top: 16px; }
+
+    /* ── Print ── */
+    @media print {
+      body { background: #fff; font-size: 13px; }
+      .hero { border-radius: 0; margin: 0 -24px 30px; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { margin-bottom: 28px; }
+      .page { padding: 0 24px 30px; }
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 640px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .hero { padding: 32px 24px 28px; }
+      .hero-brand { font-size: 26px; }
+      .support-card { padding: 20px 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ── HERO ── -->
+  <div class="hero">
+    <div class="hero-label">Le Manoïre · Col de Jaman</div>
+    <div class="hero-brand">Studio Posts</div>
+    <div class="hero-title">Ton guide d'utilisation</div>
+    <a href="https://jamann.pages.dev" target="_blank" class="hero-url">jamann.pages.dev</a>
+  </div>
+
+  <!-- ── SECTION 1 : EN BREF ── -->
+  <section>
+    <div class="section-label">Quoi de neuf</div>
+    <h2>En bref, voici ce que tu obtiens</h2>
+    <div class="brief-list">
+      <div class="brief-item">
+        <div class="brief-icon">⚡</div>
+        <div class="brief-text"><strong>4 posts en 5 min</strong> — 2 pour Facebook, 2 pour Instagram. Prêts à copier-coller.</div>
+      </div>
+      <div class="brief-item">
+        <div class="brief-icon">🎯</div>
+        <div class="brief-text"><strong>Ton ton, ta charte</strong> — l'IA connaît le style Le Manoïre. Zéro risque d'être hors-sujet.</div>
+      </div>
+      <div class="brief-item">
+        <div class="brief-icon">💾</div>
+        <div class="brief-text"><strong>Sauvegarde auto</strong> — tous les posts sont enregistrés dans Airtable. Pas besoin de rien gérer.</div>
+      </div>
+      <div class="brief-item">
+        <div class="brief-icon">🧠</div>
+        <div class="brief-text"><strong>Mémoire anti-répétition</strong> — l'IA se souvient des angles déjà publiés et les évite. Ton fil reste varié.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 2 : GUIDE ── -->
+  <section>
+    <div class="section-label">Mode d'emploi</div>
+    <h2>7 étapes faciles</h2>
+    <p class="section-intro">Aucune compétence requise. Juste du bon sens.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-left"><div class="step-num">1</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Ouvre l'app</div>
+          <div class="step-desc">Va sur <a href="https://jamann.pages.dev" target="_blank" class="step-code">jamann.pages.dev</a>. Ça marche depuis le téléphone, l'ordi, partout.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">2</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Choisis un pilier (optionnel)</div>
+          <div class="step-desc">Si t'as une idée du sujet (travaux, Anouck, cuisine, vue, histoire…), clique sur la carte correspondante. Pas obligatoire — l'IA se débrouille sans.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">3</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Choisis un format (optionnel)</div>
+          <div class="step-desc">Storytelling, Question, Info pratique, Teaser, ou Annonce. Chaque format donne un ton différent. Pas sûr ? L'IA choisit toute seule.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">4</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Écris ton brief</div>
+          <div class="step-desc">1-2 phrases, c'est tout. Décris ce qui s'est passé ou ce que t'as envie de raconter. Ex : "Micka a trouvé les poutres d'origine ce matin" ou "Livraison des fromages du producteur local".</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">5</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Ajoute une photo (optionnel)</div>
+          <div class="step-desc">Glisse une photo ou clique pour l'uploader. Formats acceptés : JPG, PNG, WebP. Ça renforce le message, mais c'est pas obligatoire.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">6</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Génère et récupère</div>
+          <div class="step-desc">Clique "Générer 4 posts". L'app chauffe pendant ~15 secondes. Après, tu as 2 variantes Facebook et 2 variantes Instagram. Clique "Copier" sur celle que tu préfères.</div>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-left"><div class="step-num">7</div><div class="step-line"></div></div>
+        <div class="step-content">
+          <div class="step-title">Marque comme publié</div>
+          <div class="step-desc">Après avoir mis le post en ligne sur Facebook ou Instagram, reviens dans l'app et clique "✓ Marquer comme publié". Ça enregistre l'angle dans la mémoire de l'IA — elle l'évite la prochaine fois.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="info-box">
+      <div class="info-box-title">💡 À retenir</div>
+      <ul>
+        <li><strong>Tous les posts sont sauvegardés</strong> automatiquement dans Airtable. Pas besoin de les recopier ailleurs.</li>
+        <li><strong>Les variantes — pourquoi 2 par plateforme ?</strong> Comme ça tu as du choix. Si la première ne te parle pas, tu peux prendre la deuxième.</li>
+        <li><strong>Format photo idéal :</strong> carré 1080×1080 px ou portrait 4:5 (1080×1350 px). Les deux marchent super bien.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ── SECTION 3 : PILIERS ── -->
+  <section>
+    <div class="section-label">Référence</div>
+    <h2>Les 6 piliers éditoriaux</h2>
+    <p class="section-intro">Chaque pilier est un angle de contenu différent. Si t'en choisis un, l'IA s'aligne dessus.</p>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <div class="pillar-code">TR</div>
+        <div>
+          <div class="pillar-name">🔨 Coulisses travaux</div>
+          <div class="pillar-when">Chantier en cours, avant/après, découvertes, équipe, matériaux retrouvés.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-code">AN</div>
+        <div>
+          <div class="pillar-name">🐾 Anouck & vie du col</div>
+          <div class="pillar-when">La Saint-Bernard qui inspecte, accueille, donne son avis. Avec vraie photo.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-code">TE</div>
+        <div>
+          <div class="pillar-name">🧀 Cuisine & terroir</div>
+          <div class="pillar-when">Producteurs locaux, plats, arrivées saisonnières, fromages, charcuteries.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-code">LI</div>
+        <div>
+          <div class="pillar-name">🏔️ Vue & lieu</div>
+          <div class="pillar-when">Terrasse, vue sur le Léman et les Alpes, météo, brumes, randonneurs.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-code">HI</div>
+        <div>
+          <div class="pillar-name">📖 Histoire & transmission</div>
+          <div class="pillar-when">Mémoire du lieu, renaissance du nom, anecdotes historiques sur le Col.</div>
+        </div>
+      </div>
+      <div class="pillar">
+        <div class="pillar-code">J-</div>
+        <div>
+          <div class="pillar-name">⏳ Compte à rebours</div>
+          <div class="pillar-when">J-X avant l'ouverture. Génère automatiquement le chiffre selon la date.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 4 : RÈGLES ── -->
+  <section>
+    <div class="section-label">Règles d'or</div>
+    <h2>Facebook vs Instagram</h2>
+    <p class="section-intro">L'app génère une version pour chaque plateforme. Voici comment ça diffère.</p>
+
+    <table class="rules-table">
+      <thead>
+        <tr>
+          <th>Quoi</th>
+          <th><span class="tag-fb">Facebook</span></th>
+          <th><span class="tag-ig">Instagram</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Longueur</td>
+          <td>5–10 lignes</td>
+          <td>3–5 lignes</td>
+        </tr>
+        <tr>
+          <td>Lien site web</td>
+          <td><strong>Obligatoire</strong> : www.lemanoire-jaman.ch</td>
+          <td>"Lien en bio"</td>
+        </tr>
+        <tr>
+          <td>Hashtags</td>
+          <td>5–7</td>
+          <td>4–5</td>
+        </tr>
+        <tr>
+          <td>Emojis</td>
+          <td>1–3 max</td>
+          <td>1–3 max</td>
+        </tr>
+        <tr>
+          <td>Meilleurs horaires</td>
+          <td colspan="2" style="text-align:center;">10h–12h ou 17h–19h</td>
+        </tr>
+        <tr>
+          <td>Fréquence</td>
+          <td colspan="2" style="text-align:center;">2 posts par semaine (mardi + vendredi idéal)</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div style="margin-top: 14px;">
+      <div style="font-size: 12px; font-weight: 700; color: var(--grn2); margin-bottom: 8px;">Hashtags obligatoires</div>
+      <div class="hashtags-wrap">
+        <span class="htag required">#LeManoire</span>
+        <span class="htag required">#ColDeJaman</span>
+        <span class="htag required">#Montreux</span>
+      </div>
+      <div style="font-size: 12px; color: var(--mu); margin: 12px 0 8px;">Optionnels selon le contexte</div>
+      <div class="hashtags-wrap">
+        <span class="htag optional">#AlpageMontreux</span>
+        <span class="htag optional">#RestaurantMontagne</span>
+        <span class="htag optional">#Suisse</span>
+        <span class="htag optional">#Terroir</span>
+        <span class="htag optional">#SaintBernard</span>
+      </div>
+    </div>
+
+    <div class="never-box">
+      <div class="never-title">⚠️ Ne fais jamais ça</div>
+      <div class="never-list">
+        <div class="never-item"><span class="never-x">✕</span><span><strong>Ne publie jamais sans photo</strong> — une belle image est indispensable. Mieux pas publier que d'envoyer du flou.</span></div>
+        <div class="never-item"><span class="never-x">✕</span><span><strong>Ne promets pas une date si t'es pas sûr</strong> — dis "fin juillet" plutôt que "le 15 juillet" si ça peut bouger.</span></div>
+        <div class="never-item"><span class="never-x">✕</span><span><strong>Ne laisse pas les commentaires sans réponse</strong> — chaque message mérite une petite réponse. C'est ça qui crée la communauté.</span></div>
+        <div class="never-item"><span class="never-x">✕</span><span><strong>Ne publie pas sans relire</strong> — 30 secondes suffisent. Une faute gâche l'image du restaurant.</span></div>
+        <div class="never-item"><span class="never-x">✕</span><span><strong>Ne réponds jamais publiquement à un avis négatif</strong> — gère ça en privé, toujours.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── SECTION 5 : CONTACT ── -->
+  <section>
+    <div class="support-card">
+      <div class="support-icon">📞</div>
+      <div class="support-title">Des questions ? Un souci ?</div>
+      <div class="support-line">Contacte <strong>Stéphanie</strong> · Clockwork Ops</div>
+      <div class="support-line"><strong>stef.gallois@gmail.com</strong></div>
+      <div class="credit">Studio Posts · Le Manoïre Col de Jaman · 2026 · <a href="https://jamann.pages.dev" target="_blank" style="color: rgba(160,240,192,.8);">jamann.pages.dev</a></div>
+    </div>
+  </section>
+
+</div>
+</body>
+</html>

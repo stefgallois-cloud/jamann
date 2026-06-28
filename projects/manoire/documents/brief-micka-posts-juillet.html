@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plan de posts — Le Manoïre · Juillet 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #F7F2E9;
+      --cream-dk: #EDE5D4;
+      --stone:    #C9BAA2;
+      --green:    #1F3D25;
+      --green-lt: #2E5936;
+      --green-bg: #EBF0E4;
+      --amber:    #B87D2E;
+      --amber-lt: #F5ECD8;
+      --ink:      #28231C;
+      --muted:    #6B5F50;
+      --fb:       #1877F2;
+      --ig:       #C13584;
+    }
+
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    body::before {
+      content: '';
+      position: fixed; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0;
+    }
+
+    .page {
+      position: relative; z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px 44px 100px;
+    }
+
+    /* ─── HEADER ─── */
+    .header {
+      border-top: 2.5px solid var(--green);
+      padding-top: 36px;
+      margin-bottom: 48px;
+    }
+    .eyebrow {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--amber); margin-bottom: 14px;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(38px, 6vw, 54px); font-weight: 600;
+      line-height: 1.1; color: var(--green); margin-bottom: 10px;
+    }
+    .subtitle { font-size: 13px; letter-spacing: 0.07em; color: var(--muted); }
+
+    /* ─── MESSAGE ─── */
+    .message-box {
+      background: var(--green); padding: 28px 34px; margin: 36px 0 10px;
+    }
+    .message-box blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px; font-style: italic; line-height: 1.55; color: #E5D9BF;
+    }
+    .message-note { font-size: 13px; color: var(--muted); font-style: italic; margin-bottom: 44px; }
+
+    /* ─── SECTION TITLE ─── */
+    h2 {
+      font-size: 10px; font-weight: 500;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: var(--green); margin-bottom: 28px;
+      padding-bottom: 10px; border-bottom: 1px solid var(--stone);
+    }
+
+    /* ─── ROADMAP ─── */
+    .roadmap { margin-bottom: 52px; }
+    .roadmap-track { display: flex; flex-direction: column; }
+    .rm-item {
+      display: grid;
+      grid-template-columns: 120px 24px 1fr;
+      gap: 0 14px; min-height: 50px;
+    }
+    .rm-date {
+      font-size: 12px; color: var(--muted);
+      padding-top: 13px; text-align: right; white-space: nowrap;
+    }
+    .rm-spine { display: flex; flex-direction: column; align-items: center; }
+    .rm-dot {
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--stone); flex-shrink: 0;
+      margin-top: 15px; border: 2px solid var(--cream);
+      box-shadow: 0 0 0 1.5px var(--stone);
+    }
+    .rm-dot.amber { background: var(--amber); box-shadow: 0 0 0 2px var(--amber); width: 14px; height: 14px; margin-top: 13px; }
+    .rm-dot.green  { background: var(--green); box-shadow: 0 0 0 2px var(--green); width: 16px; height: 16px; margin-top: 12px; }
+    .rm-line { flex: 1; width: 1.5px; background: var(--stone); margin: 2px 0; }
+    .rm-item:last-child .rm-line { display: none; }
+    .rm-content { padding: 9px 0 16px; }
+    .rm-label { font-size: 14px; font-weight: 400; color: var(--ink); }
+    .rm-label.amber { color: var(--amber); font-weight: 500; }
+    .rm-label.green  { color: var(--green); font-weight: 600; font-size: 15px; }
+    .rm-sub { font-size: 12px; color: var(--muted); }
+
+    /* ─── IMPORTANCE RÉSEAUX ─── */
+    .importance-section { margin-bottom: 52px; }
+
+    .importance-intro {
+      font-size: 15px; line-height: 1.75;
+      margin-bottom: 28px; color: var(--ink);
+    }
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--green);
+      padding: 22px 20px;
+      display: flex; flex-direction: column; gap: 8px;
+    }
+
+    .stat-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 44px; font-weight: 600;
+      line-height: 1; color: var(--amber);
+    }
+
+    .stat-text {
+      font-size: 13px; color: #D9CEBB; line-height: 1.55;
+      flex: 1;
+    }
+
+    .stat-source {
+      font-size: 10px; color: #8A7B68;
+      letter-spacing: 0.04em; font-style: italic;
+      margin-top: 4px;
+    }
+
+    .importance-why { margin-bottom: 24px; }
+
+    .importance-why h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 600;
+      color: var(--green); margin-bottom: 18px;
+    }
+
+    .why-grid {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+
+    .why-item {
+      display: flex; gap: 16px; align-items: flex-start;
+      padding: 16px 18px;
+      background: var(--cream-dk);
+      border-left: 3px solid var(--cream-dk);
+      transition: border-color 0.15s;
+    }
+
+    .why-item:hover { border-left-color: var(--amber); }
+
+    .why-icon { font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+
+    .why-text {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+
+    .why-text strong {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+    }
+
+    .why-text span {
+      font-size: 13px; color: var(--muted); line-height: 1.6;
+    }
+
+    .importance-note {
+      background: var(--amber-lt);
+      border-left: 3px solid var(--amber);
+      padding: 14px 18px;
+      font-size: 12.5px; color: var(--muted);
+      font-style: italic; line-height: 1.6;
+    }
+
+    /* ─── SEP ─── */
+    .sep {
+      display: flex; align-items: center; gap: 16px;
+      margin: 48px 0 36px; color: var(--stone);
+    }
+    .sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: var(--stone); }
+    .sep span { font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; white-space: nowrap; }
+
+    /* ─── SCORE ─── */
+    .score { display: flex; gap: 3px; align-items: center; }
+    .score-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: var(--stone);
+    }
+    .score-dot.on { background: var(--green); }
+    .score-dot.amber { background: var(--amber); }
+    .score-label { font-size: 10px; color: var(--muted); letter-spacing: 0.05em; margin-left: 6px; }
+
+    /* ─── POST CARDS ─── */
+    .posts-section { margin-bottom: 52px; }
+    .post-card {
+      border: 1px solid var(--cream-dk);
+      margin-bottom: 24px;
+      background: white;
+    }
+    .post-card.event { border-color: var(--amber); }
+
+    .post-header {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 20px 12px;
+      border-bottom: 1px solid var(--cream-dk);
+      background: var(--cream);
+      flex-wrap: wrap;
+    }
+    .post-card.event .post-header { background: var(--amber-lt); border-bottom-color: var(--amber); }
+    .post-num {
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--stone); flex-shrink: 0;
+    }
+    .post-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 18px; font-weight: 600; color: var(--green); flex: 1;
+    }
+    .post-card.event .post-title { color: var(--amber); }
+    .post-date-badge { font-size: 11px; color: var(--muted); white-space: nowrap; }
+
+    .post-body { padding: 16px 20px 20px; }
+
+    .post-photo {
+      font-size: 12px; color: var(--muted);
+      margin-bottom: 18px; display: flex; gap: 8px; align-items: flex-start;
+      padding: 10px 14px; background: var(--cream); border-left: 2px solid var(--stone);
+    }
+    .post-photo::before { content: '📷'; font-size: 13px; flex-shrink: 0; }
+
+    /* FB / IG blocks */
+    .platforms { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 14px; }
+    .platform-block { display: flex; flex-direction: column; gap: 8px; }
+    .platform-label {
+      display: flex; align-items: center; gap: 7px;
+      font-size: 10px; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase;
+    }
+    .platform-label .dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+    .platform-label .dot.fb { background: var(--fb); }
+    .platform-label .dot.ig { background: var(--ig); }
+    .platform-label.fb { color: var(--fb); }
+    .platform-label.ig { color: var(--ig); }
+
+    .post-text {
+      background: var(--cream);
+      border-left: 2.5px solid var(--stone);
+      padding: 12px 16px;
+      font-size: 13.5px; line-height: 1.75; color: var(--ink);
+      white-space: pre-line; flex: 1;
+    }
+    .post-card.event .post-text { background: var(--amber-lt); border-left-color: var(--amber); }
+
+    /* Hashtags + horaire */
+    .post-meta {
+      display: flex; gap: 14px; align-items: flex-start;
+      flex-wrap: wrap; margin-top: 14px;
+    }
+    .meta-block { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 140px; }
+    .meta-label {
+      font-size: 9px; font-weight: 500; letter-spacing: 0.2em; text-transform: uppercase; color: var(--stone);
+    }
+    .meta-value { font-size: 12px; color: var(--muted); line-height: 1.5; }
+    .hashtags { color: var(--green-lt); font-size: 12px; line-height: 1.6; }
+
+    /* Score inline */
+    .post-score {
+      display: flex; align-items: center; gap: 8px;
+      padding: 10px 20px;
+      border-top: 1px solid var(--cream-dk);
+      background: var(--cream);
+    }
+    .post-score .score-label { font-size: 11px; color: var(--muted); margin: 0; }
+    .post-score .change-note {
+      margin-left: auto; font-size: 11px; color: var(--amber);
+      font-style: italic;
+    }
+
+    /* ─── ROLES ─── */
+    .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 40px; }
+    .role-card { padding: 20px 22px; background: var(--cream-dk); }
+    .role-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 16px; font-weight: 600; color: var(--green); margin-bottom: 12px;
+    }
+    .role-card ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+    .role-card li { font-size: 13px; padding-left: 14px; position: relative; }
+    .role-card li::before { content: '–'; position: absolute; left: 0; color: var(--amber); }
+
+    /* ─── INFO BOX ─── */
+    .info-box {
+      background: var(--green-bg); border-left: 3px solid var(--green);
+      padding: 16px 20px; font-size: 14px; margin-bottom: 48px;
+    }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      padding-top: 24px; border-top: 1px solid var(--stone);
+      display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .footer-name { font-family: 'Cormorant Garamond', serif; font-size: 18px; color: var(--green); }
+    .footer-sub { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); text-transform: uppercase; }
+    .footer-date { font-size: 12px; color: var(--muted); text-align: right; }
+
+    p { margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* ─── TABLETTE (≤ 768px) ─── */
+    @media (max-width: 768px) {
+      .stat-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+      .stat-number { font-size: 36px; }
+    }
+
+    /* ─── MOBILE (≤ 600px) ─── */
+    @media (max-width: 600px) {
+      /* Layout général */
+      .page { padding: 28px 16px 60px; }
+
+      /* Typographie */
+      h1 { font-size: 34px; }
+      .subtitle { font-size: 12px; }
+
+      /* Message central */
+      .message-box { padding: 20px 18px; }
+      .message-box blockquote { font-size: 16px; line-height: 1.5; }
+
+      /* Stats — 1 colonne */
+      .stat-grid { grid-template-columns: 1fr; gap: 10px; }
+      .stat-card { padding: 18px 16px; flex-direction: row; align-items: flex-start; gap: 16px; }
+      .stat-number { font-size: 40px; flex-shrink: 0; }
+      .stat-text { font-size: 12.5px; }
+
+      /* Why items */
+      .why-item { padding: 14px 14px; }
+      .why-icon { font-size: 18px; }
+      .why-text strong { font-size: 13.5px; }
+      .why-text span { font-size: 12.5px; }
+      .importance-note { font-size: 12px; padding: 12px 14px; }
+
+      /* Roadmap */
+      .rm-item { grid-template-columns: 64px 16px 1fr; gap: 0 10px; }
+      .rm-date { font-size: 10.5px; padding-top: 11px; }
+      .rm-label { font-size: 13px; }
+      .rm-sub { font-size: 11px; }
+
+      /* Post cards */
+      .post-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+        padding: 12px 14px 10px;
+      }
+      .post-date-badge { font-size: 11px; color: var(--amber); font-weight: 500; }
+      .post-body { padding: 14px 14px 16px; }
+
+      /* Photo */
+      .post-photo { font-size: 12px; padding: 9px 12px; }
+
+      /* FB / IG — empilés */
+      .platforms { grid-template-columns: 1fr; gap: 14px; }
+      .platform-label { font-size: 11px; margin-bottom: 2px; }
+
+      /* Texte post — 16px min pour éviter le zoom iOS */
+      .post-text { font-size: 16px; padding: 12px 14px; line-height: 1.7; }
+
+      /* Hashtags + horaire — empilés */
+      .post-meta { flex-direction: column; gap: 12px; margin-top: 12px; }
+      .meta-block { min-width: unset; }
+      .meta-label { font-size: 9px; }
+      .hashtags, .meta-value { font-size: 12.5px; }
+
+      /* Score */
+      .post-score { padding: 10px 14px; flex-wrap: wrap; gap: 6px; }
+      .post-score .change-note { width: 100%; margin-left: 0; font-size: 11px; }
+
+      /* Rôles */
+      .roles { grid-template-columns: 1fr; gap: 12px; }
+      .role-card { padding: 16px 18px; }
+      .role-card h3 { font-size: 16px; }
+
+      /* Info box */
+      .info-box { padding: 14px 16px; font-size: 13.5px; }
+
+      /* Footer */
+      .footer { flex-direction: column; gap: 16px; align-items: flex-start; }
+      .footer-date { text-align: left; }
+
+      /* Séparateurs */
+      .sep { margin: 36px 0 28px; }
+    }
+
+    /* ─── TRÈS PETIT (≤ 380px) ─── */
+    @media (max-width: 380px) {
+      .page { padding: 22px 14px 52px; }
+      h1 { font-size: 28px; }
+      .stat-card { flex-direction: column; gap: 8px; }
+      .stat-number { font-size: 34px; }
+      .rm-item { grid-template-columns: 56px 14px 1fr; }
+    }
+
+    /* ─── IMPRESSION ─── */
+    @media print {
+      body { background: white; }
+      body::before { display: none; }
+      .post-card { break-inside: avoid; }
+      .stat-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <p class="eyebrow">Plan de communication · Le Manoïre · Juillet 2026</p>
+    <h1>Les posts<br>de juillet</h1>
+    <p class="subtitle">Ouverture 9 juillet &nbsp;·&nbsp; Inauguration 16 juillet &nbsp;·&nbsp; Col de Jaman</p>
+  </header>
+
+  <p>Bonjour Micka,</p>
+  <p>Voici le plan complet — dates, textes Facebook et Instagram séparés, horaires recommandés, hashtags et niveau d'optimisation de chaque post. Vous n'avez qu'à valider avant publication.</p>
+
+  <div class="message-box">
+    <blockquote>« On a pris le temps qu'il fallait — pour que ce soit exactement ce que ça doit être. »</blockquote>
+  </div>
+  <p class="message-note">C'est le fil rouge de toute la communication jusqu'au 16 juillet.</p>
+
+  <!-- IMPORTANCE RÉSEAUX -->
+  <div class="importance-section">
+    <h2>Pourquoi être présent sur les réseaux sociaux</h2>
+
+    <p class="importance-intro">Pour un restaurant de montagne comme Le Manoïre, les réseaux sociaux ne sont pas un "plus" — c'est l'endroit où vos futurs clients décident d'y aller ou pas, souvent plusieurs jours avant de monter au col.</p>
+
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="stat-number">45%</div>
+        <div class="stat-text">des personnes ont découvert un restaurant via les réseaux sociaux avant d'y aller pour la première fois</div>
+        <div class="stat-source">Sprout Social, Restaurant Industry Report 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">88%</div>
+        <div class="stat-text">des habitants de Suisse romande utilisent les réseaux sociaux chaque mois — votre audience est là</div>
+        <div class="stat-source">We Are Social / Hootsuite, Digital Report 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3×</div>
+        <div class="stat-text">plus de crédibilité pour un restaurant qui publie régulièrement qu'un établissement sans activité sur les réseaux</div>
+        <div class="stat-source">BrightLocal, Local Consumer Review Survey 2024</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">70%</div>
+        <div class="stat-text">des réservations dans les restaurants de montagne et de loisirs sont planifiées à l'avance, après une recherche en ligne</div>
+        <div class="stat-source">Toast, Restaurant Trends Report 2024</div>
+      </div>
+    </div>
+
+    <div class="importance-why">
+      <h3>Ce que ça change concrètement pour Le Manoïre</h3>
+      <div class="why-grid">
+        <div class="why-item">
+          <div class="why-icon">🗺️</div>
+          <div class="why-text">
+            <strong>Vos clients planifient leur excursion</strong>
+            <span>Monter au Col de Jaman est une sortie qui se prépare. Les gens cherchent sur Google et Instagram <em>avant</em> de partir. Être visible à ce moment-là, c'est remplir votre terrasse.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📸</div>
+          <div class="why-text">
+            <strong>Une photo vaut une réservation</strong>
+            <span>La vue depuis votre terrasse à 1 500m est un argument de vente exceptionnel. Une image bien publiée déclenche des réservations — sans budget publicité.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">🔁</div>
+          <div class="why-text">
+            <strong>Vos clients deviennent vos ambassadeurs</strong>
+            <span>Quand un client partage sa photo depuis votre terrasse, ses amis la voient. Chaque partage est une recommandation gratuite à son réseau. C'est le bouche-à-oreille à l'ère numérique.</span>
+          </div>
+        </div>
+        <div class="why-item">
+          <div class="why-icon">📅</div>
+          <div class="why-text">
+            <strong>L'été est court — la visibilité se construit maintenant</strong>
+            <span>L'algorithme favorise les pages actives. Publier régulièrement dès l'ouverture construit une audience qui sera là pour l'été entier — et pour la saison suivante.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="importance-note">
+      Ces chiffres concernent des restaurants en contexte général. Pour un lieu unique comme Le Manoïre — altitude, vue exceptionnelle, mascotte Saint-Bernard — le potentiel d'engagement est significativement plus élevé. Les contenus "montagne + authenticité" sont parmi les plus partagés sur Facebook et Instagram en Suisse romande.
+    </div>
+  </div>
+
+  <!-- ROADMAP -->
+  <div class="roadmap">
+    <h2>Roadmap</h2>
+    <div class="roadmap-track">
+      <div class="rm-item">
+        <div class="rm-date">26–27 juin</div>
+        <div class="rm-spine"><div class="rm-dot"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label">Le délai assumé</div><div class="rm-sub">« On n'ouvre pas à moitié »</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">29 juin – 1er juil.</div>
+        <div class="rm-spine"><div class="rm-dot"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label">Les finitions</div><div class="rm-sub">Les détails qui font la différence</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">3 juillet</div>
+        <div class="rm-spine"><div class="rm-dot"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label">Anouck + J-6</div><div class="rm-sub">Humour + mascotte, l'excitation monte</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">7 juillet</div>
+        <div class="rm-spine"><div class="rm-dot"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label">J-2 — L'émotion</div><div class="rm-sub">Dernière ligne droite</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">9 juillet</div>
+        <div class="rm-spine"><div class="rm-dot green"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label green">Ouverture officielle 🎉</div><div class="rm-sub">Premiers clients, portes ouvertes</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">11–12 juillet</div>
+        <div class="rm-spine"><div class="rm-dot"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label">Premiers retours</div><div class="rm-sub">L'ambiance réelle, les premières tables</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">14 juillet</div>
+        <div class="rm-spine"><div class="rm-dot amber"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label amber">Teaser inauguration</div><div class="rm-sub">Créer le FOMO, invitation à venir</div></div>
+      </div>
+      <div class="rm-item">
+        <div class="rm-date">16 juillet</div>
+        <div class="rm-spine"><div class="rm-dot green"></div><div class="rm-line"></div></div>
+        <div class="rm-content"><div class="rm-label green">Inauguration 🥂</div><div class="rm-sub">La grande soirée</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sep"><span>Les posts — textes complets</span></div>
+
+  <div class="posts-section">
+    <h2>Textes rédigés — Facebook &amp; Instagram</h2>
+
+    <!-- POST 8 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 08</span>
+        <span class="post-title">Le délai assumé</span>
+        <span class="post-date-badge">26–27 juin · mardi 10h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Chantier en fin de course — lumière calme, ambiance presque prête. Pas besoin que ce soit parfait, l'authenticité prime.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">On avait dit fin juin.
+On ouvre le 9 juillet.
+Parce qu'on n'ouvre pas un endroit comme celui-ci à moitié.
+
+Les travaux prennent le temps qu'ils doivent prendre. La montagne, elle, est là depuis bien plus longtemps — elle peut attendre encore une semaine.
+
+Le 9 juillet, on vous attend au Col de Jaman.
+Réservations : lemanoire-jaman.ch 🏔️</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">On avait dit fin juin.
+On ouvre le 9 juillet.
+Parce qu'on n'ouvre pas à moitié. 🏔️
+
+Rendez-vous dans moins de 2 semaines.
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (3)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Montreux</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Montreux #RestaurantMontagne #Suisse</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">CTA renforcé — date explicite + lien de réservation ajouté</span>
+      </div>
+    </div>
+
+    <!-- POST 9 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 09</span>
+        <span class="post-title">Les finitions</span>
+        <span class="post-date-badge">29 juin – 1er juil. · jeudi 10h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Un beau détail soigné : table dressée, terrasse finie, carrelage, décor. Lumière naturelle obligatoire.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">C'est dans les détails qu'on reconnaît un endroit qui aime ce qu'il fait.
+On est dans les finitions. Et on les soigne.
+
+Rendez-vous le 9 juillet. ☀️
+lemanoire-jaman.ch</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">C'est dans les détails qu'on reconnaît un endroit qui aime ce qu'il fait. ☀️
+
+9 juillet.
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (3)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #RestaurantMontagne</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #RestaurantMontagne #TerroirSuisse #Suisse</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">Post déjà fort — hook philosophique + date claire + bref</span>
+      </div>
+    </div>
+
+    <!-- POST 10 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 10</span>
+        <span class="post-title">Anouck + J-6</span>
+        <span class="post-date-badge">3 juillet · vendredi 11h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Anouck dans les espaces quasi-prêts — salon, terrasse ou entrée. Elle doit avoir l'air « à l'aise chez elle ».</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">Rapport d'inspection finale.
+Anouck confirme : la terrasse est à son goût.
+Elle a testé tous les coins de soleil.
+
+Plus que 6 jours.
+Le 9 juillet, Le Manoïre ouvre. 🐾🏔️
+lemanoire-jaman.ch</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">Rapport d'inspection finale. ✅
+Anouck approuve. Elle a testé tous les coins de soleil. 🐾
+
+J-6.
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (4)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #SaintBernard #Montreux</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #SaintBernard #Montreux #RestaurantMontagne</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">Humour + urgence + Anouck = combo engagement maximum</span>
+      </div>
+    </div>
+
+    <!-- POST 11 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 11</span>
+        <span class="post-title">J-2 — La montagne vous attend</span>
+        <span class="post-date-badge">7 juillet · mardi 10h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Terrasse en lumière de fin de journée, vue sur les Alpes. Photo horizontale, grand angle si possible.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">Dans deux jours, les portes s'ouvrent.
+Il y a eu des mois de travaux, des choix, des nuits à imaginer ce que ça allait donner.
+Voilà ce que ça donne.
+
+Le 9 juillet, venez voir par vous-mêmes.
+Col de Jaman — 1 500m — Préalpes vaudoises. 🤍
+lemanoire-jaman.ch</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">Dans deux jours.
+Des mois de travaux. Des choix. Des nuits à imaginer.
+Voilà ce que ça donne.
+
+Le 9 juillet. 🤍
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (4)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #PrealpesvVaudoises #RestaurantMontagne</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #RestaurantMontagne #Suisse #Ouverture</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">Émotion forte — évocation des efforts crée une connexion réelle</span>
+      </div>
+    </div>
+
+    <!-- POST 12 — OUVERTURE -->
+    <div class="post-card event">
+      <div class="post-header">
+        <span class="post-num">Post 12</span>
+        <span class="post-title">OUVERTURE 🎉</span>
+        <span class="post-date-badge">9 juillet · matin 9h30</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Restaurant en vie — équipe souriante, premières tablées, Anouck à l'accueil. Photo le plus tôt possible le matin du 9.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">C'est aujourd'hui.
+Le Manoïre ouvre ses portes.
+
+La montagne, la terrasse, la cuisine du terroir — et Anouck qui accueille tout le monde avec la dignité qui la caractérise.
+
+On vous attendait. Venez. 🐾🏔️🍽️
+Réservations : lemanoire-jaman.ch
+📍 Col de Jaman · Préalpes vaudoises</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">C'est aujourd'hui. 🎉
+Le Manoïre ouvre.
+
+Montagne · terrasse · terroir · Anouck.
+On vous attendait. 🐾🏔️
+
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Montreux #RestaurantMontagne #Ouverture</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Montreux #RestaurantMontagne #Ouverture</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">CTA direct "Venez" + lien réservation — ne pas oublier de publier dès 9h30</span>
+      </div>
+    </div>
+
+    <!-- POST 13 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 13</span>
+        <span class="post-title">Premiers retours</span>
+        <span class="post-date-badge">11–12 juillet · vendredi 18h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Photos authentiques du premier service : terrasse animée, plats servis, clients détendus avec la vue. Pas de mise en scène.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">Les premières tablées sont passées.
+Et ça fait exactement l'effet qu'on espérait.
+
+Merci à ceux qui sont venus les premiers. Vous avez posé le ton.
+Et pour ceux qui n'ont pas encore réservé — il reste de la place. 🌿
+lemanoire-jaman.ch</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">Les premières tablées sont passées.
+Exactement l'effet qu'on espérait. 🌿
+
+Il reste de la place.
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (4)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #RestaurantMontagne #TerroirSuisse</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #RestaurantMontagne #TerroirSuisse #Montreux</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">Preuve sociale + urgence douce ("il reste de la place") = très efficace</span>
+      </div>
+    </div>
+
+    <!-- POST 14 -->
+    <div class="post-card">
+      <div class="post-header">
+        <span class="post-num">Post 14</span>
+        <span class="post-title">Teaser inauguration</span>
+        <span class="post-date-badge">14 juillet · lundi 10h</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Ambiance soirée anticipée : lumières, table dressée pour l'événement, terrasse en début de soirée. Créer l'envie.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">Dans deux jours, on fait vraiment la fête.
+Inauguration officielle du Manoïre — le 16 juillet.
+
+Producteurs, partenaires, voisins de montagne — et vous, si vous êtes de la région.
+Un soir pour marquer l'ouverture comme elle mérite de l'être.
+
+Places limitées — contactez-nous en DM ou à contact@lemanoire-jaman.ch 🤍</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">Dans 2 jours, on fête ça comme il se doit.
+Inauguration — 16 juillet. 🤍
+
+Voisins, producteurs, amoureux de la montagne.
+Places limitées → DM ou contact@lemanoire-jaman.ch</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (4)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Inauguration #RivieraSuisse</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Inauguration #Montreux #Suisse</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">Contact précis ajouté — "places limitées" crée l'urgence sans pression excessive</span>
+      </div>
+    </div>
+
+    <!-- POST 15 — INAUGURATION -->
+    <div class="post-card event">
+      <div class="post-header">
+        <span class="post-num">Post 15</span>
+        <span class="post-title">INAUGURATION 🥂</span>
+        <span class="post-date-badge">16 juillet · soir 21h ou lendemain matin</span>
+      </div>
+      <div class="post-body">
+        <div class="post-photo">Soirée : invités souriants, Anouck en vedette, ambiance chaleureuse. Ce post sert de vitrine pour tout l'été — soignez les photos.</div>
+        <div class="platforms">
+          <div class="platform-block">
+            <div class="platform-label fb"><span class="dot fb"></span>Facebook</div>
+            <div class="post-text">Ce soir, on a inauguré Le Manoïre.
+Avec les gens du coin, les artisans qui ont travaillé ici, les amoureux de cette montagne.
+
+Anouck était à son poste. Les assiettes étaient pleines. La vue était parfaite.
+C'est exactement ça qu'on voulait construire.
+
+Merci d'être là — ce soir et pour tous les soirs à venir.
+La terrasse vous attend tout l'été. 🥂🏔️
+📍 lemanoire-jaman.ch</div>
+          </div>
+          <div class="platform-block">
+            <div class="platform-label ig"><span class="dot ig"></span>Instagram</div>
+            <div class="post-text">Ce soir, on a inauguré Le Manoïre. 🥂
+Les gens du coin. Les artisans. La montagne.
+
+Anouck était à son poste.
+C'est exactement ça qu'on voulait.
+
+La terrasse vous attend tout l'été. 🏔️
+👉 lemanoire-jaman.ch (lien en bio)</div>
+          </div>
+        </div>
+        <div class="post-meta">
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Facebook (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Inauguration #Montreux #RestaurantMontagne</div>
+          </div>
+          <div class="meta-block">
+            <div class="meta-label">Hashtags Instagram (5)</div>
+            <div class="hashtags">#LeManoire #ColDeJaman #Inauguration #Montreux #RestaurantMontagne</div>
+          </div>
+        </div>
+      </div>
+      <div class="post-score">
+        <div class="score">
+          <div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div><div class="score-dot on"></div>
+        </div>
+        <span class="score-label">Optimisé</span>
+        <span class="change-note">CTA été ajouté — ce post devient une vitrine permanente pour les réservations estivales</span>
+      </div>
+    </div>
+
+  </div><!-- /posts-section -->
+
+  <div class="sep"><span>Organisation</span></div>
+
+  <div class="roles">
+    <div class="role-card">
+      <h3>Ce que vous faites</h3>
+      <ul>
+        <li>Envoyer les photos au fil des jours</li>
+        <li>Valider chaque texte avant publication</li>
+        <li>Ajuster si quelque chose ne vous convient pas</li>
+      </ul>
+    </div>
+    <div class="role-card">
+      <h3>Ce qu'on gère</h3>
+      <ul>
+        <li>Rédaction et mise à jour des textes</li>
+        <li>Publication aux bonnes dates et horaires</li>
+        <li>Hashtags et versions FB / Instagram</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="info-box">
+    Chaque post vous sera envoyé <strong>à l'avance pour validation</strong>. Vous donnez le feu vert — ou vous ajustez. Aucune surprise.
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div>
+      <div class="footer-name">Stéphanie Gallois</div>
+      <div class="footer-sub">Clockwork Ops</div>
+    </div>
+    <div class="footer-date">
+      Plan établi le 26 juin 2026<br>
+      <a href="mailto:stef.gallois@gmail.com" style="color:var(--amber);text-decoration:none;font-size:12px;">stef.gallois@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

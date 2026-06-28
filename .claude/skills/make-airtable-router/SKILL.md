@@ -112,6 +112,37 @@ Module 2 — BasicRouter
 
 ---
 
+## BUG CRITIQUE — Accents dans Make Airtable v3
+
+**Symptôme :** `filterByFormula` retourne 0 résultats même si les données existent dans Airtable. Aucune erreur affichée. `operations: 1` → seul le module search tourne, la suite ne passe jamais.
+
+**Cause :** Le module Airtable v3 de Make encode mal les caractères accentués dans les paramètres URL (`filterByFormula` est une query string). Les serveurs Airtable reçoivent une formule invalide et retournent silencieusement un tableau vide.
+
+**Affecte :**
+- `filterByFormula` contenant des valeurs avec accents : `{Statut}="envoyé"`, `NOT({Statut}="validé")`, etc.
+- Les filtres natifs Make entre modules (conditions soumises via API) — comportement imprévisible
+
+**N'affecte PAS :**
+- Les valeurs dans le corps JSON des requêtes PATCH/POST (mises à jour de records) → les accents passent correctement
+- Les formules Airtable avec fonctions ASCII : `LEFT({Statut},5)="valid"`, `RECORD_ID()="recXXX"`, etc.
+
+**Solutions :**
+
+1. **Supprimer les accents des options singleSelect** dans l'UI Airtable → toute la chaîne devient ASCII
+   - "envoyé" → "envoye" / "validé" → "valide" / "prêt à envoyer" → "pret a envoyer"
+   - Tous les records existants se mettent à jour automatiquement
+
+2. **filterByFormula 100% ASCII** si les options ne peuvent pas être renommées :
+   - `LEFT({Statut},5)="valid"` pour cibler "valide"
+   - `RECORD_ID()="recXXXXXXXXXXXXXX"` pour cibler un record précis
+   - Éviter toute comparaison directe de valeur accentuée
+
+3. **useColumnId: true** pour référencer les champs par ID (fldXXX) dans les templates Make → évite les problèmes de noms de champs accentués dans `{{N.Prénom}}` etc.
+
+**Règle de conception :** Pour tout projet Airtable connecté à Make, **nommer tous les singleSelect sans accents dès le départ**.
+
+---
+
 ## Checklist débogage routeur
 
 - [ ] Le champ est-il dans le tableau `fields` du module Search ?
@@ -119,3 +150,4 @@ Module 2 — BasicRouter
 - [ ] Le filtre Airtable exclut-il bien `NOT({Email envoyé})` pour éviter les doublons ?
 - [ ] `useColumnId: false` → référencer les champs par leur **nom** dans les templates
 - [ ] `parseResponse: true` sur le module HTTP pour accéder à `{{N.content[1].text}}`
+- [ ] **Les valeurs singleSelect sont-elles sans accents ?** → si oui, filterByFormula fonctionne ; sinon → bug silencieux

@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "include": [
+    "/guide-studio-posts.html",
+    "/api/*"
+  ],
+  "exclude": []
+}

@@ -58,6 +58,9 @@ projects/manoire/charte_graphique/
 !projects/atelier-des-automates/landing/assets/*.jpeg
 !projects/atelier-des-automates/landing/assets/*.webp
 
+# Exception : logos Françoise (livrables réseaux sociaux → à versionner)
+!projects/francoise/francoise-V3/reseaux-sociaux/*.png
+
 # Brouillons temporaires (jamais dans l'historique)
 scratch/
 
