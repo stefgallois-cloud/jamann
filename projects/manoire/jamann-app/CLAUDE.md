@@ -19,34 +19,35 @@ Ne jamais déployer sur Netlify — ancienne plateforme abandonnée.
 
 ```
 jamann-app/
-├── index.html                    ← app V2 React/Babel (no build step) — page principale
-├── functions/api/claude.js       ← Cloudflare Function — routing IA (POST /api/claude)
-├── functions/api/describe-image.js ← Cloudflare Function — vision Gemini (POST /api/describe-image)
-├── uploads/                      ← chartes graphiques PDF
+├── index.html                       ← app React/Babel (no build step) — page principale
+├── functions/api/describe-image.js  ← Cloudflare Function — vision Gemini (POST /api/describe-image)
+├── uploads/                         ← chartes graphiques PDF
 ├── logo.png
-└── _archive/                     ← V1 et fichiers obsolètes (ne pas modifier)
+├── sessions/                        ← comptes-rendus de session
+└── _archive/                        ← V1 et fichiers obsolètes (ne pas modifier)
 ```
 
-## Routing IA — priorité
+## Routing IA — architecture actuelle (2026-06-28)
 
-1. **Anthropic Claude Haiku 4.5** (`claude-haiku-4-5-20251001`) — priorité 1, avec prompt caching
-2. **Gemini** (fallback gratuit) — si pas de clé Anthropic ou si échec
-3. **OpenRouter** (dernier recours) — si Gemini échoue
+La génération de posts passe entièrement par **n8n** (plus de Cloudflare Function pour l'IA) :
+
+| Webhook n8n | URL | Rôle |
+|---|---|---|
+| `manoire-posts-gen` | `stefbystep.app.n8n.cloud/webhook/manoire-posts-gen` | Génération 2 FB + 2 IG |
+| `manoire-save-post` | `stefbystep.app.n8n.cloud/webhook/manoire-save-post` | Sauvegarde post publié → Airtable |
+
+**IA dans n8n** : GPT-4o-mini (OpenAI) avec mémoire anti-répétition via Airtable.
 
 ## Variables d'env Cloudflare (Settings → Environment variables)
 
 | Var | Statut | Note |
 |---|---|---|
 | `ANTHROPIC_API_KEY` | ⚠️ Crédits épuisés | Recharger sur console.anthropic.com → Billing |
-| `GEMINI_API_KEY` | ✅ Actif | Fallback actuel |
-| `OPENROUTER_API_KEY` | ➖ Non configuré | Optionnel |
+| `GEMINI_API_KEY` | ✅ Actif | Utilisé uniquement pour describe-image |
 
-## Prompt — structure
+## Mémoire anti-répétition — Airtable
 
-- `buildSystemPrompt(brand)` — contexte marque statique, mis en cache Anthropic
-- `buildUserPrompt(pillar, date, idea)` — dynamique (pilier + brief)
-- Référence éditoriale : `../../ligne-editoriale.md`
-
-## Code debug à nettoyer (restant)
-
-Champs `debug_anthropic` / `debug_gemini` dans `claude.js` — à retirer une fois Anthropic rechargé.
+- Base : `appcQfFZyeF16wn35` · Table : `tbliqVOxylcm50f59`
+- Champs (sans accents) : `Pilier`, `Brief`, `Date cible`, `FB Variante 1`, `FB Variante 2`, `IG Variante 1`, `IG Variante 2`, `Statut`
+- Options Statut : `Genere` / `Publie`
+- Credential n8n : `Ao8U6Cmc41qAeOAG` (PAT — jamais OAuth)
