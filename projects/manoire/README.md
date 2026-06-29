@@ -2,8 +2,8 @@
 
 Restaurant d'alpage à Montreux — client prioritaire de Clockwork Ops.
 
-**Statut :** Actif — travaux en cours, ouverture fin juin 2026
-**Deadline absolue :** Fin juin 2026
+**Statut :** Actif — ouverture 9 juillet 2026 (repoussée depuis fin juin — travaux terminés, équipe arrive)
+**Deadline absolue :** 9 juillet 2026
 
 ## Déjà livré
 - [x] Landing page
@@ -11,18 +11,22 @@ Restaurant d'alpage à Montreux — client prioritaire de Clockwork Ops.
 - [x] Refonte du site en multi-pages : menu de navigation + Accueil (hero photo) · Le Manoïre · Carte · Galerie · Infos pratiques · Réserver
 - [x] Page Conditions en direct (météo Col de Jaman) + affichage tablette (`display.html`)
 - [x] Corrections identité visuelle (31/05) : nav brand (logo + nom côte à côte), doublon supprimé, hero photo recentrée
+- [x] **sitev2 cinématique** (juin 2026) : site one-page scroll-scrub avec hero vidéo IA drone, sections éditoriales, stats animées, responsive mobile — dossier `site web/sitev2/starter/`
 
 ### Site web — structure
 Dossier `site web/` · fichiers partagés `styles.css` (charte + composants) et `nav.js` (menu + footer, à éditer pour modifier les onglets).
 À compléter par le client : photo hero définitive, vraie carte (menu), horaires, activation du formulaire de réservation.
 
-## À livrer avant ouverture
+## À livrer avant ouverture (9 juillet 2026)
 
 | Livrable | Statut |
 |---|---|
+| **sitev2 — hero vidéo IA** | Frames à refaire — Stef génère nouvelle vidéo Seedance 2, puis extraction ffmpeg |
+| **sitev2 — infos Micka** | Tél, email, photo Anouck, URLs Instagram/Facebook à compléter |
+| **sitev2 — déploiement** | Push GitHub + config domaine lemanoire-jaman.ch |
 | Automatisation posts réseaux sociaux | En cours — scénario Make opérationnel, test final en attente |
 | App planning équipe avec interface UI | À faire |
-| Automatisation 8 newsletters | À faire |
+| Automatisation 8 newsletters | Livré (newsletters enrichies) |
 
 ## Automatisation réseaux sociaux — état technique
 
