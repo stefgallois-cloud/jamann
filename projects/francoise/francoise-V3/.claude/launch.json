@@ -1,1 +1,1 @@
-{"version":"0.0.1","configurations":[{"name":"francoise-work-preview","runtimeExecutable":"python","runtimeArgs":["-m","http.server","8003"],"port":8003}]}
+{"version":"0.0.1","configurations":[{"name":"francoise-work-preview","runtimeExecutable":"python","runtimeArgs":["-m","http.server","8004"],"port":8004,"autoPort":false}]}

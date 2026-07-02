@@ -106,12 +106,14 @@ nav.solid .nav-logo img { height: 40px; width: 40px; }
   background: var(--rose); color: #fff !important;
   box-shadow: var(--shadow-rose); transform: translateY(-1px);
 }
-.burger { display: none; flex-direction: column; gap: 6px; background: none; border: none; cursor: pointer; padding: 6px; }
+/* Lisibilité des liens quand la nav est transparente (haut de l'accueil) */
+nav:not(.solid) { background: linear-gradient(to bottom, rgba(253, 250, 246, 0.85), rgba(253, 250, 246, 0)); }
+.burger { display: none; flex-direction: column; justify-content: center; gap: 6px; background: none; border: none; cursor: pointer; padding: 13px 12px; margin: -7px -6px; }
 .burger span { display: block; width: 26px; height: 2px; background: var(--rose); border-radius: 2px; transition: all 0.3s var(--ease); }
 
 /* ════ HERO ════ */
 .hero {
-  min-height: 90vh; display: grid; grid-template-columns: 47fr 53fr;
+  height: 100vh; max-height: 100vh; display: grid; grid-template-columns: 47fr 53fr;
   background: var(--cream); position: relative; overflow: hidden;
 }
 .hero-left {
@@ -120,10 +122,10 @@ nav.solid .nav-logo img { height: 40px; width: 40px; }
 }
 .hero-eyebrow {
   font-size: 0.92rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--rose); margin-bottom: 1.9rem; display: inline-flex; align-items: center; gap: 0.9rem;
+  color: var(--rose-deep); margin-bottom: 1.9rem; display: inline-flex; align-items: center; gap: 0.9rem;
   opacity: 0; animation: rise 0.9s var(--ease) 0.1s forwards;
 }
-.hero-eyebrow::before { content: ''; width: 38px; height: 1.5px; background: linear-gradient(90deg, var(--gold), var(--rose)); }
+.hero-eyebrow::before { content: none; }
 .hero-left h1 {
   font-family: 'Cormorant Garamond', serif; font-weight: 500;
   font-size: clamp(3.6rem, 6.8vw, 6.6rem); line-height: 1.02; color: var(--ink);
@@ -147,17 +149,17 @@ nav.solid .nav-logo img { height: 40px; width: 40px; }
 }
 .hero-quote cite {
   display: block; font-size: 0.72rem; font-family: 'Mulish', sans-serif; font-weight: 700;
-  font-style: normal; margin-top: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose);
+  font-style: normal; margin-top: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rose-deep);
 }
 .hero-tagline {
   font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.25rem;
-  color: var(--rose); letter-spacing: 0.03em; margin-bottom: 1.8rem;
+  color: var(--rose-deep); letter-spacing: 0.03em; margin-bottom: 1.8rem;
   opacity: 0; animation: rise 0.9s var(--ease) 0.38s forwards;
 }
 .hero-tagline svg { display: inline-block; vertical-align: middle; margin-left: 0.25rem; }
 .hero-left .btn { opacity: 0; animation: rise 0.9s var(--ease) 0.58s forwards; }
-.hero-right { position: relative; overflow: hidden; background: var(--cream); }
-.hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center 45%; animation: breathe 16s ease-in-out infinite alternate; }
+.hero-right { position: relative; overflow: hidden; background: linear-gradient(165deg, var(--cream) 0%, #FBF2EA 55%, var(--veil) 100%); }
+.hero-right img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; transform-origin: center bottom; animation: breathe 16s ease-in-out infinite alternate; mix-blend-mode: multiply; }
 .hero-right::after {
   content: ''; position: absolute; inset: 0;
   background: linear-gradient(105deg, var(--cream) 0%, rgba(253,250,246,0) 22%);
@@ -191,9 +193,10 @@ section { padding: 92px 4rem; }
 .inner { max-width: 1200px; margin: 0 auto; }
 .eyebrow {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase;
-  color: var(--rose); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.7rem;
+  color: var(--rose-deep); margin-bottom: 1rem; display: inline-flex; align-items: center; gap: 0.7rem;
 }
 .eyebrow::before { content: ''; width: 28px; height: 1.5px; background: var(--rose); }
+.eyebrow.eyebrow--no-line::before { content: none; }
 .section-h {
   font-family: 'Cormorant Garamond', serif; font-weight: 500;
   font-size: clamp(2.4rem, 4vw, 3.5rem); line-height: 1.08; letter-spacing: -0.015em;
@@ -284,7 +287,7 @@ section { padding: 92px 4rem; }
 .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
 .ci { display: grid; grid-template-columns: 22px 1fr; gap: 1rem; align-items: start; }
 .ci .ico { margin-top: 4px; }
-.ci h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose); margin-bottom: 0.35rem; }
+.ci h4, .ci .ci-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 0.35rem; }
 .ci p, .ci a { font-size: 1.05rem; color: var(--muted); transition: color 0.3s var(--ease); }
 .ci a:hover { color: var(--rose); }
 .ci .note { font-size: 0.86rem; color: var(--rose-deep); margin-top: 0.3rem; }
@@ -335,37 +338,99 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
 .page-hero:hover .page-hero-bg { transform: scale(1.06); }
 .page-hero-ov { position: absolute; inset: 0; background: linear-gradient(to top, var(--cream) 0%, rgba(253,250,246,0.55) 45%, rgba(253,250,246,0.05) 100%); }
 .page-hero-ct { position: relative; z-index: 2; padding: 0 4rem 4rem; max-width: 1200px; width: 100%; margin: 0 auto; }
-.page-back { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose-deep); display: inline-flex; align-items: center; gap: 0.5rem; margin-bottom: 1.4rem; transition: all 0.3s var(--ease); }
+.page-back { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose-deep); display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.75rem 0; margin: -0.75rem 0 0.65rem; transition: all 0.3s var(--ease); }
 .page-back:hover { color: var(--rose); transform: translateX(-4px); }
 .page-hero-ct h1 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(2.6rem, 5vw, 4.2rem); color: var(--ink); line-height: 1.06; letter-spacing: -0.015em; }
 .page-hero-ct h1 em { font-style: italic; color: var(--rose); }
 .page-hero-ct .pq { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--muted); font-size: 1.2rem; margin-top: 0.8rem; max-width: 680px; }
 .page-body { max-width: 820px; margin: 0 auto; padding: 96px 4rem; }
 .page-body p { font-size: 1.06rem; color: var(--muted); margin-bottom: 1.7rem; line-height: 1.85; }
+.page-body p strong { font-weight: 700; color: var(--ink); }
 .page-body ul { list-style: none; margin: 2rem 0; }
 .page-body ul li { color: var(--ink); font-size: 1.02rem; font-weight: 400; padding: 0.8rem 0 0.8rem 2rem; border-bottom: 1px solid var(--line); position: relative; transition: padding-left 0.3s var(--ease); }
 .page-body ul li:hover { padding-left: 2.5rem; color: var(--rose-deep); }
 .page-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--rose); font-weight: 600; }
-.indic { background: var(--veil); border-left: 4px solid var(--rose); border-radius: 0 16px 16px 0; padding: 2.1rem 2.4rem; margin: 3.2rem 0; }
-.indic h4 { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 0.8rem; }
+.indic { background: var(--veil); border-left: 6px solid var(--rose); border-radius: 0 16px 16px 0; padding: 2.1rem 2.4rem; margin: 3.2rem 0; }
+.section-outro { text-align: center; margin: 2.5rem 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--rose); display: flex; align-items: center; justify-content: center; gap: 0.6rem; line-height: 1.4; }
+.section-outro svg { stroke: var(--rose); flex-shrink: 0; width: 20px; height: 20px; }
+.citation { text-align: center; margin: 4rem auto; max-width: 700px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.45rem; color: var(--rose); line-height: 1.55; padding: 2.8rem 2rem; border-top: 1px solid var(--gold); border-bottom: 1px solid var(--gold); position: relative; }
+.citation svg { display: block; margin: 0 auto 1.2rem; stroke: var(--rose); width: 24px; height: 24px; }
+.citation cite { display: block; margin-top: 1.5rem; font-size: 0.75rem; font-family: 'Mulish', sans-serif; font-style: normal; letter-spacing: 0.28em; text-transform: uppercase; color: var(--rose-deep); font-weight: 700; }
+.indic h4, .indic .indic-title { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 0.8rem; }
 .indic p { font-size: 0.96rem; margin-bottom: 0; color: var(--muted); line-height: 1.7; }
 /* ── Headers de sections dans les pages détail ── */
 .page-h2 {
   font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 500;
   color: var(--ink); margin: 3.5rem 0 0.5rem; line-height: 1.1; display: flex; align-items: center;
 }
-.page-h2 em { color: var(--rose); }
+.page-h2 em, .page-h3 em { color: var(--rose); font-style: italic; }
 .page-h3 {
   font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 500;
   color: var(--ink); margin: 2.8rem 0 1rem; display: flex; align-items: center;
 }
 .page-h2 svg, .page-h3 svg { flex-shrink: 0; margin-right: 0.5rem; stroke: var(--rose); }
 .page-back svg { width: 14px; height: 14px; }
-.page-section-tag { font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--rose); margin-bottom: 1.4rem; }
+.page-body p.page-section-tag { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rose); margin: 0 0 2rem; line-height: 1.4; }
 .indic-attr { margin-top: 0.8rem; font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 700; }
+
+/* ── Chapeau gras sous les titres de section (gras conforme aux textes de Françoise) ── */
+.page-body p.chapeau { font-weight: 700; font-size: 1.15rem; color: var(--ink); margin: -0.5rem 0 1.4rem; }
+.page-body p.chapeau--close { margin: 2rem 0 1.4rem; }
+
+/* ── Label rose uppercase (sous-titres CLARÂME / TRANSÂME / ÂMEOR) ── */
+.page-body p.kicker { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rose-deep); margin-bottom: 1.2rem; }
+
+/* ── Lignes de tarifs ── */
+.price-row { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid var(--line); font-size: 0.96rem; color: var(--muted); }
+.price-row .price { font-weight: 700; color: var(--rose-deep); white-space: nowrap; }
+
+/* ── Séparateur de sections (étoile + filets or) ── */
+.sep { display: flex; align-items: center; justify-content: center; gap: 1.1rem; margin: 4.5rem auto 0; max-width: 420px; }
+.sep::before, .sep::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, var(--gold-soft)); }
+.sep::after { background: linear-gradient(90deg, var(--gold-soft), transparent); }
+.sep svg { stroke: var(--rose); width: 18px; height: 18px; flex-shrink: 0; }
+
+/* ── Mini-sommaire ancré (chips) ── */
+.toc { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 0 0 2.6rem; }
+.toc a { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--rose-deep); padding: 0.5rem 1.1rem; border: 1.5px solid var(--line); border-radius: 50px; transition: all 0.3s var(--ease); }
+.toc a:hover { color: #fff; background: var(--rose); border-color: var(--rose); box-shadow: var(--shadow-rose); transform: translateY(-1px); }
+.page-h2[id] { scroll-margin-top: 90px; }
 
 .cta-foot { text-align: center; padding: 3rem 0 0.8rem; border-top: 1px solid var(--line); margin-top: 2.8rem; }
 .cta-foot p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.3rem; color: var(--ink); margin-bottom: 1.4rem; }
+/* Quand une citation précède le CTA, ses filets or suffisent — pas de second filet */
+.citation + .cta-foot { border-top: none; margin-top: 0; }
+
+/* ── Mentions légales — présentation compacte ── */
+.page-hero--sm { height: 38vh; min-height: 330px; }
+.page-body.legal { max-width: 1100px; padding: 56px 4rem 72px; }
+.legal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+.legal-sec { background: var(--cream); border: 1px solid var(--line); border-radius: 16px; padding: 1.6rem 1.8rem; }
+.legal-sec--full { grid-column: 1 / -1; }
+.legal-sec h2 { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.45rem; color: var(--ink); margin: 0 0 0.7rem; }
+.legal-sec h2 em { font-style: italic; color: var(--rose); }
+.page-body.legal .legal-sec p { font-size: 0.88rem; line-height: 1.65; margin-bottom: 0.7rem; }
+.page-body.legal .legal-sec p:last-child { margin-bottom: 0; }
+.page-body.legal .legal-sec ul { margin: 0.3rem 0 0; }
+.page-body.legal .legal-sec ul li { font-size: 0.88rem; padding: 0.42rem 0 0.42rem 1.4rem; }
+.page-body.legal .legal-sec ul li:hover { padding-left: 1.4rem; color: var(--ink); }
+.page-body.legal .cta-foot { margin-top: 2.2rem; padding-top: 2.2rem; }
+@media (max-width: 860px) { .legal-grid { grid-template-columns: 1fr; } .page-body.legal { padding: 48px 1.6rem 64px; } }
+
+/* ── Bouton retour en haut ── */
+.to-top {
+  position: fixed; right: 1.6rem; bottom: 1.6rem; z-index: 90;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--line); background: rgba(253, 250, 246, 0.92);
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  color: var(--rose-deep); display: flex; align-items: center; justify-content: center;
+  cursor: pointer; box-shadow: var(--shadow-sm);
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: all 0.35s var(--ease);
+}
+.to-top.show { opacity: 1; visibility: visible; transform: none; }
+.to-top:hover { background: var(--rose); color: #fff; border-color: var(--rose); box-shadow: var(--shadow-rose); }
+.to-top svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ════ REVEAL ════ */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 1s var(--ease), transform 1s var(--ease); }
@@ -413,6 +478,7 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
   .page-hero-ct { padding: 0 1.6rem 2.4rem; }
   .page-body { padding: 56px 1.6rem; }
   .ft-nav { gap: 0.7rem 1.6rem; margin-bottom: 3rem; }
+  .ft-top { flex-direction: column; gap: 1.4rem; }
 }
 
 @media (prefers-reduced-motion: reduce) {

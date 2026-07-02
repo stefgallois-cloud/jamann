@@ -1,0 +1,13 @@
+# Réinclure les images du site — le .gitignore racine ignore *.png/*.jpg/*.ico,
+# mais ce site statique est déployé depuis git (Cloudflare Pages) : ses images DOIVENT être versionnées.
+!*.png
+!*.jpg
+!*.jpeg
+!*.ico
+
+# Archives locales et originaux lourds — jamais dans git
+_originals/
+_unused/
+
+# Fichiers temporaires de travail
+pdf_extract.txt
