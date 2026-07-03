@@ -6,8 +6,10 @@
 **Site :** fd-harmonie.com (prototype V3 en cours, pas encore en ligne)  
 **Contact :** f.davenas@gmail.com · +33 (0)6 19 20 82 56
 
-## Statut (2026-07-01)
-Prototype HTML/CSS vanilla **validé par Françoise**. Modifications client reçues via 2 PDFs (`changement_site_web_par_francoise_1.pdf` et `changement_site_web_par_francoise_2.pdf`) — implémentation en cours.  
+## Statut (2026-07-03)
+Modifications des 2 PDFs **intégrées** + audit UX/UI complet (v41).  
+**v2 déployée** : https://francoise-davenas-v2.pages.dev (préversion privée, non indexable) — la v1 https://francoise-davenas.pages.dev reste intacte pour comparaison.  
+**Email de validation envoyé à Françoise** (10 questions numérotées) — en attente de ses réponses pour tout finaliser en une passe, y compris l'onglet « Ateliers et journées immersives ».  
 Volet réseaux sociaux : **mis de côté** — priorité au site.
 
 ## Architecture
