@@ -443,7 +443,7 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
   .hero { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
   .hero-left { padding: 2.5rem 2.5rem 4rem; }
   .hero-right { height: 64vw; max-height: 460px; order: -1; margin-top: 72px; }
-  .hero-right::after { background: linear-gradient(to top, var(--cream) 0%, rgba(253,250,246,0) 30%); }
+  .hero-right::after { background: linear-gradient(to top, var(--cream) 0%, rgba(253,250,246,0) 10%); }
   .services-top { grid-template-columns: 1fr; gap: 2rem; }
   .about-grid { grid-template-columns: 1fr; gap: 4rem; }
   .about-photo { max-width: 520px; }
