@@ -1,0 +1,22 @@
+<!-- @dsCard group="Spacing" viewport="700x130" name="Shadow System" subtitle="Élévations et halos" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--color-bg-subtle); display: flex; align-items: center; justify-content: center; padding: 28px; gap: 20px; font-family: var(--font-body); }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .box { width: 64px; height: 48px; background: white; border-radius: var(--radius-md); }
+  .name { font-size: 10px; font-weight: 600; color: var(--color-text-primary); }
+</style>
+</head>
+<body>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-sm)"></div><span class="name">sm</span></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-md)"></div><span class="name">md</span></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-lg)"></div><span class="name">lg</span></div>
+  <div class="item"><div class="box" style="box-shadow:var(--shadow-xl)"></div><span class="name">xl</span></div>
+  <div class="item"><div class="box" style="background:var(--color-bg-dark);box-shadow:var(--shadow-glow-indigo)"></div><span class="name">glow indigo</span></div>
+  <div class="item"><div class="box" style="background:var(--color-bg-dark);box-shadow:var(--shadow-glow-cyan)"></div><span class="name">glow cyan</span></div>
+</body>
+</html>

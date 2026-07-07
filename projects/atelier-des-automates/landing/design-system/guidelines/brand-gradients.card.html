@@ -1,0 +1,33 @@
+<!-- @dsCard group="Colors" viewport="700x120" name="Gradients & Glows" subtitle="Dégradés brand et halos lumineux" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--color-bg); display: flex; align-items: center; padding: 20px; gap: 12px; font-family: var(--font-body); }
+  .swatch { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .block { width: 100%; height: 44px; border-radius: var(--radius-md); }
+  .name { font-size: 10px; font-weight: 600; color: var(--color-text-primary); }
+  .sub  { font-size: 9px; color: var(--color-text-muted); font-family: monospace; }
+</style>
+</head>
+<body>
+  <div class="swatch">
+    <div class="block" style="background: var(--gradient-brand)"></div>
+    <span class="name">Brand gradient</span><span class="sub">--gradient-brand</span>
+  </div>
+  <div class="swatch">
+    <div class="block" style="background: var(--gradient-brand-wide)"></div>
+    <span class="name">Brand wide</span><span class="sub">--gradient-brand-wide</span>
+  </div>
+  <div class="swatch">
+    <div class="block" style="background: var(--color-bg-dark); box-shadow: var(--shadow-glow-indigo)"></div>
+    <span class="name">Glow indigo</span><span class="sub">--shadow-glow-indigo</span>
+  </div>
+  <div class="swatch">
+    <div class="block" style="background: var(--color-bg-dark); box-shadow: var(--shadow-glow-cyan)"></div>
+    <span class="name">Glow cyan</span><span class="sub">--shadow-glow-cyan</span>
+  </div>
+</body>
+</html>

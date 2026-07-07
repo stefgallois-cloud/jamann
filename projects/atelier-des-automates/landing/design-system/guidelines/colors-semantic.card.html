@@ -1,0 +1,27 @@
+<!-- @dsCard group="Colors" viewport="700x160" name="Semantic Colors" subtitle="Aliases sémantiques" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--color-bg); display: flex; flex-wrap: wrap; align-items: flex-start; padding: 20px; gap: 10px; font-family: var(--font-body); }
+  .swatch { display: flex; align-items: center; gap: 8px; width: calc(33% - 10px); }
+  .dot { width: 28px; height: 28px; border-radius: var(--radius-sm); border: 1px solid rgba(0,0,0,0.06); flex-shrink: 0; }
+  .info { display: flex; flex-direction: column; gap: 2px; }
+  .name { font-size: 10px; font-weight: 600; color: var(--color-text-primary); }
+  .token { font-size: 9px; color: var(--color-text-muted); font-family: monospace; }
+</style>
+</head>
+<body>
+  <div class="swatch"><div class="dot" style="background:var(--color-primary)"></div><div class="info"><span class="name">Primary</span><span class="token">--color-primary</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-secondary)"></div><div class="info"><span class="name">Secondary</span><span class="token">--color-secondary</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-accent)"></div><div class="info"><span class="name">Accent</span><span class="token">--color-accent</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-bg);border:1px solid var(--color-border)"></div><div class="info"><span class="name">BG</span><span class="token">--color-bg</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-surface);border:1px solid var(--color-border)"></div><div class="info"><span class="name">Surface</span><span class="token">--color-surface</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-bg-dark)"></div><div class="info"><span class="name">BG Dark</span><span class="token">--color-bg-dark</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-text-primary)"></div><div class="info"><span class="name">Text Primary</span><span class="token">--color-text-primary</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-text-body)"></div><div class="info"><span class="name">Text Body</span><span class="token">--color-text-body</span></div></div>
+  <div class="swatch"><div class="dot" style="background:var(--color-text-muted)"></div><div class="info"><span class="name">Text Muted</span><span class="token">--color-text-muted</span></div></div>
+</body>
+</html>

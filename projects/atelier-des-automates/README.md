@@ -45,7 +45,10 @@ Chaque pack gratuit comprend :
 ```text
 projects/atelier-des-automates/
 ├── README.md            - Ce fichier de pilotage
+├── CLAUDE.md            - Instructions spécifiques au projet (design system, ton, règles)
 ├── storytelling.md      - Le pourquoi, les règles de ton et l'univers du projet
+├── branding.md          - Charte de marque : palette, typo, personnalité, mascotte
+├── landing/design-system/ - Système de design technique (tokens, composants, guidelines)
 ├── prompt/              - Dossier réglementaire de stockage des prompts IA
 ├── presentation/        - Slides de présentation interactive à partager
 └── les-copains/         - Branche Facebook perso (partage de tips IA grand public)

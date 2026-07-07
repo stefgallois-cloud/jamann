@@ -1,0 +1,61 @@
+/* L'Atelier des Automates — Color Tokens */
+
+:root {
+  /* --- Base palette --- */
+  --color-indigo-400: #818CF8;
+  --color-indigo-500: #6366F1;
+  --color-indigo-600: #4F46E5;
+  --color-indigo-700: #4338CA;
+
+  --color-violet-300: #C4B5FD;
+  --color-violet-400: #A78BFA;
+  --color-violet-500: #8B5CF6;
+
+  --color-cyan-400: #22D3EE;
+  --color-cyan-500: #06B6D4;
+  --color-cyan-600: #0891B2;
+
+  --color-slate-50:  #F8FAFC;
+  --color-slate-100: #F1F5F9;
+  --color-slate-200: #E2E8F0;
+  --color-slate-300: #CBD5E1;
+  --color-slate-400: #94A3B8;
+  --color-slate-500: #64748B;
+  --color-slate-600: #475569;
+  --color-slate-700: #334155;
+  --color-slate-800: #1E293B;
+  --color-slate-900: #0F172A;
+
+  --color-white: #FFFFFF;
+
+  /* --- Semantic aliases --- */
+  --color-primary:         var(--color-indigo-500);
+  --color-primary-hover:   var(--color-indigo-600);
+  --color-primary-light:   var(--color-indigo-400);
+
+  --color-secondary:       var(--color-violet-400);
+  --color-secondary-hover: var(--color-violet-500);
+
+  --color-accent:          var(--color-cyan-500);
+  --color-accent-hover:    var(--color-cyan-600);
+
+  --color-bg:              var(--color-slate-50);
+  --color-bg-subtle:       var(--color-slate-100);
+  --color-bg-dark:         var(--color-slate-900);
+
+  --color-surface:         var(--color-white);
+  --color-surface-hover:   var(--color-slate-50);
+
+  --color-border:          var(--color-slate-200);
+  --color-border-strong:   var(--color-slate-300);
+
+  --color-text-primary:    var(--color-slate-900);
+  --color-text-body:       var(--color-slate-600);
+  --color-text-muted:      var(--color-slate-400);
+  --color-text-inverted:   var(--color-white);
+
+  /* --- Gradients --- */
+  --gradient-brand:        linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-violet-400) 100%);
+  --gradient-brand-wide:   linear-gradient(135deg, var(--color-indigo-500) 0%, var(--color-violet-400) 60%, var(--color-cyan-500) 100%);
+  --gradient-shimmer:      linear-gradient(90deg, var(--color-indigo-500), var(--color-cyan-500), var(--color-indigo-500));
+}

@@ -1,0 +1,316 @@
+<!-- @startingPoint section="Website" subtitle="Landing page L'Atelier des Automates" viewport="1280x800" -->
+<!-- @dsCard group="Website" viewport="1280x800" name="Landing Page" subtitle="Homepage complète — hero, features, CTA" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>L'Atelier des Automates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700;9..40,800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  body { margin: 0; background: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; color: #475569; }
+  a { text-decoration: none; color: inherit; }
+  img { display: block; }
+
+  nav {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(248,250,252,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid #E2E8F0;
+  }
+  .nav-inner {
+    max-width: 1160px; margin: 0 auto; padding: 0 32px;
+    height: 64px; display: flex; align-items: center; justify-content: space-between; gap: 32px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; }
+  .nav-brand img { width: 36px; height: 36px; object-fit: contain; }
+  .nav-brand-name { font-family: 'DM Sans', sans-serif; font-weight: 800; font-size: 1.125rem; color: #0F172A; letter-spacing: -0.02em; }
+  .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  .nav-links a { font-size: 0.875rem; font-weight: 500; color: #475569; transition: color 150ms ease; }
+  .nav-links a:hover { color: #6366F1; }
+
+  .hero { background: #0F172A; padding: 100px 0 80px; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 65%); top: 50%; left: 30%; transform: translate(-50%,-50%); pointer-events: none; }
+  .hero-inner { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: rgba(99,102,241,0.15); border: 1px solid rgba(99,102,241,0.3); color: #C4B5FD; font-size: 0.7rem; font-weight: 600; padding: 5px 12px; border-radius: 9999px; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px; }
+  .hero-title { font-family: 'DM Sans', sans-serif; font-size: clamp(2.5rem, 5vw, 3.75rem); font-weight: 800; color: white; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 20px; }
+  .hero-title span { background: linear-gradient(135deg, #6366F1 0%, #A78BFA 55%, #22D3EE 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 1.125rem; line-height: 1.65; color: rgba(255,255,255,0.62); margin: 0 0 36px; }
+  .hero-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .hero-mascot { display: flex; align-items: center; justify-content: center; }
+  .hero-mascot img { width: 300px; height: 300px; object-fit: contain; filter: drop-shadow(0 0 48px rgba(99,102,241,0.45)); }
+
+  .logos-bar { background: white; border-bottom: 1px solid #E2E8F0; padding: 22px 0; }
+  .logos-inner { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: center; gap: 40px; flex-wrap: wrap; }
+  .tool-pill { display: flex; align-items: center; gap: 7px; font-size: 0.8rem; font-weight: 600; color: #64748B; padding: 5px 12px; border-radius: 9999px; border: 1px solid #E2E8F0; }
+  .tool-dot { width: 9px; height: 9px; border-radius: 50%; }
+
+  .container { max-width: 1160px; margin: 0 auto; padding: 0 32px; }
+  .section-eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #6366F1; margin-bottom: 12px; }
+  .section-title { font-family: 'DM Sans', sans-serif; font-size: 2.25rem; font-weight: 800; color: #0F172A; letter-spacing: -0.03em; line-height: 1.15; margin: 0 0 16px; }
+  .section-sub { font-size: 1.125rem; color: #475569; line-height: 1.65; margin: 0 0 52px; max-width: 560px; }
+
+  .features { padding: 96px 0; }
+  .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  .feature-card { background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 28px; transition: all 220ms ease; }
+  .feature-card:hover { transform: translateY(-3px); box-shadow: 0 12px 32px rgba(15,23,42,0.10); border-color: rgba(99,102,241,0.2); }
+  .feature-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(99,102,241,0.1); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+  .feature-title { font-family: 'DM Sans', sans-serif; font-size: 1.1rem; font-weight: 700; color: #0F172A; margin: 0 0 8px; }
+  .feature-desc { font-size: 0.875rem; color: #475569; line-height: 1.65; margin: 0; }
+
+  .how { padding: 96px 0; background: #F1F5F9; }
+  .steps { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; margin-top: 52px; }
+  .step { display: flex; flex-direction: column; gap: 16px; }
+  .step-num { width: 40px; height: 40px; border-radius: 9999px; background: linear-gradient(135deg, #6366F1, #A78BFA); color: white; font-weight: 800; font-size: 1.125rem; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .step-title { font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 700; color: #0F172A; margin: 0; }
+  .step-desc { font-size: 0.875rem; line-height: 1.65; color: #475569; margin: 0; }
+
+  .testimonials { padding: 96px 0; }
+  .testi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 22px; margin-top: 52px; }
+  .testi-card { background: white; border: 1px solid #E2E8F0; border-radius: 16px; padding: 28px; display: flex; flex-direction: column; gap: 16px; transition: all 220ms ease; }
+  .testi-card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(15,23,42,0.10); }
+  .testi-quote { font-size: 0.938rem; line-height: 1.65; color: #475569; font-style: italic; margin: 0; }
+  .testi-author { display: flex; align-items: center; gap: 10px; }
+  .testi-avatar { width: 36px; height: 36px; border-radius: 9999px; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: white; flex-shrink: 0; }
+  .testi-name { font-size: 0.875rem; font-weight: 600; color: #0F172A; }
+  .testi-role { font-size: 0.75rem; color: #94A3B8; }
+
+  .cta-section { background: #0F172A; padding: 100px 0; text-align: center; position: relative; overflow: hidden; }
+  .cta-glow { position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(99,102,241,0.18) 0%, transparent 70%); top: 50%; left: 50%; transform: translate(-50%,-50%); pointer-events: none; }
+  .cta-title { font-family: 'DM Sans', sans-serif; font-size: 3rem; font-weight: 800; color: white; letter-spacing: -0.03em; line-height: 1.1; margin: 0 0 20px; position: relative; }
+  .cta-sub { font-size: 1.125rem; color: rgba(255,255,255,0.58); margin: 0 0 40px; position: relative; line-height: 1.65; }
+  .cta-actions { display: flex; gap: 12px; justify-content: center; position: relative; }
+
+  footer { background: white; border-top: 1px solid #E2E8F0; padding: 40px 0; }
+  .footer-inner { max-width: 1160px; margin: 0 auto; padding: 0 32px; display: flex; align-items: center; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  .footer-copy { font-size: 0.8rem; color: #94A3B8; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { font-size: 0.8rem; color: #94A3B8; transition: color 150ms; }
+  .footer-links a:hover { color: #6366F1; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+
+function Button({ children, variant = 'primary', size = 'md', disabled = false, onClick, href, style: extra = {} }) {
+  const [hov, setHov] = React.useState(false);
+  const sizes = { sm: { fontSize: '0.875rem', padding: '8px 18px' }, md: { fontSize: '1rem', padding: '12px 24px' }, lg: { fontSize: '1.0625rem', padding: '15px 32px' } };
+  const variants = {
+    primary:   { background: hov ? '#4F46E5' : '#6366F1', color: 'white', boxShadow: hov ? '0 6px 20px rgba(99,102,241,0.4)' : '0 2px 8px rgba(99,102,241,0.25)', transform: hov ? 'translateY(-1px)' : 'none' },
+    secondary: { background: hov ? 'rgba(99,102,241,0.06)' : 'transparent', color: '#6366F1', border: '2px solid #6366F1', transform: hov ? 'translateY(-1px)' : 'none' },
+    ghost:     { background: hov ? 'rgba(255,255,255,0.06)' : 'transparent', color: 'rgba(255,255,255,0.7)' },
+    gradient:  { background: 'linear-gradient(135deg, #6366F1 0%, #A78BFA 100%)', color: 'white', boxShadow: hov ? '0 8px 24px rgba(99,102,241,0.45)' : '0 4px 14px rgba(99,102,241,0.30)', transform: hov ? 'translateY(-1px)' : 'none' },
+  };
+  const base = { display: 'inline-flex', alignItems: 'center', justifyContent: 'center', gap: '8px', fontFamily: 'Inter, sans-serif', fontWeight: 600, borderRadius: '9999px', border: 'none', cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? 0.5 : 1, textDecoration: 'none', transition: 'all 220ms ease', whiteSpace: 'nowrap', lineHeight: 1, ...sizes[size], ...variants[variant], ...extra };
+  const props = { style: base, onMouseEnter: () => setHov(true), onMouseLeave: () => setHov(false), onClick: disabled ? undefined : onClick, disabled };
+  return href ? <a href={href} {...props}>{children}</a> : <button {...props}>{children}</button>;
+}
+
+function Badge({ children, variant = 'default', style: extra = {} }) {
+  const variants = {
+    default: { background: 'rgba(99,102,241,0.1)', color: '#4338CA' },
+    violet:  { background: 'rgba(167,139,250,0.12)', color: '#7C3AED' },
+    cyan:    { background: 'rgba(6,182,212,0.12)', color: '#0891B2' },
+    dark:    { background: 'rgba(255,255,255,0.12)', color: 'rgba(255,255,255,0.9)' },
+  };
+  return <span style={{ display:'inline-flex', alignItems:'center', fontFamily:'Inter,sans-serif', fontWeight:600, borderRadius:'9999px', letterSpacing:'0.06em', textTransform:'uppercase', fontSize:'0.7rem', padding:'4px 10px', ...variants[variant], ...extra }}>{children}</span>;
+}
+
+const features = [
+  { icon: '⚙️', title: 'Workflows sur mesure', desc: 'On analyse tes tâches répétitives et on crée des automatisations adaptées à ta façon de travailler.' },
+  { icon: '🤖', title: 'IA intégrée', desc: 'GPT, Claude, Mistral — on connecte les bons outils IA à tes processus pour gagner du temps au quotidien.' },
+  { icon: '🔌', title: 'Zéro code requis', desc: 'Make, Zapier, Notion, Airtable — des outils no-code puissants, sans une ligne de code à écrire.' },
+  { icon: '🎓', title: 'Accompagnement inclus', desc: 'On te forme à utiliser tes automatisations. Tu comprends ce que tu as, tu peux le faire évoluer.' },
+  { icon: '⚡', title: 'Livraison rapide', desc: 'Premier workflow livré en moins d\'une semaine. On part vite, on teste, on ajuste.' },
+  { icon: '💬', title: 'Suivi continu', desc: 'Tes automatisations évoluent avec toi. On reste disponibles pour les faire grandir à ton rythme.' },
+];
+
+const steps = [
+  { num: '1', title: 'On échange', desc: 'Un appel découverte de 30 min pour comprendre ta situation, tes outils, ce qui te fait perdre du temps.' },
+  { num: '2', title: 'On construit', desc: 'On crée tes automatisations en 1 à 2 semaines, en te tenant informé·e à chaque étape.' },
+  { num: '3', title: 'Tu automatises', desc: 'Tu reprends la main. On te forme, on documente tout, et tu gagnes du temps dès la première semaine.' },
+];
+
+const testimonials = [
+  { quote: 'En 3h avec l\'atelier, j\'ai récupéré 2h par jour. Mon onboarding client tourne tout seul maintenant.', name: 'Sophie M.', role: 'Coach en développement personnel', initials: 'SM', color: '#6366F1' },
+  { quote: 'Je savais pas que c\'était aussi simple. Maintenant mes devis partent automatiquement après chaque appel.', name: 'Thomas R.', role: 'Consultant freelance', initials: 'TR', color: '#A78BFA' },
+  { quote: 'Vraiment l\'impression d\'avoir un assistant invisible qui bosse pendant que je dors.', name: 'Léa D.', role: 'Créatrice de contenu', initials: 'LD', color: '#06B6D4' },
+];
+
+const tools = [
+  { name: 'Make', color: '#6366F1' }, { name: 'Zapier', color: '#FF4A00' },
+  { name: 'Notion', color: '#000' }, { name: 'Airtable', color: '#18BFFF' },
+  { name: 'GPT-4', color: '#10A37F' }, { name: 'Claude', color: '#A78BFA' },
+];
+
+function App() {
+  const [email, setEmail] = React.useState('');
+
+  return (
+    <div>
+      {/* NAV */}
+      <nav>
+        <div className="nav-inner">
+          <div className="nav-brand">
+            <img src="../../assets/logo-robot-v2-transparent.png" alt="Mascotte" />
+            <span className="nav-brand-name">L'Atelier des Automates</span>
+          </div>
+          <ul className="nav-links">
+            <li><a href="#features">Services</a></li>
+            <li><a href="#how">Méthode</a></li>
+            <li><a href="#testi">Témoignages</a></li>
+          </ul>
+          <Button size="sm">Prendre RDV</Button>
+        </div>
+      </nav>
+
+      {/* HERO */}
+      <section className="hero">
+        <div className="hero-glow"></div>
+        <div className="hero-inner">
+          <div>
+            <div className="hero-badge">✦ Outils no-code &amp; IA</div>
+            <h1 className="hero-title">Laisse les automates<br/><span>bosser pour toi.</span></h1>
+            <p className="hero-sub">Tu n'as pas à tout faire toi-même. On crée tes automatisations sur mesure — sans coder, sans stress — pour que tu puisses te concentrer sur ce qui compte vraiment.</p>
+            <div className="hero-actions">
+              <Button variant="gradient" size="lg">Commencer maintenant →</Button>
+              <Button variant="ghost" size="lg">Voir comment ça marche</Button>
+            </div>
+          </div>
+          <div className="hero-mascot">
+            <img src="../../assets/logo-robot-v2.png" alt="Robot mascotte" />
+          </div>
+        </div>
+      </section>
+
+      {/* TOOLS */}
+      <div className="logos-bar">
+        <div className="logos-inner">
+          <span style={{fontSize:'0.7rem',fontWeight:600,color:'#94A3B8',textTransform:'uppercase',letterSpacing:'0.08em'}}>Compatible avec</span>
+          {tools.map(t => (
+            <div key={t.name} className="tool-pill">
+              <div className="tool-dot" style={{background: t.color}}></div>
+              {t.name}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* FEATURES */}
+      <section className="features" id="features">
+        <div className="container">
+          <div className="section-eyebrow">Ce qu'on fait pour toi</div>
+          <h2 className="section-title">Tout ce dont tu as besoin<br/>pour automatiser.</h2>
+          <p className="section-sub">Des workflows pensés pour les entrepreneurs, créateurs et freelances qui veulent reprendre du temps sans devenir développeurs.</p>
+          <div className="features-grid">
+            {features.map(f => (
+              <div key={f.title} className="feature-card">
+                <div className="feature-icon">{f.icon}</div>
+                <h3 className="feature-title">{f.title}</h3>
+                <p className="feature-desc">{f.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* HOW */}
+      <section className="how" id="how">
+        <div className="container">
+          <div className="section-eyebrow">La méthode</div>
+          <h2 className="section-title">Simple. Rapide. Efficace.</h2>
+          <p className="section-sub">Trois étapes. Pas de jargon technique. On gère tout.</p>
+          <div className="steps">
+            {steps.map(s => (
+              <div key={s.num} className="step">
+                <div className="step-num">{s.num}</div>
+                <h3 className="step-title">{s.title}</h3>
+                <p className="step-desc">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TESTIMONIALS */}
+      <section className="testimonials" id="testi">
+        <div className="container">
+          <div className="section-eyebrow">Elles &amp; ils automatisent déjà</div>
+          <h2 className="section-title">Ce que ça change<br/>dans le quotidien.</h2>
+          <div className="testi-grid">
+            {testimonials.map(t => (
+              <div key={t.name} className="testi-card">
+                <p className="testi-quote">"{t.quote}"</p>
+                <div className="testi-author">
+                  <div className="testi-avatar" style={{background: t.color}}>{t.initials}</div>
+                  <div>
+                    <div className="testi-name">{t.name}</div>
+                    <div className="testi-role">{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* EMAIL */}
+      <section style={{padding:'88px 0', background:'white'}}>
+        <div className="container" style={{maxWidth:'560px', textAlign:'center'}}>
+          <Badge variant="violet" style={{marginBottom:'20px',display:'inline-flex'}}>Newsletter gratuite</Badge>
+          <h2 className="section-title" style={{marginBottom:'12px'}}>Une astuce d'automatisation<br/>chaque semaine.</h2>
+          <p style={{color:'#475569',fontSize:'1.0625rem',marginBottom:'32px',lineHeight:'1.65'}}>Concrète, applicable en 30 min. Pas de spam. Juste de la valeur.</p>
+          <div style={{display:'flex',gap:'10px',maxWidth:'460px',margin:'0 auto'}}>
+            <input
+              type="email" placeholder="ton@email.com" value={email}
+              onChange={e => setEmail(e.target.value)}
+              style={{flex:1,padding:'12px 16px',fontSize:'1rem',fontFamily:'Inter,sans-serif',border:'1.5px solid #E2E8F0',borderRadius:'10px',outline:'none',color:'#0F172A'}}
+            />
+            <Button>S'inscrire</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA DARK */}
+      <section className="cta-section">
+        <div className="cta-glow"></div>
+        <div className="container">
+          <h2 className="cta-title">Prêt·e à reprendre<br/>du temps pour toi ?</h2>
+          <p className="cta-sub">Un appel de 30 min. Gratuit. Sans engagement.<br/>On regarde ensemble ce qu'on peut automatiser.</p>
+          <div className="cta-actions">
+            <Button variant="gradient" size="lg">Réserver mon appel →</Button>
+            <Button variant="ghost" size="lg">Voir les offres</Button>
+          </div>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer>
+        <div className="footer-inner">
+          <div style={{display:'flex',alignItems:'center',gap:'8px'}}>
+            <img src="../../assets/logo-robot-v2-transparent.png" alt="" style={{width:28,height:28,objectFit:'contain'}} />
+            <span style={{fontFamily:'DM Sans,sans-serif',fontWeight:800,fontSize:'0.875rem',color:'#0F172A'}}>L'Atelier des Automates</span>
+          </div>
+          <span className="footer-copy">© 2026 L'Atelier des Automates — Tous droits réservés</span>
+          <div className="footer-links">
+            <a href="#">Mentions légales</a>
+            <a href="#">Contact</a>
+            <a href="#">Instagram</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+</script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!-- @dsCard group="Brand" viewport="700x200" name="Mascotte & Assets" subtitle="Robot à béret — ambassadeur visuel" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../styles.css">
+<style>
+  body { margin: 0; background: var(--color-bg); display: flex; align-items: center; padding: 20px 28px; gap: 24px; font-family: var(--font-body); }
+  .asset { display: flex; flex-direction: column; align-items: center; gap: 8px; }
+  .asset img { height: 120px; width: 120px; object-fit: contain; border-radius: var(--radius-md); }
+  .dark-bg img { background: var(--color-bg-dark); }
+  .name { font-size: 11px; font-weight: 600; color: var(--color-text-primary); }
+  .note { font-size: 9px; color: var(--color-text-muted); }
+  .brand-name { font-family: var(--font-display); font-weight: 800; font-size: var(--text-2xl); color: var(--color-text-primary); letter-spacing: var(--tracking-tight); }
+  .brand-sub   { font-family: var(--font-body); font-size: var(--text-sm); color: var(--color-text-muted); margin-top: 4px; }
+  .wordmark { display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: 16px; border: 1px solid var(--color-border); border-radius: var(--radius-lg); height: 90px; }
+</style>
+</head>
+<body>
+  <div class="asset dark-bg"><img src="../assets/logo-robot-v2.png" alt="Mascotte fond foncé"><span class="name">Fond foncé</span><span class="note">logo-robot-v2.png</span></div>
+  <div class="asset"><img src="../assets/logo-robot-v2-transparent.png" alt="Mascotte transparent" style="background:var(--color-bg-subtle);"><span class="name">Fond transparent</span><span class="note">logo-robot-v2-transparent.png</span></div>
+  <div class="asset">
+    <div class="wordmark">
+      <span class="brand-name">L'Atelier</span>
+      <span class="brand-sub">des Automates</span>
+    </div>
+    <span class="name">Wordmark typographique</span><span class="note">DM Sans 800 — en attendant SVG</span>
+  </div>
+</body>
+</html>

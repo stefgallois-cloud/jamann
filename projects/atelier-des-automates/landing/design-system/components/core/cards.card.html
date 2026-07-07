@@ -1,0 +1,71 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Cards, Badges & Tags" subtitle="Surfaces, labels, filtres" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); padding: 24px; font-family: var(--font-body); }
+  .section { margin-bottom: 20px; }
+  .label { font-size: 11px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 10px; }
+  .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-start; }
+  h4 { margin: 0 0 6px; font-size: var(--text-base); font-weight: 700; color: var(--color-text-primary); font-family: var(--font-display); }
+  p  { margin: 0; font-size: var(--text-sm); color: var(--color-text-body); line-height: var(--leading-relaxed); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Card, Badge, Tag } = window.LAtelierDesAutomatesDesignSystem_95f56b;
+
+function Demo() {
+  return (
+    <div>
+      <div className="section">
+        <div className="label">Cards</div>
+        <div className="row">
+          <Card padding="md" style={{width: 180}}>
+            <h4>Automatise ton onboarding</h4>
+            <p>En 2h chrono, sans coder.</p>
+          </Card>
+          <Card padding="md" style={{width: 180, background: 'var(--color-bg-dark)'}}>
+            <h4 style={{color:'white'}}>Sur fond sombre</h4>
+            <p style={{color:'rgba(255,255,255,0.6)'}}>Variant dark.</p>
+          </Card>
+        </div>
+      </div>
+      <div className="section">
+        <div className="label">Badges</div>
+        <div className="row">
+          <Badge>No-code</Badge>
+          <Badge variant="violet">Automatisation</Badge>
+          <Badge variant="cyan">Nouveau</Badge>
+          <Badge variant="outline">IA</Badge>
+          <Badge variant="success">Actif</Badge>
+          <span style={{background:'var(--color-bg-dark)',padding:'6px 10px',borderRadius:'var(--radius-md)'}}>
+            <Badge variant="dark">Sur fond sombre</Badge>
+          </span>
+        </div>
+      </div>
+      <div className="section">
+        <div className="label">Tags</div>
+        <div className="row">
+          <Tag>Zapier</Tag>
+          <Tag color="indigo">IA</Tag>
+          <Tag color="violet">Notion</Tag>
+          <Tag color="cyan">Make</Tag>
+          <Tag color="indigo" onRemove={() => {}}>Supprimable ×</Tag>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>

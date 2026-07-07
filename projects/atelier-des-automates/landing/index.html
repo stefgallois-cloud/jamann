@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>L'Atelier des Automates - Vos applications & automatisations sur mesure</title>
+    <link rel="icon" type="image/png" href="./assets/images/logo-robot-mascotte-cropped.png">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#F8FAFC',
+                        'brand-primary': '#6366F1',
+                        'brand-secondary': '#A78BFA',
+                        'brand-accent': '#06B6D4',
+                        'brand-neutral': '#475569',
+                    },
+                    fontFamily: {
+                        'display': ['"Geist"', 'sans-serif'],
+                        'body': ['"Inter"', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.6s ease-out',
+                        'stagger-1': 'fadeIn 0.6s ease-out 0.1s both',
+                        'stagger-2': 'fadeIn 0.6s ease-out 0.2s both',
+                        'stagger-3': 'fadeIn 0.6s ease-out 0.3s both',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Geist', sans-serif;
+        }
+
+        .glow-soft {
+            filter: blur(120px);
+            opacity: 0.12;
+            pointer-events: none;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .glow-soft:nth-child(2) {
+            animation-duration: 13s;
+            animation-delay: -4s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -40px) scale(1.08); }
+        }
+
+        @keyframes pulse-flow {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+
+        .cta-shimmer {
+            background: linear-gradient(115deg, #06B6D4 35%, #22D3EE 50%, #06B6D4 65%);
+            background-size: 250% 100%;
+            animation: shimmer 3.5s ease-in-out infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.18); }
+            50% { box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
+        }
+
+        .badge-pulse {
+            animation: pulse-badge 2.4s ease-in-out infinite;
+        }
+
+        .icon-bounce {
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        .card-shadow:hover .icon-bounce,
+        .card-shadow:active .icon-bounce {
+            transform: scale(1.15) rotate(-6deg);
+        }
+
+        @keyframes iconPop {
+            0% { transform: scale(0.6) rotate(-15deg); opacity: 0; }
+            60% { transform: scale(1.2) rotate(6deg); opacity: 1; }
+            100% { transform: scale(1) rotate(0deg); opacity: 1; }
+        }
+
+        .scroll-reveal.visible .icon-bounce {
+            animation: iconPop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) 0.2s both;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .marquee-track {
+            animation: marquee 22s linear infinite;
+            width: max-content;
+        }
+
+        .pulse-line-active {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pulse-line-active::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            height: 100%;
+            width: 80px;
+            background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.6), rgba(99, 102, 241, 0.6), transparent);
+            animation: pulse-flow 1.5s infinite linear;
+        }
+
+        .card-shadow {
+            box-shadow: 0 8px 24px -8px rgba(99, 102, 241, 0.08);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .card-shadow:hover {
+            box-shadow: 0 16px 40px -12px rgba(99, 102, 241, 0.15);
+            transform: translateY(-2px);
+        }
+
+        .button-base {
+            transition: all 0.25s ease;
+        }
+
+        .button-base:hover {
+            transform: scale(1.02);
+        }
+
+        .scroll-reveal.js-pending {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .scroll-reveal.visible {
+            animation: slideUp 0.6s ease-out forwards;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+<body class="text-brand-neutral antialiased overflow-x-hidden relative bg-brand-bg">
+
+    <!-- Ambient Background Elements -->
+    <div class="absolute top-0 left-1/4 w-[500px] h-[500px] bg-brand-primary rounded-full glow-soft"></div>
+    <div class="absolute top-[40%] right-0 w-[600px] h-[600px] bg-brand-accent rounded-full glow-soft"></div>
+
+    <!-- Navigation / Header -->
+    <header class="sticky top-0 z-50 bg-brand-bg/90 backdrop-blur-md border-b border-slate-200/40 transition-all">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3 min-w-0">
+                <div class="w-11 h-11 flex-shrink-0 flex items-center justify-center">
+                    <img src="./assets/images/logo-robot-mascotte-cropped.png" alt="Mascotte L'Atelier des Automates" class="w-full h-full object-contain">
+                </div>
+                <div class="flex flex-col min-w-0">
+                    <span class="text-slate-900 font-bold text-lg tracking-tight leading-none truncate">L'Atelier</span>
+                    <span class="text-[10px] text-brand-primary font-bold uppercase tracking-widest">Automates</span>
+                </div>
+            </div>
+            <a href="#contact" class="flex-shrink-0 whitespace-nowrap px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-lg bg-brand-accent text-white hover:bg-brand-accent/90 text-xs sm:text-sm font-bold transition-all shadow-md hover:shadow-lg button-base">
+                Lancer mon projet
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-10 pb-14 md:pt-14 md:pb-16 overflow-hidden">
+        <div class="max-w-6xl mx-auto px-6 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Hero Text -->
+                <div>
+                    <span class="badge-pulse inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-brand-primary/5 text-brand-primary mb-6 uppercase tracking-wider">
+                        Libérez-vous du temps
+                    </span>
+
+                    <h1 class="text-5xl md:text-6xl font-bold text-slate-900 tracking-tight leading-tight mb-8">
+                        <span class="animate-stagger-1">Des sites clairs et</span>
+                        <span class="animate-stagger-2">des outils</span>
+                        <span class="text-brand-accent animate-stagger-3">qui travaillent pour vous</span>
+                    </h1>
+
+                    <p class="text-lg text-brand-neutral max-w-xl mb-6 leading-relaxed font-light">
+                        Je crée votre vitrine web, vos apps sur mesure, vos contenus et visuels, et je connecte vos outils favoris pour vous libérer des tâches répétitives.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4 mb-8">
+                        <a href="#contact" class="cta-shimmer px-8 py-4 rounded-lg text-white font-bold text-base transition-all shadow-lg hover:shadow-xl button-base flex justify-center items-center gap-2">
+                            Me parler de mon idée
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+                        </a>
+                        <a href="#services" class="px-8 py-4 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-bold text-base transition-all border border-slate-200 shadow-sm flex justify-center items-center">
+                            Découvrir mes services
+                        </a>
+                    </div>
+
+                    <div class="flex flex-wrap gap-x-6 gap-y-2 text-xs font-bold text-brand-neutral uppercase tracking-wide">
+                        <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>Réponse sous 24h</span>
+                        <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>100% sur mesure</span>
+                        <span class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-brand-accent"></span>Sans jargon technique</span>
+                    </div>
+                </div>
+
+                <!-- Hero Image -->
+                <div class="relative mt-10 lg:mt-0 max-w-xs sm:max-w-sm mx-auto lg:max-w-none lg:mx-0">
+                    <img src="./assets/images/hero-bg.png" alt="Automatisation et outils" class="w-full h-auto rounded-2xl shadow-2xl scroll-reveal">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Marquee -->
+    <div class="py-5 border-y border-slate-100 bg-white overflow-hidden">
+        <p class="text-center text-[11px] text-slate-400 uppercase tracking-widest font-bold mb-3">Outils que je connecte au quotidien</p>
+        <div class="flex overflow-hidden">
+            <div class="marquee-track flex gap-10 items-center text-slate-400 font-bold text-sm">
+                <span>Make</span><span class="text-slate-300">•</span>
+                <span>Airtable</span><span class="text-slate-300">•</span>
+                <span>Notion</span><span class="text-slate-300">•</span>
+                <span>n8n</span><span class="text-slate-300">•</span>
+                <span>Google Workspace</span><span class="text-slate-300">•</span>
+                <span>Softr</span><span class="text-slate-300">•</span>
+                <span>Canva</span><span class="text-slate-300">•</span>
+                <span>Make</span><span class="text-slate-300">•</span>
+                <span>Airtable</span><span class="text-slate-300">•</span>
+                <span>Notion</span><span class="text-slate-300">•</span>
+                <span>n8n</span><span class="text-slate-300">•</span>
+                <span>Google Workspace</span><span class="text-slate-300">•</span>
+                <span>Softr</span><span class="text-slate-300">•</span>
+                <span>Canva</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Problems Section -->
+    <section class="py-16 bg-slate-50/50 border-y border-slate-100" id="situations">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-brand-primary font-bold tracking-widest uppercase text-xs">Votre quotidien</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-4">
+                    Quel problème freine votre activité ?
+                </h2>
+                <p class="text-brand-neutral mt-4 text-lg font-light">
+                    Que vous soyez coiffeuse, artisan, coach ou agent immobilier, je conçois des solutions adaptées à votre métier.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Problem 1 -->
+                <div class="scroll-reveal p-7 rounded-2xl bg-white border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-primary/10 text-brand-primary flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            "Je veux un site simple"
+                        </h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-5 font-light">
+                            Vos clients vous trouvent facilement, découvrent vos services et réservent sans perdre d'opportunités.
+                        </p>
+                    </div>
+                    <div class="bg-brand-primary/5 text-brand-primary text-xs font-bold px-3.5 py-2 rounded-lg border border-brand-primary/10 self-start">
+                        Solution : Site vitrine clé en main
+                    </div>
+                </div>
+
+                <!-- Problem 2 -->
+                <div class="scroll-reveal p-7 rounded-2xl bg-white border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-accent/10 text-brand-accent flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            "Je perds un temps fou"
+                        </h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-5 font-light">
+                            Devis, factures, relances, recopiage de coordonnées... Les tâches répétitives gâchent vos fins de journée.
+                        </p>
+                    </div>
+                    <div class="bg-brand-accent/5 text-brand-accent text-xs font-bold px-3.5 py-2 rounded-lg border border-brand-accent/10 self-start">
+                        Solution : Outils connectés et automatisés
+                    </div>
+                </div>
+
+                <!-- Problem 3 -->
+                <div class="scroll-reveal p-7 rounded-2xl bg-white border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-secondary/10 text-brand-secondary flex items-center justify-center mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">
+                            "Je n'ai pas le temps de communiquer"
+                        </h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-5 font-light">
+                            Réseaux sociaux, newsletters, visuels... Créer du contenu régulièrement demande un temps que vous n'avez pas.
+                        </p>
+                    </div>
+                    <div class="bg-brand-secondary/10 text-brand-secondary text-xs font-bold px-3.5 py-2 rounded-lg border border-brand-secondary/20 self-start">
+                        Solution : Contenus & visuels générés pour vous
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="text-brand-primary font-bold tracking-widest uppercase text-xs">Mes solutions</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-4">
+                    Quatre leviers complémentaires
+                </h2>
+                <p class="text-brand-neutral mt-4 text-lg font-light">
+                    Du site vitrine à l'automatisation, en passant par vos contenus et vos visuels — tout est pensé pour se combiner.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Service 1: Web -->
+                <div class="scroll-reveal bg-white rounded-2xl p-8 border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Sites & Pages Web</h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-6 font-light">
+                            Un site moderne, rapide et optimisé pour téléphones. Vos clients profitent d'un parcours qui favorise la prise de contact instantanée.
+                        </p>
+
+                        <!-- Service Image 1 -->
+                        <div class="mb-6 rounded-xl overflow-hidden">
+                            <img src="./assets/images/service-website-mockup.png" alt="Dashboard web moderne" loading="lazy" class="w-full h-auto object-cover">
+                        </div>
+
+                        <ul class="space-y-2.5 text-brand-neutral text-sm mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Structure pensée pour générer des contacts</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Facile à mettre à jour en totale autonomie</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Optimisé pour tous les appareils</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Formulaire de prise de contact intégré</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center py-3.5 rounded-lg bg-slate-50 hover:bg-brand-primary hover:text-white text-brand-primary font-bold text-sm transition-all border border-slate-200 hover:border-brand-primary button-base">
+                        Je veux mon site internet
+                    </a>
+                </div>
+
+                <!-- Service 2: Automation -->
+                <div class="scroll-reveal bg-white rounded-2xl p-8 border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-accent/10 flex items-center justify-center text-brand-accent mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Apps & Connexion d'Outils</h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-6 font-light">
+                            Je connecte vos outils habituels et crée vos applications sur mesure pour que tout se synchronise en arrière-plan sans aucune action manuelle.
+                        </p>
+
+                        <!-- Service Image 2 -->
+                        <div class="mb-6 rounded-xl overflow-hidden">
+                            <img src="./assets/images/service-automation-flow.png" alt="Pipeline d'automatisation" loading="lazy" class="w-full h-auto object-cover">
+                        </div>
+
+                        <ul class="space-y-2.5 text-brand-neutral text-sm mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-accent font-bold flex-shrink-0">✓</span>
+                                <span>Génération automatique de devis & factures</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-accent font-bold flex-shrink-0">✓</span>
+                                <span>Fiches clients synchronisées proprement</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-accent font-bold flex-shrink-0">✓</span>
+                                <span>Alertes et rappels programmés</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-accent font-bold flex-shrink-0">✓</span>
+                                <span>Agents IA connectés à vos outils métier</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center py-3.5 rounded-lg bg-slate-50 hover:bg-brand-primary hover:text-white text-brand-primary font-bold text-sm transition-all border border-slate-200 hover:border-brand-primary button-base">
+                        Je veux automatiser mes tâches
+                    </a>
+                </div>
+
+                <!-- Service 3: Content Generation -->
+                <div class="scroll-reveal bg-white rounded-2xl p-8 border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-secondary/10 flex items-center justify-center text-brand-secondary mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Génération de Contenus</h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-6 font-light">
+                            Posts réseaux sociaux, newsletters et calendriers éditoriaux : je mets en place un système qui rédige et programme vos publications à votre place, dans votre ton.
+                        </p>
+
+                        <!-- Service Image 3 -->
+                        <div class="mb-6 rounded-xl overflow-hidden">
+                            <img src="./assets/images/service-content-generation.png" alt="Génération automatique de contenu éditorial" loading="lazy" class="w-full h-auto object-cover">
+                        </div>
+
+                        <ul class="space-y-2.5 text-brand-neutral text-sm mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-secondary font-bold flex-shrink-0">✓</span>
+                                <span>Calendrier éditorial généré automatiquement</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-secondary font-bold flex-shrink-0">✓</span>
+                                <span>Posts et newsletters dans votre ton de voix</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-secondary font-bold flex-shrink-0">✓</span>
+                                <span>Publication programmée sans y penser</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center py-3.5 rounded-lg bg-slate-50 hover:bg-brand-primary hover:text-white text-brand-primary font-bold text-sm transition-all border border-slate-200 hover:border-brand-primary button-base">
+                        Je veux déléguer mon contenu
+                    </a>
+                </div>
+
+                <!-- Service 4: Visual Creation -->
+                <div class="scroll-reveal bg-white rounded-2xl p-8 border border-slate-100 card-shadow flex flex-col justify-between">
+                    <div>
+                        <div class="icon-bounce w-12 h-12 rounded-xl bg-brand-primary/10 flex items-center justify-center text-brand-primary mb-5">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14M4 8h16M4 8V6a2 2 0 012-2h12a2 2 0 012 2v2M4 8v10a2 2 0 002 2h12a2 2 0 002-2V8"></path>
+                            </svg>
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-900 mb-3">Création de Visuels</h3>
+                        <p class="text-brand-neutral text-sm leading-relaxed mb-6 font-light">
+                            Visuels, carrousels et bannières générés par IA, aux couleurs de votre marque, pour habiller vos réseaux et votre site sans passer des heures sur un logiciel.
+                        </p>
+
+                        <!-- Service Image 4 -->
+                        <div class="mb-6 rounded-xl overflow-hidden">
+                            <img src="./assets/images/service-visual-creation.png" alt="Génération de visuels et carrousels aux couleurs de la marque" loading="lazy" class="w-full h-auto object-cover">
+                        </div>
+
+                        <ul class="space-y-2.5 text-brand-neutral text-sm mb-6">
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Visuels générés dans votre charte graphique</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Carrousels et bannières prêts à publier</span>
+                            </li>
+                            <li class="flex items-start gap-3">
+                                <span class="text-brand-primary font-bold flex-shrink-0">✓</span>
+                                <span>Templates réutilisables pour aller vite</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <a href="#contact" class="w-full text-center py-3.5 rounded-lg bg-slate-50 hover:bg-brand-primary hover:text-white text-brand-primary font-bold text-sm transition-all border border-slate-200 hover:border-brand-primary button-base">
+                        Je veux mes visuels automatisés
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Interactive Simulator -->
+    <section id="simulateur" class="py-16 border-t border-slate-100 bg-slate-50/50">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="badge-pulse inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold bg-brand-primary/5 text-brand-primary mb-4 uppercase tracking-wider">
+                    Banc d'Essai Interactif
+                </span>
+                <h3 class="text-4xl md:text-5xl font-bold text-slate-900">Voyez l'automate travailler en direct</h3>
+                <p class="text-brand-neutral text-lg mt-3 max-w-xl mx-auto font-light">Sélectionnez un profil et lancez la démonstration pour voir le pilote automatique en action.</p>
+            </div>
+
+            <!-- Simulator Container -->
+            <div class="bg-white border border-slate-100 rounded-3xl p-8 card-shadow overflow-hidden">
+                <!-- Scenario Buttons -->
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-3 mb-12">
+                    <button id="scenarioCoiffeuse" class="px-4 py-3 rounded-lg bg-brand-primary text-white font-bold text-xs sm:text-sm transition-all flex flex-col items-center justify-center gap-2 border border-brand-primary/10 shadow-md button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.121 14.121L19 19m-7-7l7-7m-7 7l-2.879 2.879M12 12L9.121 9.121m0 5.758a3 3 0 11-4.243-4.243 3 3 0 014.243 4.243zm0-5.758a3 3 0 11-4.243-4.243 3 3 0 014.243 4.243z"></path></svg>
+                        <span>Coiffeuse</span>
+                    </button>
+                    <button id="scenarioImmo" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+                        <span>Agent Immo</span>
+                    </button>
+                    <button id="scenarioArtisan" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z"></path></svg>
+                        <span>Artisan BTP</span>
+                    </button>
+                    <button id="scenarioCoach" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                        <span>Coach</span>
+                    </button>
+                    <button id="scenarioRestaurant" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 2v6a2 2 0 002 2v12M8 2v20M15 2v8a3 3 0 003 3v9"></path></svg>
+                        <span>Restaurateur</span>
+                    </button>
+                    <button id="scenarioTherapeute" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 21C12 21 4 14.5 4 9.5C4 6.5 6.5 4 9.5 4C11 4 12 5 12 5C12 5 13 4 14.5 4C17.5 4 20 6.5 20 9.5C20 14.5 12 21 12 21Z"></path></svg>
+                        <span>Thérapeute</span>
+                    </button>
+                    <button id="scenarioPhotographe" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 17a4 4 0 100-8 4 4 0 000 8z"></path></svg>
+                        <span>Photographe</span>
+                    </button>
+                    <button id="scenarioEcommerce" class="px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"></path></svg>
+                        <span>Boutique</span>
+                    </button>
+                </div>
+
+                <!-- Simulation Board -->
+                <div class="grid lg:grid-cols-3 gap-8 items-stretch">
+                    <!-- Input -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 flex flex-col justify-between min-h-[240px]">
+                        <div>
+                            <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Entrée</span>
+                            <h4 id="step1Title" class="font-bold text-sm text-slate-900 mt-2 mb-2">Un client prend RDV</h4>
+                            <p id="step1Desc" class="text-[11px] text-slate-600 leading-relaxed">Une cliente réserve un forfait pour samedi à 14h.</p>
+                        </div>
+                        <button id="triggerDemoBtn" class="w-full bg-brand-primary hover:bg-brand-primary/90 text-white py-3 px-4 rounded-lg font-bold text-xs tracking-wider uppercase transition-all button-base flex items-center justify-center gap-2 mt-6">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            <span id="demoBtnText">Activer l'Automate</span>
+                        </button>
+                    </div>
+
+                    <!-- Logic -->
+                    <div class="flex flex-col items-center justify-center py-8 bg-slate-50 rounded-2xl border border-slate-100 p-6">
+                        <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest mb-4">Pipeline</span>
+                        <div class="pulse-line-active relative flex items-center gap-2 px-3 py-2 rounded-full bg-white border border-slate-100">
+                            <span id="dot-1" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                            <span id="dot-2" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                            <span id="dot-3" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                            <span id="dot-4" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                            <span id="dot-5" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                            <span id="dot-6" class="w-2.5 h-2.5 rounded-full bg-slate-300 transition-all relative z-10"></span>
+                        </div>
+                        <p id="demoStatus" class="text-xs text-slate-500 mt-4 text-center italic font-light">En attente de votre clic...</p>
+                    </div>
+
+                    <!-- Output -->
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-100 min-h-[240px] flex flex-col justify-between">
+                        <div id="demoPdfPlaceholder" class="flex flex-col items-center justify-center h-full">
+                            <div class="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center mb-3 animate-pulse">
+                                <svg class="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14M5 12a2 2 0 012-2h10a2 2 0 012 2m-14 0a2 2 0 002 2h10a2 2 0 002-2M9 16h6"></path></svg>
+                            </div>
+                            <span class="text-[10px] text-slate-400 text-center tracking-widest font-bold uppercase">En attente...</span>
+                        </div>
+
+                        <div id="demoPdfResult" class="hidden">
+                            <span class="text-[10px] text-slate-500 uppercase font-bold tracking-widest">Sortie</span>
+                            <div class="bg-white text-slate-800 rounded-lg p-3.5 border border-slate-150 mt-2 text-left">
+                                <div class="flex items-center justify-between text-[11px] font-bold text-slate-900 mb-2">
+                                    <span id="resHeading">Facture d'acompte</span>
+                                    <span id="resTag" class="text-emerald-600 bg-emerald-50 text-[8px] px-1.5 py-0.5 rounded uppercase font-bold">Payé</span>
+                                </div>
+                                <p id="resDesc1" class="text-[10px] text-slate-700 mb-1">Facture créée pour Amélie S.</p>
+                                <p id="resDesc2" class="text-[10px] text-slate-600">✓ RDV calé samedi à 14h.</p>
+                            </div>
+                            <span class="text-[10px] text-emerald-600 mt-3 block font-bold">Fait en 0.4s !</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Form -->
+    <section id="contact" class="py-16 border-t border-slate-100">
+        <div class="max-w-3xl mx-auto px-6">
+            <div class="text-center mb-10">
+                <span class="text-brand-primary font-bold tracking-widest uppercase text-xs">Commencer ici</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-slate-900 mt-4">
+                    Partagez votre projet ou votre idée
+                </h2>
+                <p class="mt-4 text-brand-neutral max-w-lg mx-auto leading-relaxed font-light">
+                    Site, automatisation, contenu ou visuel : décrivez brièvement votre besoin. Je vous réponds rapidement, sans jargon.
+                </p>
+            </div>
+
+            <div class="bg-slate-50 rounded-2xl p-8 border border-slate-100">
+                <div id="successMessage" class="hidden text-center py-8">
+                    <div class="w-14 h-14 bg-emerald-50 text-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Idée bien reçue !</h3>
+                    <p class="text-slate-600 text-sm mb-4">Mon automate vient de classer votre demande. Je vous répondrai sous 24h.</p>
+                    <button onclick="resetForm()" class="text-xs font-bold text-slate-500 hover:text-brand-primary uppercase tracking-widest underline">
+                        Envoyer une autre idée
+                    </button>
+                </div>
+
+                <div id="errorMessage" class="hidden text-center py-8">
+                    <div class="w-14 h-14 bg-amber-50 text-amber-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v3.75m9-.75a9 9 0 11-18 0 9 9 0 0118 0zm-9 3.75h.008v.008H12v-.008z" /></svg>
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-2">Un souci technique</h3>
+                    <p class="text-slate-600 text-sm mb-4">L'envoi n'a pas fonctionné. Écrivez-moi directement à <a href="mailto:stephanie@latelier-des-automates.fr" class="text-brand-primary underline">stephanie@latelier-des-automates.fr</a>, je reviens vers vous vite.</p>
+                    <button onclick="resetForm()" class="text-xs font-bold text-slate-500 hover:text-brand-primary uppercase tracking-widest underline">
+                        Réessayer
+                    </button>
+                </div>
+
+                <form id="projectForm" class="space-y-6">
+                    <div class="grid sm:grid-cols-2 gap-6">
+                        <div>
+                            <label for="fullName" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Prénom & Nom</label>
+                            <input type="text" id="fullName" required class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="Jean Dupont">
+                        </div>
+                        <div>
+                            <label for="userEmail" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Email</label>
+                            <input type="email" id="userEmail" required class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="jean@entreprise.fr">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-3">Votre besoin principal ?</label>
+                        <div class="grid sm:grid-cols-3 gap-3">
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Site Web" checked class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">Un site</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Automation" class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">Automatiser</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Content" class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">Du contenu</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Visuals" class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">Des visuels</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Both" class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">Plusieurs choses</span>
+                            </label>
+                            <label class="flex items-center gap-3 px-4 py-3 rounded-lg bg-white border border-slate-200 hover:border-brand-primary cursor-pointer transition-all">
+                                <input type="radio" name="projectNeed" value="Idea" class="w-4 h-4 text-brand-primary">
+                                <span class="text-xs font-bold text-slate-700">J'ai une idée</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label for="projectDetails" class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">Votre idée en quelques mots</label>
+                        <textarea id="projectDetails" required rows="4" class="w-full px-4 py-3 rounded-lg bg-white border border-slate-200 text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/20 transition-all text-sm" placeholder="Je suis électricien et j'aimerais un formulaire qui crée automatiquement un devis..."></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-brand-accent hover:bg-brand-accent/90 text-white font-bold py-4 px-6 rounded-lg text-base transition-all shadow-lg button-base flex items-center justify-center gap-2">
+                        Envoyer mon idée
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-50 text-slate-600 py-12 border-t border-slate-100">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row items-center justify-between gap-6 mb-8">
+                <div class="flex items-center gap-3 text-slate-900 font-bold">
+                    <div class="w-9 h-9 flex items-center justify-center">
+                        <img src="./assets/images/logo-robot-mascotte-cropped.png" alt="Mascotte L'Atelier des Automates" class="w-full h-full object-contain">
+                    </div>
+                    <span class="text-sm font-bold tracking-tight">L'Atelier des Automates</span>
+                </div>
+            </div>
+            <div class="border-t border-slate-200 pt-8 flex flex-col md:flex-row items-center justify-between gap-3 text-center md:text-left text-xs">
+                <p>&copy; 2026 L'Atelier des Automates. Tous droits réservés.</p>
+                <a href="./mentions-legales.html" class="text-slate-500 hover:text-brand-primary transition-colors underline underline-offset-2">Mentions légales</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // À remplacer par l'URL réelle une fois le scénario Make actif (voir MAKE.md)
+        const MAKE_WEBHOOK_URL = 'https://hook.eu1.make.com/REMPLACER_PAR_URL_WEBHOOK';
+        // Doit correspondre exactement au token filtré côté Make (module 2 du blueprint)
+        const LEAD_FORM_TOKEN = 'atelier-lead-9f3c7b2a1e';
+
+        // Scroll Reveal Animation — progressive enhancement:
+        // content stays visible by default; JS opts elements INTO the
+        // hidden-then-reveal effect only once it can guarantee it will run.
+        if ('IntersectionObserver' in window) {
+            const revealEls = document.querySelectorAll('.scroll-reveal');
+
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.remove('js-pending');
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            revealEls.forEach(el => {
+                el.classList.add('js-pending');
+                observer.observe(el);
+            });
+        }
+
+        // Simulator Logic
+        const scenarioCoiffeuse = document.getElementById('scenarioCoiffeuse');
+        const scenarioImmo = document.getElementById('scenarioImmo');
+        const scenarioArtisan = document.getElementById('scenarioArtisan');
+        const scenarioCoach = document.getElementById('scenarioCoach');
+        const scenarioRestaurant = document.getElementById('scenarioRestaurant');
+        const scenarioTherapeute = document.getElementById('scenarioTherapeute');
+        const scenarioPhotographe = document.getElementById('scenarioPhotographe');
+        const scenarioEcommerce = document.getElementById('scenarioEcommerce');
+
+        const step1Title = document.getElementById('step1Title');
+        const step1Desc = document.getElementById('step1Desc');
+        const resHeading = document.getElementById('resHeading');
+        const resTag = document.getElementById('resTag');
+        const resDesc1 = document.getElementById('resDesc1');
+        const resDesc2 = document.getElementById('resDesc2');
+
+        let currentScenario = 'coiffeuse';
+
+        function setActiveButton(activeBtn) {
+            const allBtns = [scenarioCoiffeuse, scenarioImmo, scenarioArtisan, scenarioCoach, scenarioRestaurant, scenarioTherapeute, scenarioPhotographe, scenarioEcommerce];
+            allBtns.forEach(btn => {
+                btn.className = "px-4 py-3 rounded-lg bg-slate-50 text-slate-600 hover:bg-slate-100 font-bold text-xs sm:text-sm transition-all border border-slate-100 flex flex-col items-center justify-center gap-2 button-base";
+            });
+            activeBtn.className = "px-4 py-3 rounded-lg bg-brand-primary text-white font-bold text-xs sm:text-sm transition-all flex flex-col items-center justify-center gap-2 border border-brand-primary/10 shadow-md button-base";
+        }
+
+        scenarioCoiffeuse.addEventListener('click', () => {
+            currentScenario = 'coiffeuse';
+            setActiveButton(scenarioCoiffeuse);
+            step1Title.innerText = "Un client prend RDV";
+            step1Desc.innerText = "Une cliente réserve un forfait pour samedi à 14h.";
+            resetDemoDisplay();
+        });
+
+        scenarioImmo.addEventListener('click', () => {
+            currentScenario = 'immo';
+            setActiveButton(scenarioImmo);
+            step1Title.innerText = "Nouveau mandat signé";
+            step1Desc.innerText = "L'agent immobilier saisit un nouvel appartement.";
+            resetDemoDisplay();
+        });
+
+        scenarioArtisan.addEventListener('click', () => {
+            currentScenario = 'artisan';
+            setActiveButton(scenarioArtisan);
+            step1Title.innerText = "Formulaire de devis";
+            step1Desc.innerText = "M. Martin demande un chiffrage pour poses murales.";
+            resetDemoDisplay();
+        });
+
+        scenarioCoach.addEventListener('click', () => {
+            currentScenario = 'coach';
+            setActiveButton(scenarioCoach);
+            step1Title.innerText = "Inscription à l'atelier";
+            step1Desc.innerText = "Une élève s'inscrit au cours collectif en ligne.";
+            resetDemoDisplay();
+        });
+
+        scenarioRestaurant.addEventListener('click', () => {
+            currentScenario = 'restaurant';
+            setActiveButton(scenarioRestaurant);
+            step1Title.innerText = "Réservation en ligne";
+            step1Desc.innerText = "Un client réserve une table pour 4 personnes samedi soir.";
+            resetDemoDisplay();
+        });
+
+        scenarioTherapeute.addEventListener('click', () => {
+            currentScenario = 'therapeute';
+            setActiveButton(scenarioTherapeute);
+            step1Title.innerText = "Prise de RDV santé";
+            step1Desc.innerText = "Une patiente réserve une séance de kiné pour mardi.";
+            resetDemoDisplay();
+        });
+
+        scenarioPhotographe.addEventListener('click', () => {
+            currentScenario = 'photographe';
+            setActiveButton(scenarioPhotographe);
+            step1Title.innerText = "Séance photo terminée";
+            step1Desc.innerText = "Le shooting du couple Léa & Tom vient de se terminer.";
+            resetDemoDisplay();
+        });
+
+        scenarioEcommerce.addEventListener('click', () => {
+            currentScenario = 'ecommerce';
+            setActiveButton(scenarioEcommerce);
+            step1Title.innerText = "Nouvelle commande";
+            step1Desc.innerText = "Une cliente commande 3 articles sur la boutique en ligne.";
+            resetDemoDisplay();
+        });
+
+        function resetDemoDisplay() {
+            document.getElementById('demoPdfPlaceholder').classList.remove('hidden');
+            document.getElementById('demoPdfResult').classList.add('hidden');
+            document.getElementById('demoStatus').innerText = "Prêt à démarrer. Cliquez sur le bouton !";
+            triggerDemoBtn.disabled = false;
+            document.getElementById('demoBtnText').innerText = "Activer l'Automate";
+            steps.forEach(s => s.className = "w-2.5 h-2.5 rounded-full bg-slate-300 transition-all");
+        }
+
+        const triggerDemoBtn = document.getElementById('triggerDemoBtn');
+        const demoPdfPlaceholder = document.getElementById('demoPdfPlaceholder');
+        const demoPdfResult = document.getElementById('demoPdfResult');
+        const demoStatus = document.getElementById('demoStatus');
+
+        const steps = [
+            document.getElementById('dot-1'),
+            document.getElementById('dot-2'),
+            document.getElementById('dot-3'),
+            document.getElementById('dot-4'),
+            document.getElementById('dot-5'),
+            document.getElementById('dot-6')
+        ];
+
+        triggerDemoBtn.addEventListener('click', async () => {
+            triggerDemoBtn.disabled = true;
+
+            const scenarios = {
+                coiffeuse: {
+                    status: ['RDV reçu...', 'Agenda synchronisé...', 'Facture générée...'],
+                    heading: 'Facture créée',
+                    tag: 'Payé',
+                    desc1: 'Facture #RDV-2026 pour Amélie S.',
+                    desc2: '✓ RDV samedi 14h. SMS programmé.'
+                },
+                immo: {
+                    status: ['Fiche détectée...', 'PDF généré...', 'Diffusé en ligne...'],
+                    heading: 'Fiche bien en ligne',
+                    tag: 'Diffusée',
+                    desc1: 'Fiche T3 transmise à 12 acheteurs',
+                    desc2: '✓ Catalogue mis à jour automatiquement.'
+                },
+                artisan: {
+                    status: ['Demande reçue...', 'Calcul en cours...', 'SMS envoyé...'],
+                    heading: 'Brouillon devis',
+                    tag: 'À valider',
+                    desc1: 'Devis #DEV-981 pour M. Martin',
+                    desc2: '✓ SMS confirmation envoyé.'
+                },
+                coach: {
+                    status: ['Paiement validé...', 'Reçu généré...', 'Mail d\'accès...'],
+                    heading: 'Inscription confirmée',
+                    tag: 'Complétée',
+                    desc1: 'Reçu #REC-402 atelier Yoga',
+                    desc2: '✓ Mail d\'accès envoyé.'
+                },
+                restaurant: {
+                    status: ['Réservation reçue...', 'Table bloquée...', 'SMS envoyé...'],
+                    heading: 'Réservation confirmée',
+                    tag: 'Confirmée',
+                    desc1: 'Table pour 4 — samedi 20h',
+                    desc2: '✓ Rappel automatique programmé la veille.'
+                },
+                therapeute: {
+                    status: ['RDV reçu...', 'Dossier patient créé...', 'Rappel programmé...'],
+                    heading: 'Dossier patient créé',
+                    tag: 'Planifié',
+                    desc1: 'Séance de Mme Dubois — mardi 10h',
+                    desc2: '✓ Rappel SMS envoyé 24h avant.'
+                },
+                photographe: {
+                    status: ['Photos importées...', 'Galerie générée...', 'Facture envoyée...'],
+                    heading: 'Galerie client prête',
+                    tag: 'Livrée',
+                    desc1: 'Galerie envoyée à Léa & Tom',
+                    desc2: '✓ Facture générée automatiquement.'
+                },
+                ecommerce: {
+                    status: ['Commande reçue...', 'Stock mis à jour...', 'Étiquette générée...'],
+                    heading: 'Commande prête à expédier',
+                    tag: 'Expédiée',
+                    desc1: 'Commande #CMD-773 — 3 articles',
+                    desc2: '✓ Étiquette d\'expédition générée.'
+                }
+            };
+
+            const scenario = scenarios[currentScenario];
+
+            for (let i = 0; i < 3; i++) {
+                demoStatus.innerText = scenario.status[i];
+                await sleep(600);
+                steps[i * 2].className = "w-2.5 h-2.5 rounded-full bg-brand-primary transition-all";
+                steps[i * 2 + 1].className = "w-2.5 h-2.5 rounded-full bg-brand-primary transition-all";
+            }
+
+            resHeading.innerText = scenario.heading;
+            resTag.innerText = scenario.tag;
+            resDesc1.innerText = scenario.desc1;
+            resDesc2.innerText = scenario.desc2;
+
+            await sleep(300);
+            demoPdfPlaceholder.classList.add('hidden');
+            demoPdfResult.classList.remove('hidden');
+            demoStatus.innerText = "✓ Fait en 0.4s !";
+            triggerDemoBtn.disabled = false;
+            document.getElementById('demoBtnText').innerText = "Relancer";
+        });
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+        // Form Handling
+        const projectForm = document.getElementById('projectForm');
+        const successMessage = document.getElementById('successMessage');
+        const errorMessage = document.getElementById('errorMessage');
+
+        projectForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nom = document.getElementById('fullName').value;
+            const email = document.getElementById('userEmail').value;
+            const besoinInput = projectForm.querySelector('input[name="projectNeed"]:checked');
+            const besoin = besoinInput ? besoinInput.value : '';
+            const description = document.getElementById('projectDetails').value;
+
+            try {
+                await fetch(MAKE_WEBHOOK_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nom, email, besoin, description, token: LEAD_FORM_TOKEN })
+                });
+
+                projectForm.classList.add('hidden');
+                successMessage.classList.remove('hidden');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            } catch (err) {
+                console.error('Envoi du formulaire échoué :', err);
+                projectForm.classList.add('hidden');
+                errorMessage.classList.remove('hidden');
+                document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+
+        function resetForm() {
+            projectForm.reset();
+            successMessage.classList.add('hidden');
+            errorMessage.classList.add('hidden');
+            projectForm.classList.remove('hidden');
+        }
+    </script>
+</body>
+</html>

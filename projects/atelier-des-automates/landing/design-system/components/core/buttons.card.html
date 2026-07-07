@@ -1,0 +1,52 @@
+<!-- @dsCard group="Components" viewport="700x320" name="Buttons" subtitle="Primary, secondary, ghost, gradient — toutes tailles" -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../../styles.css">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; background: var(--color-bg); padding: 24px; font-family: var(--font-body); }
+  .row { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px; }
+  .label { font-size: 11px; color: var(--color-text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+  .dark-row { background: var(--color-bg-dark); padding: 16px; border-radius: var(--radius-lg); }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+const { Button, Badge } = window.LAtelierDesAutomatesDesignSystem_95f56b;
+
+function Demo() {
+  return (
+    <div>
+      <div className="label">Variants</div>
+      <div className="row">
+        <Button variant="primary">Commencer</Button>
+        <Button variant="secondary">En savoir plus</Button>
+        <Button variant="ghost">Annuler</Button>
+        <Button variant="gradient">Rejoindre l'atelier →</Button>
+      </div>
+      <div className="label">Tailles</div>
+      <div className="row">
+        <Button size="sm">Petit</Button>
+        <Button size="md">Moyen</Button>
+        <Button size="lg">Grand</Button>
+      </div>
+      <div className="label">États</div>
+      <div className="row">
+        <Button disabled>Désactivé</Button>
+        <Button variant="secondary" disabled>Désactivé</Button>
+        <Button variant="gradient" size="lg">Rejoindre maintenant ✦</Button>
+      </div>
+    </div>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById('root')).render(<Demo />);
+</script>
+</body>
+</html>
