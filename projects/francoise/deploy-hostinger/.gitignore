@@ -1,0 +1,6 @@
+# Réinclure les images du site — le .gitignore racine ignore *.png/*.jpg/*.ico,
+# mais ce dossier est le mirroir déployable (Hostinger) : ses images DOIVENT être versionnées.
+!*.png
+!*.jpg
+!*.jpeg
+!*.ico
