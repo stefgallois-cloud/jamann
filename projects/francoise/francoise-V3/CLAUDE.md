@@ -3,15 +3,23 @@
 ## Client
 **Françoise Davenas** — Astrologue Thérapeute Holistique  
 **Marque :** Âm'Astro™  
-**Site :** fd-harmonie.com (prototype V3 en cours, pas encore en ligne)  
+**Site :** am-astro.com (domaine définitif acheté — fd-harmonie.com abandonné, remplacé le 2026-07-07)  
 **Contact :** f.davenas@gmail.com · +33 (0)6 19 20 82 56
 
 ## Statut (2026-07-07)
-3ème lot de retouches (PDF3 + images) **intégré et déployé**.  
-**v2 à jour** : https://francoise-davenas-v2.pages.dev (préversion privée, non indexable, déploiement direct — projet Cloudflare Pages **non connecté à Git**, redéployer manuellement via `wrangler pages deploy . --project-name=francoise-davenas-v2 --branch=main`) — la v1 https://francoise-davenas.pages.dev reste intacte pour comparaison.  
-Dossier `deploy-hostinger/` reconstruit et à jour, en attente de validation finale de Françoise avant mise en ligne définitive sur Hostinger.  
+**Site en ligne sur am-astro.com** — déployé manuellement via le Gestionnaire de fichiers Hostinger (upload du zip `deploy-hostinger/`, extraction dans `public_html`). Prototype terminé, mission accomplie.  
+**v2 (préprod Cloudflare, toujours active pour référence)** : https://francoise-davenas-v2.pages.dev — projet Cloudflare Pages **non connecté à Git**, redéployer manuellement via `wrangler pages deploy . --project-name=francoise-davenas-v2 --branch=main` — la v1 https://francoise-davenas.pages.dev reste intacte pour comparaison.  
+Dossier `deploy-hostinger/` = source de vérité pour tout futur redéploiement sur Hostinger (zip `projects/francoise/am-astro-deploy.zip` à régénérer et ré-uploader à chaque mise à jour — voir procédure ci-dessous).  
 Travail effectué sur la branche git `francoise` (poussée sur `origin`).  
-Volet réseaux sociaux : **mis de côté** — priorité au site.
+Volet réseaux sociaux : **mis de côté** — priorité au site.  
+Nettoyage 2026-07-07 : `francoise-V2/` et les anciens fichiers racine (`index.html`, `soins/`, `style.css`) archivés dans `_archive/` — seul `francoise-V3/` doit être utilisé pour tout travail futur sur ce projet.
+
+## Procédure de redéploiement Hostinger (mise à jour du site en ligne)
+1. Répercuter les modifs de `francoise-V3/` vers `deploy-hostinger/` (copier les `.html`, `style.css`, `assets/` modifiés)
+2. Zipper le contenu de `deploy-hostinger/` (pas le dossier lui-même, son contenu) → `projects/francoise/am-astro-deploy.zip`
+3. Dans hPanel (compte où vit `am-astro.com`) → Fichiers → Gestionnaire de fichiers → `public_html`
+4. Uploader le zip, l'extraire à la racine de `public_html`, supprimer le zip après extraction
+5. Vérifier que `assets/` reste bien un sous-dossier (jamais aplati) et que `index.html` est directement à la racine
 
 ## Architecture
 - **Stack** : HTML/CSS vanilla pur, aucune dépendance, aucun build tool
