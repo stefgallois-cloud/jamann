@@ -6,10 +6,11 @@
 **Site :** fd-harmonie.com (prototype V3 en cours, pas encore en ligne)  
 **Contact :** f.davenas@gmail.com · +33 (0)6 19 20 82 56
 
-## Statut (2026-07-03)
-Modifications des 2 PDFs **intégrées** + audit UX/UI complet (v41).  
-**v2 déployée** : https://francoise-davenas-v2.pages.dev (préversion privée, non indexable) — la v1 https://francoise-davenas.pages.dev reste intacte pour comparaison.  
-**Email de validation envoyé à Françoise** (10 questions numérotées) — en attente de ses réponses pour tout finaliser en une passe, y compris l'onglet « Ateliers et journées immersives ».  
+## Statut (2026-07-07)
+3ème lot de retouches (PDF3 + images) **intégré et déployé**.  
+**v2 à jour** : https://francoise-davenas-v2.pages.dev (préversion privée, non indexable, déploiement direct — projet Cloudflare Pages **non connecté à Git**, redéployer manuellement via `wrangler pages deploy . --project-name=francoise-davenas-v2 --branch=main`) — la v1 https://francoise-davenas.pages.dev reste intacte pour comparaison.  
+Dossier `deploy-hostinger/` reconstruit et à jour, en attente de validation finale de Françoise avant mise en ligne définitive sur Hostinger.  
+Travail effectué sur la branche git `francoise` (poussée sur `origin`).  
 Volet réseaux sociaux : **mis de côté** — priorité au site.
 
 ## Architecture
@@ -176,6 +177,9 @@ Les 2 PDFs sont conservés à la racine du projet. Textes fournis = **à conserv
 - **[2026-07-01]** Prototype validé par Françoise — modifications V2 reçues via 2 PDFs
 - **[2026-07-01]** Hébergement confirmé sur Cloudflare Pages
 - **[2026-07-01]** Réseaux sociaux mis de côté — site prioritaire
+- **[2026-07-07]** 3ème lot PDF intégré (astrologie, hypnose, thérapie de couple, constellations, sexothérapie, ateliers astrologiques, home) + nouvelles images hero Hypnose/AstroPsycho
+- **[2026-07-07]** Photo "Votre astro-thérapeute" : bordure violette ovale conservée telle quelle (incrustée dans le fichier, pas du CSS) — accord Stéphanie
+- **[2026-07-07]** Déploiement Cloudflare confirmé non connecté à Git — process de déploiement manuel documenté ci-dessus
 
 ## Maintenance future
 
