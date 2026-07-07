@@ -477,6 +477,10 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
   .ft-top { flex-direction: column; gap: 1.4rem; }
 }
 
+@media (max-width: 768px) {
+  .hero-schema { background-size: contain !important; background-repeat: no-repeat; background-color: #fbdee5; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   .hero-eyebrow, .hero-left h1, .hero-name, .hero-quote, .hero-tagline, .hero-left .btn, .reveal { opacity: 1; transform: none; animation: none; }
