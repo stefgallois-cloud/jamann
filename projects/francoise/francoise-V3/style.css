@@ -85,6 +85,7 @@ nav.solid {
 nav:not(.solid) .nav-logo { opacity: 0; visibility: hidden; transform: translateY(-8px); }
 .nav-logo img { height: 46px; width: 46px; object-fit: cover; border-radius: 50%; transition: height 0.5s var(--ease), width 0.5s var(--ease); }
 nav.solid .nav-logo img { height: 40px; width: 40px; }
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.3rem; color: var(--ink); letter-spacing: 0.01em; white-space: nowrap; }
 .nav-links { list-style: none; display: flex; gap: 2.4rem; align-items: center; }
 .nav-links > li > a {
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
@@ -452,26 +453,47 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
   .page-body { padding: 64px 2.5rem; }
   /* Fond fixe saccadé sur tablette/mobile → on repasse en défilement normal */
   body { background-attachment: scroll; }
+
+  /* ── Colonnes empilées → texte recentré (le layout desktop 2-colonnes n'a plus de raison d'être aligné à gauche) ── */
+  .hero-left { text-align: center; align-items: center; }
+  .hero-eyebrow, .hero-name { justify-content: center; }
+  .hero-name::after { display: none; }
+  .hero-quote {
+    text-align: center; border-left: none; border-top: 2px solid var(--rose);
+    padding-left: 0; padding-top: 1rem; max-width: 100%; margin-left: auto; margin-right: auto;
+  }
+  .hero-tagline, .hero-left .btn { text-align: center; }
+  .about-col-right { text-align: center; }
+  .about-col-right .rule { margin: 1.4rem auto 1.8rem; }
+  .services-top { text-align: center; }
+  .page-hero-ct { text-align: center; }
+  .page-hero-ct .pq { margin-left: auto; margin-right: auto; }
+
+  /* ── Cartes de service : éviter que le minmax(420px) desktop force un affichage imprévisible en tablette ── */
+  .svc-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
   nav { height: 72px; }
   .nav-links { display: none; flex-direction: column; position: absolute; top: 72px; left: 0; right: 0; background: var(--cream); padding: 2rem; gap: 1.4rem; box-shadow: var(--shadow-md); border-bottom: 1px solid var(--line); align-items: flex-start; }
   .nav-links.open { display: flex; }
   .burger { display: flex; }
-  .svc-list { grid-template-columns: 1fr; }
-  .svc { grid-template-columns: 1fr 20px; padding: 1.6rem 1.4rem; }
+  .svc-list { grid-template-columns: 1fr; gap: 0.9rem; }
+  .svc { grid-template-columns: 1fr 20px; padding: 1.1rem 1.3rem; }
   .form { padding: 2rem 1.4rem; }
   .hero-left h1.hero-logo img { width: 72px; height: 72px; object-fit: cover; }
   .hero-left h1.hero-logo span { font-size: clamp(2.6rem, 9vw, 3.6rem); }
   .ft-logo { width: 80px; height: 80px; }
   /* ── Resserrage des marges sur petits écrans ── */
-  section, #about { padding: 78px 1.5rem; }
-  .quote-break { padding: 104px 1.5rem; }
-  footer { padding: 4.6rem 1.5rem 4.4rem; }
-  .hero-left { padding: 2.2rem 1.6rem 3.5rem; }
+  section, #about { padding: 56px 1.5rem; }
+  .quote-break { padding: 72px 1.5rem; }
+  footer { padding: 3.2rem 1.5rem 2.8rem; }
+  .hero-left { padding: 2rem 1.6rem 2.6rem; }
   .hero-eyebrow { font-size: 0.74rem; letter-spacing: 0.16em; margin-bottom: 1.6rem; }
-  .hero-name { font-size: 0.82rem; margin-bottom: 2.2rem; }
-  .hero-quote { font-size: 1.2rem; }
+  .hero-name { font-size: 0.82rem; margin-bottom: 1.6rem; }
+  .hero-quote { font-size: 1.2rem; margin-bottom: 2rem; }
+  .hero-tagline { margin-bottom: 1.3rem; }
+  .services-top { margin-bottom: 1.8rem; }
+  .about-grid { gap: 2.5rem; }
   .stages-box { padding: 2.4rem 1.7rem; }
   .page-hero-ct { padding: 0 1.6rem 2.4rem; }
   .page-body { padding: 56px 1.6rem; }
