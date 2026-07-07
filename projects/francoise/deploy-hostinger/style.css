@@ -231,6 +231,8 @@ section { padding: 92px 4rem; }
 .svc > * { position: relative; z-index: 2; }
 .svc:hover { box-shadow: var(--shadow-md); border-color: var(--gold-soft); transform: translateY(-5px); }
 .svc:hover::before { transform: scale(1.13); }
+.svc-tcc::before { transform: scale(1); }
+.svc-tcc:hover::before { transform: scale(1.05); }
 .svc:hover::after { background: linear-gradient(100deg, rgba(253,250,246,0.9) 0%, rgba(253,250,246,0.79) 52%, rgba(253,236,241,0.66) 100%); }
 .svc-info h3 { font-family: 'Mulish', sans-serif; font-size: 0.87rem; font-weight: 700; letter-spacing: 0.02em; color: var(--ink); margin-bottom: 0.2rem; }
 .svc-info p {
