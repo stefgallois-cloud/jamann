@@ -247,11 +247,7 @@ section { padding: 92px 4rem; }
 .about-photo { position: relative; width: 100%; }
 .about-photo img {
   width: 100%; border-radius: 20px; box-shadow: var(--shadow-md);
-  position: relative; z-index: 2; display: block;
-}
-.about-photo::before {
-  content: ''; position: absolute; inset: -14px -14px auto auto; width: 62%; height: 62%;
-  background: var(--veil); border-radius: 20px; z-index: 1;
+  display: block;
 }
 .about-col-left .btn { position: relative; z-index: 3; }
 .about-col-right { display: flex; flex-direction: column; justify-content: flex-start; }
@@ -282,7 +278,7 @@ section { padding: 92px 4rem; }
 }
 
 /* ════ CONTACT ════ */
-#contact { background: var(--cream-alt); }
+#contact { background: var(--cream-alt); padding-top: 32px; }
 .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 3.8rem; align-items: center; }
 .contact-items { display: flex; flex-direction: column; gap: 1.2rem; }
 .ci { display: grid; grid-template-columns: 22px 1fr; gap: 1rem; align-items: start; }
@@ -326,11 +322,12 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
 .ft-social a:hover { border-color: var(--gold); background: var(--gold); color: var(--espresso); transform: translateY(-2px); box-shadow: var(--shadow-gold); }
 .ft-social svg { width: 14px; height: 14px; fill: currentColor; }
 .ft-social a { width: 38px; height: 38px; }
-.ft-bottom { border-top: 1px solid rgba(253,250,246,0.14); padding-top: 1rem; font-size: 0.75rem; display: flex; flex-wrap: wrap; gap: 0; align-items: center; justify-content: center; }
-.ft-sep { opacity: 0.5; margin: 0 0.5rem; }
+.ft-bottom { border-top: 1px solid rgba(253,250,246,0.14); padding-top: 1rem; font-size: 0.75rem; display: flex; flex-wrap: wrap; row-gap: 0.5rem; align-items: center; justify-content: center; }
+.ft-bottom > *:not(:first-child)::before { content: '·'; opacity: 0.5; margin: 0 0.5rem; }
 .ft-bottom a { color: rgba(253,250,246,0.82); transition: color 0.3s var(--ease); }
 .ft-bottom a:hover { color: var(--rose); }
 .ft-bottom span { color: rgba(253,250,246,0.82); }
+.ft-credit { opacity: 0.55; font-size: 0.7rem; }
 
 /* ════ SOUS-PAGES SOINS ════ */
 .page-hero { height: 58vh; min-height: 440px; position: relative; display: flex; align-items: flex-end; overflow: hidden; background: var(--veil); }
@@ -439,16 +436,16 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
 /* ════ RESPONSIVE ════ */
 @media (max-width: 1024px) {
   nav { padding: 0 2rem; }
-  .hero { grid-template-columns: 1fr; }
-  .hero-left { padding: 9rem 2.5rem 4rem; }
-  .hero-right { height: 64vw; max-height: 460px; order: -1; }
+  .hero { grid-template-columns: 1fr; height: auto; max-height: none; overflow: visible; }
+  .hero-left { padding: 2.5rem 2.5rem 4rem; }
+  .hero-right { height: 64vw; max-height: 460px; order: -1; margin-top: 72px; }
   .hero-right::after { background: linear-gradient(to top, var(--cream) 0%, rgba(253,250,246,0) 30%); }
   .services-top { grid-template-columns: 1fr; gap: 2rem; }
   .about-grid { grid-template-columns: 1fr; gap: 4rem; }
   .about-photo { max-width: 520px; }
   .stages-wrap, .contact-grid { grid-template-columns: 1fr; gap: 3.5rem; }
   section { padding: 96px 2.5rem; }
-  footer { padding: 5rem 2.5rem 2.5rem; }
+  footer { padding: 5rem 2.5rem 4.6rem; }
   .page-hero-ct { padding: 0 2.5rem 3rem; }
   .page-body { padding: 64px 2.5rem; }
   /* Fond fixe saccadé sur tablette/mobile → on repasse en défilement normal */
@@ -462,15 +459,14 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
   .svc-list { grid-template-columns: 1fr; }
   .svc { grid-template-columns: 1fr 20px; padding: 1.6rem 1.4rem; }
   .form { padding: 2rem 1.4rem; }
-  .ft-bottom { flex-direction: column; }
   .hero-left h1.hero-logo img { width: 72px; height: 72px; object-fit: cover; }
   .hero-left h1.hero-logo span { font-size: clamp(2.6rem, 9vw, 3.6rem); }
   .ft-logo { width: 80px; height: 80px; }
   /* ── Resserrage des marges sur petits écrans ── */
   section, #about { padding: 78px 1.5rem; }
   .quote-break { padding: 104px 1.5rem; }
-  footer { padding: 4.6rem 1.5rem 2.4rem; }
-  .hero-left { padding: 8rem 1.6rem 3.5rem; }
+  footer { padding: 4.6rem 1.5rem 4.4rem; }
+  .hero-left { padding: 2.2rem 1.6rem 3.5rem; }
   .hero-eyebrow { font-size: 0.74rem; letter-spacing: 0.16em; margin-bottom: 1.6rem; }
   .hero-name { font-size: 0.82rem; margin-bottom: 2.2rem; }
   .hero-quote { font-size: 1.2rem; }
