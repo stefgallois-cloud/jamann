@@ -22,7 +22,7 @@
 
   /* Bump this integer by 1 each time you swap the frames in
      assets/frames/ so the browser cache can't serve stale images. */
-  var CACHE_BUST = 3;
+  var CACHE_BUST = 5;
 
   /* ---- IntersectionObserver: reveal-on-enter for editorial blocks ---- */
   var io = new IntersectionObserver(
@@ -355,15 +355,29 @@
       if (cue) cue.style.opacity = String(1 - smoothstep(0.02, 0.10, p));
     }
 
-    var rafPending = false;
+    /* ---- Lissage scroll -> frame (technique "lerp ticker") ----
+       Le scroll écrit UNIQUEMENT targetProgress. Un rAF loop séparé
+       interpole currentProgress vers cette cible (facteur LERP) et c'est
+       currentProgress qui pilote le rendu. Ça évite le saut brut d'une
+       frame à l'autre sur un scroll rapide (roulette, fin de scrub, etc.)
+       — même principe que le lerp video.currentTime des sites vidéo. */
+    var targetProgress = 0;
+    var currentProgress = 0;
+    var LERP = 0.14;
+    var tickerRunning = false;
+
     function onScrubScroll() {
-      if (rafPending) return;
-      rafPending = true;
-      window.requestAnimationFrame(function () {
-        rafPending = false;
-        if (!ready) return;
-        render(getProgress());
-      });
+      targetProgress = getProgress();
+    }
+
+    function tick() {
+      if (!tickerRunning) return;
+      currentProgress += (targetProgress - currentProgress) * LERP;
+      if (Math.abs(targetProgress - currentProgress) < 0.0004) {
+        currentProgress = targetProgress;
+      }
+      render(currentProgress);
+      requestAnimationFrame(tick);
     }
 
     function enableScrub() {
@@ -394,11 +408,12 @@
         window.addEventListener("resize", function() { resizeCanvas(); });
         return;
       }
-      render(getProgress());
-      requestAnimationFrame(function () { render(getProgress()); });
-      setTimeout(function () { render(getProgress()); }, 120);
+      targetProgress = currentProgress = getProgress();
+      render(currentProgress);
       window.addEventListener("scroll", onScrubScroll, { passive: true });
-      window.addEventListener("resize", function () { if (ready) render(getProgress()); });
+      window.addEventListener("resize", function () { if (ready) targetProgress = getProgress(); });
+      tickerRunning = true;
+      requestAnimationFrame(tick);
     }
 
     /* ---- Preload all frames; paint frame 0 the instant it lands ---- */

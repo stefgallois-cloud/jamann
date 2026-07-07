@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "4189", "--directory", "jamann-app"],
       "port": 4189
+    },
+    {
+      "name": "manoire-sitev2-hero",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4190", "--directory", "site web/sitev2/starter"],
+      "port": 4190
     }
   ]
 }
