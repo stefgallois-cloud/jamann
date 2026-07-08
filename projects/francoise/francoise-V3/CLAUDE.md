@@ -1,5 +1,9 @@
 # Projet Françoise Davenas — Âm'Astro™
 
+## ⚠️ Dossier de travail — IMPORTANT (depuis le 2026-07-08)
+**Toujours travailler dans ce dossier-ci :** `C:\Users\DELL\Desktop\francoise-site-hostinger\projects\francoise\`
+C'est un **git worktree dédié**, figé en permanence sur la branche `francoise`. L'ancien chemin (`C:\Users\DELL\Desktop\test claude\projects\francoise\`) reste sur la branche `main` — ses fichiers changeront selon la branche que Stéphanie active ailleurs pour d'autres projets. Ne jamais faire de travail Françoise dans l'ancien chemin.
+
 ## Client
 **Françoise Davenas** — Astrologue Thérapeute Holistique  
 **Marque :** Âm'Astro™  
@@ -188,6 +192,9 @@ Les 2 PDFs sont conservés à la racine du projet. Textes fournis = **à conserv
 - **[2026-07-07]** 3ème lot PDF intégré (astrologie, hypnose, thérapie de couple, constellations, sexothérapie, ateliers astrologiques, home) + nouvelles images hero Hypnose/AstroPsycho
 - **[2026-07-07]** Photo "Votre astro-thérapeute" : bordure violette ovale conservée telle quelle (incrustée dans le fichier, pas du CSS) — accord Stéphanie
 - **[2026-07-07]** Déploiement Cloudflare confirmé non connecté à Git — process de déploiement manuel documenté ci-dessus
+- **[2026-07-08]** Audit SEO complet : migration domaine fd-harmonie→am-astro dans tout le HTML/sitemap/robots.txt, JSON-LD BreadcrumbList + Person enrichi, maillage interne "Approches complémentaires", titres enrichis, archivage hero.jpg inutilisé
+- **[2026-07-08]** Tentative conversion WebP via `<picture><source>` sur logo/orchidée hero/logo footer → cascade de bugs de layout (logo ovale, footer tronqué, bourgeon d'orchidée coupé). **Revert complet** vers `<img>` simples (comme avant), gain conservé uniquement sur le fondu mobile hero (30%→10%, dégage le bourgeon). Les 10 images de fond en CSS restent en WebP sans souci (jamais wrappées en `<picture>`)
+- **[2026-07-08]** Incident de branche git (mono-repo) ayant réécrit les fichiers locaux à une version obsolète à deux reprises — **solution** : création d'un git worktree dédié permanent pour ce projet (voir encadré tout en haut de ce fichier)
 
 ## Maintenance future
 
