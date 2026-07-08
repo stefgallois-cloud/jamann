@@ -1,6 +1,8 @@
-# Scénario Make — Leads Atelier des Automates
+# Scénario Make — Leads Atelier des Automates (ARCHIVÉ)
 
-**Statut :** à construire (blueprint prêt à importer, voir ci-dessous)
+**⚠️ Statut : abandonné, jamais mis en prod.** Le pipeline réel tourne sur n8n — voir [`N8N.md`](N8N.md).
+Ce fichier est gardé pour référence (le plan complet avec analyse IA n'a pas encore d'équivalent n8n).
+
 **Déclencheur :** webhook custom, appelé par le formulaire de `landing/index.html`
 **Fréquence :** instantané (à chaque soumission)
 
