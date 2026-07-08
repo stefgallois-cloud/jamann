@@ -1,8 +1,9 @@
 # Prompt d'analyse des soumissions — L'Atelier des Automates
 
-Utilisé dans le module 3 (Anthropic Claude) du scénario Make `make-blueprint-leads.json`.
-Variables injectées par Make : `{{description}}` et `{{besoin_declare}}` (valeurs du module 1 —
-webhook).
+Écrit pour le module 3 (Anthropic Claude) du scénario Make archivé
+(`decisions/archives/make-scenario/make-blueprint-leads.json`), jamais mis en prod — voir `N8N.md`.
+Pas encore adapté au workflow n8n actif (qui ne fait pas d'analyse IA pour l'instant).
+Variables prévues : `{{description}}` et `{{besoin_declare}}`.
 
 ---
 

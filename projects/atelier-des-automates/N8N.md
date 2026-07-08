@@ -12,7 +12,7 @@
 
 Le déclencheur webhook natif d'Airtable nécessite un forfait payant. Make fonctionnait mais demandait
 un import de blueprint manuel. n8n est connecté via MCP et permet de créer/publier des workflows par
-API — le pipeline a été construit et activé entièrement sans étape manuelle. Voir `MAKE.md` (archivé)
+API — le pipeline a été construit et activé entièrement sans étape manuelle. Voir [`MAKE.md`](decisions/archives/make-scenario/MAKE.md) (archivé)
 pour l'ancien plan Make, non utilisé en production.
 
 ---
@@ -73,7 +73,7 @@ Le workflow a été construit par API (MCP n8n), pas manuellement dans l'éditeu
 ## Prochaine étape (pas encore faite)
 
 Ajouter l'analyse IA (Claude Haiku) en aval de la création Airtable : résumé de la demande, service
-suggéré, brouillon de réponse — comme prévu dans le plan Make original (`MAKE.md`, modules 3-6).
+suggéré, brouillon de réponse — comme prévu dans le plan Make original ([`MAKE.md`](decisions/archives/make-scenario/MAKE.md), modules 3-6).
 Actuellement le workflow ne fait que capter et notifier, sans analyse.
 
 ---

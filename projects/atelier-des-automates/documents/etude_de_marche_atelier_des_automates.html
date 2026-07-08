@@ -1,0 +1,923 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modélisation Financière — L'Atelier des Automates</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Chart.js CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* CSS Variables - Core Design System */
+        :root {
+            --bg-main: #0b0f19;
+            --bg-card: rgba(17, 24, 39, 0.7);
+            --border-color: rgba(255, 255, 255, 0.08);
+            --text-primary: #f3f4f6;
+            --text-secondary: #9ca3af;
+            --text-muted: #6b7280;
+            --accent-orange: #ff5722;
+            --accent-purple: #8a2be2;
+            --accent-purple-glow: rgba(138, 43, 226, 0.15);
+            --gradient-accent: linear-gradient(135deg, #ff5722 0%, #8a2be2 100%);
+            --font-title: 'Outfit', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --sidebar-width: 280px;
+            --shadow-premium: 0 10px 30px -10px rgba(0, 0, 0, 0.7), 0 1px 1px 0 rgba(255, 255, 255, 0.05) inset;
+        }
+
+        /* Base Reset & Styles */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            line-height: 1.6;
+            overflow-x: hidden;
+            display: flex;
+        }
+
+        /* Soft background glows */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -200px;
+            left: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(255, 87, 34, 0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        body::after {
+            content: '';
+            position: fixed;
+            bottom: -200px;
+            right: -200px;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.08) 0%, rgba(0,0,0,0) 70%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* Sidebar Glassmorphism */
+        aside {
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: rgba(10, 14, 23, 0.85);
+            backdrop-filter: blur(16px);
+            border-right: 1px solid var(--border-color);
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding: 2.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            z-index: 100;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .logo-title {
+            font-family: var(--font-title);
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .logo-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-secondary);
+            font-weight: 600;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: 3rem;
+            margin-bottom: auto;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            display: block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--text-primary);
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(255, 255, 255, 0.05);
+            padding-left: 1.25rem;
+        }
+
+        .nav-links a.active {
+            border-left: 3px solid var(--accent-orange);
+            background: rgba(255, 87, 34, 0.05);
+        }
+
+        .sidebar-footer {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            border-top: 1px solid var(--border-color);
+            padding-top: 1.5rem;
+        }
+
+        .btn-print {
+            background: var(--gradient-accent);
+            color: white;
+            border: none;
+            padding: 0.75rem 1rem;
+            border-radius: 8px;
+            font-family: var(--font-title);
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .btn-print:hover {
+            opacity: 0.9;
+        }
+
+        /* Main Content Layout */
+        main {
+            margin-left: var(--sidebar-width);
+            width: calc(100% - var(--sidebar-width));
+            padding: 3rem 4rem;
+            max-width: 1200px;
+        }
+
+        header {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .tagline {
+            display: inline-block;
+            background: var(--accent-purple-glow);
+            color: #b57cff;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            font-size: 2.75rem;
+            font-weight: 800;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            margin-bottom: 1rem;
+        }
+
+        h1 span {
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .header-meta {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 800px;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 4.5rem;
+            scroll-margin-top: 3rem;
+        }
+
+        h2 {
+            font-family: var(--font-title);
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 1.75rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 3px;
+            background: var(--gradient-accent);
+            border-radius: 2px;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        /* Premium Card / Glassmorphism */
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: var(--shadow-premium);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .card-accent-orange {
+            border-left: 4px solid var(--accent-orange);
+        }
+
+        .card-accent-purple {
+            border-left: 4px solid var(--accent-purple);
+        }
+
+        .card-title {
+            font-family: var(--font-title);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        p {
+            color: var(--text-secondary);
+            margin-bottom: 1.25rem;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        p strong {
+            color: var(--text-primary);
+        }
+
+        /* Lists style */
+        ul.custom-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        ul.custom-list li {
+            position: relative;
+            padding-left: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        ul.custom-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent-orange);
+            font-weight: 700;
+        }
+
+        /* Metric badge */
+        .metric-badge {
+            font-size: 2.25rem;
+            font-weight: 800;
+            font-family: var(--font-title);
+            margin-bottom: 0.25rem;
+            background: var(--gradient-accent);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .metric-subtitle {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* Responsive Table */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-primary);
+            font-weight: 600;
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid var(--border-color);
+            font-family: var(--font-title);
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 1rem 1.25rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            color: var(--text-secondary);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: rgba(255, 255, 255, 0.01);
+            color: var(--text-primary);
+        }
+
+        .highlight-row {
+            background-color: rgba(255, 87, 34, 0.03);
+        }
+
+        /* KPI small card */
+        .kpi-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem;
+            text-align: center;
+        }
+
+        /* Chart Box */
+        .chart-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-top: 1.5rem;
+            box-shadow: var(--shadow-premium);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .chart-title {
+            font-family: var(--font-title);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            align-self: flex-start;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            height: 300px;
+        }
+
+        /* Highlight Alert (Callout) */
+        .alert-box {
+            background: rgba(255, 87, 34, 0.05);
+            border: 1px dashed rgba(255, 87, 34, 0.3);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .alert-box-title {
+            font-family: var(--font-title);
+            font-weight: 700;
+            color: var(--accent-orange);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 968px) {
+            body {
+                flex-direction: column;
+            }
+            aside {
+                width: 100%;
+                height: auto;
+                position: relative;
+                padding: 1.5rem;
+                border-right: none;
+                border-bottom: 1px solid var(--border-color);
+            }
+            .nav-links {
+                display: none;
+            }
+            main {
+                margin-left: 0;
+                width: 100%;
+                padding: 2rem 1.5rem;
+            }
+            .grid-2, .grid-3, .grid-4 {
+                grid-template-columns: 1fr;
+            }
+            h1 {
+                font-size: 2.25rem;
+            }
+        }
+
+        /* Print Optimization styles */
+        @media print {
+            aside {
+                display: none !important;
+            }
+            body {
+                background: white !important;
+                color: black !important;
+                font-size: 11pt;
+            }
+            main {
+                margin-left: 0 !important;
+                width: 100% !important;
+                padding: 0 !important;
+                max-width: 100% !important;
+            }
+            h1, h2, h3, p, th, td, strong, li {
+                color: black !important;
+            }
+            h1 span {
+                background: none !important;
+                -webkit-text-fill-color: initial !important;
+                color: black !important;
+                border-bottom: 2px solid black;
+            }
+            h2::after {
+                background: black !important;
+            }
+            .card, .chart-box, .table-container, .kpi-card {
+                background: white !important;
+                border: 1px solid #ccc !important;
+                box-shadow: none !important;
+                page-break-inside: avoid;
+                margin-bottom: 1.5rem;
+            }
+            .chart-container {
+                height: 250px !important;
+            }
+            section {
+                page-break-after: auto;
+                page-break-inside: avoid;
+                margin-bottom: 3rem;
+            }
+            .alert-box {
+                background: #f9f9f9 !important;
+                border: 1px dashed black !important;
+                color: black !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidebar Glassmorphic Menu -->
+    <aside id="sidebar">
+        <div class="logo-container">
+            <span class="logo-title">L'Atelier</span>
+            <span class="logo-subtitle">des Automates</span>
+        </div>
+        
+        <ul class="nav-links">
+            <li><a href="#vision" class="active" onclick="setActiveLink(this)">1. Tarifs & Modèle</a></li>
+            <li><a href="#creation" onclick="setActiveLink(this)">2. Analyse Opérationnelle</a></li>
+            <li><a href="#projections" onclick="setActiveLink(this)">3. Projections Financières</a></li>
+            <li><a href="#visualisation" onclick="setActiveLink(this)">4. Graphiques de Scalabilité</a></li>
+            <li><a href="#strategie" onclick="setActiveLink(this)">5. Les Portraits Humains</a></li>
+        </ul>
+
+        <div class="sidebar-footer">
+            <p style="font-size: 0.75rem; margin-bottom: 0.5rem; color: var(--text-muted);">
+                Modélisation Opérationnelle. Propriété de Clockwork Ops.
+            </p>
+            <button class="btn-print" onclick="window.print()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-printer"><polyline points="6 9 6 2 18 2 18 9"></polyline><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                Sauvegarder en PDF
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content Container -->
+    <main>
+        <header>
+            <span class="tagline">Analyse Opérationnelle & Financière</span>
+            <h1>Dashboard de Scalabilité : <span>L'Atelier des Automates</span></h1>
+            <p class="header-meta">
+                Modélisation financière et estimation de l'investissement temporel pour le lancement de l'offre packagée <strong>[Landing Page + Assistant Réseaux Sociaux]</strong>.
+            </p>
+        </header>
+
+        <!-- SECTION 1: MODELE ET TARIFS -->
+        <section id="vision">
+            <h2>1. Positionnement Tarifaire & Scénarios</h2>
+            
+            <p>
+                L'offre de <strong>L'Atelier des Automates</strong> s'appuie sur la force de vos outils déjà créés. Pour le lancement officiel post-bêta, deux stratégies de prix sont envisagées pour valoriser les compétences de vos clients tout en maximisant votre rentabilité.
+            </p>
+
+            <div class="grid-2">
+                <div class="card card-accent-orange">
+                    <div class="card-title">Scénario A : Pénétration Rapide</div>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+                        <span class="metric-badge">690 €</span>
+                        <span style="color: var(--text-secondary); font-weight: 500;">France</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+                        <span class="metric-badge" style="font-size: 1.75rem;">1'200 CHF</span>
+                        <span style="color: var(--text-secondary); font-weight: 500;">Suisse</span>
+                    </div>
+                    <p style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <strong>Abonnement :</strong> 29 € / 35 CHF par mois.  
+                        Ce tarif est psychologiquement indolore pour un créateur débutant et permet de valider très rapidement un grand nombre de dossiers.
+                    </p>
+                </div>
+
+                <div class="card card-accent-purple">
+                    <div class="card-title">Scénario B : Positionnement Premium</div>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+                        <span class="metric-badge" style="color: #b57cff;">990 €</span>
+                        <span style="color: var(--text-secondary); font-weight: 500;">France</span>
+                    </div>
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 1rem;">
+                        <span class="metric-badge" style="font-size: 1.75rem; color: #b57cff;">1'500 CHF</span>
+                        <span style="color: var(--text-secondary); font-weight: 500;">Suisse</span>
+                    </div>
+                    <p style="margin-top: 1rem; border-top: 1px solid var(--border-color); padding-top: 1rem;">
+                        <strong>Abonnement :</strong> 29 € / 35 CHF par mois.  
+                        Ce tarif reste sous la barre symbolique des 1000 €, valorise le fait que l'application de posts soit déjà créée et attire des porteurs de projets plus qualifiés, réduisant ainsi le churn sur l'abonnement.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: TEMPS DE CREATION -->
+        <section id="creation">
+            <h2>2. Analyse Opérationnelle : L'Efficacité Absolue</h2>
+            
+            <p>
+                Contrairement aux estimations initiales qui prévoyaient 4 heures de travail par client, **votre efficacité réelle est bien supérieure**. L'application de génération de posts sur les réseaux sociaux est **déjà créée** et opérationnelle. De plus, la Landing Page est générée par IA et s'adapte automatiquement et instantanément au branding de l'utilisateur. 
+            </p>
+            <p>
+                Il n'y a pas de développement lourd, uniquement de la **personnalisation de haute précision**.
+            </p>
+
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-title">Décomposition du temps par client (Total : 2 heures)</div>
+                    <ul class="custom-list">
+                        <li><strong>45 min — Landing Page par IA :</strong> Génération de la structure et adaptation automatisée aux couleurs, textes et logo du client.</li>
+                        <li><strong>30 min — Personnalisation App :</strong> Connexion de l'application de gestion de posts réseaux (déjà prête) aux thématiques et au ton du client.</li>
+                        <li><strong>15 min — Liaison Technique :</strong> Connexion au nom de domaine et liaison aux formulaires de capture.</li>
+                        <li><strong>30 min — Vidéo d'onboarding & Recette :</strong> Envoi d'une courte vidéo chaleureuse de prise en main.</li>
+                    </ul>
+                </div>
+
+                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+                    <div class="kpi-card" style="background: rgba(255, 87, 34, 0.05); border-color: rgba(255, 87, 34, 0.2);">
+                        <div style="font-size: 2.25rem; font-weight: 800; color: var(--accent-orange);">2 heures</div>
+                        <div class="metric-subtitle">de livraison par client (Temps réel)</div>
+                    </div>
+                    <div class="kpi-card" style="background: rgba(138, 43, 226, 0.05); border-color: rgba(138, 43, 226, 0.2); margin-top: 1rem;">
+                        <div style="font-size: 2.25rem; font-weight: 800; color: #b57cff;">118 heures</div>
+                        <div class="metric-subtitle">de travail cumulé pour 59 clients sur un an</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: PROJECTIONS FINANCIERES -->
+        <section id="projections">
+            <h2>3. Modélisation de la Rentabilité Horaire & Gains</h2>
+            
+            <p>
+                Voici le comparatif des gains et du taux horaire effectif pour vous (Stéphanie, Product Builder) selon les deux scénarios de prix, basés sur le même volume progressif de clients sur un an (59 clients payants au total + 3 bêta-testeurs gratuits au départ).
+            </p>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Horizon</th>
+                            <th>Clients Payants</th>
+                            <th>Temps de travail</th>
+                            <th>CA Global (Scénario 690€)</th>
+                            <th>Taux Horaire (690€)</th>
+                            <th>CA Global (Scénario 990€)</th>
+                            <th>Taux Horaire (990€)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>3 Mois (T1)</strong></td>
+                            <td>5 clients <span style="font-size: 0.75rem; color: var(--text-muted);">(3 FR, 2 CH)</span></td>
+                            <td>16 heures</td>
+                            <td>4'880 €</td>
+                            <td><span class="badge-neutral">305 € / h</span></td>
+                            <td><strong>6'530 €</strong></td>
+                            <td><span class="badge-neutral" style="background: rgba(16, 185, 129, 0.1); color: #34d399;">408 € / h</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>6 Mois (T2)</strong></td>
+                            <td>17 clients <span style="font-size: 0.75rem; color: var(--text-muted);">(10 FR, 7 CH)</span></td>
+                            <td>40 heures</td>
+                            <td>17'220 €</td>
+                            <td><span class="badge-positive">430 € / h</span></td>
+                            <td><strong>21'970 €</strong></td>
+                            <td><span class="badge-positive" style="background: rgba(255, 87, 34, 0.15); color: #ff5722;">549 € / h</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>9 Mois (T3)</strong></td>
+                            <td>35 clients <span style="font-size: 0.75rem; color: var(--text-muted);">(20 FR, 15 CH)</span></td>
+                            <td>76 heures</td>
+                            <td>36'900 €</td>
+                            <td><span class="badge-positive">485 € / h</span></td>
+                            <td><strong>45'750 €</strong></td>
+                            <td><span class="badge-positive" style="background: rgba(255, 87, 34, 0.15); color: #ff5722;">602 € / h</span></td>
+                        </tr>
+                        <tr class="highlight-row">
+                            <td><strong>1 An (T4)</strong></td>
+                            <td><strong>59 clients</strong> <span style="font-size: 0.75rem; color: var(--text-muted);">(33 FR, 26 CH)</span></td>
+                            <td><strong>118 heures</strong></td>
+                            <td><strong>68'030 €</strong></td>
+                            <td><span class="badge-positive" style="background: rgba(255, 87, 34, 0.15); color: #ff5722; font-size: 0.85rem; padding: 0.35rem 0.6rem;">576 € / h</span></td>
+                            <td><strong>81'395 €</strong></td>
+                            <td><span class="badge-positive" style="background: rgba(138, 43, 226, 0.15); color: #b57cff; font-size: 0.85rem; padding: 0.35rem 0.6rem;">690 € / h</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="grid-4" style="margin-top: 2rem;">
+                <div class="kpi-card" style="border-bottom: 3px solid #ff5722;">
+                    <span class="metric-badge" style="font-size: 1.8rem;">118 heures</span><br>
+                    <span class="metric-subtitle">Temps total / An</span>
+                </div>
+                <div class="kpi-card" style="border-bottom: 3px solid #ff5722;">
+                    <span class="metric-badge" style="font-size: 1.8rem; color: #b57cff;">81'395 €</span><br>
+                    <span class="metric-subtitle">CA Maximal An 1</span>
+                </div>
+                <div class="kpi-card" style="border-bottom: 3px solid #ff5722;">
+                    <span class="metric-badge" style="font-size: 1.8rem; color: #10b981;">1'711 €</span><br>
+                    <span class="metric-subtitle">MRR à 12 mois</span>
+                </div>
+                <div class="kpi-card" style="border-bottom: 3px solid #ff5722;">
+                    <span class="metric-badge" style="font-size: 1.8rem; color: #b57cff;">690 €</span><br>
+                    <span class="metric-subtitle">Taux Horaire Max</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: GRAPHISQUES & VISUALISATION -->
+        <section id="visualisation">
+            <h2>4. Comparatif Graphique de la Scalabilité</h2>
+            
+            <div class="grid-2">
+                <div class="chart-box">
+                    <span class="chart-title">Comparaison du Chiffre d'Affaires cumulé (€)</span>
+                    <div class="chart-container">
+                        <canvas id="chartCACompare"></canvas>
+                    </div>
+                </div>
+
+                <div class="chart-box">
+                    <span class="chart-title">Évolution du Taux Horaire Effectif (€ / heure)</span>
+                    <div class="chart-container">
+                        <canvas id="chartTauxHoraire"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: LES PORTRAITS HUMAINS -->
+        <section id="strategie">
+            <h2>5. Les Portraits Humains : La Force du Projet</h2>
+            
+            <p>
+                L'Atelier des Automates n'est pas qu'un ensemble de chiffres ; c'est un **échange de compétences** visant à propulser le talent de créateurs uniques. Voici les histoires de vie réelles qui vont inspirer votre boîte à idées et votre série documentaire :
+            </p>
+
+            <div class="grid-2">
+                <div class="card card-accent-orange">
+                    <div class="card-title">L'Artiste Senior Connectée (73 ans)</div>
+                    <p>
+                        Une peintre globe-trotteuse et attachante. Loin d'être dépassée par la technique, elle a elle-même utilisé ChatGPT à l'aéroport pour gérer un problème de vol retardé, démontrant une incroyable soif d'apprendre.
+                    </p>
+                    <p>
+                        Elle vendait quelques toiles sur Instagram. En connectant nos automatisations pour l'aider à communiquer sans effort, elle a multiplié ses commandes, augmenté sa retraite et finance aujourd'hui de nouveaux voyages.
+                    </p>
+                </div>
+
+                <div class="card card-accent-purple">
+                    <div class="card-title">La Dog-Walker suisse</div>
+                    <p>
+                        Une amoureuse des chiens qui n'osait pas faire de publicité classique par peur de réglementations imaginaires. Elle se limitait à de petites affiches partagées uniquement dans ses stories Facebook privées.
+                    </p>
+                    <p>
+                        Depuis qu'elle dispose de sa propre page épurée et de son outil de posts, son activité s'est transformée en un choix de vie. Elle ne subit plus son travail : **elle sélectionne uniquement les missions qui l'intéressent** et sa qualité de vie a grimpé en flèche.
+                    </p>
+                </div>
+            </div>
+
+            <div class="alert-box" style="margin-top: 3rem;">
+                <div class="alert-box-title">🏆 Conclusion Stratégique</div>
+                <p style="margin-bottom: 0;">
+                    Grâce à la pré-existence de votre application et à l'automatisation de la génération de Landing Pages, vous créez une entreprise d'une efficacité horaire rare. Que vous choisissiez le tarif à 690€ ou à 990€, l'Atelier des Automates combine un impact humain fort pour vos clients et une rentabilité exceptionnelle pour **Clockwork Ops**.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Chart Scripts -->
+    <script>
+        // Tab indicator logic
+        function setActiveLink(element) {
+            const links = document.querySelectorAll('.nav-links a');
+            links.forEach(link => link.classList.remove('active'));
+            element.classList.add('active');
+        }
+
+        // Keep current tab active on scroll
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('.nav-links a');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (pageYOffset >= sectionTop - 120) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Chart.js Configuration
+        document.addEventListener('DOMContentLoaded', () => {
+            // Chart 1: CA Compare
+            const ctxCA = document.getElementById('chartCACompare').getContext('2d');
+            new Chart(ctxCA, {
+                type: 'line',
+                data: {
+                    labels: ['T1 (3 Mois)', 'T2 (6 Mois)', 'T3 (9 Mois)', 'T4 (12 Mois)'],
+                    datasets: [
+                        {
+                            label: 'CA Scénario 690 € / 1200 CHF',
+                            data: [4880, 17220, 36900, 68030],
+                            borderColor: '#ff5722',
+                            backgroundColor: 'rgba(255, 87, 34, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3
+                        },
+                        {
+                            label: 'CA Scénario 990 € / 1500 CHF',
+                            data: [6530, 21970, 45750, 81395],
+                            borderColor: '#8a2be2',
+                            backgroundColor: 'rgba(138, 43, 226, 0.1)',
+                            borderWidth: 3,
+                            fill: true,
+                            tension: 0.3
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#9ca3af', font: { family: 'Inter', size: 10 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9ca3af', callback: value => value + ' €' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+
+            // Chart 2: Taux Horaire Compare
+            const ctxTaux = document.getElementById('chartTauxHoraire').getContext('2d');
+            new Chart(ctxTaux, {
+                type: 'bar',
+                data: {
+                    labels: ['T1 (3 Mois)', 'T2 (6 Mois)', 'T3 (9 Mois)', 'T4 (12 Mois)'],
+                    datasets: [
+                        {
+                            label: 'Taux horaire Scénario 690 €',
+                            data: [305, 430, 485, 576],
+                            backgroundColor: 'rgba(255, 87, 34, 0.6)',
+                            borderColor: '#ff5722',
+                            borderWidth: 1
+                        },
+                        {
+                            label: 'Taux horaire Scénario 990 €',
+                            data: [408, 549, 602, 690],
+                            backgroundColor: 'rgba(138, 43, 226, 0.6)',
+                            borderColor: '#8a2be2',
+                            borderWidth: 1
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#9ca3af', font: { family: 'Inter', size: 10 } }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.05)' },
+                            ticks: { color: '#9ca3af', callback: value => value + ' € / h' }
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

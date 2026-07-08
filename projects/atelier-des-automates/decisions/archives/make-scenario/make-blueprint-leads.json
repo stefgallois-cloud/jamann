@@ -1,0 +1,203 @@
+{
+  "name": "Atelier des Automates - Leads",
+  "flow": [
+    {
+      "id": 1,
+      "module": "gateway:CustomWebHook",
+      "version": 1,
+      "parameters": {
+        "hook": null,
+        "maxResults": 1
+      },
+      "mapper": {},
+      "metadata": {
+        "designer": { "x": 0, "y": 0 },
+        "restore": {},
+        "expect": [
+          { "name": "nom", "type": "text" },
+          { "name": "email", "type": "text" },
+          { "name": "besoin", "type": "text" },
+          { "name": "description", "type": "text" },
+          { "name": "token", "type": "text" }
+        ]
+      },
+      "_note": "A l'import, Make demande de creer/nommer ce webhook (ex: 'Lead Atelier'). L'URL generee est a coller dans index.html a la place de MAKE_WEBHOOK_URL. Le champ 'expect' ci-dessus liste la structure attendue mais Make redetermine reellement la structure a la reception du premier vrai appel - faire un test d'envoi avant de considerer le scenario pret."
+    },
+    {
+      "id": 2,
+      "module": "airtable:ActionCreateRecord",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "filter": {
+        "name": "Token valide",
+        "conditions": [
+          [
+            { "a": "{{1.token}}", "b": "atelier-lead-9f3c7b2a1e", "o": "text:equal" }
+          ]
+        ]
+      },
+      "mapper": {
+        "base": "appmF2C4PoxGm4C1m",
+        "table": "tblOTLSsNL4FkIFlz",
+        "fields": {
+          "fld5e1nvIfblTOdNI": "{{1.nom}}",
+          "fldnM2mTt93wg0R2B": "{{1.email}}",
+          "fldavF232R7usraEt": "{{1.besoin}}",
+          "fldNu01XLHQIvLIkc": "{{1.description}}",
+          "fldzEl7jWgd16wcix": "{{now}}"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 300, "y": 0 },
+        "restore": {}
+      },
+      "_note": "Table Soumissions. Filtre anti-spam : ne continue que si le token envoye par le formulaire correspond a la valeur codee en dur dans index.html. A l'import, choisir/creer la connexion Airtable."
+    },
+    {
+      "id": 3,
+      "module": "http:ActionSendData",
+      "version": 3,
+      "parameters": {},
+      "mapper": {
+        "url": "https://api.anthropic.com/v1/messages",
+        "method": "post",
+        "headers": [
+          { "name": "x-api-key", "value": "{{ANTHROPIC_API_KEY}}" },
+          { "name": "anthropic-version", "value": "2023-06-01" },
+          { "name": "content-type", "value": "application/json" }
+        ],
+        "bodyType": "raw",
+        "contentType": "application/json",
+        "data": "{\"model\":\"claude-haiku-4-5-20251001\",\"max_tokens\":1024,\"system\":\"<voir prompt/prompt_analyse_besoin.md - coller le bloc PROMPT SYSTEME complet ici>\",\"messages\":[{\"role\":\"user\",\"content\":\"<besoin_declare>{{2.fldavF232R7usraEt}}</besoin_declare>\\n<description>{{2.fldNu01XLHQIvLIkc}}</description>\"}]}",
+        "parseResponse": true
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 0 },
+        "restore": {}
+      },
+      "_note": "Module HTTP generique (pas de module natif Anthropic garanti dans tous les comptes Make). 'Parse response' DOIT etre sur Oui. Remplacer {{ANTHROPIC_API_KEY}} par la cle stockee dans une connexion/variable Make - jamais en dur dans le module. Le systeme prompt complet est dans prompt_analyse_besoin.md, trop long pour etre duplique ici sans risque de desynchronisation."
+    },
+    {
+      "id": 4,
+      "module": "json:ParseJSON",
+      "version": 1,
+      "parameters": {
+        "type": ""
+      },
+      "mapper": {
+        "json": "{{3.data.content[1].text}}"
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 0 },
+        "restore": {}
+      },
+      "_note": "Extrait {resume, service_suggere, brouillon_reponse} du texte renvoye par Claude. La syntaxe exacte {{3.data.content[1].text}} est a verifier/re-mapper en cliquant sur la bulle de sortie reelle du module 3 apres un premier test - c'est la facon normale de mapper dans Make, pas en tapant la formule a l'aveugle."
+    },
+    {
+      "id": 5,
+      "module": "airtable:ActionCreateRecord",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "base": "appmF2C4PoxGm4C1m",
+        "table": "tbl6vqIqPAX3tT01F",
+        "fields": {
+          "fld710pTkstJKN8WY": "{{1.nom}}",
+          "fldu6f8pccLqg94j5": ["{{2.id}}"],
+          "fldq1GiAPVOiou56B": "Analyse",
+          "fldEpq9DYtrmPlgRK": "{{4.resume}}",
+          "fldJXhXP1e2aHcd21": "{{4.service_suggere}}",
+          "fldbzb9ReSngkdV5E": "{{4.brouillon_reponse}}"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 1200, "y": 0 },
+        "restore": {}
+      },
+      "_note": "Table Suivi. Cree la ligne de suivi liee a la soumission (module 2), avec le resultat de l'analyse IA."
+    },
+    {
+      "id": 6,
+      "module": "google-email:ActionSendEmail",
+      "version": 1,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "to": "stef.gallois@gmail.com",
+        "subject": "Nouveau lead Atelier des Automates - {{1.nom}}",
+        "content": "Nouvelle soumission sur la landing page.\n\nNom : {{1.nom}}\nEmail : {{1.email}}\nBesoin declare : {{1.besoin}}\n\nDescription :\n{{1.description}}\n\n--- Analyse IA ---\nResume : {{4.resume}}\nService suggere : {{4.service_suggere}}\n\nBrouillon de reponse (a relire avant envoi) :\n{{4.brouillon_reponse}}\n\n--- Ne jamais envoyer ce brouillon tel quel au prospect sans le relire. ---"
+      },
+      "metadata": {
+        "designer": { "x": 1500, "y": 0 },
+        "restore": {}
+      },
+      "_note": "Notification a Stephanie uniquement, jamais au prospect. A l'import, choisir/creer la connexion Gmail."
+    },
+    {
+      "id": 7,
+      "module": "airtable:ActionCreateRecord",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "base": "appmF2C4PoxGm4C1m",
+        "table": "tbl6vqIqPAX3tT01F",
+        "fields": {
+          "fld710pTkstJKN8WY": "{{1.nom}}",
+          "fldu6f8pccLqg94j5": ["{{2.id}}"],
+          "fldq1GiAPVOiou56B": "Erreur IA"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 600, "y": 300 },
+        "restore": {}
+      },
+      "_note": "ERROR HANDLER a rattacher au module 3 (clic droit sur module 3 -> Add error handler -> deplacer ce module dans la branche d'erreur). Filet de securite si l'appel Claude echoue (panne API, quota)."
+    },
+    {
+      "id": 8,
+      "module": "airtable:ActionCreateRecord",
+      "version": 3,
+      "parameters": {
+        "__IMTCONN__": null
+      },
+      "mapper": {
+        "base": "appmF2C4PoxGm4C1m",
+        "table": "tbl6vqIqPAX3tT01F",
+        "fields": {
+          "fld710pTkstJKN8WY": "{{1.nom}}",
+          "fldu6f8pccLqg94j5": ["{{2.id}}"],
+          "fldq1GiAPVOiou56B": "Erreur IA"
+        }
+      },
+      "metadata": {
+        "designer": { "x": 900, "y": 300 },
+        "restore": {}
+      },
+      "_note": "ERROR HANDLER a rattacher au module 4 (clic droit sur module 4 -> Add error handler -> deplacer ce module dans la branche d'erreur). Filet de securite si Claude renvoie un JSON malforme."
+    }
+  ],
+  "metadata": {
+    "instant": true,
+    "version": 1,
+    "scenario": {
+      "roundtrips": 1,
+      "maxErrors": 3,
+      "autoCommit": true,
+      "autoCommitTriggerLast": true,
+      "sequential": false,
+      "confidential": false,
+      "dataloss": false,
+      "dlq": false
+    },
+    "designer": { "orphans": [] },
+    "zone": "eu1.make.com"
+  },
+  "_important": "Ce fichier est un best-effort ecrit a la main (le MCP Make connecte ne permet pas d'exporter un vrai blueprint de reference pour verifier le format exact octet-pres). Les modules 7 et 8 sont ecrits comme des modules normaux dans le flow ici, mais dans Make ce sont des BRANCHES D'ERREUR a rattacher manuellement aux modules 3 et 4 apres import (clic droit -> Add error handler -> glisser le module correspondant dedans) - l'import automatique ne le fera pas tout seul. Si l'import echoue completement ou qu'un module s'affiche invalide/grise, voir MAKE.md section 'Plan B' pour le montage manuel module par module."
+}
