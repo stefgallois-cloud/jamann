@@ -6,6 +6,12 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "4189", "--directory", "projects/manoire/jamann-app"],
       "port": 4189
+    },
+    {
+      "name": "atelier-landing",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "4190", "--directory", "projects/atelier-des-automates/landing"],
+      "port": 4190
     }
   ]
 }

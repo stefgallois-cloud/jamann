@@ -6,6 +6,20 @@
 
 ---
 
+## Version 1 (actuelle) — juste récupérer les infos
+
+Pour démarrer vite sans bloquer sur le prompt IA : `make-blueprint-leads-v1-simple.json` ne contient
+que les modules 1 (webhook) et 2 (Airtable → table Soumissions) du blueprint complet ci-dessous. Pas
+d'appel Claude, pas d'email, pas de table Suivi pour l'instant. Mêmes étapes d'import (section
+"Import du blueprint" plus bas), en s'arrêtant après l'étape 3 (pas de connexion HTTP/Anthropic ni
+Gmail à faire, pas de prompt système à coller, pas d'error handlers à rattacher).
+
+Pour passer à la version complète avec l'IA plus tard : importer `make-blueprint-leads.json` (le
+blueprint complet documenté ci-dessous) à la place, ou ajouter les modules 3 à 8 à la suite du
+scénario v1 existant dans l'éditeur Make.
+
+---
+
 ## Ce que fait le scénario
 
 1. Reçoit une soumission du formulaire (nom, email, besoin, description)

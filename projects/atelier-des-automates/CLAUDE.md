@@ -14,7 +14,7 @@ Instructions spécifiques à ce projet. Complète le CLAUDE.md racine, ne le rem
 
 **Règle :** toute nouvelle page, post ou livrable visuel pour ce projet doit piocher dans les tokens du design system plutôt que redéfinir des couleurs/tailles à la main. Si une valeur manque, l'ajouter aux tokens plutôt que de la coder en dur localement.
 
-**Note police :** Geist (prescrite dans `branding.md`) n'existe pas sur Google Fonts. Le design system utilise DM Sans en substitut. Ne pas re-proposer Geist sans avoir les fichiers `.woff2`.
+**Note police :** `branding.md` prescrit désormais Bricolage Grotesque (titres) + Hanken Grotesk (corps), toutes deux disponibles sur Google Fonts — changé le 2026-07-07 pour se différencier du duo Geist/Inter devenu générique. Le design system (`landing/design-system/`) utilise encore DM Sans comme substitut de l'ancien Geist ; à harmoniser si ce design system est retravaillé.
 
 **Ne pas réutiliser tel quel :** `landing/design-system/ui_kits/website/` est une démo générée automatiquement — copy générique et témoignages inventés. Ne jamais la publier ou la citer comme contenu réel ; le vrai contenu de la landing (`landing/index.html`) se retravaille dans une session dédiée avec `storytelling.md`.
 

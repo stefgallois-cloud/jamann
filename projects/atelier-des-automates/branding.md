@@ -38,10 +38,10 @@ Base = la landing page (`landing/index.html`), étoffée. Le logo actuel (marine
 
 ## Typographie
 
-- **Titres / display :** Geist (600–800) — punchy, moderne, pas générique
-- **Corps de texte :** Inter (300–600) — lisible, neutre, professionnel
+- **Titres / display :** Bricolage Grotesque (600–800) — grotesque "irrégulier", pensé pour un rendu artisanal plutôt que généré ; colle au nom "Atelier"
+- **Corps de texte :** Hanken Grotesk (300–600) — lisible, chaleureux, moins vu que Inter
 
-On garde ce qui est déjà en place sur la landing — c'est solide.
+Changé le 2026-07-07 : Geist + Inter fonctionnaient mais étaient devenus la paire la plus vue des sites générés par IA — remplacées pour se différencier. Les deux nouvelles polices sont disponibles nativement sur Google Fonts.
 
 ---
 
