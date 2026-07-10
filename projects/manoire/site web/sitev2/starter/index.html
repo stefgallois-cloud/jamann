@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>Le Manoïre — Restaurant d'alpage au Col de Jaman, 1 512 m</title>
-  <meta name="description" content="Restaurant d'alpage au Col de Jaman, à 1 512 mètres au-dessus du Lac Léman. Cuisine suisse authentique, terrasse panoramique, ouverture le 9 juillet 2026." />
+  <meta name="description" content="Restaurant d'alpage au Col de Jaman, à 1 512 mètres au-dessus du Lac Léman. Cuisine suisse authentique, terrasse panoramique, ouverture le 16 juillet 2026." />
 
-  <link rel="stylesheet" href="style.css?v=23" />
+  <link rel="stylesheet" href="style.css?v=47" />
 </head>
 <body>
 
@@ -19,11 +19,11 @@
       <img src="assets/img/logo-hero.png" alt="Le Manoïre — Col de Jaman" class="nav__logo" />
     </a>
     <nav class="nav__links" aria-label="Navigation principale">
-      <a href="#carte">La carte</a>
-      <a href="#randonnees">Randonnées</a>
-      <a href="#direct">En direct</a>
+      <a href="carte-v2.html">La carte</a>
+      <a href="randonnees.html">Randonnées</a>
+      <a href="en-direct.html">En direct</a>
     </nav>
-    <a href="#reserver" class="nav__cta">Réserver une table</a>
+    <a href="#reserver" class="nav__cta">Nous contacter</a>
   </header>
 
   <main>
@@ -39,9 +39,6 @@
           <span class="loader__track" aria-hidden="true"><span class="loader__bar" id="loaderBar"></span></span>
           <span class="loader__pct" id="loaderPct">0%</span>
         </div>
-
-        <!-- Logo hero — fade avec Beat 1 via data-in/out (géré par renderBeats) -->
-        <img src="assets/img/logo-hero.png" alt="Le Manoïre" class="scrub__hero-logo" data-in="-0.06" data-out="0.22" />
 
         <!-- Beat 1 — vue sur le Lac Léman -->
         <div class="scrub__beat" data-in="-0.06" data-out="0.22">
@@ -59,15 +56,15 @@
         <!-- Beat 3 — approche du col -->
         <div class="scrub__beat" data-in="0.50" data-out="0.68">
           <h2 class="scrub__beat-title"><em>Au-dessus du temps.</em></h2>
-          <p class="scrub__beat-copy">Un lieu qui a attendu. Les murs ont de la mémoire.<br />Il rouvre le 9 juillet.</p>
+          <p class="scrub__beat-copy">Un lieu qui a attendu. Les murs ont de la mémoire.<br />Il rouvre le 16 juillet.</p>
         </div>
 
         <!-- Beat 4 — arrivée sur la terrasse -->
         <div class="scrub__beat" data-in="0.74" data-out="0.98">
-          <p class="scrub__eyebrow">Ouverture le 9 juillet 2026</p>
+          <p class="scrub__eyebrow">Ouverture le 16 juillet 2026</p>
           <h2 class="scrub__beat-title">Le Manoïre.<br /><em>Col de Jaman.</em></h2>
           <p class="scrub__beat-copy">Une table avec vue sur les Préalpes vaudoises.<br />Une cuisine qui respecte la montagne.</p>
-          <a href="#reserver" class="btn btn--warm">Réserver une table →</a>
+          <a href="#reserver" class="btn btn--warm">Nous contacter →</a>
         </div>
 
         <div class="scrub__cue" id="scrubCue" aria-hidden="true">
@@ -80,43 +77,50 @@
     <!-- SECTION L'Histoire -->
     <section class="editorial editorial--histoire" id="histoire">
       <div class="editorial__inner">
-        <div class="editorial__media reveal" data-reveal>
+        <div class="editorial__media editorial__media--duo reveal" data-reveal>
           <figure class="frame">
-            <img src="assets/img/terrasse_drapeau_resto.jpg" alt="La terrasse du Manoïre avec le drapeau, Dent de Jaman en arrière-plan" width="1600" height="1000" loading="lazy" decoding="async" />
+            <img src="assets/img/terrasse_drapeau_resto.jpg" alt="La terrasse du Manoïre avec le drapeau, Dent de Jaman en arrière-plan" width="912" height="1169" loading="lazy" decoding="async" />
+          </figure>
+          <figure class="frame">
+            <img src="assets/img/vache-anouckbb.jpg" alt="Une vache en alpage et Anouck bébé, la Saint-Bernard du Manoïre" width="800" height="1050" loading="lazy" decoding="async" />
           </figure>
         </div>
         <div class="editorial__text">
           <p class="eyebrow reveal" data-reveal>L'Histoire</p>
           <h2 class="editorial__title reveal" data-reveal>Un lieu qui a toujours existé.<br /><em>Il revient.</em></h2>
           <p class="lede reveal" data-reveal>
-            Le Manoïre a longtemps été une adresse emblématique du Col de Jaman. Un café-restaurant d'alpage, connu pour sa fondue, sa convivialité et sa vue unique sur les Préalpes vaudoises. Un chef étoilé y a même écrit un chapitre de l'histoire du lieu. Puis la fermeture. Des années de silence.
+            Le Manoïre a longtemps été une adresse emblématique du Col de Jaman. Un café-restaurant d'alpage, connu pour sa fondue, sa convivialité et sa vue unique sur les Préalpes vaudoises. Puis, un jour, le lieu n'a plus été aux normes. Il a fallu fermer. Des années de silence.
           </p>
           <p class="lede reveal" data-reveal>
-            Micka a repris la terrasse trois étés de suite avec un food truck. La clientèle était toujours là. La ville de Montreux lui a confié les murs pour quarante ans. En échange&nbsp;: les travaux. Le projet d'une vie.
+            Micka a repris la terrasse deux étés de suite avec un food truck. La clientèle était toujours là. La ville de Montreux lui a confié les murs pour quarante ans. En échange&nbsp;: les travaux. Le projet d'une vie.
           </p>
         </div>
       </div>
     </section>
 
-    <!-- SECTION Chiffres clés -->
-    <section class="stats" aria-label="Chiffres clés du Manoïre">
-      <div class="stats__inner">
-        <div class="stat reveal" data-reveal>
-          <span class="stat__num">1 512<span class="stat__unit"> m</span></span>
-          <span class="stat__label">Altitude du Col de Jaman</span>
-        </div>
-        <div class="stat reveal" data-reveal>
-          <span class="stat__num">3<span class="stat__unit"> étés</span></span>
-          <span class="stat__label">De terrasse avant la renaissance</span>
-        </div>
-        <div class="stat reveal" data-reveal>
-          <span class="stat__num">40<span class="stat__unit"> ans</span></span>
-          <span class="stat__label">Pour bâtir quelque chose de durable</span>
-        </div>
-        <div class="stat reveal" data-reveal>
-          <span class="stat__num">9<span class="stat__unit"> juillet</span></span>
-          <span class="stat__label">Ouverture 2026</span>
-        </div>
+    <!-- SECTION Bandeau — annonce ouverture, défilant -->
+    <section class="stats reveal" data-reveal aria-label="Ouverture officielle du Manoïre">
+      <div class="stats__track">
+        <span class="stats__msg">
+          <span class="stats__seg stats__seg--ocre">Ouverture officielle le 16 juillet à 16h</span>
+          <img src="assets/img/icon-edelweiss.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--or">verre de bienvenue offert ce jour-là</span>
+          <img src="assets/img/icon-parasol.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--creme">musique live au saxophone</span>
+          <img src="assets/img/icon-sapin.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--or">redécouvrez le lieu, en musique</span>
+          <img src="assets/img/icon-vache.png" alt="" class="stats__icon" width="34" height="34" />
+        </span>
+        <span class="stats__msg" aria-hidden="true">
+          <span class="stats__seg stats__seg--ocre">Ouverture officielle le 16 juillet à 16h</span>
+          <img src="assets/img/icon-edelweiss.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--or">verre de bienvenue offert ce jour-là</span>
+          <img src="assets/img/icon-parasol.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--creme">musique live au saxophone</span>
+          <img src="assets/img/icon-sapin.png" alt="" class="stats__icon" width="34" height="34" />
+          <span class="stats__seg stats__seg--or">redécouvrez le lieu, en musique</span>
+          <img src="assets/img/icon-vache.png" alt="" class="stats__icon" width="34" height="34" />
+        </span>
       </div>
     </section>
 
@@ -134,9 +138,9 @@
           </p>
           <p class="meta reveal" data-reveal>Cuisine suisse · Produits locaux · Terrasse panoramique · Accès MOB ou à pied</p>
         </div>
-        <div class="editorial__media reveal" data-reveal>
+        <div class="editorial__media">
           <figure class="frame">
-            <img src="assets/img/vue_terrasse.jpg" alt="Table dressée en terrasse sous parasol blanc, vue panoramique sur les Préalpes" width="1600" height="1000" loading="lazy" decoding="async" />
+            <img src="assets/img/vue_terrasse.jpg" alt="Table dressée en terrasse sous parasol blanc, vue panoramique sur les Préalpes" width="1600" height="1000" loading="eager" decoding="async" />
           </figure>
         </div>
       </div>
@@ -144,7 +148,7 @@
 
     <!-- SECTION Full-bleed panoramique -->
     <section class="bleed bleed--tall" id="panorama" aria-label="Vue panoramique — Col de Jaman">
-      <img class="bleed__img" src="assets/img/vue_vache_coucher.jpg" alt="Vache en alpage avec le Lac Léman en contrebas et la lumière dorée du couchant" width="2560" height="1440" loading="lazy" decoding="async" />
+      <img class="bleed__img" src="assets/img/paysage_panorama.jpg" alt="Vue panoramique sur les Préalpes vaudoises depuis le Col de Jaman" width="2200" height="1228" loading="lazy" decoding="async" />
       <div class="bleed__scrim" aria-hidden="true"></div>
       <div class="bleed__content bleed__content--low">
         <p class="eyebrow eyebrow--light reveal" data-reveal>— Col de Jaman</p>
@@ -159,18 +163,26 @@
     <section class="editorial editorial--anouck" id="anouck">
       <div class="editorial__inner">
         <div class="editorial__media reveal" data-reveal>
-          <div class="frame frame--placeholder">
-            <span class="frame__placeholder-text">Photo Anouck — à venir</span>
+          <div class="pelemele">
+            <figure class="pelemele__photo pelemele__photo--1">
+              <img src="assets/img/anouck.jpg" alt="Anouck au coucher du soleil sur le Col de Jaman" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="pelemele__photo pelemele__photo--2">
+              <img src="assets/img/anouck-bebe.jpg" alt="Anouck bébé, à son arrivée au Manoïre" loading="lazy" decoding="async" />
+            </figure>
+            <figure class="pelemele__photo pelemele__photo--3">
+              <img src="assets/img/anouck-porte.jpg" alt="Anouck qui passe la tête par la fenêtre du Manoïre" loading="lazy" decoding="async" />
+            </figure>
           </div>
         </div>
         <div class="editorial__text">
           <p class="eyebrow reveal" data-reveal>La mascotte</p>
-          <h2 class="editorial__title reveal" data-reveal>Anouck a deux mois.<br /><em>Elle est déjà chez elle.</em></h2>
+          <h2 class="editorial__title reveal" data-reveal>Anouck est arrivée bébé.<br /><em>Elle a grandi avec le Manoïre.</em></h2>
           <p class="lede reveal" data-reveal>
-            Saint-Bernard du Col de Jaman, Anouck grandit au rythme du Manoïre. Suivez son aventure — et celle du lieu — sur les réseaux.
+            Saint-Bernard du Col de Jaman, Anouck n'avait que deux mois à son arrivée. Aujourd'hui elle en a dix, et grandit au rythme du Manoïre. Suivez son aventure — et celle du lieu — sur les réseaux.
           </p>
           <div class="social-links reveal" data-reveal>
-            <a href="#" class="social-link" aria-label="Instagram du Manoïre">
+            <a href="https://www.instagram.com/le_manoire_jaman/" target="_blank" rel="noopener" class="social-link" aria-label="Instagram du Manoïre">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
                 <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
@@ -178,7 +190,7 @@
               </svg>
               <span>Instagram</span>
             </a>
-            <a href="#" class="social-link" aria-label="Facebook du Manoïre">
+            <a href="https://www.facebook.com/profile.php?id=61580550474258" target="_blank" rel="noopener" class="social-link" aria-label="Facebook du Manoïre">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
               </svg>
@@ -201,21 +213,21 @@
           <p class="contact__copy reveal" data-reveal>
             En terrasse ou en salle, avec vue sur les Préalpes. Réservation directe par téléphone ou par email. Plateforme de réservation en ligne à venir.
           </p>
-          <a href="tel:+41000000000" class="btn btn--warm reveal" data-reveal>Réserver une table →</a>
+          <a href="tel:+41219646330" class="btn btn--warm reveal" data-reveal>Nous contacter →</a>
         </div>
         <div class="contact__details reveal" data-reveal>
-          <a class="contact__row" href="tel:+41000000000">
+          <a class="contact__row" href="tel:+41219646330">
             <span class="contact__label">Téléphone</span>
-            <span class="contact__value">À compléter</span>
+            <span class="contact__value">021 964 63 30</span>
           </a>
           <a class="contact__row" href="mailto:contact@lemanoire-jaman.ch">
             <span class="contact__label">Email</span>
-            <span class="contact__value">À compléter</span>
+            <span class="contact__value">contact@lemanoire-jaman.ch</span>
           </a>
-          <div class="contact__row contact__row--static">
+          <a class="contact__row" href="https://www.google.com/maps/search/?api=1&amp;query=Col+de+Jaman+Montreux" target="_blank" rel="noopener">
             <span class="contact__label">Adresse</span>
             <span class="contact__value">Le Manoïre · Col de Jaman · 1824 Montreux</span>
-          </div>
+          </a>
           <div class="contact__row contact__row--static">
             <span class="contact__label">Accès</span>
             <span class="contact__value">Train MOB depuis Montreux · À pied</span>
@@ -256,9 +268,9 @@
         <p class="footer__tagline">Col de Jaman · 1 512 m · Depuis 2026</p>
       </div>
       <nav class="footer__nav" aria-label="Navigation footer">
-        <a href="#carte">La carte</a>
-        <a href="#randonnees">Randonnées</a>
-        <a href="#direct">En direct</a>
+        <a href="carte-v2.html">La carte</a>
+        <a href="randonnees.html">Randonnées</a>
+        <a href="en-direct.html">En direct</a>
         <a href="#reserver">Réserver</a>
       </nav>
       <div class="footer__base">
@@ -272,3 +284,4 @@
   <script src="script.js?v=7"></script>
 </body>
 </html>
+

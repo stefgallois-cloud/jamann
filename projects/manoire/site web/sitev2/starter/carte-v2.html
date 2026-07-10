@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>La carte — Le Manoïre, Col de Jaman</title>
+  <meta name="description" content="La carte du Manoïre : entrées, salades, planchettes alpines, fondues, spécialités et desserts. Cuisine suisse authentique au Col de Jaman." />
+
+  <link rel="stylesheet" href="style.css?v=47" />
+  <link rel="stylesheet" href="style-carte-v2.css?v=3" />
+</head>
+<body class="no-hero body--split-menu">
+
+  <div class="scroll-progress" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/img/logo-hero.png" alt="Le Manoïre — Col de Jaman" class="nav__logo" />
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="carte-v2.html" class="is-active">La carte</a>
+      <a href="randonnees.html">Randonnées</a>
+      <a href="en-direct.html">En direct</a>
+    </nav>
+    <a href="index.html#reserver" class="nav__cta">Nous contacter</a>
+  </header>
+
+  <main class="menu-split-wrapper">
+
+    <!-- LEFT PANEL: Interactive Cinematic Visuals (Desktop only) - FOOD ONLY (NO LANDSCAPES) -->
+    <div class="menu-split-left" aria-hidden="true">
+      <div class="menu-split-img active" id="img-default" style="background-image: url('assets/img/menu-table.jpg');"></div>
+      <div class="menu-split-img" id="img-entrees" style="background-image: url('assets/img/menu-tartare.jpg');"></div>
+      <div class="menu-split-img" id="img-salades" style="background-image: url('assets/img/menu-salade.jpg');"></div>
+      <div class="menu-split-img" id="img-planchettes" style="background-image: url('assets/img/menu-planchette.jpg');"></div>
+      <div class="menu-split-img" id="img-fondues" style="background-image: url('assets/img/menu-fondue.jpg');"></div>
+      <div class="menu-split-img" id="img-rostis" style="background-image: url('assets/img/menu-roesti.jpg');"></div>
+      <div class="menu-split-img" id="img-burger" style="background-image: url('assets/img/menu-burger.jpg');"></div>
+      <div class="menu-split-img" id="img-ribs" style="background-image: url('assets/img/menu-ribs.jpg');"></div>
+      <div class="menu-split-img" id="img-dahl" style="background-image: url('assets/img/menu-dahl.jpg');"></div>
+      <div class="menu-split-img" id="img-desserts" style="background-image: url('assets/img/menu-meringue.jpg');"></div>
+      <div class="menu-split-scrim"></div>
+      
+      <!-- Overlay text with elevation details to stay contextual -->
+      <div class="menu-split-badge">
+        <span class="menu-split-badge__sub">Col de Jaman</span>
+        <span class="menu-split-badge__alt">1 524 m</span>
+      </div>
+    </div>
+
+    <!-- RIGHT PANEL: Scrollable Menu -->
+    <div class="menu-split-right">
+      <section class="menu menu--split" id="carte">
+        <div class="menu__inner">
+
+          <!-- INTRO -->
+          <div class="menu-intro-block reveal" data-reveal>
+            <p class="eyebrow">La carte</p>
+            <h2 class="editorial__title">Ce qu'on vous prépare.</h2>
+            <p class="lede menu__intro">Produits locaux &amp; de saison. Cuisine faite maison, avec passion.</p>
+          </div>
+
+          <div class="menu__categories-list">
+
+            <!-- ENTRÉES -->
+            <div class="menu__cat" data-bg-id="img-entrees" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-tartare.jpg" alt="Nos entrées" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-edelweiss.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Nos entrées
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Soupe du moment</span>
+                    <span class="menu__price">12 CHF</span>
+                  </div>
+                  <p class="menu__desc">Maison, de saison</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Escargots du Mont d'Or</span>
+                    <span class="menu__price">14 CHF</span>
+                  </div>
+                  <p class="menu__desc">6 pièces, beurre persillé</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade mêlée</span>
+                    <span class="menu__price">10 CHF</span>
+                  </div>
+                  <p class="menu__desc">Vinaigrette maison</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade verte</span>
+                    <span class="menu__price">6 CHF</span>
+                  </div>
+                  <p class="menu__desc">Vinaigrette maison</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- GRANDES SALADES -->
+            <div class="menu__cat" data-bg-id="img-salades" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-salade.jpg" alt="Nos grandes salades" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-edelweiss-unicolor.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Nos grandes salades
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-salades">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade Caesar</span>
+                    <span class="menu__price">24 CHF</span>
+                  </div>
+                  <p class="menu__desc">Filet de poulet aux herbes en cuisson douce, romaine, tomate d'antan, croûtons, câpres soufflées, copeaux de Jaman, vieux lard grillé</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-salades">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade du Manoïre</span>
+                    <span class="menu__price">26 CHF</span>
+                  </div>
+                  <p class="menu__desc">Pommes de terre, salade verte, viande des Grisons, noix, radis, tomates cerises, Jaman vieux, croûtons, tomates confites, graines de courge</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-salades">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade gourmande 🌿</span>
+                    <span class="menu__price">22 CHF</span>
+                  </div>
+                  <p class="menu__desc">Abricots rôtis, quinoa, pois chiches, groseilles, pissenlit, radis, tomates cerises, vinaigrette aux pommes</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- PLANCHETTES ALPINES -->
+            <div class="menu__cat" data-bg-id="img-planchettes" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-planchette.jpg" alt="Planchettes alpines" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-vache.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Planchettes alpines
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-planchettes">
+                  <div class="menu__row">
+                    <span class="menu__name">Planchette viande séchée</span>
+                    <span class="menu__price">28 CHF</span>
+                  </div>
+                  <p class="menu__desc">Charcuteries vaudoises</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-planchettes">
+                  <div class="menu__row">
+                    <span class="menu__name">Planchette fromages d'alpage</span>
+                    <span class="menu__price">24 CHF</span>
+                  </div>
+                  <p class="menu__desc">Fromagerie du Col de Jaman</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-planchettes">
+                  <div class="menu__row">
+                    <span class="menu__name">Planchette mixte</span>
+                    <span class="menu__price">34 CHF</span>
+                  </div>
+                  <p class="menu__desc">Charcuteries &amp; fromages</p>
+                </li>
+              </ul>
+            </div>
+
+            
+<!-- FONDUES -->
+            <div class="menu__cat" data-bg-id="img-fondues" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-fondue.jpg" alt="Fondues traditionnelles" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-vache-plein.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Fondues <span class="menu__cat-sub">dès 1 personne</span>
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-fondues">
+                  <div class="menu__row">
+                    <span class="menu__name">Moitié-moitié</span>
+                    <span class="menu__price">26 CHF</span>
+                  </div>
+                  <p class="menu__desc">Fromage du Col de Jaman &amp; Philistin</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-fondues">
+                  <div class="menu__row">
+                    <span class="menu__name">À la bière ambrée artisanale</span>
+                    <span class="menu__price">28 CHF</span>
+                  </div>
+                  <p class="menu__desc">Brasserie de Vevey</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-fondues">
+                  <div class="menu__row">
+                    <span class="menu__name">Fondue tomate</span>
+                    <span class="menu__price">27 CHF</span>
+                  </div>
+                </li>
+                <li class="menu__item" data-bg-id="img-fondues">
+                  <div class="menu__row">
+                    <span class="menu__name">Fondue aux champignons forestière</span>
+                    <span class="menu__price">29 CHF</span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- FONDUE BOURGUIGNONNE -->
+            <div class="menu__cat" data-bg-id="img-fondues" data-reveal>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-vache-contours.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Fondue bourguignonne <span class="menu__cat-sub">dès 2 personnes</span>
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-fondues">
+                  <div class="menu__row">
+                    <span class="menu__name">Bœuf suisse</span>
+                    <span class="menu__price">40 CHF</span>
+                  </div>
+                  <p class="menu__desc">Poire ou rumsteck · frites maison · salade verte · 4 sauces maison : tartare · BBQ · secrète · crème ciboulette</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CROÛTES FROMAGÈRES & RÖSTIS -->
+            <div class="menu__cat" data-bg-id="img-rostis" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-roesti.jpg" alt="Croûtes et Röstis" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-jaman1.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Croûtes de Jaman
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-rostis">
+                  <div class="menu__row">
+                    <span class="menu__name">Croûte nature au Fromages</span>
+                    <span class="menu__price">20 CHF</span>
+                  </div>
+                  <p class="menu__desc">Suppléments : champignons / œuf / jambon +3 CHF par pièce</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RÖSTI RUSTIQUES -->
+            <div class="menu__cat" data-bg-id="img-rostis" data-reveal>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-sapin-plein.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Rösti rustique
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-rostis">
+                  <div class="menu__row">
+                    <span class="menu__name">Fromages</span>
+                    <span class="menu__price">23 CHF</span>
+                  </div>
+                  <p class="menu__desc">Suppléments : champignons / œuf / fromage / jambon +3 CHF par pièce</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- PÂTES DU CHALET -->
+            <div class="menu__cat" data-bg-id="img-rostis" data-reveal>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-sapin-contour.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Pâtes du chalet
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-rostis">
+                  <div class="menu__row">
+                    <span class="menu__name">Macaronis du chalet gratinés</span>
+                    <span class="menu__price">24 CHF</span>
+                  </div>
+                  <p class="menu__desc">Sauce fromagère, fromages mixtes d'alpage bio de Jaman, compotée d'oignons</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- SPÉCIALITÉS MANOÏRE -->
+            <div class="menu__cat" data-bg-id="img-burger" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-burger.jpg" alt="Spécialités" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-parasol-plain.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Spécialités Manoïre
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-burger">
+                  <div class="menu__row">
+                    <span class="menu__name">Burger du Manoïre</span>
+                    <span class="menu__price">30 CHF</span>
+                  </div>
+                  <p class="menu__desc">Bœuf bouchère suisse, raclette du Col de Jaman, compotée d'oignons, sauce secrète, romaine, pain artisanal</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-ribs">
+                  <div class="menu__row">
+                    <span class="menu__name">Ribs de cochon laqués</span>
+                    <span class="menu__price">37 CHF</span>
+                  </div>
+                  <p class="menu__desc">Préparés par le chef Jeremy, cuisson lente 7 heures, sauce BBQ maison</p>
+                  <div class="menu__item-image-mobile">
+                    <img src="assets/img/menu-ribs.jpg" alt="Ribs de cochon laqués au feu de bois" />
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            <!-- CLASSIQUES DE LA MAISON -->
+            <div class="menu__cat" data-bg-id="img-ribs" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-ribs.jpg" alt="Ribs de cochon laqués, préparés par le chef Jeremy" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-parasol.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Classiques de la maison
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-ribs">
+                  <div class="menu__row">
+                    <span class="menu__name">Assiette de rosbif froid</span>
+                    <span class="menu__price">25 CHF</span>
+                  </div>
+                  <p class="menu__desc">120 g, sauce au choix</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-ribs">
+                  <div class="menu__row">
+                    <span class="menu__name">Tartare de féra fumée</span>
+                    <span class="menu__price">29 CHF</span>
+                  </div>
+                  <p class="menu__desc">Citron vert, baies roses, herbes fraîches, pommes acidulées, quinoa, salade de crudités</p>
+                </li>
+              </ul>
+            </div>
+<!-- PLATS VÉGÉTARIENS -->
+            <div class="menu__cat" data-bg-id="img-dahl" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-dahl.jpg" alt="Plats végétariens" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-edelweiss-contour.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Plats végétariens 🌿
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-dahl">
+                  <div class="menu__row">
+                    <span class="menu__name">Fricassée de champignons forestière</span>
+                    <span class="menu__price">24 CHF</span>
+                  </div>
+                  <p class="menu__desc">Rösti ou pain artisanal</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-dahl">
+                  <div class="menu__row">
+                    <span class="menu__name">Dahl de lentilles corail</span>
+                    <span class="menu__price">19 CHF</span>
+                  </div>
+                  <p class="menu__desc">Lait de coco, petits légumes de saison</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- DESSERTS -->
+            <div class="menu__cat" data-bg-id="img-desserts" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-meringue.jpg" alt="Desserts" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-jaman2.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Desserts
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-desserts">
+                  <div class="menu__row">
+                    <span class="menu__name">Fondue au chocolat suisse</span>
+                    <span class="menu__price">14 CHF</span>
+                  </div>
+                  <p class="menu__desc">Fruits frais, biscuits maison</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-desserts">
+                  <div class="menu__row">
+                    <span class="menu__name">Tarte maison du jour</span>
+                    <span class="menu__price">10 CHF</span>
+                  </div>
+                </li>
+                <li class="menu__item" data-bg-id="img-desserts">
+                  <div class="menu__row">
+                    <span class="menu__name">Glaces de Jaman &amp; sorbets artisanaux vaudois</span>
+                    <span class="menu__price">9 CHF</span>
+                  </div>
+                </li>
+                <li class="menu__item" data-bg-id="img-desserts">
+                  <div class="menu__row">
+                    <span class="menu__name">Crème brûlée du moment</span>
+                    <span class="menu__price">10 CHF</span>
+                  </div>
+                </li>
+                <li class="menu__item" data-bg-id="img-desserts">
+                  <div class="menu__row">
+                    <span class="menu__name">Meringue double crème</span>
+                    <span class="menu__price">14 CHF</span>
+                  </div>
+                  <p class="menu__desc">Farandole de fruits rouges</p>
+                </li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="footer" id="footer">
+        <div class="footer__inner">
+          <img src="assets/img/logo-hero.png" alt="Le Manoïre" class="footer__logo" />
+          <p class="footer__tagline">Produits locaux &amp; de saison · Cuisine faite maison avec passion</p>
+        </div>
+        <nav class="footer__nav" aria-label="Navigation footer">
+          <a href="carte-v2.html">La carte</a>
+          <a href="randonnees.html">Randonnées</a>
+          <a href="en-direct.html">En direct</a>
+          <a href="index.html#reserver">Réserver</a>
+        </nav>
+        <div class="footer__base">
+          <span class="footer__legal">© Le Manoïre · Col de Jaman · lemanoire-jaman.ch</span>
+          <span class="footer__legal">Mentions légales · Confidentialité</span>
+        </div>
+      </footer>
+    </div>
+
+  </main>
+
+  <script src="script.js?v=7"></script>
+  
+  <!-- Interactive Split Screen Script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var bgImages = document.querySelectorAll(".menu-split-img");
+      var categories = document.querySelectorAll(".menu__cat");
+      var activeId = "img-default";
+
+      function setBg(id) {
+        if (id === activeId) return;
+        bgImages.forEach(function(img) {
+          if (img.id === id) {
+            img.classList.add("active");
+          } else {
+            img.classList.remove("active");
+          }
+        });
+        activeId = id;
+      }
+
+      // Hover triggers image switch instantly (for both categories and single items)
+      var triggerElements = document.querySelectorAll("[data-bg-id]");
+      triggerElements.forEach(function(el) {
+        el.addEventListener("mouseenter", function() {
+          var bgId = el.getAttribute("data-bg-id");
+          if (bgId) setBg(bgId);
+        });
+      });
+
+      // Scroll triggers image switch via IntersectionObserver
+      if ("IntersectionObserver" in window) {
+        var observer = new IntersectionObserver(function(entries) {
+          entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+              var bgId = entry.target.getAttribute("data-bg-id");
+              if (bgId) setBg(bgId);
+            }
+          });
+        }, {
+          threshold: 0.25,
+          rootMargin: "-20% 0px -40% 0px"
+        });
+
+        categories.forEach(function(cat) {
+          observer.observe(cat);
+        });
+      }
+    });
+  </script>
+</body>
+</html>

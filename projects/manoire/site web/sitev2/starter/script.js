@@ -22,7 +22,7 @@
 
   /* Bump this integer by 1 each time you swap the frames in
      assets/frames/ so the browser cache can't serve stale images. */
-  var CACHE_BUST = 5;
+  var CACHE_BUST = 6;
 
   /* ---- IntersectionObserver: reveal-on-enter for editorial blocks ---- */
   var io = new IntersectionObserver(

@@ -1,0 +1,312 @@
+/* ============================================================
+   LE MANOÏRE — Onglet Carte V2
+   Direction Artistique : Le Split Cinématique Interactif
+   Respect de la Charte Graphique (Bordeaux, Ocre, Or-Logo, Crème)
+   ============================================================ */
+
+/* 1. Base Overrides for Dark Split Theme */
+.body--split-menu {
+  background-color: var(--bordeaux-2) !important; /* Deepest bordeaux #3A0C18 */
+  color: var(--creme-2) !important; /* Creme #EFE5DB */
+  overflow-x: hidden;
+}
+
+/* Split Layout Wrapper */
+.menu-split-wrapper {
+  display: grid;
+  grid-template-columns: 45vw 55vw;
+  margin-top: 92px; /* Starts below the fixed nav */
+  min-height: calc(100vh - 92px);
+  background-color: var(--bordeaux-2);
+}
+
+/* 2. Left Panel: Interactive Visuals (Desktop only) */
+.menu-split-left {
+  position: sticky;
+  top: 92px;
+  height: calc(100vh - 92px);
+  overflow: hidden;
+  background-color: var(--bordeaux-3); /* Darkest tone */
+  z-index: 10;
+}
+
+.menu-split-img {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transform: scale(1.04);
+  transition: 
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 1.4s cubic-bezier(0.22, 1, 0.36, 1);
+  filter: saturate(0.85) contrast(1.08) brightness(0.85);
+}
+
+.menu-split-img.active {
+  opacity: 1;
+  transform: scale(1);
+  z-index: 1;
+}
+
+/* Atmospheric Scrim to blend image seamlessly into the bordeaux page background */
+.menu-split-scrim {
+  position: absolute;
+  inset: 0;
+  background: 
+    linear-gradient(to right, transparent 75%, var(--bordeaux-2) 99%, var(--bordeaux-2) 100%),
+    linear-gradient(to bottom, transparent 80%, var(--bordeaux-2) 100%),
+    linear-gradient(to top, rgba(42, 8, 18, 0.5) 0%, transparent 25%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Subtle elevation badge overlay */
+.menu-split-badge {
+  position: absolute;
+  bottom: 5vh;
+  left: 4vw;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--creme-1);
+  text-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  pointer-events: none;
+}
+
+.menu-split-badge__sub {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--or-logo);
+}
+
+.menu-split-badge__alt {
+  font-family: var(--display);
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* 3. Right Panel: Scrollable Menu content */
+.menu-split-right {
+  background-color: var(--bordeaux-2);
+  border-left: 1px solid rgba(239, 229, 219, 0.06);
+}
+
+.menu--split {
+  background: transparent !important;
+  color: var(--creme-2) !important;
+  padding: 60px var(--pad) 100px !important;
+  text-align: left;
+}
+
+/* Navigation overrides for active tab */
+.nav__links a.is-active {
+  color: var(--or-logo) !important;
+}
+
+.nav__links a.is-active::after {
+  width: 100% !important;
+  background: var(--or-logo) !important;
+}
+
+/* Intro block */
+.menu-intro-block {
+  margin-bottom: 50px;
+  max-width: 580px;
+}
+
+.menu-intro-block .eyebrow {
+  color: var(--or-logo) !important;
+  letter-spacing: 0.2em;
+  margin-bottom: 12px;
+}
+
+.menu-intro-block .editorial__title {
+  color: var(--creme-1) !important;
+  margin-bottom: 16px;
+  font-size: clamp(34px, 4vw, 56px);
+}
+
+.menu-intro-block .menu__intro {
+  color: var(--fg-soft) !important;
+  margin: 0;
+  font-size: clamp(15px, 1.2vw, 18px);
+}
+
+/* Categories List */
+.menu__categories-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__cat {
+  padding: 50px 0;
+  border-bottom: 1px solid rgba(239, 229, 219, 0.08);
+  transition: opacity 0.4s var(--ease);
+}
+
+.menu__cat:last-of-type {
+  border-bottom: none;
+}
+
+/* Categories Titles */
+.menu--split .menu__cat-title {
+  color: var(--or-logo) !important; /* #E2BD8C */
+  border-bottom: 1px solid rgba(239, 229, 219, 0.12) !important;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: clamp(18px, 1.4vw, 22px);
+  letter-spacing: -0.01em;
+  padding-bottom: 14px;
+  margin-bottom: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu--split .menu__cat-icon {
+  opacity: 0.85;
+  filter: sepia(0.3) saturate(1.5) hue-rotate(-10deg);
+}
+
+.menu--split .menu__cat-sub {
+  color: var(--muted) !important;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+}
+
+/* Menu items inside categories */
+.menu--split .menu__list {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.menu--split .menu__item {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu--split .menu__row {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.menu--split .menu__name {
+  color: var(--creme-1) !important;
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.menu--split .menu__row::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px dashed rgba(239, 229, 219, 0.1) !important; /* Thin dashed line for premium look */
+  transform: translateY(-4px);
+}
+
+.menu--split .menu__price {
+  color: var(--accent) !important; /* Ocre #C58632 */
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.menu--split .menu__desc {
+  color: var(--fg-soft) !important;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  margin-top: 6px;
+  max-width: 52ch;
+  opacity: 0.85;
+}
+
+/* Mobile-only elements (hidden by default on desktop) */
+.menu__cat-image-mobile,
+.menu__item-image-mobile {
+  display: none;
+}
+
+/* 4. Responsive design */
+@media (max-width: 980px) {
+  .menu-split-wrapper {
+    grid-template-columns: 1fr;
+    margin-top: 72px; /* Smaller header height on tablet/mobile */
+    min-height: calc(100vh - 72px);
+  }
+
+  .menu-split-left {
+    display: none; /* Hide interactive left panel */
+  }
+
+  .menu-split-right {
+    border-left: none;
+  }
+
+  .menu--split {
+    padding: 40px var(--pad) 60px !important;
+  }
+
+  /* Inline mobile images above categories */
+  .menu__cat-image-mobile {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border: 1px solid rgba(226, 189, 140, 0.15);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  }
+
+  .menu__cat-image-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  /* Inline mobile images for specific items like ribs */
+  .menu__item-image-mobile {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 14px;
+    margin-bottom: 8px;
+    border: 1px solid rgba(226, 189, 140, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.35);
+  }
+
+  .menu__item-image-mobile img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+}
+
+@media (max-width: 620px) {
+  .menu__cat-image-mobile {
+    aspect-ratio: 16 / 10;
+  }
+  
+  .menu--split .menu__row {
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .menu--split .menu__row::after {
+    display: none; /* Remove dashed line on very narrow screens */
+  }
+
+  .menu--split .menu__price {
+    margin-left: auto;
+  }
+}
