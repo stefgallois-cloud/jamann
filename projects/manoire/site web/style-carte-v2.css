@@ -15,16 +15,16 @@
 .menu-split-wrapper {
   display: grid;
   grid-template-columns: 45vw 55vw;
-  margin-top: 92px; /* Starts below the fixed nav */
-  min-height: calc(100vh - 92px);
+  margin-top: 64px; /* Starts below the fixed nav */
+  min-height: calc(100vh - 64px);
   background-color: var(--bordeaux-2);
 }
 
 /* 2. Left Panel: Interactive Visuals (Desktop only) */
 .menu-split-left {
   position: sticky;
-  top: 92px;
-  height: calc(100vh - 92px);
+  top: 64px;
+  height: calc(100vh - 64px);
   overflow: hidden;
   background-color: var(--bordeaux-3); /* Darkest tone */
   z-index: 10;

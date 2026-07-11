@@ -24,6 +24,15 @@
      assets/frames/ so the browser cache can't serve stale images. */
   var CACHE_BUST = 6;
 
+  /* Point focal du cover-fit sur mobile (portrait) — le crop centré par défaut
+     ne recentre pas forcément le bâtiment sur un ratio très différent du format
+     source. Réglage entre -1 et 1 (0 = centré, comme sur desktop) :
+       MOBILE_FOCAL_X : -1 = montre plus la droite de l'image, 1 = montre plus la gauche
+       MOBILE_FOCAL_Y : -1 = montre plus le bas de l'image,   1 = montre plus le haut
+     À ajuster à l'œil sur mobile réel. */
+  var MOBILE_FOCAL_X = 0;
+  var MOBILE_FOCAL_Y = 0.3;
+
   /* ---- IntersectionObserver: reveal-on-enter for editorial blocks ---- */
   var io = new IntersectionObserver(
     function (entries) {
@@ -226,6 +235,21 @@
   }, { passive: true });
   onScroll();
 
+  /* ---- Menu mobile (burger) ---- */
+  var navToggle = document.querySelector(".nav__toggle");
+  if (nav && navToggle) {
+    navToggle.addEventListener("click", function () {
+      var isOpen = nav.classList.toggle("is-open");
+      navToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+    nav.querySelectorAll(".nav__links a").forEach(function (link) {
+      link.addEventListener("click", function () {
+        nav.classList.remove("is-open");
+        navToggle.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
   var prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   function smoothstep(a, b, x) {
@@ -290,12 +314,16 @@
       return true;
     }
 
-    /* ---- Cover-fit draw (preserve aspect, center-crop) ---- */
+    /* ---- Cover-fit draw (preserve aspect, center-crop, focal offset on mobile) ---- */
     function coverParams(img) {
       var iw = img.naturalWidth, ih = img.naturalHeight;
       var scale = Math.max(cssW / iw, cssH / ih);
       var dw = iw * scale, dh = ih * scale;
-      return [(cssW - dw) / 2, (cssH - dh) / 2, dw, dh];
+      var marginX = (cssW - dw) / 2; // <= 0
+      var marginY = (cssH - dh) / 2; // <= 0
+      var focalX = isSmall ? MOBILE_FOCAL_X : 0;
+      var focalY = isSmall ? MOBILE_FOCAL_Y : 0;
+      return [marginX * (1 - focalX), marginY * (1 - focalY), dw, dh];
     }
     function drawFrame(i) {
       if (i < 0) i = 0;

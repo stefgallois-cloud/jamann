@@ -25,64 +25,357 @@ body.page-en-direct .nav__links a.is-active {
 .section-title em { font-style: italic; color: var(--ocre); }
 
 /* ============================================================
-   HERO — .bleed--tall réutilisé (webcam mockup en fond, parallax
-   + reveal de titre masqué hérités du moteur central)
+   TOP — titre + tableau de bord compact (remplace l'ancien hero
+   plein écran : plus jamais d'overlay qui chevauche le titre)
    ============================================================ */
-.direct-hero .bleed__content { max-width: 720px; }
-
-.direct-hero__badge {
-  position: absolute; top: 100px; left: var(--pad);
-  z-index: 3;
-  display: flex; align-items: center; gap: 8px;
-  background: rgba(42, 8, 18, 0.5);
-  border: 1px solid rgba(239, 229, 219, 0.25);
-  backdrop-filter: blur(6px);
-  padding: 8px 16px 8px 12px;
-  border-radius: 30px;
-  font-size: 0.65rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--creme-2);
+.direct-top {
+  padding: clamp(120px, 16vh, 160px) var(--pad) clamp(50px, 6vh, 70px);
+  background: var(--creme-1);
+}
+.direct-top__title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(34px, 5vw, 56px);
+  color: var(--bordeaux);
+  line-height: 1.05;
+  margin: 10px 0 30px;
 }
 .direct-hero__dot {
   width: 7px; height: 7px;
   border-radius: 50%;
   background: var(--orange);
   animation: direct-pulse 2s ease-in-out infinite;
+  flex-shrink: 0;
 }
 @keyframes direct-pulse {
   0%, 100% { box-shadow: 0 0 0 0 rgba(224, 101, 48, 0.55); }
   50%      { box-shadow: 0 0 0 7px rgba(224, 101, 48, 0); }
 }
 
+/* ---- Tableau de bord : vue live + horaires côte à côte ---- */
+.direct-dash {
+  background: var(--bordeaux);
+  border-radius: 16px;
+  padding: clamp(16px, 2vw, 22px);
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: clamp(14px, 2vw, 20px);
+}
+.direct-dash__live-col {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.direct-dash__live {
+  position: relative;
+  border: none;
+  padding: 0;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  min-height: 190px;
+  background: none;
+}
+.direct-dash__live-caption {
+  margin: 0;
+  font-size: 12px;
+  color: var(--or-logo);
+  text-align: center;
+}
+.direct-dash__live img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s var(--ease);
+}
+.direct-dash__live:hover img { transform: scale(1.04); }
+.direct-dash__live-tag {
+  position: absolute; top: 10px; left: 10px;
+  display: flex; align-items: center; gap: 6px;
+  background: rgba(42, 8, 18, 0.55);
+  backdrop-filter: blur(6px);
+  border-radius: 20px;
+  padding: 6px 12px 6px 8px;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--creme-2);
+}
+
+.direct-dash__hours {
+  background: rgba(239, 229, 219, 0.07);
+  border-radius: 12px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 12px;
+}
+.direct-dash__status {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--creme-2);
+  margin: 0 0 4px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid rgba(239, 229, 219, 0.15);
+}
+.direct-dash__hours div { display: flex; flex-direction: column; gap: 2px; }
+.direct-dash__hours span {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--or-logo);
+}
+.direct-dash__hours strong {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 14px;
+  color: var(--creme-2);
+}
+
+/* ---- Horloge animée — grande, colorée, aiguille qui tourne ---- */
+.direct-clock {
+  position: relative;
+  width: 32px; height: 32px;
+  border-radius: 50%;
+  background: var(--ocre);
+  box-shadow: inset 0 0 0 2px var(--or-logo);
+  flex-shrink: 0;
+}
+.direct-clock__tick {
+  position: absolute;
+  top: 3px; left: 50%;
+  width: 2px; height: 4px;
+  margin-left: -1px;
+  background: var(--bordeaux);
+  transform-origin: 50% 13px;
+}
+.direct-clock__tick:nth-child(2) { transform: rotate(90deg); }
+.direct-clock__tick:nth-child(3) { transform: rotate(180deg); }
+.direct-clock__tick:nth-child(4) { transform: rotate(270deg); }
+.direct-clock__hand {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 10px; height: 2.5px;
+  background: var(--bordeaux);
+  border-radius: 2px;
+  transform-origin: 0 50%;
+  animation: clock-spin 4s linear infinite;
+}
+.direct-clock__center {
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 5px; height: 5px;
+  margin: -2.5px 0 0 -2.5px;
+  border-radius: 50%;
+  background: var(--bordeaux);
+}
+@keyframes clock-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* ============================================================
+   MÉTÉO — soleil animé + vraies prévisions Meteoblue affichées
+   directement (plus besoin de cliquer) ; agrandissement en
+   lightbox laissé en option pour une vue plus grande
+   ============================================================ */
+.direct-weather {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+  width: 100%;
+  background: var(--bordeaux);
+  border: 1px solid rgba(226, 189, 140, 0.2);
+  border-radius: 16px;
+  padding: 20px 24px;
+}
+.direct-weather__intro {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.direct-weather__widget {
+  flex: 1 1 260px;
+  min-width: 240px;
+  background: var(--creme-1);
+  border-radius: 12px;
+  padding: 10px;
+  overflow: hidden;
+}
+/* Le widget Meteoblue n'expose aucun paramètre de hauteur : on affiche l'iframe
+   à sa taille naturelle (tous les jours visibles, non recadrés) puis on la
+   réduit visuellement avec un scale uniforme (largeur sur-dimensionnée en
+   compensation) pour ne perdre ni jour ni largeur — seulement de la hauteur. */
+.direct-weather__widget-scale {
+  position: relative;
+  width: 100%;
+  height: 210px;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.direct-weather__widget-scale iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 142.86%;
+  height: 300px;
+  border: 0;
+  transform: scale(0.7);
+  transform-origin: top left;
+}
+@media (max-width: 640px) {
+  .direct-weather__widget-scale { height: 189px; }
+  .direct-weather__widget-scale iframe { height: 270px; }
+}
+.direct-weather__expand {
+  display: inline-block;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--or-logo);
+}
+.direct-weather__expand:hover { color: var(--creme-1); }
+
+.direct-sun {
+  position: relative;
+  width: 46px; height: 46px;
+  flex-shrink: 0;
+  animation: sun-spin 18s linear infinite;
+}
+.direct-sun__ray {
+  position: absolute;
+  top: 0; left: 50%;
+  width: 3px; height: 9px;
+  margin-left: -1.5px;
+  background: var(--ocre);
+  border-radius: 2px;
+  transform-origin: 50% 23px;
+}
+.direct-sun__ray:nth-child(1) { transform: rotate(0deg); }
+.direct-sun__ray:nth-child(2) { transform: rotate(45deg); }
+.direct-sun__ray:nth-child(3) { transform: rotate(90deg); }
+.direct-sun__ray:nth-child(4) { transform: rotate(135deg); }
+.direct-sun__ray:nth-child(5) { transform: rotate(180deg); }
+.direct-sun__ray:nth-child(6) { transform: rotate(225deg); }
+.direct-sun__ray:nth-child(7) { transform: rotate(270deg); }
+.direct-sun__ray:nth-child(8) { transform: rotate(315deg); }
+.direct-sun__core {
+  position: absolute;
+  inset: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #FFDD9C, var(--ocre) 70%);
+  box-shadow: 0 0 18px 4px rgba(197, 134, 50, 0.55);
+  animation: sun-pulse 2.4s ease-in-out infinite;
+}
+@keyframes sun-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); }
+  50%      { transform: scale(1.15); }
+}
+.direct-weather-teaser__text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.direct-weather-teaser__text strong {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--creme-2);
+}
+.direct-weather-teaser__text span {
+  font-size: 12px;
+  color: var(--or-logo);
+}
+
+.direct-meteo-panel {
+  background: var(--creme-1);
+  border-radius: 10px;
+  padding: 20px;
+  max-width: 480px;
+  width: 100%;
+}
+.direct-meteo-panel iframe {
+  display: block;
+  width: 100%;
+  height: 340px;
+  border: 0;
+  border-radius: 6px;
+}
+.direct-meteo-panel__link {
+  display: inline-block;
+  margin-top: 14px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--brun-fonce);
+}
+.direct-meteo-panel__link:hover { color: var(--ocre); }
+
+@media (max-width: 640px) {
+  .direct-meteo-panel iframe { height: 300px; }
+}
+
+.direct-top__actions { margin-top: clamp(30px, 4vh, 46px); }
+.direct-top__copy {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--fg-soft);
+  max-width: 56ch;
+  margin: 0 0 26px;
+}
 .direct-hero__actions {
   display: flex;
   gap: 18px;
   flex-wrap: wrap;
-  margin-top: 34px;
 }
-.direct-chips {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 30px;
-}
-.direct-chips span {
-  font-size: 0.65rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--creme-2);
-  background: rgba(42, 8, 18, 0.45);
-  border: 1px solid rgba(239, 229, 219, 0.25);
-  padding: 8px 16px;
-  border-radius: 30px;
-}
-.direct-chips strong { color: var(--or-logo); font-weight: 600; margin-right: 5px; }
 
-@media (max-width: 640px) {
-  .direct-hero__badge { top: 88px; }
+@media (max-width: 780px) {
+  .direct-dash { grid-template-columns: 1fr; }
+  .direct-dash__live { min-height: 190px; }
 }
+
+/* ============================================================
+   LIGHTBOX — vue du col en grand format
+   ============================================================ */
+.direct-lightbox {
+  position: fixed; inset: 0; z-index: 300;
+  background: rgba(42, 8, 18, 0.92);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--pad);
+}
+.direct-lightbox[hidden] { display: none; }
+.direct-lightbox img {
+  max-width: 92vw;
+  max-height: 88vh;
+  border-radius: 6px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5);
+}
+.direct-lightbox__close {
+  position: absolute; top: 24px; right: 24px;
+  width: 42px; height: 42px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(239, 229, 219, 0.12);
+  color: var(--creme-2);
+  cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+}
+.direct-lightbox__close svg { width: 18px; height: 18px; }
+.direct-lightbox__close:hover { background: rgba(239, 229, 219, 0.2); }
 
 
 /* ============================================================
@@ -120,39 +413,6 @@ body.page-en-direct .nav__links a.is-active {
   font-size: clamp(15px, 1.4vw, 18px);
   color: var(--creme-2);
   line-height: 1.4;
-}
-
-/* ============================================================
-   MÉTÉO — fond sombre, widget flottant en carte claire
-   ============================================================ */
-.direct-weather {
-  background: var(--bordeaux-2);
-  padding: clamp(70px, 10vh, 120px) var(--pad);
-  text-align: center;
-}
-.direct-weather .eyebrow { color: var(--or-logo); }
-.direct-weather .section-title { color: var(--creme-2); }
-.direct-weather__lede {
-  margin: 18px auto 0;
-  color: var(--fg-soft);
-}
-.direct-weather__embed {
-  max-width: 820px;
-  margin: clamp(36px, 5vw, 56px) auto 0;
-  border-radius: 4px;
-  overflow: hidden;
-  box-shadow: 0 40px 90px -40px rgba(42, 8, 18, 0.7);
-  background: var(--creme-1);
-  transition: transform .6s var(--ease);
-}
-.direct-weather__embed:hover { transform: translateY(-4px); }
-.direct-weather__embed iframe {
-  display: block;
-  width: 100%;
-  border: 0;
-}
-.direct-weather__fallback {
-  margin-top: 26px;
 }
 
 /* ============================================================
@@ -196,8 +456,34 @@ body.page-en-direct .nav__links a.is-active {
   animation: icon-float 2.6s ease-in-out infinite;
 }
 .direct-access__card:nth-child(2) .direct-access__icon { animation-delay: -0.6s; }
-.direct-access__card:nth-child(3) .direct-access__icon { animation-delay: -1.3s; }
 .direct-access__icon svg { width: 100%; height: 100%; }
+
+.direct-train {
+  display: inline-flex;
+  position: relative;
+  width: 32px; height: 32px;
+  color: var(--ocre);
+  margin-bottom: 20px;
+  animation: icon-float 2.6s ease-in-out infinite;
+  animation-delay: -1.3s;
+}
+.direct-train svg { width: 100%; height: 100%; }
+.direct-train__smoke {
+  position: absolute;
+  top: -2px; left: 18px;
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: rgba(197, 134, 50, 0.45);
+  opacity: 0;
+  animation: smoke-puff 2.4s ease-out infinite;
+}
+.direct-train__smoke:nth-child(2) { left: 20px; animation-delay: 0.6s; }
+.direct-train__smoke:nth-child(3) { left: 22px; animation-delay: 1.2s; }
+@keyframes smoke-puff {
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.6); }
+  25%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(6px, -20px) scale(1.5); }
+}
 .direct-access__card h3 {
   font-family: var(--display);
   font-weight: 600;
@@ -270,4 +556,9 @@ body.page-en-direct .nav__links a.is-active {
 @media (prefers-reduced-motion: reduce) {
   .direct-access__icon { animation: none; }
   .direct-hero__dot { animation: none; }
+  .direct-train,
+  .direct-train__smoke,
+  .direct-clock__hand,
+  .direct-sun,
+  .direct-sun__core { animation: none; }
 }

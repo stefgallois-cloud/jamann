@@ -187,15 +187,4 @@ body.page-randonnees .nav__links a.is-active {
   .rando-after .contact__inner { grid-template-columns: 1fr; }
 }
 
-/* ============================================================
-   CRÉDITS PHOTOS (CC BY-SA) — discret, footer uniquement
-   ============================================================ */
-.footer__credits {
-  max-width: var(--maxw);
-  margin: 16px auto 0;
-  text-align: center;
-  font-size: 10px;
-  letter-spacing: 0.03em;
-  color: var(--muted);
-  opacity: 0.7;
-}
+/* .footer__credits — règle commune déplacée dans style.css */

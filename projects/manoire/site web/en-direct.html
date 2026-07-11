@@ -7,8 +7,8 @@
   <title>En direct — Le Manoïre, Col de Jaman</title>
   <meta name="description" content="La vue du col, la météo et les horaires du Manoïre en direct — et comment nous rejoindre en voiture, à pied ou par le train MOB." />
 
-  <link rel="stylesheet" href="style.css?v=49" />
-  <link rel="stylesheet" href="style-en-direct.css?v=6" />
+  <link rel="stylesheet" href="style.css?v=70" />
+  <link rel="stylesheet" href="style-en-direct.css?v=14" />
 </head>
 <body class="no-hero page-en-direct">
 
@@ -18,6 +18,9 @@
     <a href="index.html" class="nav__brand">
       <img src="assets/img/logo-hero.png" alt="Le Manoïre — Col de Jaman" class="nav__logo" />
     </a>
+    <button class="nav__toggle" aria-label="Ouvrir le menu" aria-expanded="false">
+      <span class="nav__toggle-dot"></span><span class="nav__toggle-dot"></span><span class="nav__toggle-dot"></span>
+    </button>
     <nav class="nav__links" aria-label="Navigation principale">
       <a href="carte-v2.html">La carte</a>
       <a href="randonnees.html">Randonnées</a>
@@ -28,46 +31,96 @@
 
   <main class="direct-page">
 
-    <!-- HERO — webcam mockup en fond plein écran (parallax + titre masqué hérités du moteur central) -->
-    <section class="bleed bleed--tall direct-hero" id="top">
-      <!-- TODO: remplacer bleed__img par l'iframe/flux webcam live quand la caméra sera installée -->
-      <img class="bleed__img" src="assets/img/en-direct/webcam-mockup.jpg" alt="Vue aérienne du Manoïre, Col de Jaman, lac Léman et Préalpes en arrière-plan" width="1600" height="894" loading="eager" decoding="async" />
-      <div class="bleed__scrim" aria-hidden="true"></div>
-      <span class="direct-hero__badge reveal" data-reveal><span class="direct-hero__dot" aria-hidden="true"></span>Webcam bientôt en direct — vue actuelle</span>
-      <div class="bleed__content bleed__content--low">
-        <p class="eyebrow reveal" data-reveal>En direct · Col de Jaman</p>
-        <h1 class="bleed__title reveal" data-reveal>Le col,<br />maintenant.</h1>
-        <p class="bleed__copy reveal" data-reveal>La vue depuis la terrasse, le temps qu'il fait au col, et de quoi organiser votre montée — en voiture, à pied ou par le MOB. La vue ne change pas beaucoup depuis mille ans.</p>
-        <div class="direct-hero__actions reveal" data-reveal>
-          <a href="#meteo" class="btn btn--light">Voir la météo →</a>
-          <a href="index.html#reserver" class="btn btn--warm">Réserver une table →</a>
+    <!-- TOP — titre + tableau de bord compact (vue du col + météo + horaires), plus de hero plein écran -->
+    <section class="direct-top" id="top">
+      <div class="direct-wrap">
+        <p class="eyebrow reveal" data-reveal>Col de Jaman · en direct</p>
+        <h1 class="direct-top__title reveal" data-reveal>Le col,<br />maintenant.</h1>
+      </div>
+
+      <div class="direct-wrap">
+        <div class="direct-dash reveal" data-reveal>
+          <div class="direct-dash__live-col">
+            <button class="direct-dash__live" type="button" id="direct-live-trigger" aria-haspopup="dialog" aria-label="Agrandir la vue du col">
+              <img src="assets/img/anouck.jpg" alt="Anouck au coucher du soleil sur le Col de Jaman" loading="eager" decoding="async" />
+              <span class="direct-dash__live-tag"><span class="direct-hero__dot" aria-hidden="true"></span>Live bientôt</span>
+            </button>
+            <p class="direct-dash__live-caption">C'est Anouck qui annoncera l'arrivée du direct — restez à l'affût.</p>
+          </div>
+
+          <div class="direct-dash__hours">
+            <p class="direct-dash__status" id="direct-status">
+              <span class="direct-clock" aria-hidden="true">
+                <span class="direct-clock__tick"></span><span class="direct-clock__tick"></span><span class="direct-clock__tick"></span><span class="direct-clock__tick"></span>
+                <span class="direct-clock__hand"></span>
+                <span class="direct-clock__center"></span>
+              </span>
+              Ouverture prochaine
+            </p>
+            <div><span>Lun–Ven</span><strong>10h–21h</strong></div>
+            <div><span>Sam–Dim</span><strong>8h–22h</strong></div>
+            <div><span>Cuisine</span><strong>12h–21h</strong></div>
+          </div>
         </div>
-        <div class="direct-chips reveal" data-reveal>
-          <span><strong>Lun–Ven</strong> 10h–21h</span>
-          <span><strong>Sam–Dim</strong> 8h–22h</span>
-          <span>Cuisine 12h–21h</span>
+      </div>
+
+      <div class="direct-wrap" id="meteo">
+        <div class="direct-weather reveal" data-reveal>
+          <div class="direct-weather__intro">
+            <span class="direct-sun" aria-hidden="true">
+              <span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span><span class="direct-sun__ray"></span>
+              <span class="direct-sun__core"></span>
+            </span>
+            <span class="direct-weather-teaser__text">
+              <strong>Météo en direct</strong>
+              <button type="button" id="meteo-trigger" class="direct-weather__expand" aria-haspopup="dialog">Voir en plus grand →</button>
+            </span>
+          </div>
+          <div class="direct-weather__widget">
+            <div class="direct-weather__widget-scale">
+              <iframe
+                src="https://www.meteoblue.com/fr/meteo/widget/three/jaman,-col-de_suisse_11074301?geoloc=fixed&days=3&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
+                frameborder="0" scrolling="no" allowtransparency="true"
+                sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+                title="Météo — Col de Jaman (Meteoblue)"
+                loading="lazy"></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="direct-wrap direct-top__actions reveal" data-reveal>
+        <p class="direct-top__copy">La vue depuis la terrasse, le temps qu'il fait au col, et de quoi organiser votre montée — en voiture, à pied ou par le MOB.</p>
+        <div class="direct-hero__actions">
+          <a href="#acces" class="btn btn--light">Comment monter →</a>
+          <a href="index.html#reserver" class="btn btn--warm">Réserver une table →</a>
         </div>
       </div>
     </section>
 
-    <!-- MÉTÉO -->
-    <section class="direct-weather" id="meteo">
-      <div class="direct-wrap">
-        <p class="eyebrow eyebrow--center reveal" data-reveal>Météo au col</p>
-        <h2 class="section-title reveal" data-reveal>1 512 mètres,<br />ça se prépare.</h2>
-        <p class="lede direct-weather__lede reveal" data-reveal>Le temps change vite en altitude. Prévisions détaillées avant de partir.</p>
-        <div class="direct-weather__embed reveal" data-reveal>
-          <iframe
-            src="https://www.meteoblue.com/fr/meteo/widget/three/col-de-jaman_suisse_2660233?geoloc=fixed&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
-            frameborder="0" scrolling="no" allowtransparency="true"
-            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
-            style="width:100%; height:340px;"
-            title="Prévisions météo — Col de Jaman (Meteoblue)"
-            loading="lazy"></iframe>
-        </div>
-        <a href="https://www.meteoblue.com/fr/meteo/semaine/col-de-jaman_suisse_2660233" target="_blank" rel="noopener" class="btn btn--light direct-weather__fallback reveal" data-reveal>Prévisions complètes sur Meteoblue →</a>
+    <!-- LIGHTBOX — vue du col en grand -->
+    <div class="direct-lightbox" id="direct-lightbox" hidden>
+      <button class="direct-lightbox__close" type="button" id="direct-lightbox-close" aria-label="Fermer la vue">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+      <img src="assets/img/anouck.jpg" alt="Anouck au coucher du soleil sur le Col de Jaman, en grand format" />
+    </div>
+
+    <!-- LIGHTBOX — météo en direct (Meteoblue) -->
+    <div class="direct-lightbox direct-lightbox--meteo" id="direct-meteo-lightbox" hidden>
+      <button class="direct-lightbox__close" type="button" id="direct-meteo-lightbox-close" aria-label="Fermer la météo">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+      <div class="direct-meteo-panel">
+        <iframe
+          src="https://www.meteoblue.com/fr/meteo/widget/three/jaman,-col-de_suisse_11074301?geoloc=fixed&days=3&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
+          frameborder="0" scrolling="no" allowtransparency="true"
+          sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+          title="Météo en direct — Col de Jaman (Meteoblue)"
+          loading="lazy"></iframe>
+        <a href="https://www.meteoblue.com/fr/meteo/semaine/jaman,-col-de_suisse_11074301" target="_blank" rel="noopener" class="direct-meteo-panel__link">Prévisions complètes sur Meteoblue →</a>
       </div>
-    </section>
+    </div>
 
     <!-- ACCÈS -->
     <section class="direct-access" id="acces">
@@ -93,7 +146,10 @@
           <a href="randonnees.html">Voir les itinéraires →</a>
         </div>
         <div class="direct-access__card reveal" data-reveal>
-          <span class="direct-access__icon" aria-hidden="true">
+          <span class="direct-train" aria-hidden="true">
+            <span class="direct-train__smoke"></span>
+            <span class="direct-train__smoke"></span>
+            <span class="direct-train__smoke"></span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 11h14M9 16l-2 4M15 16l2 4"/><circle cx="9" cy="8" r="0.6" fill="currentColor"/><circle cx="15" cy="8" r="0.6" fill="currentColor"/></svg>
           </span>
           <h3>En train (MOB)</h3>
@@ -151,10 +207,38 @@
         <span class="footer__legal">© Le Manoïre · Col de Jaman · lemanoire-jaman.ch</span>
         <a href="mentions-legales.html" class="footer__legal">Mentions légales · Confidentialité</a>
       </div>
+      <p class="footer__credits">Certains visuels et vidéos de ce site sont des illustrations conceptuelles du projet. Les photographies réelles de l'établissement seront disponibles prochainement.</p>
     </footer>
 
   </main>
 
-  <script src="script.js?v=7"></script>
+  <script src="script.js?v=10"></script>
+
+  <!-- Lightbox — vue du col + météo en direct -->
+  <script>
+    (function () {
+      function wireLightbox(triggerId, lightboxId, closeId) {
+        const trigger = document.getElementById(triggerId);
+        const lightbox = document.getElementById(lightboxId);
+        const closeBtn = document.getElementById(closeId);
+        if (!trigger || !lightbox || !closeBtn) return;
+
+        function open() { lightbox.hidden = false; }
+        function close() { lightbox.hidden = true; }
+
+        trigger.addEventListener('click', open);
+        closeBtn.addEventListener('click', close);
+        lightbox.addEventListener('click', function (e) {
+          if (e.target === lightbox) close();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !lightbox.hidden) close();
+        });
+      }
+
+      wireLightbox('direct-live-trigger', 'direct-lightbox', 'direct-lightbox-close');
+      wireLightbox('meteo-trigger', 'direct-meteo-lightbox', 'direct-meteo-lightbox-close');
+    })();
+  </script>
 </body>
 </html>
