@@ -1,453 +1,201 @@
 /* ============================================================
    LE MANOÏRE — Randonnées v2
-   Direction : alpine premium, lisible et utile pour les marcheurs
+   Overrides page-spécifiques UNIQUEMENT — pas de tokens séparés,
+   tout consomme la palette/typo du système central (style.css).
+   Pattern suivi : style-carte-v2.css (fidélité charte).
    ============================================================ */
-
-:root {
-  --page-cream: #f6f1e9;
-  --page-cream-2: #efe5db;
-  --page-ink: #2e1218;
-  --page-bordeaux: #4b0f1f;
-  --page-ocre: #c58632;
-  --page-sage: #5f6d58;
-  --page-blue: #6d8fa8;
-  --page-line: rgba(75, 15, 31, 0.12);
-  --page-shadow: 0 18px 42px rgba(46, 18, 24, 0.12);
-}
-
-body.page-randonnees {
-  background:
-    linear-gradient(180deg, #faf7f2 0%, #f5efe5 38%, #efe4d7 100%);
-  color: var(--page-ink);
-}
-
-body.page-randonnees .nav {
-  background: rgba(58, 12, 24, 0.94);
-}
 
 body.page-randonnees .nav__links a.is-active {
   color: var(--or-logo);
 }
 
-body.page-randonnees .nav__links a.is-active::after {
-  width: 100%;
-  background: var(--or-logo);
-}
-
-.rando-page {
-  padding-top: 0;
-}
-
 .rando-wrap {
-  width: min(var(--maxw), calc(100vw - 2 * var(--pad)));
+  max-width: var(--maxw);
   margin: 0 auto;
 }
 
-.rando-hero {
-  position: relative;
-  min-height: min(92vh, 980px);
-  display: grid;
-  align-items: end;
-  padding: 122px var(--pad) 52px;
-  overflow: clip;
-  background: #1f0d12;
-}
-
-.rando-hero__bg {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
-  filter: saturate(0.96) contrast(1.04) brightness(0.72);
-  transform: scale(1.02);
-}
-
-.rando-hero__scrim {
-  position: absolute;
-  inset: 0;
-  background:
-    linear-gradient(180deg, rgba(21, 10, 14, 0.18) 0%, rgba(21, 10, 14, 0.36) 54%, rgba(21, 10, 14, 0.86) 100%),
-    linear-gradient(90deg, rgba(21, 10, 14, 0.54) 0%, rgba(21, 10, 14, 0.12) 58%, rgba(21, 10, 14, 0.58) 100%);
-}
-
-.rando-hero__inner {
-  position: relative;
-  z-index: 1;
-  width: min(780px, 100%);
-  color: #fbf8f2;
-  padding-bottom: 10px;
-}
-
-.rando-hero__title {
-  font-family: var(--display);
-  font-size: clamp(3rem, 7vw, 6.6rem);
-  line-height: 0.96;
-  letter-spacing: -0.03em;
-  margin: 0;
-}
-
-.rando-hero__lede {
-  max-width: 58ch;
-  margin: 22px 0 0;
-  font-size: clamp(17px, 1.5vw, 21px);
-  line-height: 1.7;
-  color: rgba(251, 248, 242, 0.92);
-}
-
-.rando-hero__actions,
-.rando-page__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 30px;
-}
-
-.rando-hero__chips {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 28px;
-}
-
-.rando-hero__chips span,
-.route__facts span {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 38px;
-  padding: 9px 13px;
-  border: 1px solid rgba(239, 229, 219, 0.2);
-  border-radius: 999px;
-  background: rgba(58, 12, 24, 0.22);
-  color: #fbf8f2;
-  font-size: 0.78rem;
-  letter-spacing: 0.05em;
-}
-
-.rando-stats {
-  padding: 26px 0 8px;
-}
-
-.rando-stats__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-}
-
-.rando-stat {
-  min-height: 190px;
-  padding: 22px 20px;
-  border: 1px solid var(--page-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: var(--page-shadow);
-}
-
-.rando-stat__label,
-.route__eyebrow {
-  display: inline-flex;
-  color: var(--page-sage);
-  text-transform: uppercase;
-  letter-spacing: 0.16em;
-  font-size: 0.72rem;
-  font-weight: 600;
-}
-
-.rando-stat__value {
-  display: block;
-  margin-top: 10px;
-  font-family: var(--display);
-  font-size: 1.35rem;
-  line-height: 1.1;
-  color: var(--page-bordeaux);
-}
-
-.rando-stat__copy,
-.section-lede,
-.route__text,
-.route__note,
-.rando-checklist li,
-.sources-grid li {
-  font-size: 0.98rem;
-  line-height: 1.7;
-  color: rgba(46, 18, 24, 0.78);
-}
-
-.rando-stat__copy {
-  margin: 12px 0 0;
-}
-
-.rando-section {
-  padding: 82px 0;
-}
-
-.rando-section__head {
-  max-width: 720px;
-  margin-bottom: 34px;
-}
-
+/* ---- Section title générique (hors éditorial 2 colonnes) ---- */
 .section-title {
   font-family: var(--display);
-  font-size: clamp(2rem, 3.2vw, 3.3rem);
-  line-height: 1.02;
-  color: var(--page-bordeaux);
-  margin: 0;
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-size: clamp(32px, 4.4vw, 56px);
+  margin: 0 auto;
+  max-width: 18ch;
 }
+.section-title em { font-style: italic; color: var(--ocre); }
 
-.section-lede {
-  max-width: 58ch;
-  margin: 18px 0 0;
+/* ============================================================
+   HERO — .bleed--tall réutilisé, ajouts page-spécifiques
+   ============================================================ */
+.rando-hero .bleed__content { max-width: 720px; }
+/* Sommet proche du haut de la photo : sur les viewports plus larges que
+   16:9 (fenêtre navigateur basse/large), le cover crop rogne le ciel/haut
+   de l'image en premier — object-position force à garder le HAUT de la
+   photo. Le zoom scale(1.12) qui suit mangeait encore 6% en plus depuis le
+   centre : transform-origin le déplace en haut pour qu'il ne mange que le
+   bas (vallée/forêt, déjà voilée par le scrim), jamais le sommet. */
+.rando-hero .bleed__img {
+  object-position: center top;
+  transform-origin: 50% 0%;
 }
-
-.route {
-  display: grid;
-  grid-template-columns: minmax(0, 1.12fr) minmax(0, 0.88fr);
-  gap: 26px;
-  align-items: center;
-  margin-top: 20px;
-  padding: 22px;
-  border: 1px solid var(--page-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: var(--page-shadow);
-}
-
-.route + .route {
-  margin-top: 18px;
-}
-
-.route--right .route__media {
-  order: 2;
-}
-
-.route__media {
-  margin: 0;
-}
-
-.route__media img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  border-radius: 8px;
-}
-
-.route__media figcaption,
-.after-card figcaption,
-.rando-split__media figcaption {
-  margin-top: 10px;
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: rgba(46, 18, 24, 0.58);
-}
-
-.route__body {
-  padding: 6px 2px;
-}
-
-.route__eyebrow {
-  margin-bottom: 14px;
-}
-
-.route__title {
-  font-family: var(--display);
-  font-size: clamp(1.8rem, 2.5vw, 2.8rem);
-  line-height: 1.04;
-  color: var(--page-bordeaux);
-  margin: 0;
-}
-
-.route__text {
-  margin: 18px 0 0;
-}
-
-.route__facts {
+.rando-hero__actions {
   display: flex;
+  gap: 18px;
   flex-wrap: wrap;
+  margin-top: 34px;
+}
+.rando-chips {
+  display: flex;
   gap: 10px;
-  margin-top: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.rando-chips span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--creme-2);
+  background: rgba(42, 8, 18, 0.45);
+  border: 1px solid rgba(239, 229, 219, 0.25);
+  padding: 8px 16px;
+  border-radius: 30px;
 }
 
-.route__facts span {
-  color: var(--page-ink);
-  background: rgba(198, 133, 50, 0.1);
-  border-color: rgba(198, 133, 50, 0.2);
+/* ============================================================
+   STATS — grille de 4, chiffres animés (réutilise .stat__num
+   / .stat__unit pour le compteur JS, layout propre à la page)
+   ============================================================ */
+.rando-stats {
+  background: var(--bordeaux-2);
+  padding: clamp(50px, 7vh, 84px) var(--pad);
+  border-top: 1px solid rgba(197, 134, 50, 0.25);
+  border-bottom: 1px solid rgba(197, 134, 50, 0.25);
+  /* neutralise le comportement marquee de .stats (hérité du core) */
+  overflow: visible;
+  mask-image: none;
+  -webkit-mask-image: none;
 }
-
-.route__note {
-  margin: 16px 0 0;
-  padding-left: 14px;
-  border-left: 3px solid rgba(75, 15, 31, 0.18);
-}
-
-.rando-section--split {
-  background: linear-gradient(180deg, rgba(255,255,255,0.42) 0%, rgba(248,243,236,0.9) 100%);
-}
-
-.rando-split {
+.rando-stats__grid {
   display: grid;
-  grid-template-columns: minmax(0, 0.94fr) minmax(0, 1.06fr);
-  gap: 24px;
-  align-items: center;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(28px, 4vw, 48px);
+  text-align: center;
+}
+.rando-stat__num {
+  display: block;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(30px, 3.4vw, 44px);
+  color: var(--or-logo);
+  letter-spacing: -0.01em;
+}
+.rando-stat__num--word { color: var(--ocre); }
+.rando-stat__unit {
+  font-size: 0.55em;
+  font-weight: 500;
+  color: var(--creme-2);
+  margin-left: 2px;
+}
+.rando-stat__label {
+  margin: 10px 0 0;
+  font-size: 0.78rem;
+  color: var(--fg-soft, #D4C4B0);
+  line-height: 1.5;
+}
+@media (max-width: 820px) {
+  .rando-stats__grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-.rando-split__text,
-.rando-split__media,
-.after-copy,
-.after-card {
-  border: 1px solid var(--page-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.76);
-  box-shadow: var(--page-shadow);
+/* ============================================================
+   INTRO ITINÉRAIRES — bloc centré crème
+   ============================================================ */
+.rando-intro {
+  background: var(--creme-2);
+  color: var(--bordeaux);
+  padding: clamp(70px, 10vh, 130px) var(--pad) clamp(40px, 6vh, 70px);
+  text-align: center;
+}
+.rando-intro .eyebrow { color: var(--brun-fonce); }
+.rando-intro .section-title { color: var(--bordeaux); }
+.rando-intro__lede { margin-left: auto; margin-right: auto; color: var(--brun-moyen); }
+
+/* ============================================================
+   ROUTE CARDS — .editorial réutilisé, meta ligne courte
+   ============================================================ */
+.editorial .meta {
+  font-family: var(--sans);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
 }
 
-.rando-split__text,
-.after-copy {
-  padding: 28px;
+/* Rochers de Naye : photo 4:3 large, le crop 16:9 par défaut coupait trop
+   de la montagne et du refuge en bas de cadre. */
+.rando-frame--tall {
+  aspect-ratio: 4 / 3;
 }
 
+/* ============================================================
+   PAUSE PANORAMIQUE — variante courte du .bleed
+   ============================================================ */
+.rando-pause { min-height: 72vh; }
+
+/* ============================================================
+   CHECKLIST accès/sécurité
+   ============================================================ */
 .rando-checklist {
-  margin: 22px 0 0;
-  padding: 0;
   list-style: none;
-  display: grid;
-  gap: 14px;
+  margin: 26px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
-
 .rando-checklist li {
-  padding-left: 18px;
   position: relative;
+  padding-left: 26px;
+  color: var(--brun-moyen);
+  font-size: 0.95rem;
+  line-height: 1.6;
 }
-
 .rando-checklist li::before {
   content: "";
   position: absolute;
-  left: 0;
-  top: 0.66em;
-  width: 7px;
-  height: 7px;
-  border-radius: 999px;
-  background: var(--page-ocre);
+  left: 0; top: 9px;
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--ocre);
 }
 
-.rando-split__media,
-.after-card {
-  overflow: hidden;
+/* ============================================================
+   RETOUR AU MANOÏRE — .contact réutilisé avec une image
+   ============================================================ */
+.rando-after .contact__inner {
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
 }
-
-.rando-split__media img,
-.after-card img {
-  width: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.rando-split__media img {
-  aspect-ratio: 16 / 10;
-}
-
-.rando-section--after {
-  padding-top: 0;
-}
-
-.rando-after {
-  display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
-  gap: 24px;
-  align-items: stretch;
-}
-
-.after-card img {
-  aspect-ratio: 4 / 3;
-}
-
-.rando-section--sources {
-  padding-top: 42px;
-}
-
-.sources-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.rando-after__media { margin: 0; }
+.rando-after__actions {
+  display: flex;
   gap: 18px;
-  padding: 24px;
-  border: 1px solid var(--page-line);
-  border-radius: 8px;
-  background: rgba(255, 255, 255, 0.68);
-  box-shadow: var(--page-shadow);
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+@media (max-width: 980px) {
+  .rando-after .contact__inner { grid-template-columns: 1fr; }
 }
 
-.sources-grid h3 {
-  margin: 0 0 12px;
-  font-family: var(--display);
-  font-size: 1.2rem;
-  color: var(--page-bordeaux);
-}
-
-.sources-grid ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.sources-grid li + li {
-  margin-top: 10px;
-}
-
-.sources-grid a {
-  color: var(--page-bordeaux);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.rando-footer {
-  margin-top: 30px;
-}
-
-@media (max-width: 1024px) {
-  .rando-stats__grid,
-  .route,
-  .rando-split,
-  .rando-after,
-  .sources-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .route--right .route__media {
-    order: 0;
-  }
-}
-
-@media (max-width: 820px) {
-  .rando-hero {
-    min-height: auto;
-    padding-top: 112px;
-    padding-bottom: 34px;
-  }
-
-  .rando-hero__title {
-    font-size: clamp(2.8rem, 14vw, 4.4rem);
-  }
-
-  .rando-hero__inner {
-    width: 100%;
-  }
-
-  .rando-section {
-    padding: 58px 0;
-  }
-
-  .rando-stat,
-  .route,
-  .rando-split__text,
-  .after-copy,
-  .sources-grid {
-    padding: 20px;
-  }
-
-  .route__facts span,
-  .rando-hero__chips span {
-    width: 100%;
-    justify-content: flex-start;
-  }
+/* ============================================================
+   CRÉDITS PHOTOS (CC BY-SA) — discret, footer uniquement
+   ============================================================ */
+.footer__credits {
+  max-width: var(--maxw);
+  margin: 16px auto 0;
+  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.03em;
+  color: var(--muted);
+  opacity: 0.7;
 }

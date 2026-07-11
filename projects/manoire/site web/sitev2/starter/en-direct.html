@@ -5,15 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <title>En direct — Le Manoïre, Col de Jaman</title>
-  <meta name="description" content="L'actualité en direct du Manoïre, Col de Jaman — page en construction." />
+  <meta name="description" content="La vue du col, la météo et les horaires du Manoïre en direct — et comment nous rejoindre en voiture, à pied ou par le train MOB." />
 
-  <link rel="stylesheet" href="style.css?v=47" />
+  <link rel="stylesheet" href="style.css?v=49" />
+  <link rel="stylesheet" href="style-en-direct.css?v=6" />
 </head>
-<body class="no-hero">
+<body class="no-hero page-en-direct">
 
   <div class="scroll-progress" aria-hidden="true"></div>
 
-  <!-- NAV -->
   <header class="nav" id="nav">
     <a href="index.html" class="nav__brand">
       <img src="assets/img/logo-hero.png" alt="Le Manoïre — Col de Jaman" class="nav__logo" />
@@ -21,37 +21,135 @@
     <nav class="nav__links" aria-label="Navigation principale">
       <a href="carte-v2.html">La carte</a>
       <a href="randonnees.html">Randonnées</a>
-      <a href="en-direct.html">En direct</a>
+      <a href="en-direct.html" class="is-active">En direct / Infos pratiques</a>
     </nav>
     <a href="index.html#reserver" class="nav__cta">Nous contacter</a>
   </header>
 
-  <main>
+  <main class="direct-page">
 
-    <!-- SECTION En direct — en construction -->
-    <section class="menu menu--page" id="direct">
-      <div class="menu__inner">
-        <p class="eyebrow reveal" data-reveal>En direct</p>
-        <h2 class="editorial__title reveal" data-reveal>Page en construction.</h2>
-        <p class="lede menu__intro reveal" data-reveal>L'actualité du Manoïre en direct arrive bientôt sur cette page.</p>
+    <!-- HERO — webcam mockup en fond plein écran (parallax + titre masqué hérités du moteur central) -->
+    <section class="bleed bleed--tall direct-hero" id="top">
+      <!-- TODO: remplacer bleed__img par l'iframe/flux webcam live quand la caméra sera installée -->
+      <img class="bleed__img" src="assets/img/en-direct/webcam-mockup.jpg" alt="Vue aérienne du Manoïre, Col de Jaman, lac Léman et Préalpes en arrière-plan" width="1600" height="894" loading="eager" decoding="async" />
+      <div class="bleed__scrim" aria-hidden="true"></div>
+      <span class="direct-hero__badge reveal" data-reveal><span class="direct-hero__dot" aria-hidden="true"></span>Webcam bientôt en direct — vue actuelle</span>
+      <div class="bleed__content bleed__content--low">
+        <p class="eyebrow reveal" data-reveal>En direct · Col de Jaman</p>
+        <h1 class="bleed__title reveal" data-reveal>Le col,<br />maintenant.</h1>
+        <p class="bleed__copy reveal" data-reveal>La vue depuis la terrasse, le temps qu'il fait au col, et de quoi organiser votre montée — en voiture, à pied ou par le MOB. La vue ne change pas beaucoup depuis mille ans.</p>
+        <div class="direct-hero__actions reveal" data-reveal>
+          <a href="#meteo" class="btn btn--light">Voir la météo →</a>
+          <a href="index.html#reserver" class="btn btn--warm">Réserver une table →</a>
+        </div>
+        <div class="direct-chips reveal" data-reveal>
+          <span><strong>Lun–Ven</strong> 10h–21h</span>
+          <span><strong>Sam–Dim</strong> 8h–22h</span>
+          <span>Cuisine 12h–21h</span>
+        </div>
       </div>
     </section>
 
-    <!-- FOOTER -->
+    <!-- MÉTÉO -->
+    <section class="direct-weather" id="meteo">
+      <div class="direct-wrap">
+        <p class="eyebrow eyebrow--center reveal" data-reveal>Météo au col</p>
+        <h2 class="section-title reveal" data-reveal>1 512 mètres,<br />ça se prépare.</h2>
+        <p class="lede direct-weather__lede reveal" data-reveal>Le temps change vite en altitude. Prévisions détaillées avant de partir.</p>
+        <div class="direct-weather__embed reveal" data-reveal>
+          <iframe
+            src="https://www.meteoblue.com/fr/meteo/widget/three/col-de-jaman_suisse_2660233?geoloc=fixed&days=5&tempunit=CELSIUS&windunit=KILOMETER_PER_HOUR&layout=image"
+            frameborder="0" scrolling="no" allowtransparency="true"
+            sandbox="allow-same-origin allow-scripts allow-popups allow-popups-to-escape-sandbox"
+            style="width:100%; height:340px;"
+            title="Prévisions météo — Col de Jaman (Meteoblue)"
+            loading="lazy"></iframe>
+        </div>
+        <a href="https://www.meteoblue.com/fr/meteo/semaine/col-de-jaman_suisse_2660233" target="_blank" rel="noopener" class="btn btn--light direct-weather__fallback reveal" data-reveal>Prévisions complètes sur Meteoblue →</a>
+      </div>
+    </section>
+
+    <!-- ACCÈS -->
+    <section class="direct-access" id="acces">
+      <div class="direct-access__intro">
+        <p class="eyebrow reveal" data-reveal>Nous rejoindre</p>
+        <h2 class="section-title reveal" data-reveal>Trois façons de monter.<br /><em>Une seule arrivée.</em></h2>
+        <p class="lede reveal" data-reveal>En voiture, à pied ou par le train — le col reste le col.</p>
+      </div>
+      <div class="direct-access__grid">
+        <div class="direct-access__card reveal" data-reveal>
+          <span class="direct-access__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Zm14 0a2 2 0 1 0 4 0 2 2 0 0 0-4 0ZM3 17V11l2-5h14l2 5v6"/><path d="M5 11h14"/></svg>
+          </span>
+          <h3>En voiture</h3>
+          <p>Route de montagne étroite et sinueuse depuis Montreux ou Les Avants. Grand parking gratuit au col, juste à côté du Manoïre — il se remplit vite par beau temps. En hiver, la route est fermée aux véhicules.</p>
+        </div>
+        <div class="direct-access__card reveal" data-reveal>
+          <span class="direct-access__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="1.6"/><path d="m10.5 21 1.5-6-2-2 1-5 3 2 2 3.5"/><path d="m9 21-3-1 2-5"/><path d="m14 13 3 1 2 4"/></svg>
+          </span>
+          <h3>À pied</h3>
+          <p>Plusieurs sentiers mènent au col — le plus court depuis la gare de Jaman en trente minutes. Le détail des itinéraires, dénivelés et durées est sur la page Randonnées.</p>
+          <a href="randonnees.html">Voir les itinéraires →</a>
+        </div>
+        <div class="direct-access__card reveal" data-reveal>
+          <span class="direct-access__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="3" width="14" height="13" rx="3"/><path d="M5 11h14M9 16l-2 4M15 16l2 4"/><circle cx="9" cy="8" r="0.6" fill="currentColor"/><circle cx="15" cy="8" r="0.6" fill="currentColor"/></svg>
+          </span>
+          <h3>En train (MOB)</h3>
+          <p>La ligne Montreux – Rochers-de-Naye s'arrête à la gare de Jaman, à environ quarante minutes de Montreux. Le col se rejoint ensuite à pied en quelques minutes.</p>
+        </div>
+      </div>
+
+      <div class="direct-prepare reveal" data-reveal>
+        <p class="direct-prepare__title">À prévoir si vous montez à pied</p>
+        <ul class="direct-prepare__list">
+          <li>Chaussures fermées à semelles crantées — le sentier reste minéral par endroits.</li>
+          <li>Une couche chaude même en été : le temps change vite passé 1500 mètres.</li>
+          <li>De l'eau en quantité, aucune source fiable sur les tronçons courts.</li>
+          <li>Écran solaire et lunettes — le soleil d'altitude ne pardonne pas.</li>
+          <li>Réseau mobile partiel au col : prévenir avant de monter si besoin.</li>
+          <li>Un œil sur <a href="#meteo">la météo du jour</a> avant de partir.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CTA + GROUPES & ÉVÉNEMENTS -->
+    <section class="contact">
+      <div class="contact__inner">
+        <div class="editorial__text">
+          <p class="eyebrow eyebrow--light reveal" data-reveal>Nous rejoindre</p>
+          <h2 class="contact__title reveal" data-reveal>Le col vous attend.<br />La table aussi.</h2>
+          <p class="contact__copy reveal" data-reveal>Que vous arriviez essoufflés ou juste garés à côté, la terrasse est prête.</p>
+          <a href="index.html#reserver" class="btn btn--warm reveal" data-reveal>Réserver une table →</a>
+        </div>
+        <div class="direct-groups reveal" data-reveal>
+          <p class="direct-groups__label">Groupes &amp; événements</p>
+          <div class="direct-groups__row">
+            <span class="direct-groups__key">Groupes</span>
+            <span class="direct-groups__val">Sur demande, par téléphone ou email — on s'organise ensemble.</span>
+          </div>
+          <div class="direct-groups__row">
+            <span class="direct-groups__key">Événements</span>
+            <span class="direct-groups__val">Le col aura son calendrier. Les dates suivront.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="footer" id="footer">
       <div class="footer__inner">
-        <img src="assets/img/logo-hero.png" alt="Le Manoïre" class="footer__logo" />
-        <p class="footer__tagline">Col de Jaman · 1 512 m · Depuis 2026</p>
+        <img src="assets/img/logo-footer-full.png" alt="Le Manoïre — Col de Jaman" class="footer__logo" />
       </div>
       <nav class="footer__nav" aria-label="Navigation footer">
         <a href="carte-v2.html">La carte</a>
         <a href="randonnees.html">Randonnées</a>
-        <a href="en-direct.html">En direct</a>
+        <a href="en-direct.html">En direct / Infos pratiques</a>
         <a href="index.html#reserver">Réserver</a>
       </nav>
       <div class="footer__base">
         <span class="footer__legal">© Le Manoïre · Col de Jaman · lemanoire-jaman.ch</span>
-        <span class="footer__legal">Mentions légales · Confidentialité</span>
+        <a href="mentions-legales.html" class="footer__legal">Mentions légales · Confidentialité</a>
       </div>
     </footer>
 
@@ -60,4 +158,3 @@
   <script src="script.js?v=7"></script>
 </body>
 </html>
-

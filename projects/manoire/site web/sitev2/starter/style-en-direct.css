@@ -1,0 +1,273 @@
+/* ============================================================
+   LE MANOÏRE — En direct v2
+   Overrides page-spécifiques UNIQUEMENT — tokens/composants du
+   système central (style.css). Pattern suivi : style-randonnees.css.
+   ============================================================ */
+
+body.page-en-direct .nav__links a.is-active {
+  color: var(--or-logo);
+}
+
+.direct-wrap {
+  max-width: var(--maxw);
+  margin: 0 auto;
+}
+
+.section-title {
+  font-family: var(--display);
+  font-weight: 600;
+  line-height: 1.06;
+  letter-spacing: -0.02em;
+  font-size: clamp(32px, 4.4vw, 56px);
+  margin: 0 auto;
+  max-width: 20ch;
+}
+.section-title em { font-style: italic; color: var(--ocre); }
+
+/* ============================================================
+   HERO — .bleed--tall réutilisé (webcam mockup en fond, parallax
+   + reveal de titre masqué hérités du moteur central)
+   ============================================================ */
+.direct-hero .bleed__content { max-width: 720px; }
+
+.direct-hero__badge {
+  position: absolute; top: 100px; left: var(--pad);
+  z-index: 3;
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(42, 8, 18, 0.5);
+  border: 1px solid rgba(239, 229, 219, 0.25);
+  backdrop-filter: blur(6px);
+  padding: 8px 16px 8px 12px;
+  border-radius: 30px;
+  font-size: 0.65rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--creme-2);
+}
+.direct-hero__dot {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--orange);
+  animation: direct-pulse 2s ease-in-out infinite;
+}
+@keyframes direct-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(224, 101, 48, 0.55); }
+  50%      { box-shadow: 0 0 0 7px rgba(224, 101, 48, 0); }
+}
+
+.direct-hero__actions {
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+.direct-chips {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+.direct-chips span {
+  font-size: 0.65rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--creme-2);
+  background: rgba(42, 8, 18, 0.45);
+  border: 1px solid rgba(239, 229, 219, 0.25);
+  padding: 8px 16px;
+  border-radius: 30px;
+}
+.direct-chips strong { color: var(--or-logo); font-weight: 600; margin-right: 5px; }
+
+@media (max-width: 640px) {
+  .direct-hero__badge { top: 88px; }
+}
+
+
+/* ============================================================
+   GROUPES & ÉVÉNEMENTS — panneau compact à côté du CTA final
+   ============================================================ */
+.direct-groups {
+  align-self: start;
+  margin-top: 6px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
+.direct-groups__label {
+  font-size: 0.65rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--or-logo);
+  margin-bottom: 20px;
+}
+.direct-groups__row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--line);
+}
+.direct-groups__row:last-child { border-bottom: none; padding-bottom: 0; }
+.direct-groups__key {
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.direct-groups__val {
+  font-family: var(--display);
+  font-size: clamp(15px, 1.4vw, 18px);
+  color: var(--creme-2);
+  line-height: 1.4;
+}
+
+/* ============================================================
+   MÉTÉO — fond sombre, widget flottant en carte claire
+   ============================================================ */
+.direct-weather {
+  background: var(--bordeaux-2);
+  padding: clamp(70px, 10vh, 120px) var(--pad);
+  text-align: center;
+}
+.direct-weather .eyebrow { color: var(--or-logo); }
+.direct-weather .section-title { color: var(--creme-2); }
+.direct-weather__lede {
+  margin: 18px auto 0;
+  color: var(--fg-soft);
+}
+.direct-weather__embed {
+  max-width: 820px;
+  margin: clamp(36px, 5vw, 56px) auto 0;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 40px 90px -40px rgba(42, 8, 18, 0.7);
+  background: var(--creme-1);
+  transition: transform .6s var(--ease);
+}
+.direct-weather__embed:hover { transform: translateY(-4px); }
+.direct-weather__embed iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+}
+.direct-weather__fallback {
+  margin-top: 26px;
+}
+
+/* ============================================================
+   ACCÈS — fond clair, icônes flottantes, cartes qui se soulèvent
+   ============================================================ */
+.direct-access {
+  background: var(--creme-2);
+  padding: clamp(70px, 10vh, 120px) var(--pad);
+}
+.direct-access__intro { text-align: center; margin-bottom: clamp(50px, 7vh, 80px); }
+.direct-access__intro .eyebrow { color: var(--brun-fonce); }
+.direct-access__intro .section-title { color: var(--bordeaux); }
+.direct-access__intro .lede { margin: 18px auto 0; color: var(--brun-moyen); }
+
+.direct-access__grid {
+  max-width: var(--maxw);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(24px, 3vw, 40px);
+}
+.direct-access__card {
+  background: var(--creme-1);
+  border-radius: 4px;
+  padding: clamp(28px, 3vw, 36px) clamp(24px, 3vw, 30px);
+  border-top: 3px solid var(--ocre);
+  transition: transform .5s var(--ease), box-shadow .5s var(--ease);
+}
+.direct-access__card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 60px -30px rgba(75, 15, 31, 0.2);
+}
+.direct-access__grid .direct-access__card:nth-child(2).reveal { transition-delay: 0.1s; }
+.direct-access__grid .direct-access__card:nth-child(3).reveal { transition-delay: 0.2s; }
+
+.direct-access__icon {
+  display: inline-flex;
+  width: 32px; height: 32px;
+  color: var(--ocre);
+  margin-bottom: 20px;
+  animation: icon-float 2.6s ease-in-out infinite;
+}
+.direct-access__card:nth-child(2) .direct-access__icon { animation-delay: -0.6s; }
+.direct-access__card:nth-child(3) .direct-access__icon { animation-delay: -1.3s; }
+.direct-access__icon svg { width: 100%; height: 100%; }
+.direct-access__card h3 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(19px, 2vw, 23px);
+  color: var(--bordeaux);
+  margin-bottom: 10px;
+}
+.direct-access__card p {
+  color: var(--brun-moyen);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.direct-access__card a {
+  display: inline-block;
+  margin-top: 10px;
+  color: var(--brun-fonce);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.direct-access__card a:hover { color: var(--ocre); }
+
+/* ---- À prévoir (rando) — bloc pleine largeur sous la grille accès ---- */
+.direct-prepare {
+  max-width: var(--maxw);
+  margin: clamp(50px, 6vw, 74px) auto 0;
+  background: var(--creme-1);
+  border-radius: 4px;
+  border-left: 3px solid var(--ocre);
+  padding: clamp(28px, 3vw, 38px) clamp(30px, 4vw, 46px);
+}
+.direct-prepare__title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(18px, 2vw, 22px);
+  color: var(--bordeaux);
+  margin-bottom: 18px;
+}
+.direct-prepare__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px 32px;
+}
+.direct-prepare__list li {
+  position: relative;
+  padding-left: 22px;
+  color: var(--brun-moyen);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+.direct-prepare__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 8px;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--ocre);
+}
+.direct-prepare__list a { color: var(--brun-fonce); font-weight: 600; }
+.direct-prepare__list a:hover { color: var(--ocre); }
+
+@media (max-width: 900px) {
+  .direct-hours__grid { grid-template-columns: 1fr; }
+  .direct-access__grid { grid-template-columns: 1fr; }
+  .direct-prepare__list { grid-template-columns: 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .direct-access__icon { animation: none; }
+  .direct-hero__dot { animation: none; }
+}

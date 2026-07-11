@@ -7,7 +7,7 @@
   <title>La carte — Le Manoïre, Col de Jaman</title>
   <meta name="description" content="La carte du Manoïre : entrées, salades, planchettes alpines, fondues, spécialités et desserts. Cuisine suisse authentique au Col de Jaman." />
 
-  <link rel="stylesheet" href="style.css?v=47" />
+  <link rel="stylesheet" href="style.css?v=49" />
   <link rel="stylesheet" href="style-carte-v2.css?v=3" />
 </head>
 <body class="no-hero body--split-menu">
@@ -22,7 +22,7 @@
     <nav class="nav__links" aria-label="Navigation principale">
       <a href="carte-v2.html" class="is-active">La carte</a>
       <a href="randonnees.html">Randonnées</a>
-      <a href="en-direct.html">En direct</a>
+      <a href="en-direct.html">En direct / Infos pratiques</a>
     </nav>
     <a href="index.html#reserver" class="nav__cta">Nous contacter</a>
   </header>
@@ -39,6 +39,7 @@
       <div class="menu-split-img" id="img-rostis" style="background-image: url('assets/img/menu-roesti.jpg');"></div>
       <div class="menu-split-img" id="img-burger" style="background-image: url('assets/img/menu-burger.jpg');"></div>
       <div class="menu-split-img" id="img-ribs" style="background-image: url('assets/img/menu-ribs.jpg');"></div>
+      <div class="menu-split-img" id="img-classiques" style="background-image: url('assets/img/menu-table.jpg');"></div>
       <div class="menu-split-img" id="img-dahl" style="background-image: url('assets/img/menu-dahl.jpg');"></div>
       <div class="menu-split-img" id="img-desserts" style="background-image: url('assets/img/menu-meringue.jpg');"></div>
       <div class="menu-split-scrim"></div>
@@ -46,7 +47,7 @@
       <!-- Overlay text with elevation details to stay contextual -->
       <div class="menu-split-badge">
         <span class="menu-split-badge__sub">Col de Jaman</span>
-        <span class="menu-split-badge__alt">1 524 m</span>
+        <span class="menu-split-badge__alt">1 512 m</span>
       </div>
     </div>
 
@@ -64,43 +65,29 @@
 
           <div class="menu__categories-list">
 
-            <!-- ENTRÉES -->
-            <div class="menu__cat" data-bg-id="img-entrees" data-reveal>
+            <!-- CLASSIQUES DE LA MAISON -->
+            <div class="menu__cat" data-bg-id="img-classiques" data-reveal>
               <div class="menu__cat-image-mobile">
-                <img src="assets/img/menu-tartare.jpg" alt="Nos entrées" />
+                <img src="assets/img/menu-table.jpg" alt="Planche de fromages et charcuterie, terrasse du Manoïre" />
               </div>
               <h3 class="menu__cat-title">
-                <img src="assets/img/icon-edelweiss.png" alt="" class="menu__cat-icon" width="26" height="26" />
-                Nos entrées
+                <img src="assets/img/icon-parasol.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Classiques de la maison
               </h3>
               <ul class="menu__list">
-                <li class="menu__item" data-bg-id="img-entrees">
+                <li class="menu__item" data-bg-id="img-classiques">
                   <div class="menu__row">
-                    <span class="menu__name">Soupe du moment</span>
-                    <span class="menu__price">12 CHF</span>
+                    <span class="menu__name">Assiette de rosbif froid</span>
+                    <span class="menu__price">25 CHF</span>
                   </div>
-                  <p class="menu__desc">Maison, de saison</p>
+                  <p class="menu__desc">120 g, sauce au choix</p>
                 </li>
-                <li class="menu__item" data-bg-id="img-entrees">
+                <li class="menu__item" data-bg-id="img-classiques">
                   <div class="menu__row">
-                    <span class="menu__name">Escargots du Mont d'Or</span>
-                    <span class="menu__price">14 CHF</span>
+                    <span class="menu__name">Tartare de féra fumée</span>
+                    <span class="menu__price">29 CHF</span>
                   </div>
-                  <p class="menu__desc">6 pièces, beurre persillé</p>
-                </li>
-                <li class="menu__item" data-bg-id="img-entrees">
-                  <div class="menu__row">
-                    <span class="menu__name">Salade mêlée</span>
-                    <span class="menu__price">10 CHF</span>
-                  </div>
-                  <p class="menu__desc">Vinaigrette maison</p>
-                </li>
-                <li class="menu__item" data-bg-id="img-entrees">
-                  <div class="menu__row">
-                    <span class="menu__name">Salade verte</span>
-                    <span class="menu__price">6 CHF</span>
-                  </div>
-                  <p class="menu__desc">Vinaigrette maison</p>
+                  <p class="menu__desc">Citron vert, baies roses, herbes fraîches, pommes acidulées, quinoa, salade de crudités</p>
                 </li>
               </ul>
             </div>
@@ -173,7 +160,47 @@
               </ul>
             </div>
 
-            
+            <!-- ENTRÉES -->
+            <div class="menu__cat" data-bg-id="img-entrees" data-reveal>
+              <div class="menu__cat-image-mobile">
+                <img src="assets/img/menu-tartare.jpg" alt="Nos entrées" />
+              </div>
+              <h3 class="menu__cat-title">
+                <img src="assets/img/icon-edelweiss.png" alt="" class="menu__cat-icon" width="26" height="26" />
+                Nos entrées
+              </h3>
+              <ul class="menu__list">
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Soupe du moment</span>
+                    <span class="menu__price">12 CHF</span>
+                  </div>
+                  <p class="menu__desc">Maison, de saison</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Escargots du Mont d'Or</span>
+                    <span class="menu__price">14 CHF</span>
+                  </div>
+                  <p class="menu__desc">6 pièces, beurre persillé</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade mêlée</span>
+                    <span class="menu__price">10 CHF</span>
+                  </div>
+                  <p class="menu__desc">Vinaigrette maison</p>
+                </li>
+                <li class="menu__item" data-bg-id="img-entrees">
+                  <div class="menu__row">
+                    <span class="menu__name">Salade verte</span>
+                    <span class="menu__price">6 CHF</span>
+                  </div>
+                  <p class="menu__desc">Vinaigrette maison</p>
+                </li>
+              </ul>
+            </div>
+
 <!-- FONDUES -->
             <div class="menu__cat" data-bg-id="img-fondues" data-reveal>
               <div class="menu__cat-image-mobile">
@@ -314,33 +341,7 @@
               </ul>
             </div>
 
-            <!-- CLASSIQUES DE LA MAISON -->
-            <div class="menu__cat" data-bg-id="img-ribs" data-reveal>
-              <div class="menu__cat-image-mobile">
-                <img src="assets/img/menu-ribs.jpg" alt="Ribs de cochon laqués, préparés par le chef Jeremy" />
-              </div>
-              <h3 class="menu__cat-title">
-                <img src="assets/img/icon-parasol.png" alt="" class="menu__cat-icon" width="26" height="26" />
-                Classiques de la maison
-              </h3>
-              <ul class="menu__list">
-                <li class="menu__item" data-bg-id="img-ribs">
-                  <div class="menu__row">
-                    <span class="menu__name">Assiette de rosbif froid</span>
-                    <span class="menu__price">25 CHF</span>
-                  </div>
-                  <p class="menu__desc">120 g, sauce au choix</p>
-                </li>
-                <li class="menu__item" data-bg-id="img-ribs">
-                  <div class="menu__row">
-                    <span class="menu__name">Tartare de féra fumée</span>
-                    <span class="menu__price">29 CHF</span>
-                  </div>
-                  <p class="menu__desc">Citron vert, baies roses, herbes fraîches, pommes acidulées, quinoa, salade de crudités</p>
-                </li>
-              </ul>
-            </div>
-<!-- PLATS VÉGÉTARIENS -->
+            <!-- PLATS VÉGÉTARIENS -->
             <div class="menu__cat" data-bg-id="img-dahl" data-reveal>
               <div class="menu__cat-image-mobile">
                 <img src="assets/img/menu-dahl.jpg" alt="Plats végétariens" />
@@ -419,18 +420,18 @@
       <!-- FOOTER -->
       <footer class="footer" id="footer">
         <div class="footer__inner">
-          <img src="assets/img/logo-hero.png" alt="Le Manoïre" class="footer__logo" />
+          <img src="assets/img/logo-footer-full.png" alt="Le Manoïre — Col de Jaman" class="footer__logo" />
           <p class="footer__tagline">Produits locaux &amp; de saison · Cuisine faite maison avec passion</p>
         </div>
         <nav class="footer__nav" aria-label="Navigation footer">
           <a href="carte-v2.html">La carte</a>
           <a href="randonnees.html">Randonnées</a>
-          <a href="en-direct.html">En direct</a>
+          <a href="en-direct.html">En direct / Infos pratiques</a>
           <a href="index.html#reserver">Réserver</a>
         </nav>
         <div class="footer__base">
           <span class="footer__legal">© Le Manoïre · Col de Jaman · lemanoire-jaman.ch</span>
-          <span class="footer__legal">Mentions légales · Confidentialité</span>
+          <a href="mentions-legales.html" class="footer__legal">Mentions légales · Confidentialité</a>
         </div>
       </footer>
     </div>
@@ -467,24 +468,48 @@
         });
       });
 
-      // Scroll triggers image switch via IntersectionObserver
-      if ("IntersectionObserver" in window) {
-        var observer = new IntersectionObserver(function(entries) {
-          entries.forEach(function(entry) {
-            if (entry.isIntersecting) {
-              var bgId = entry.target.getAttribute("data-bg-id");
-              if (bgId) setBg(bgId);
-            }
-          });
-        }, {
-          threshold: 0.25,
-          rootMargin: "-20% 0px -40% 0px"
+      // Scroll triggers image switch — découpage en tranches de scroll
+      // ÉGALES, une par image unique, dans leur ordre d'apparition.
+      // (Une IntersectionObserver basée sur la hauteur des éléments donnait
+      // un "temps de passage" proportionnel à la hauteur de chaque section —
+      // la ligne des ribs, une seule ligne de texte, ne recevait presque
+      // aucun temps face aux catégories qui listent plusieurs plats.)
+      var orderedIds = (function() {
+        var seen = {};
+        var order = [];
+        triggerElements.forEach(function(el) {
+          var id = el.getAttribute("data-bg-id");
+          if (id && !seen[id]) { seen[id] = true; order.push(id); }
         });
+        return order;
+      })();
+      var track = document.querySelector(".menu__categories-list");
+      var totalSlots = orderedIds.length;
 
-        categories.forEach(function(cat) {
-          observer.observe(cat);
-        });
+      function updateBgFromScroll() {
+        if (!track || totalSlots === 0) return;
+        var rect = track.getBoundingClientRect();
+        if (rect.height <= 0) return;
+        var focusY = window.innerHeight * 0.4;
+        var progress = (focusY - rect.top) / rect.height;
+        progress = Math.max(0, Math.min(0.999, progress));
+        var idx = Math.floor(progress * totalSlots);
+        idx = Math.max(0, Math.min(totalSlots - 1, idx));
+        setBg(orderedIds[idx]);
       }
+
+      var scrollTicking = false;
+      window.addEventListener("scroll", function() {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(function() {
+            updateBgFromScroll();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }, { passive: true });
+
+      updateBgFromScroll();
     });
   </script>
 </body>

@@ -1,0 +1,66 @@
+/* ============================================================
+   LE MANOÏRE — Mentions légales v2
+   Overrides page-spécifiques UNIQUEMENT — tokens du core style.css.
+   ============================================================ */
+
+.legal-header {
+  background: var(--bordeaux);
+  padding: clamp(140px, 20vh, 190px) var(--pad) clamp(60px, 8vh, 90px);
+  text-align: center;
+  border-bottom: 3px solid var(--ocre);
+}
+.legal-header .eyebrow { color: var(--or-logo); }
+.legal-header h1 {
+  font-family: var(--display);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  font-size: clamp(34px, 5vw, 56px);
+  color: var(--creme-2);
+  margin-top: 10px;
+}
+
+.legal-body {
+  background: var(--creme-2);
+  padding: clamp(60px, 9vh, 100px) var(--pad) clamp(90px, 12vh, 140px);
+}
+.legal-body__inner {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.legal-section {
+  margin-bottom: clamp(40px, 6vw, 64px);
+}
+.legal-section:last-child { margin-bottom: 0; }
+.legal-section h2 {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: clamp(20px, 2.2vw, 26px);
+  color: var(--bordeaux);
+  margin-bottom: 14px;
+}
+.legal-section p {
+  color: var(--brun-moyen);
+  font-size: 0.98rem;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+.legal-section p:last-child { margin-bottom: 0; }
+.legal-section strong { color: var(--brun-fonce); font-weight: 600; }
+.legal-section ul {
+  margin: 0 0 14px 20px;
+  color: var(--brun-moyen);
+  font-size: 0.98rem;
+  line-height: 1.7;
+}
+.legal-section a { color: var(--brun-fonce); font-weight: 600; }
+.legal-section a:hover { color: var(--ocre); }
+
+.legal-contact {
+  background: var(--creme-1);
+  border-left: 3px solid var(--ocre);
+  border-radius: 0 4px 4px 0;
+  padding: 18px 22px;
+  margin-top: 16px;
+}
+.legal-contact p { margin-bottom: 6px; font-size: 0.92rem; }
+.legal-contact p:last-child { margin-bottom: 0; }

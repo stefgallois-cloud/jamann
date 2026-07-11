@@ -245,6 +245,7 @@ body.no-hero .nav {
   text-shadow: 0 1px 10px rgba(0,0,0,0.5);
   position: relative;
   padding: 4px 0;
+  transition: color .3s var(--ease);
 }
 .nav__links a::after {
   content: "";
@@ -253,7 +254,7 @@ body.no-hero .nav {
   background: var(--ocre);
   transition: width .4s var(--ease);
 }
-.nav__links a:hover { color: var(--creme-2); }
+.nav__links a:hover { color: var(--or-logo); }
 .nav__links a:hover::after { width: 100%; }
 
 .nav__cta {
@@ -412,6 +413,12 @@ body.no-hero .nav {
   grid-template-columns: 1.15fr 0.85fr;
   gap: clamp(36px, 6vw, 90px);
   align-items: center;
+}
+.editorial__inner--reversed {
+  /* Miroir de position uniquement : la colonne média reste la plus large
+     (sinon order:2 la fait atterrir dans la petite colonne 0.85fr et la
+     photo paraît trop petite / trop recadrée). */
+  grid-template-columns: 0.85fr 1.15fr;
 }
 .editorial__inner--reversed .editorial__media { order: 2; }
 .editorial__inner--reversed .editorial__text  { order: 1; }
@@ -873,6 +880,7 @@ body.no-hero .nav {
   transition: padding-left .35s var(--ease);
 }
 .contact__row:not(.contact__row--static):hover { padding-left: 10px; }
+.contact__row:not(.contact__row--static):hover .contact__value { color: var(--or-logo); }
 .contact__label {
   font-size: 0.65rem;
   letter-spacing: 0.2em;
@@ -886,6 +894,7 @@ body.no-hero .nav {
   color: var(--creme-2);
   text-align: right;
   font-weight: 400;
+  transition: color .35s var(--ease);
 }
 
 /* ============================================================
@@ -959,7 +968,7 @@ body.no-hero .nav {
   border-bottom: 1px solid rgba(239,229,219,0.1);
 }
 .footer__logo {
-  height: 200px;
+  height: 150px;
   width: auto;
   margin: 0 auto;
   opacity: 0.92;
@@ -970,7 +979,7 @@ body.no-hero .nav {
   font-size: 15px;
   font-weight: 400;
   color: var(--or-logo);
-  margin: 18px 0 0;
+  margin: 10px 0 0;
   letter-spacing: 0.04em;
 }
 .footer__nav {
@@ -1002,6 +1011,7 @@ body.no-hero .nav {
   letter-spacing: 0.06em;
   color: var(--muted);
 }
+a.footer__legal:hover { color: var(--or-logo); }
 
 /* ============================================================
    REVEAL ANIMATION
