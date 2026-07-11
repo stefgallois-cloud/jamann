@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Manoïre — Restaurant d'altitude au Col de Jaman | Ouverture juin 2026</title>
+  <meta name="description" content="Le Manoïre renaît au Col de Jaman (1512 m), au-dessus de Montreux. Restaurant d'alpage, terroir suisse, terrasse panoramique face au lac. Ouverture juin 2026.">
+  <link rel="canonical" href="https://lemanoire-jaman.ch">
+  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=4">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Le Manoïre",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Col de Jaman",
+      "addressLocality": "Montreux",
+      "postalCode": "1820",
+      "addressCountry": "CH"
+    },
+    "geo": { "@type": "GeoCoordinates", "latitude": "46.4469", "longitude": "6.9744" },
+    "url": "https://lemanoire-jaman.ch",
+    "telephone": "+41799159192"
+  }
+  </script>
+</head>
+<body>
+  <div id="site-nav"></div>
+
+  <!-- HERO : remplacer l'URL ci-dessous par la photo définitive le moment venu -->
+  <section class="hero" style="background-image:url('https://i.postimg.cc/BbfWNLms/terrasse-drapeau-resto.png')">
+    <div class="hero-content">
+      <div class="hero-bottom">
+        <p class="hero-slogan">Au-dessus du lac,<br>au-dessus du bruit,<br>au-dessus du temps.</p>
+        <a href="reserver.html" class="hero-badge">Ouverture prochaine</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- WIDGETS -->
+  <div class="widgets-grid">
+
+    <!-- Widget météo & vue en direct -->
+    <div class="widget-box">
+      <h3 class="widget-title">⛰️ Météo &amp; vue en direct</h3>
+      <div class="meteo-body">
+        <div class="meteo-col-left">
+          <div class="meteo-vue">
+            <img src="https://i.postimg.cc/4yv31Tb8/vue-drone.png" alt="Vue sur le Col de Jaman">
+            <span class="live-badge-mini"><span class="live-dot"></span> LIVE</span>
+          </div>
+        </div>
+        <div class="meteo-col-right">
+          <div class="meteo-temp" id="current-temp"><span class="sun-animated">☀️</span> --°C</div>
+          <div class="meteo-desc" id="current-desc">Chargement...</div>
+          <div class="meteo-details">
+            <div class="meteo-detail-item">
+              <span class="detail-icon">💨</span>
+              <span class="detail-label">Vent</span>
+              <span class="detail-value" id="meteo-vent">--</span>
+              <span class="detail-sub" id="meteo-rafales"></span>
+            </div>
+            <div class="meteo-detail-item">
+              <span class="detail-icon">💧</span>
+              <span class="detail-label">Humidité</span>
+              <span class="detail-value" id="meteo-humidite">--</span>
+            </div>
+            <div class="meteo-detail-item">
+              <span class="detail-icon">🌧️</span>
+              <span class="detail-label">Pluie</span>
+              <span class="detail-value" id="meteo-pluie">--</span>
+            </div>
+          </div>
+          <p class="meteo-source">Données en direct – Le Manoïre, Col de Jaman</p>
+        </div>
+      </div>
+      <a href="conditions.html" class="meteo-link">
+        <span>Voir en détail →</span>
+        <span class="arrow-circle">➔</span>
+      </a>
+    </div>
+
+    <!-- Widget transport -->
+    <div class="widget-box">
+      <h3 class="widget-title">🗺️ Comment venir ?</h3>
+      <div class="transport-item">
+        <div class="transport-icon train-wrapper">
+          <span class="train-emoji">🚂</span>
+        </div>
+        <div class="transport-text">
+          <span><strong>Train (MOB) :</strong> Arrêt « Jaman ».</span>
+          <span class="transport-subtext">Depuis Montreux. <strong>Prévoir env. 45 min de marche</strong> de la gare jusqu'au col.</span>
+        </div>
+      </div>
+      <div class="transport-item" style="margin-bottom:0;">
+        <div class="transport-icon"><span class="car-emoji">🚗</span></div>
+        <div class="transport-text">
+          <span><strong>Voiture :</strong> Parking au Col.</span>
+          <span class="transport-subtext">Routes via Montreux, Glion/Caux ou Les Avants.</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- TEASER HISTOIRE -->
+  <main class="content-wrapper">
+    <section class="section-block" style="margin-bottom:2rem;">
+      <h2 class="section-title">L'Histoire</h2>
+      <p>Le Manoïre a longtemps été une adresse emblématique du Col de Jaman. Un café-restaurant d'alpage, simple et authentique, connu pour sa convivialité et sa vue unique sur les Préalpes vaudoises.</p>
+      <a href="le-manoire.html" class="btn-ocre">En savoir plus</a>
+    </section>
+  </main>
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter-section">
+    <h3 class="newsletter-title">Restez informé</h3>
+    <p class="newsletter-desc">Inscrivez-vous pour suivre la renaissance du Manoïre et être prévenu·e de l'ouverture.</p>
+    <a href="https://tally.so/r/0QJkG0" target="_blank" rel="noopener noreferrer" class="newsletter-btn">S'inscrire à la newsletter</a>
+  </section>
+
+  <div id="site-footer"></div>
+
+  <!-- MÉTÉO EN DIRECT (Open-Meteo, Col de Jaman) -->
+  <script>
+    const getMeteoInfo = (code) => {
+      let texte = "Ensoleillé", icone = "☀️";
+      if (code > 0 && code <= 3) { texte = "Nuageux"; icone = "☁️"; }
+      else if (code >= 45 && code <= 48) { texte = "Brouillard"; icone = "🌫️"; }
+      else if (code >= 51 && code <= 67) { texte = "Pluie"; icone = "🌧️"; }
+      else if (code >= 71 && code <= 77) { texte = "Neige"; icone = "❄️"; }
+      else if (code >= 80) { texte = "Averses"; icone = "🌦️"; }
+      return { texte, icone };
+    };
+
+    async function actualiserMeteo() {
+      try {
+        const reponse = await fetch('https://api.open-meteo.com/v1/forecast?latitude=46.4469&longitude=6.9744&current=temperature_2m,relative_humidity_2m,wind_speed_10m,wind_gusts_10m,precipitation,weather_code&timezone=Europe/Zurich');
+        const donnees = await reponse.json();
+        const c = donnees.current;
+        const info = getMeteoInfo(c.weather_code);
+        document.getElementById('current-temp').innerHTML = `<span class="sun-animated">${info.icone}</span> ${Math.round(c.temperature_2m)}°C`;
+        document.getElementById('current-desc').innerText = info.texte;
+        document.getElementById('meteo-vent').innerText = `${Math.round(c.wind_speed_10m)} km/h`;
+        document.getElementById('meteo-rafales').innerText = `rafales ${Math.round(c.wind_gusts_10m)} km/h`;
+        document.getElementById('meteo-humidite').innerText = `${c.relative_humidity_2m} %`;
+        document.getElementById('meteo-pluie').innerText = `${c.precipitation} mm`;
+      } catch (e) {
+        console.log("Météo indisponible", e);
+        document.getElementById('current-desc').innerText = "Indisponible";
+      }
+    }
+    actualiserMeteo();
+    setInterval(actualiserMeteo, 300000);
+  </script>
+  <script src="nav.js"></script>
+</body>
+</html>

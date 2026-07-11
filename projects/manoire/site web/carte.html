@@ -1,39 +1,206 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>La Carte — Fondue, Rösti &amp; Terroir Suisse | Le Manoïre Col de Jaman</title>
-  <meta name="description" content="La carte du Manoïre se prépare : fondue, rösti, produits locaux et terroir suisse. Dévoilée à l'ouverture, juin 2026, au Col de Jaman.">
-  <link href="https://api.fontshare.com/v2/css?f[]=clash-grotesk@400,600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>La carte — Le Manoïre, Col de Jaman</title>
+  <meta name="description" content="La carte du Manoïre : entrées, salades, planchettes alpines, fondues, spécialités et desserts. Cuisine suisse authentique au Col de Jaman." />
+
+  <link rel="stylesheet" href="style.css?v=49" />
 </head>
-<body>
-  <div id="site-nav"></div>
-  <div id="site-brand"></div>
+<body class="no-hero">
 
-  <div class="page-header">
-    <h1>La Carte</h1>
-    <p>Terroir suisse · Produits locaux · Authenticité d'alpage</p>
-  </div>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-  <div class="placeholder-block">
-    <span class="placeholder-icon">🍽️</span>
-    <h2>La carte se prépare</h2>
-    <p>Notre carte sera dévoilée à l'ouverture du Manoïre en juin 2026. Elle sera construite autour des <strong>produits locaux suisses</strong> et des grands classiques d'alpage : fondue, rösti, fromages d'artisans, viandes de montagne.</p>
-    <p>Chaque producteur partenaire est choisi pour son respect du terroir et la qualité de ce qu'il fait pousser, élever ou affiner. Ici, la provenance n'est pas un argument marketing — c'est une conviction.</p>
-    <div class="block-brown" style="margin:2rem 0;">Fondue • Rösti • Fromages d'alpage • Producteurs partenaires</div>
-    <p>En attendant, inscrivez-vous à la newsletter pour être prévenu·e à l'ouverture et réserver votre table en priorité.</p>
-    <a class="btn-ocre" href="reserver.html">Réserver une table</a>
-  </div>
+  <!-- NAV -->
+  <header class="nav" id="nav">
+    <a href="index.html" class="nav__brand">
+      <img src="assets/img/logo-hero.png" alt="Le Manoïre — Col de Jaman" class="nav__logo" />
+    </a>
+    <nav class="nav__links" aria-label="Navigation principale">
+      <a href="carte.html">La carte</a>
+      <a href="randonnees.html">Randonnées</a>
+      <a href="en-direct.html">En direct</a>
+    </nav>
+    <a href="index.html#reserver" class="nav__cta">Nous contacter</a>
+  </header>
 
-  <section class="newsletter-section">
-    <h3 class="newsletter-title">Soyez les premiers informés</h3>
-    <p class="newsletter-desc">Découvrez la carte et les producteurs partenaires dès l'ouverture.</p>
-    <a href="https://tally.so/r/0QJkG0" target="_blank" rel="noopener noreferrer" class="newsletter-btn">S'inscrire à la newsletter</a>
-  </section>
+  <main>
 
-  <div id="site-footer"></div>
-  <script src="nav.js"></script>
+    <!-- SECTION La carte -->
+    <section class="menu menu--page" id="carte">
+      <div class="menu__inner">
+
+        <div class="menu-intro-row">
+          <div class="menu-intro-text">
+            <p class="eyebrow reveal" data-reveal>La carte</p>
+            <h2 class="editorial__title reveal" data-reveal>Ce qu'on vous prépare.</h2>
+            <p class="lede menu__intro reveal" data-reveal>Produits locaux &amp; de saison. Cuisine faite maison, avec passion.</p>
+          </div>
+          <div class="menu-intro-accent reveal" data-reveal>
+            <div class="menu-medallion menu-medallion--table">
+              <img src="assets/img/carte-hero.jpg" alt="Table dressée en terrasse au Col de Jaman" loading="eager" decoding="async" />
+            </div>
+            <img src="assets/img/icon-edelweiss.png" alt="" class="menu-intro-accent__icon" width="30" height="30" />
+          </div>
+        </div>
+
+        <div class="menu__grid">
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-edelweiss.png" alt="" class="menu__cat-icon" width="26" height="26" />Nos entrées</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Soupe du moment</span><span class="menu__price">12 CHF</span></div><p class="menu__desc">Maison, de saison</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Escargots du Mont d'Or</span><span class="menu__price">12 CHF</span></div><p class="menu__desc">6 pièces, beurre persillé</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Salade mêlée</span><span class="menu__price">10 CHF</span></div><p class="menu__desc">Vinaigrette maison</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Salade verte</span><span class="menu__price">6 CHF</span></div><p class="menu__desc">Vinaigrette maison</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-edelweiss-unicolor.png" alt="" class="menu__cat-icon" width="26" height="26" />Nos grandes salades</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Salade Caesar</span><span class="menu__price">24 CHF</span></div><p class="menu__desc">Filet de poulet aux herbes en cuisson douce, romaine, tomate d'antan, croûtons, câpres soufflées, copeaux de Jaman, vieux lard grillé</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Salade du Manoïre</span><span class="menu__price">26 CHF</span></div><p class="menu__desc">Pommes de terre, salade verte, viande des Grisons, noix, radis, tomates cerises, Jaman jeune, croûtons, tomates confites, graines de courge</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Salade gourmande 🌿</span><span class="menu__price">22 CHF</span></div><p class="menu__desc">Abricots rôtis, quinoa, pois chiches, groseilles, pissenlit, radis, tomates cerises, vinaigrette aux pommes</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-vache.png" alt="" class="menu__cat-icon" width="26" height="26" />Planchettes alpines</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Planchette viande séchée</span><span class="menu__price">28 CHF</span></div><p class="menu__desc">Charcuteries vaudoises</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Planchette fromages d'alpage</span><span class="menu__price">24 CHF</span></div><p class="menu__desc">Fromagerie du Col de Jaman</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Planchette mixte</span><span class="menu__price">34 CHF</span></div><p class="menu__desc">Charcuteries &amp; fromages</p></li>
+            </ul>
+          </div>
+
+          <div class="menu-medallion-slot reveal" data-reveal style="transition-delay:.1s">
+            <div class="menu-medallion menu-medallion--1">
+              <img src="assets/img/menu-burger.jpg" alt="Burger du Manoïre" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-vache-plein.png" alt="" class="menu__cat-icon" width="26" height="26" />Fondues <span class="menu__cat-sub">dès 1 personne</span></h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Moitié-moitié</span><span class="menu__price">27 CHF</span></div><p class="menu__desc">Fromage du Col de Jaman &amp; Philistin</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">À la bière ambrée artisanale</span><span class="menu__price">29 CHF</span></div><p class="menu__desc">Brasserie de Vevey</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Fondue tomate</span><span class="menu__price">27 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Fondue aux champignons forestière</span><span class="menu__price">29 CHF</span></div></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-vache-contours.png" alt="" class="menu__cat-icon" width="26" height="26" />Fondue bourguignonne</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Bœuf suisse</span></div><p class="menu__desc">Poire ou rumsteck · frites maison · salade verte</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-jaman1.png" alt="" class="menu__cat-icon" width="26" height="26" />Croûtes fromagères de Jaman</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Croûte nature</span><span class="menu__price">18 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Croûte garnie</span><span class="menu__price">22 CHF</span></div><p class="menu__desc">Au choix parmi les suppléments</p></li>
+            </ul>
+          </div>
+
+          <div class="menu-medallion-slot reveal" data-reveal style="transition-delay:.15s">
+            <div class="menu-medallion menu-medallion--2">
+              <img src="assets/img/menu-fondue.jpg" alt="Fondue moitié-moitié" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-sapin-plein.png" alt="" class="menu__cat-icon" width="26" height="26" />Rösti rustique</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Nature</span><span class="menu__price">18 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Jambon</span><span class="menu__price">20 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Œuf</span><span class="menu__price">20 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Complet</span><span class="menu__price">22 CHF</span></div></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-sapin-contour.png" alt="" class="menu__cat-icon" width="26" height="26" />Pâtes du chalet</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Macaronis du chalet gratinés</span><span class="menu__price">22 CHF</span></div><p class="menu__desc">Sauce fromagère, fromages mixtes d'alpage bio de Jaman, compotée d'oignons</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-parasol-plain.png" alt="" class="menu__cat-icon" width="26" height="26" />Spécialités Manoïre</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Burger du Manoïre</span><span class="menu__price">30 CHF</span></div><p class="menu__desc">Bœuf bouchère suisse, raclette du Col de Jaman, compotée d'oignons, sauce secrète, romaine, pain artisanal</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Ribs de cochon laqués</span><span class="menu__price">39 CHF</span></div><p class="menu__desc">Cuisson lente 7 heures, sauce BBQ maison</p></li>
+            </ul>
+          </div>
+
+          <div class="menu-medallion-slot reveal" data-reveal style="transition-delay:.1s">
+            <div class="menu-medallion menu-medallion--3">
+              <img src="assets/img/menu-ribs.jpg" alt="Ribs de cochon laqués" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-parasol.png" alt="" class="menu__cat-icon" width="26" height="26" />Classiques de la maison</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Assiette de rosbif froid</span><span class="menu__price">23 CHF</span></div><p class="menu__desc">100 g, sauce au choix</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Tartare de féra fumée</span><span class="menu__price">29 CHF</span></div><p class="menu__desc">Fromage blanc, herbes fraîches, pommes acidulées, quinoa, salade de crudités</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-edelweiss-contour.png" alt="" class="menu__cat-icon" width="26" height="26" />Plats végétariens 🌿</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Fricassée de champignons forestière</span><span class="menu__price">21 CHF</span></div><p class="menu__desc">Rösti ou pain artisanal</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Dahl de lentilles corail</span><span class="menu__price">19 CHF</span></div><p class="menu__desc">Lait de coco, petits légumes de saison</p></li>
+            </ul>
+          </div>
+
+          <div class="menu__cat reveal" data-reveal>
+            <h3 class="menu__cat-title"><img src="assets/img/icon-jaman2.png" alt="" class="menu__cat-icon" width="26" height="26" />Desserts</h3>
+            <ul class="menu__list">
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Fondue au chocolat suisse</span><span class="menu__price">14 CHF</span></div><p class="menu__desc">Fruits frais, biscuits maison</p></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Tarte maison du jour</span><span class="menu__price">10 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Glaces de Jaman &amp; sorbets artisanaux vaudois</span><span class="menu__price">9 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Crème brûlée du moment</span><span class="menu__price">10 CHF</span></div></li>
+              <li class="menu__item"><div class="menu__row"><span class="menu__name">Meringue double crème</span><span class="menu__price">14 CHF</span></div><p class="menu__desc">Farandole de fruits rouges</p></li>
+            </ul>
+          </div>
+
+          <div class="menu-medallion-slot reveal" data-reveal style="transition-delay:.15s">
+            <div class="menu-medallion menu-medallion--4">
+              <img src="assets/img/menu-tartare.jpg" alt="Tartare de féra fumée" loading="lazy" decoding="async" />
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="footer">
+      <div class="footer__inner">
+        <img src="assets/img/logo-hero.png" alt="Le Manoïre" class="footer__logo" />
+        <p class="footer__tagline">Col de Jaman · 1 512 m · Depuis 2026</p>
+      </div>
+      <nav class="footer__nav" aria-label="Navigation footer">
+        <a href="carte.html">La carte</a>
+        <a href="randonnees.html">Randonnées</a>
+        <a href="en-direct.html">En direct</a>
+        <a href="index.html#reserver">Réserver</a>
+      </nav>
+      <div class="footer__base">
+        <span class="footer__legal">© Le Manoïre · Col de Jaman · lemanoire-jaman.ch</span>
+        <span class="footer__legal">Mentions légales · Confidentialité</span>
+      </div>
+    </footer>
+
+  </main>
+
+  <script src="script.js?v=7"></script>
 </body>
 </html>

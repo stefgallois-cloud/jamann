@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "page-bon-cadeau",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3456", "--directory", "C:/Users/DELL/Desktop/la terrasse Mika/bon cadeau"],
+      "port": 3456
+    }
+  ]
+}

@@ -1,47 +1,39 @@
-# Le Manoïre — Restaurant d'alpage, Montreux
+# Le Manoïre — Restaurant d'alpage, Col de Jaman
 
-Restaurant d'alpage à Montreux — client prioritaire de Clockwork Ops.
+Restaurant d'alpage au Col de Jaman (Riviera-Pays-d'Enhaut) — client prioritaire de Clockwork Ops.
 
-**Statut :** Actif — ouverture 9 juillet 2026 (repoussée depuis fin juin — travaux terminés, équipe arrive)
-**Deadline absolue :** 9 juillet 2026
+**Statut :** Actif — réouverture le **16 juillet 2026**.
+
+Détail technique complet (faits clés, architecture du dossier, règles de design/images) : voir [`CLAUDE.md`](CLAUDE.md).
 
 ## Déjà livré
-- [x] Landing page
-- [x] Automatisation d'inscription (Airtable + Make)
-- [x] Refonte du site en multi-pages : menu de navigation + Accueil (hero photo) · Le Manoïre · Carte · Galerie · Infos pratiques · Réserver
-- [x] Page Conditions en direct (météo Col de Jaman) + affichage tablette (`display.html`)
-- [x] Corrections identité visuelle (31/05) : nav brand (logo + nom côte à côte), doublon supprimé, hero photo recentrée
-- [x] **sitev2 cinématique** (juin 2026) : site one-page scroll-scrub avec hero vidéo IA drone, sections éditoriales, stats animées, responsive mobile — dossier `site web/sitev2/starter/`
+- [x] Site cinématique scroll-scrub (`site web/`) — hero vidéo IA, pages Accueil, Carte, Randonnées, En direct/Infos pratiques, Mentions légales
+- [x] Automatisation d'inscription newsletter (Airtable + Make)
+- [x] Automatisation posts réseaux sociaux — base Airtable `Calendrier Posts` + scénario Make `5469302`
+- [x] 8 newsletters enrichies
+- [x] Bons cadeaux (`bon cadeaux/`)
+- [x] Devis (bons cadeaux, planning personnel)
 
-### Site web — structure
-Dossier `site web/` · fichiers partagés `styles.css` (charte + composants) et `nav.js` (menu + footer, à éditer pour modifier les onglets).
-À compléter par le client : photo hero définitive, vraie carte (menu), horaires, activation du formulaire de réservation.
+## Site web actif
+Dossier `site web/` — voir `CLAUDE.md` pour la stack, les conventions (cache-bust, design tokens) et les pièges connus.
+L'ancien site multi-pages est archivé dans `archives/site-web-v1-superseded/` — ne plus l'éditer.
 
-## À livrer avant ouverture (9 juillet 2026)
-
+## À livrer / en cours
 | Livrable | Statut |
 |---|---|
-| **sitev2 — hero vidéo IA** | Frames à refaire — Stef génère nouvelle vidéo Seedance 2, puis extraction ffmpeg |
-| **sitev2 — infos Micka** | Tél, email, photo Anouck, URLs Instagram/Facebook à compléter |
-| **sitev2 — déploiement** | Push GitHub + config domaine lemanoire-jaman.ch |
-| Automatisation posts réseaux sociaux | En cours — scénario Make opérationnel, test final en attente |
-| App planning équipe avec interface UI | À faire |
-| Automatisation 8 newsletters | Livré (newsletters enrichies) |
+| Automatisation posts réseaux sociaux | Scénario Make opérationnel, à activer une fois le test final validé |
+| App planning équipe (`planning-app/`) | En cours |
+| App Jamann posts réseaux (`jamann-app/`) | Maintenance |
 
-## Automatisation réseaux sociaux — état technique
-
-**Airtable** (base `app6TseIO7Sx4fJqv`) :
-
-- Table `Calendrier Posts` (`tblqLY0hmMINANI9s`) créée avec 10 champs
-- ⚠️ Ajouter manuellement "Refusé" et "Archivé" dans le champ Statut
-
-**Make** (scénario ID `5469302`) :
-
-- Tourne toutes les 15 min
-- Détecte posts "Approuvé" du jour → email client avec texte + lien Airtable
-- Détecte posts "Refusé" → Claude Haiku génère remplacement → nouveau post Airtable → email
-- ⚠️ Activer le scénario une fois le test validé
-- ⚠️ Clé Anthropic à rotation après les tests (console.anthropic.com)
+## Structure du dossier
+- `charte_graphique/` — logos officiels et charte graphique
+- `site web/` — site actif à la racine (`index.html`, `style.css`, `assets/`...) + `docs/` (conception) + `photos/` (photothèque brute, non versionnée)
+- `documents/` — briefs, devis PDF, calendriers, ligne éditoriale
+- `newsletters/`, `posts/`, `prompt/`, `devis/`, `scripts/` — sous-projets de contenu et scripts de génération
+- `bon cadeaux/` — page et générateur de bons cadeaux
+- `jamann-app/`, `planning-app/` — applications web indépendantes
+- `sessions/` — comptes-rendus de session
+- `archives/` — tout ce qui est superseded, jamais supprimé
 
 ## Notes
 Client très actif avec beaucoup d'idées — anticiper de nouveaux projets au fil du temps.
