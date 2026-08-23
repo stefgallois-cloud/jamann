@@ -85,7 +85,7 @@ nav.solid {
 nav:not(.solid) .nav-logo { opacity: 0; visibility: hidden; transform: translateY(-8px); }
 .nav-logo img { height: 46px; width: 46px; object-fit: cover; border-radius: 50%; transition: height 0.5s var(--ease), width 0.5s var(--ease); }
 nav.solid .nav-logo img { height: 40px; width: 40px; }
-.nav-brand { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.3rem; color: var(--ink); letter-spacing: 0.01em; white-space: nowrap; }
+.nav-brand { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: 1.3rem; color: var(--gold-deep); letter-spacing: 0.01em; white-space: nowrap; }
 .nav-links { list-style: none; display: flex; gap: 2.4rem; align-items: center; }
 .nav-links > li > a {
   font-size: 0.72rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase;
@@ -135,7 +135,7 @@ nav:not(.solid) { background: linear-gradient(to bottom, rgba(253, 250, 246, 0.8
 .hero-left h1 em { font-style: italic; color: var(--rose); }
 .hero-left h1.hero-logo { display: flex; align-items: center; gap: 1.4rem; margin-bottom: 0.6rem; }
 .hero-left h1.hero-logo img { width: 90px; height: 90px; border-radius: 50%; object-fit: cover; flex-shrink: 0; transform: scale(1.18); transform-origin: center; overflow: hidden; }
-.hero-left h1.hero-logo span { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(3.2rem, 5.8vw, 5.4rem); line-height: 1; color: var(--ink); }
+.hero-left h1.hero-logo span { font-family: 'Cormorant Garamond', serif; font-weight: 500; font-size: clamp(3.2rem, 5.8vw, 5.4rem); line-height: 1; color: var(--gold-deep); }
 .hero-name {
   font-size: 0.95rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--rose-deep); margin-bottom: 2.9rem; display: inline-flex; align-items: center; gap: 1rem;
@@ -315,7 +315,7 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
 .ft-logo { width: 52px; height: 52px; border-radius: 50%; overflow: hidden; flex-shrink: 0; }
 .ft-logo img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.18); transform-origin: center; display: block; }
 .ft-info { display: flex; flex-direction: column; gap: 0.2rem; }
-.ft-name { font-size: 0.95rem; font-weight: 600; margin: 0; }
+.ft-name { font-size: 0.95rem; font-weight: 600; margin: 0; color: var(--gold); }
 .ft-sub { font-size: 0.8rem; margin: 0; opacity: 0.9; }
 .ft-social { display: flex; gap: 0.7rem; }
 .ft-social a {
@@ -350,6 +350,10 @@ footer::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 1px
 .page-body ul li { color: var(--ink); font-size: 1.02rem; font-weight: 400; padding: 0.8rem 0 0.8rem 2rem; border-bottom: 1px solid var(--line); position: relative; transition: padding-left 0.3s var(--ease); }
 .page-body ul li:hover { padding-left: 2.5rem; color: var(--rose-deep); }
 .page-body ul li::before { content: '—'; position: absolute; left: 0; color: var(--rose); font-weight: 600; }
+.page-body ul ul { margin: 0.6rem 0 0; }
+.page-body ul ul li { border-bottom: none; padding: 0.35rem 0 0.35rem 1.6rem; font-size: 0.98rem; }
+.page-body ul ul li:hover { padding-left: 2rem; }
+.page-body ul ul li::before { content: '•'; font-weight: 400; }
 .indic { background: var(--veil); border-left: 6px solid var(--rose); border-radius: 0 16px 16px 0; padding: 2.1rem 2.4rem; margin: 3.2rem 0; }
 .section-outro { text-align: center; margin: 2.5rem 0; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--rose); display: flex; align-items: center; justify-content: center; gap: 0.6rem; line-height: 1.4; }
 .section-outro svg { stroke: var(--rose); flex-shrink: 0; width: 20px; height: 20px; }

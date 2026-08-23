@@ -21,9 +21,9 @@ Nettoyage 2026-07-07 : `francoise-V2/` et les anciens fichiers racine (`index.ht
 ## Procédure de redéploiement Hostinger (mise à jour du site en ligne)
 1. Répercuter les modifs de `francoise-V3/` vers `deploy-hostinger/` (copier les `.html`, `style.css`, `assets/` modifiés)
 2. Zipper le contenu de `deploy-hostinger/` (pas le dossier lui-même, son contenu) → `projects/francoise/am-astro-deploy.zip`
-3. Dans hPanel (compte où vit `am-astro.com`) → Fichiers → Gestionnaire de fichiers → `public_html`
-4. Uploader le zip, l'extraire à la racine de `public_html`, supprimer le zip après extraction
-5. Vérifier que `assets/` reste bien un sous-dossier (jamais aplati) et que `index.html` est directement à la racine
+3. Déployer via MCP (préféré — voir [[reference_hostinger_mcp_non_fonctionnel]]) : `mcp__hostinger-hosting__hosting_deployStaticWebsite` (domain=`am-astro.com`, archivePath=le zip). Sinon en secours manuel : hPanel → Fichiers → Gestionnaire de fichiers → `public_html`, uploader le zip, l'extraire à la racine, supprimer le zip après extraction
+4. Vérifier que `assets/` reste bien un sous-dossier (jamais aplati) et que `index.html` est directement à la racine
+5. **⚠️ OBLIGATOIRE — vider le cache serveur juste après**, sinon les visiteurs voient une version figée (LiteSpeed/CDN Hostinger) qui peut donner l'illusion qu'un ancien bug corrigé est revenu (déjà arrivé le 2026-08-21 avec le bourgeon d'orchidée du hero) : `mcp__hostinger-hosting__hosting_clearWebsiteCacheV1` (domain=`am-astro.com`, username=`u903562542`). Vérifier avec `curl -sI <url-asset>` → header `x-hcdn-cache-status: MISS` pour confirmer que le cache est bien vide.
 
 ## Architecture
 - **Stack** : HTML/CSS vanilla pur, aucune dépendance, aucun build tool
